@@ -7,6 +7,29 @@ body{
     font-family: Arema;
 }
 
+nav{
+   background-color: grey; 
+}
+
+nav ul{
+    text-align: center;
+}
+
+nav ul li{
+    padding-left: 50px;
+    list-style-type: none;
+    display: inline;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover{
+    color:blue;
+}
+
 footer{
     position:fixed;
     bottom:0;
