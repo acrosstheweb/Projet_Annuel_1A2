@@ -1,3 +1,12 @@
+@font-face{
+    font-family: "Arema";
+    src: url("../assets/fonts/aremat\ font.ttf");
+}
+
+body{
+    font-family: Arema;
+}
+
 footer{
     position:fixed;
     bottom:0;
