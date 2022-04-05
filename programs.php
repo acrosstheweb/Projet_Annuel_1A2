@@ -1,4 +1,5 @@
 <?php
+    $title = "Les Programmes";
     $currentPage = 'programs';
     include 'header.php';
 ?>

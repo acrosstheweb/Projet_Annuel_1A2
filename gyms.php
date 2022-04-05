@@ -1,4 +1,5 @@
 <?php
+    $title = "Les Salles";
     $currentPage = 'gyms';
     include 'header.php';
 ?>

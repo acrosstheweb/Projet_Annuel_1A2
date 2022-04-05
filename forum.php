@@ -1,4 +1,5 @@
 <?php
+    $title = "Forum";
     $currentPage = 'forum';
     include 'header.php';
 ?>
