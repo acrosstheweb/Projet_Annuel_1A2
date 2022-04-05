@@ -1,6 +1,6 @@
 <?php
     $content = "Réservation de séances";
-    $title = "Réservations";
+    $title = "Fitness Essential - Réservations";
     $currentPage = 'reservations';
     include 'header.php';
 ?>

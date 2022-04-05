@@ -1,6 +1,6 @@
 <?php
     $content = "Les à propos des coachs et des directeurs";
-    $title = "À propos";
+    $title = "Fitness Essential - À propos";
     $currentPage = 'about';
     include 'header.php';
 ?>

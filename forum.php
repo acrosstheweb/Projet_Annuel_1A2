@@ -1,6 +1,6 @@
 <?php
     $content = "Le forum de Fitness Essential";
-    $title = "Forum";
+    $title = "Fitness Essential - Forum";
     $currentPage = 'forum';
     include 'header.php';
 ?>

@@ -1,6 +1,6 @@
 <?php
     $content = "Les différentes salles des Fitness Essential";
-    $title = "Les Salles";
+    $title = "Fitness Essential - Les Salles";
     $currentPage = 'gyms';
     include 'header.php';
 ?>
