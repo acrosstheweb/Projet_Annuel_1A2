@@ -1,49 +1,38 @@
-.aligned-title{
+.aligned-title {
     text-align: center;
 }
 
-#nav-main{
-    border: 0.5px solid rgb(77, 70, 70);
-    height:10vh;
-}
-
-#img-default-avatar{
+#img-default-avatar {
     width: 45px;
     height: 45px;
     border-radius: 50%;
 }
 
-#user-slide{
-    position:absolute;
-    right:0;
-    display:none;
-    height:90vh;
-    background-color:rgba(82, 121, 111, 0.7);
-    border:2px solid rgb(80, 107, 100);
-    z-index:1;
+#user-slide {
+    position: absolute;
+    right: 0;
+    display: none;
+    height: 90vh;
+    background-color: rgba(82, 121, 111, 0.7);
+    border: 2px solid rgb(80, 107, 100);
+    z-index: 1;
 }
 
-/* #login-modal, #register-modal{
-    margin: 0 auto;
-    height: auto;
-    border: 3px solid #000000; 
-    display: none;
-    overflow: auto;
-} */
-
-.modal-header, .modal-footer{
+.modal-header,
+.modal-footer {
     background-color: #CAD2C5;
 }
 
-.btn-primary, .button-close-modal{
-    background-color:#84A98C;
-    border-color:#84A98C;
+.btn-primary,
+.button-close-modal {
+    background-color: #84A98C;
+    border-color: #84A98C;
 }
 
-.span-close-modal{
+.span-close-modal {
     font-size: 24px;
 }
 
-.row{
-    margin:0;
+.row {
+    margin: 0;
 }

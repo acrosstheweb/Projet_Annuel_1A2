@@ -93,6 +93,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
 </header>
 
+<!-- Modales INSCRIPTION / CONNEXION -->
 
 <div class="modal fade" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
