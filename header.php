@@ -100,7 +100,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Inscription</h3>
-                <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
                     <span aria-hidden="true" class="span-close-modal">&times;</span>
                 </button>
             </div>
@@ -174,7 +174,7 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-secondary">Annuler</button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                 <button class="btn btn-primary">S'inscrire</button>
             </div>
         </div>
