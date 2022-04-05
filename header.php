@@ -110,7 +110,12 @@
             <div class="row">
                 <div class="col">
                     <label for="register-gender">Civilité :</label>
-                    <input class="form-control" type="text" name="register-gender" placeholder="Sélectionnez">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected disabled>Veuillez choisir</option>
+                        <option value="1">Homme</option>
+                        <option value="2">Femme</option>
+                        <option value="3">Ne se prononce pas</option>
+                    </select>
                 </div>
                 <div class="col">
                     <label for="register-password">Date de naissance : </label>
