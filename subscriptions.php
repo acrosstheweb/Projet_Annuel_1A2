@@ -1,7 +1,7 @@
 <?php
     $content = "Les différents abonnements de Fitness Essential";
     $title = 'Fitness Essential - Abonnements'
-    $currentPage = 'Abonnements';
+    $currentPage = 'subscriptions';
     
     include 'header.php';
 ?>
