@@ -1,4 +1,5 @@
 <?php
+    $content = "La page d'accueil de Fitness Essential";
     $title = "Fitness Essential";
     $currentPage = 'index';
     include 'header.php';

@@ -1,4 +1,5 @@
 <?php
+    $content = "Le forum de Fitness Essential";
     $title = "Forum";
     $currentPage = 'forum';
     include 'header.php';

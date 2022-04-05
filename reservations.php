@@ -1,4 +1,5 @@
 <?php
+    $content = "Réservation de séances";
     $title = "Réservations";
     $currentPage = 'reservations';
     include 'header.php';
