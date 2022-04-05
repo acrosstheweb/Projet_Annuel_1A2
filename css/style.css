@@ -3,10 +3,6 @@
     height:10vh;
 }
 
-#search-bar, #login-group{
-    margin-right: 52px;
-}
-
 #img-default-avatar{
     width: 45px;
     height: 45px;
@@ -23,12 +19,13 @@
     z-index:1;
 }
 
-#login-modal, #register-modal{
+/* #login-modal, #register-modal{
     margin: 0 auto;
     height: auto;
-    border: 3px solid #000000;
+    border: 3px solid #000000; 
     display: none;
-}
+    overflow: auto;
+} */
 
 div.modal-header{
     background-color: rgb(80, 107, 100);

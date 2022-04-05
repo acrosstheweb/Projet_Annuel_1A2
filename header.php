@@ -50,10 +50,10 @@
                             <a class="nav-link" href="#" id='user-profile-button'><img src="sources/img/avatar.jpg" id='img-default-avatar' alt="Avatar"></a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" id="login-trigger" href="#">Connexion</a>
+                        <a class="nav-link" id="login-trigger" href="#" data-bs-toggle="modal" data-bs-target="#login-modal">Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="register-trigger"  href="#">Inscription</a>
+                        <a class="nav-link" id="register-trigger"  href="#" data-bs-toggle="modal" data-bs-target="#register-modal">Inscription</a>
                     </li>
                 </ul>
             </div>
@@ -65,102 +65,113 @@
     jaaj
 </aside>
 
-<section class="col-6" id="login-modal">
-    <div class="modal-header">
-        <h3>Connexion</h3>
-        <button type="button" id="close-login-modal" class="btn btn-light" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" class="span-close-modal">&times;</span>
-        </button>
-    </div>
-    <div class="modal-content">
-        <form action="" class="col-4">
-            <label for="login-email">Adresse mail : </label>
-            <input class="form-control" type="email" name="login-email" id="login-email"><br>
+<div class="modal fade" id="login-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Connexion</h3>
+                <button type="button" id="close-login-modal" class="btn btn-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="span-close-modal">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" class="col-4">
+                    <label for="login-email">Adresse mail : </label>
+                    <input class="form-control" type="email" name="login-email" id="login-email"><br>
 
-            <label for="login-password">Mot de passe : </label>
-            <input class="form-control" type="password" name="login-password" id="login-password">
-        </form>
+                    <label for="login-password">Mot de passe : </label>
+                    <input class="form-control" type="password" name="login-password" id="login-password">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">Annuler</button>
+                <button class="btn btn-primary">Se connecter</button>
+            </div>
+        </div>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-secondary">Annuler</button>
-        <button class="btn btn-primary">Se connecter</button>
-    </div>
-</section>
+</div>
 
-<section class="col-6" id="register-modal">
-    <div class="modal-header">
-        <h3>Inscription</h3>
-        <button type="button" id="close-register-modal" class="btn btn-light" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" class="span-close-modal">&times;</span>
-        </button>
-    </div>
-    <div class="modal-content">
-        <form action="">
-            <div class="row">
-                <div class="col">
-                    <label for="register-gender">Civilité :</label>
-                    <input class="form-control" type="text" name="register-gender" placeholder="Sélectionnez">
-                </div>
-                <div class="col">
-                    <label for="register-password">Date de naissance : </label>
-                    <input class="form-control" type="date" name="register-birthday"><br>
-                </div>
+<div class="modal fade" id="register-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Inscription</h3>
+                <button type="button" id="close-register-modal" class="btn btn-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="span-close-modal">&times;</span>
+                </button>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <label for="register-email">Nom : </label>
-                    <input class="form-control" type="text" name="register-lastname" placeholder="Nom">
-                </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <div class="col">
+                            <label for="register-gender">Civilité :</label>
+                            <input class="form-control" type="text" name="register-gender" placeholder="Sélectionnez">
+                        </div>
+                        <div class="col">
+                            <label for="register-password">Date de naissance : </label>
+                            <input class="form-control" type="date" name="register-birthday"><br>
+                        </div>
+                    </div>
 
-                <div class="col">
-                    <label for="register-password">Prénom : </label>
-                    <input class="form-control" type="text" name="register-firstname" placeholder="Prénom"><br>    
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="register-email">Nom : </label>
+                            <input class="form-control" type="text" name="register-lastname" placeholder="Nom">
+                        </div>
+
+                        <div class="col">
+                            <label for="register-password">Prénom : </label>
+                            <input class="form-control" type="text" name="register-firstname" placeholder="Prénom"><br>    
+                        </div>
+                    </div>
             
-            <div class="row">
-                <div class="col">
-                    <label for="register-email">Email : </label>
-                    <input class="form-control" type="email" name="register-email" placeholder="Adresse mail">
-                </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="register-email">Email : </label>
+                            <input class="form-control" type="email" name="register-email" placeholder="Adresse mail">
+                        </div>
 
-                <div class="col">
-                    <label for="register-password">Adresse : </label>
-                    <input class="form-control" type="text" name="register-address" placeholder="Adresse"><br>
-                </div>
-            </div>
+                        <div class="col">
+                            <label for="register-password">Adresse : </label>
+                            <input class="form-control" type="text" name="register-address" placeholder="Adresse"><br>
+                        </div>
+                    </div>
             
-            <div class="row">
-                <div class="col">
-                    <label for="register-email">Ville : </label>
-                    <input class="form-control" type="text" name="register-city" placeholder="Ville">
-                </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="register-email">Ville : </label>
+                            <input class="form-control" type="text" name="register-city" placeholder="Ville">
+                        </div>
 
-                <div class="col">
-                    <label for="register-password">Code postal : </label>
-                    <input class="form-control" type="password" name="register-zip-code" placeholder="Code postal"><br>
-                </div>
+                        <div class="col">
+                            <label for="register-password">Code postal : </label>
+                            <input class="form-control" type="password" name="register-zip-code" placeholder="Code postal"><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="register-email">Mot de passe : </label>
+                            <input class="form-control" type="email" name="register-password" placeholder="Mot de passe">
+                        </div>
+
+                        <div class="col">
+                            <label for="register-password">Confirmation mot de passe : </label>
+                            <input class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe"><br>
+                        </div>
+                    </div>
+                </form>
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <label for="register-email">Mot de passe : </label>
-                    <input class="form-control" type="email" name="register-password" placeholder="Mot de passe">
-                </div>
-
-                <div class="col">
-                    <label for="register-password">Confirmation mot de passe : </label>
-                    <input class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe"><br>
-                </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">Annuler</button>
+                <button class="btn btn-primary">S'inscrire</button>
             </div>
-        </form>
+        </div>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-secondary">Annuler</button>
-        <button class="btn btn-primary">S'inscrire</button>
-    </div>
-</section>
+</div>
+
 
 <script src="js/user-slide.js"></script>
-<script src="js/modals.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
