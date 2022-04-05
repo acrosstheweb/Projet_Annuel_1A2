@@ -31,16 +31,17 @@
     overflow: auto;
 } */
 
-div.modal-header{
-    background-color: rgb(80, 107, 100);
+.modal-header, .modal-footer{
+    background-color: #CAD2C5;
+}
+
+.btn-primary, .button-close-modal{
+    background-color:#84A98C;
+    border-color:#84A98C;
 }
 
 .span-close-modal{
     font-size: 24px;
-}
-
-.modal-footer{
-    background-color: rgb(80, 107, 100);
 }
 
 .row{

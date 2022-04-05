@@ -41,7 +41,9 @@
                 <form class="d-flex col-2" id="search-bar">
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Rechercher" aria-label="Rechercher">
-                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                        <button class="btn btn-outline-success" type="submit">
+                        <span class="material-icons-outlined">search</span>
+                        </button>
                     </div>
                 </form>
 
@@ -70,18 +72,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Connexion</h3>
-                <button type="button" id="close-login-modal" class="btn btn-light" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="span-close-modal">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="" class="col-4">
+            <div class="modal-body row">
+                <div class="col-3"></div>
+                <form action="" class="col-6">
                     <label for="login-email">Adresse mail : </label>
-                    <input class="form-control" type="email" name="login-email" id="login-email"><br>
+                    <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail"><br>
 
                     <label for="login-password">Mot de passe : </label>
-                    <input class="form-control" type="password" name="login-password" id="login-password">
+                    <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe">
                 </form>
+                <div class="col-3"></div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary">Annuler</button>
@@ -96,7 +100,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Inscription</h3>
-                <button type="button" id="close-register-modal" class="btn btn-light" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="span-close-modal">&times;</span>
                 </button>
             </div>
