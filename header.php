@@ -54,7 +54,7 @@
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Rechercher" aria-label="Rechercher">
                         <button class="btn btn-outline-success" type="submit">
-                        <span class="material-icons">search</span>
+                            <span class="material-icons">search</span>
                         </button>
                     </div>
                 </form>
