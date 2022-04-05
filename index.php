@@ -6,3 +6,4 @@
 ?>
 
 <h2 class="aligned-title"> Bienvenue sur Fitness Essential </h2>
+

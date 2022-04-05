@@ -22,11 +22,14 @@
 ?>
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light" id="nav-main" role="navigation">
-        <div class="container-fluid">
-
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container-fluid">
+                <!-- Menu burger -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item">
                         <a class="nav-link <?php if(isset($currentPage)){isActive($currentPage,"index");} ?>" href="index.php">Accueil</a>
                     </li>
@@ -48,8 +51,8 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if(isset($currentPage)){isActive($currentPage,"forum");} ?>" href="forum.php">Forum</a>
                     </li>
-                </ul>
-                
+                    </ul>
+                </div>
                 <form class="d-flex col-2" id="search-bar">
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Rechercher" aria-label="Rechercher">
@@ -71,8 +74,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
 </header>
 
 <aside class="col-3" id="user-slide">
