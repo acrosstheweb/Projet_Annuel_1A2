@@ -14,7 +14,7 @@
         include 'header.php';
     ?>
 
-    <h2> Les programmes de Fitness Essential </h2>
+    <h2 class="aligned-title"> Les programmes de Fitness Essential </h2>
 
 
 

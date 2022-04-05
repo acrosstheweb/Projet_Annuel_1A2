@@ -14,7 +14,7 @@
         include 'header.php';
     ?>
 
-    <h2> Bienvenue sur Fitness Essential </h2>
+    <h2 class="aligned-title"> Bienvenue sur Fitness Essential </h2>
 
 
 </body>
