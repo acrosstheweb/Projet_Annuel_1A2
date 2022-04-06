@@ -6,3 +6,8 @@
 ?>
 
 <h2 class="aligned-title"> Réserver un créneau dans une salle Fitness Essential </h2>
+
+
+<?php
+    include 'footer.php';
+?>

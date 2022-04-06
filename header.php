@@ -22,13 +22,13 @@
     }
 ?>
 
-<header>
+<header class="sticky-top">
 
 <!-- Nativement, avec la classe 'navbar', les éléments enfants de la nav utilisent
 flex, par défaut -> 'justify-content: space-between'  -->
 
     <!-- Création de la navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light nav__header">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <a href="index.php" class="navbar-brand">
                 <img src="sources/img/logo.png" alt="logo">

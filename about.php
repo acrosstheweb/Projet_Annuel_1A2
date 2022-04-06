@@ -6,3 +6,8 @@
 ?>
 
 <h2 class="aligned-title"> À propos de Fitness Essential </h2>
+
+
+<?php
+    include 'footer.php';
+?>
