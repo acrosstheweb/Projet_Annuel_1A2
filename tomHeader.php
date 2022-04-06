@@ -107,14 +107,16 @@ flex, par défaut -> 'justify-content: space-between'  -->
         <h5 class="modal-title" id="login-modal-label">Connexion</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <form action="" class="col-4">
+      <div class="modal-body row">
+        <div class="col-3"></div>
+        <form action="" class="col-6">
             <label for="login-email">Adresse mail : </label>
-            <input class="form-control" type="email" name="login-email" id="login-email"><br>
+            <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail"><br>
 
             <label for="login-password">Mot de passe : </label>
-            <input class="form-control" type="password" name="login-password" id="login-password">
+            <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe">
         </form>
+        <div class="col-3"></div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
