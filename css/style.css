@@ -1,3 +1,7 @@
+:root {
+    --green: #06c;
+}
+
 .aligned-title {
     text-align: center;
 }
@@ -35,4 +39,9 @@
 
 .row {
     margin: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #52796F;
 }

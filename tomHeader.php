@@ -28,7 +28,7 @@
 flex, par défaut -> 'justify-content: space-between'  -->
 
     <!-- Création de la navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #CAD2C5;">
+    <nav class="navbar navbar-expand-xl navbar-light" style="background-color: #CAD2C5;">
         <div class="container-fluid">
             <a href="index.php" class="navbar-brand">
                 <img src="sources/img/logo.png" alt="logo">
@@ -67,30 +67,33 @@ flex, par défaut -> 'justify-content: space-between'  -->
                 </ul>
 
 
-                <div class = "d-flex">
+                <!-- <div class = "postion-absolute end-0">  -->
 
                 <!-- Barre de recherche et bouton recherche -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="postion-absolute end-0 navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
                         </li>
+                        <li class="nav-item">
+                            <form action="#" class = "d-flex">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
+                                    <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
+                                </div>
+
+                            </form>
+                        </li>
                     </ul>
 
-                    <form action="#" class = "d-flex">
-                        <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit"><span class="material-icons">search</span>
-                        </button>
-                    </form>
+                    
                                         
-                </div>
+                <!-- </div> -->
                 
 
                 <!-- Il faudra penser à rajouter le petit panier ici -->
-
-
 
             </div>
         </div>   
@@ -142,7 +145,6 @@ flex, par défaut -> 'justify-content: space-between'  -->
                         <option selected disabled>Veuillez choisir</option>
                         <option value="1">Homme</option>
                         <option value="2">Femme</option>
-                        <option value="3">Ne se prononce pas</option>
                     </select>
                 </div>
                 <div class="col">
@@ -225,7 +227,6 @@ flex, par défaut -> 'justify-content: space-between'  -->
                         <option selected disabled>Veuillez choisir</option>
                         <option value="1">Homme</option>
                         <option value="2">Femme</option>
-                        <option value="3">Ne se prononce pas</option>
                     </select>
                 </div>
                 <div class="col">
