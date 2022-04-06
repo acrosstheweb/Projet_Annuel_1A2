@@ -45,3 +45,12 @@
     box-shadow: none;
     border-color: #52796F;
 }
+
+body{
+    height:92vh;
+}
+
+.nav__header{
+    background-color: #CAD2C5;
+    height:8vh;
+}
