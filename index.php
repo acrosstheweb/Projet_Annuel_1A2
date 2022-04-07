@@ -9,21 +9,27 @@
 
 <br><br><br>
 
+<div class="container-fluid">
+        <h2 class="aligned-title">Jaaj 1</h2>
+        <div class="row" style="position:relative;">
+            <img src="sources/img/musculation.jpg" alt="La musculation" style="z-index:1;width:auto;height:700px;">
+            <p class="text-justify" style="position:absolute;right:0;width:40%;height:100%;z-index:2;background-color:#292B2C;color:#F7F7F7;font-size:20px;">
+                Notre approche globale de l’entraînement issue de la préparation physique d’athlètes va permettre un développement réel de vos capacités physiques de manière durable.
+                Chacun de nos 7 sports a été conçu pour être efficace et complémentaire. Nos trainers vous accompagnent sur le meilleur mix sportif pour vous permettre d’atteindre rapidement vos objectifs, quelque soit votre niveau. À vous de créer votre session qui vous ressemble...
+                        
+                <br><br><br>
+
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque ea voluptate veritatis nostrum veniam natus recusandae ullam aliquam, consequuntur quisquam vero tenetur quibusdam, voluptatem deleniti in facilis rem dolore illum.
+                Modi animi quo ab tempore eius veritatis maxime non recusandae explicabo, fuga beatae minima quaerat ratione! Labore autem quae, nisi quidem minus magni, illum totam corporis iure architecto laborum praesentium!
+                Earum dolorem quae voluptate fuga ipsa temporibus ad vitae cumque aut eligendi aliquam molestias, corporis sed, impedit dicta fugit ex culpa dolore similique error perferendis. Molestias sit placeat sint tenetur?
+                Error quidem earum laboriosam, unde ut dolore impedit vitae voluptate, mollitia nemo sit dolorum asperiores? Quam est alias laboriosam, suscipit cumque tempore quisquam architecto accusamus ipsa impedit eos voluptatibus quas.
+            </p>
+        </div>
+</div>
+
 <div class="container">
-    <h2 class="aligned-title">Jaaj 1</h2>
-   
+
     <p class="text-center">
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum expedita, quo nesciunt, quas ipsum optio, excepturi fugit voluptate quasi odio consequatur nihil dolorum nisi? Fugit sint in non sit reiciendis.
-        Tempore beatae nemo aut, dolorum illum nulla alias commodi magni assumenda delectus fugiat quis rem architecto nobis sapiente ullam, voluptatem quod quia temporibus. Optio aperiam enim pariatur, iure deleniti nemo?
-        Perspiciatis exercitationem dolor nobis. Officia provident ratione sapiente. Corrupti est modi dolorum alias minima temporibus minus pariatur velit voluptates quos, placeat labore tempore ducimus ad! Aliquid, asperiores? Omnis, molestias minima!
-
-        <br><br><br>
-
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque ea voluptate veritatis nostrum veniam natus recusandae ullam aliquam, consequuntur quisquam vero tenetur quibusdam, voluptatem deleniti in facilis rem dolore illum.
-        Modi animi quo ab tempore eius veritatis maxime non recusandae explicabo, fuga beatae minima quaerat ratione! Labore autem quae, nisi quidem minus magni, illum totam corporis iure architecto laborum praesentium!
-        Earum dolorem quae voluptate fuga ipsa temporibus ad vitae cumque aut eligendi aliquam molestias, corporis sed, impedit dicta fugit ex culpa dolore similique error perferendis. Molestias sit placeat sint tenetur?
-        Error quidem earum laboriosam, unde ut dolore impedit vitae voluptate, mollitia nemo sit dolorum asperiores? Quam est alias laboriosam, suscipit cumque tempore quisquam architecto accusamus ipsa impedit eos voluptatibus quas.
 
         <br><br><br><br><br>
 
@@ -37,6 +43,9 @@
         Facere voluptatibus ullam reprehenderit voluptatum voluptatem temporibus! Deleniti eius eos, numquam nam incidunt laboriosam ea dolorem, quos alias voluptatibus et perspiciatis voluptate dolor laborum. Sapiente dicta tempora in cum porro!
 
     </p>
+
+
+
 </div>
 
 
