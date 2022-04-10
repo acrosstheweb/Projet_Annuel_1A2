@@ -16,13 +16,6 @@
             <p class="text-justify" style="position:absolute;right:0;width:40%;height:100%;z-index:2;background-color:#292B2C;color:#F7F7F7;font-size:20px;">
                 Notre approche globale de l’entraînement issue de la préparation physique d’athlètes va permettre un développement réel de vos capacités physiques de manière durable.
                 Chacun de nos 7 sports a été conçu pour être efficace et complémentaire. Nos trainers vous accompagnent sur le meilleur mix sportif pour vous permettre d’atteindre rapidement vos objectifs, quelque soit votre niveau. À vous de créer votre session qui vous ressemble...
-                        
-                <br><br><br>
-
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque ea voluptate veritatis nostrum veniam natus recusandae ullam aliquam, consequuntur quisquam vero tenetur quibusdam, voluptatem deleniti in facilis rem dolore illum.
-                Modi animi quo ab tempore eius veritatis maxime non recusandae explicabo, fuga beatae minima quaerat ratione! Labore autem quae, nisi quidem minus magni, illum totam corporis iure architecto laborum praesentium!
-                Earum dolorem quae voluptate fuga ipsa temporibus ad vitae cumque aut eligendi aliquam molestias, corporis sed, impedit dicta fugit ex culpa dolore similique error perferendis. Molestias sit placeat sint tenetur?
-                Error quidem earum laboriosam, unde ut dolore impedit vitae voluptate, mollitia nemo sit dolorum asperiores? Quam est alias laboriosam, suscipit cumque tempore quisquam architecto accusamus ipsa impedit eos voluptatibus quas.
             </p>
         </div>
 </div>

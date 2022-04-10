@@ -4,7 +4,6 @@
     --green3: #52796F;
     --green4: #354F52;
     --green5: #2F3E46;
-
 }
 
 .aligned-title {
@@ -51,10 +50,6 @@
     border-color: var(--green3);
 }
 
-header{
+header {
     background-color: var(--green1);
-}
-
-.__research-bar{
-    margin-left:20px;
 }
