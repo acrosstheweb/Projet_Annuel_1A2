@@ -55,7 +55,6 @@ header{
     background-color: var(--green1);
 }
 
-.__login-group{
-    display:inherit;
-    margin-right:25px;
+.__research-bar{
+    margin-left:20px;
 }

@@ -68,21 +68,18 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
                 <!-- Barre de recherche et bouton recherche -->
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <div class="__login-group">
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
-                        </li>
-                    </div>
                     <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
+                    </li>
+                    <li class="nav-item __research-bar">
                         <form action="#" class = "d-flex">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
                                 <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
                             </div>
-
                         </form>
                     </li>
                 </ul>
