@@ -71,7 +71,7 @@ header {
     border-color: var(--green3);
 }
 
-.__404btn:hover{
+.__404btn:hover {
     color: white;
     background-color: var(--green3);
     border-color: var(--green3);
