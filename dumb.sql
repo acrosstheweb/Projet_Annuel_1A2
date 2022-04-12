@@ -1,0 +1,16 @@
+CREATE TABLE RkU_USER(
+    id INTEGER PRIMARY KEY NOT NULL,
+    firstname VARCHAR(30) NOT NULL,
+    lastname VARCHAR(30) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    gender CHAR(1) NOT NULL,
+    birthday DATE NOT NULL,
+    pwd VARCHAR(255) NOT NULL,
+    role INTEGER NOT NULL DEFAULT 0,
+    coin INTEGER,
+    date_registration DATE DEFAULT CURRENT_TIMESTAMP,
+    date_modification DATE DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    avatar VARCHAR(100)
+);
