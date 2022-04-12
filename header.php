@@ -10,6 +10,7 @@
                                         } ?>>
     <link rel="icon" type="image/x-icon" href="sources/img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title><?php if (isset($title)) {
@@ -22,9 +23,6 @@
 <body>
 
     <?php
-    include "register.php";
-    include "login.php";
-
     function isActive($active_page, $link)
     {
         if ($active_page == $link) {
@@ -46,7 +44,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
                 </a>
 
                 <!-- Création du burger menu  -->
-                <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -89,13 +87,13 @@ flex, par défaut -> 'justify-content: space-between'  -->
                         </li>
                     </ul>
 
-                    <!-- Barre de recherche et bouton recherche + bouton inscription & connexion-->
+                    <!-- Barre de recherche et bouton recherche -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" id="__login-trigger" href="#login-modal" role="button">Connexion</a>
+                            <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="__register-trigger" href="#register-modal" role="button">Inscription</a>
+                            <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
                         </li>
                         <li class="nav-item __research-bar">
                             <form action="#" class="d-flex">
@@ -119,12 +117,12 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
     <!-- Modales INSCRIPTION / CONNEXION -->
 
-    <div class="modal" id="__login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
+    <div class="modal" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="login-modal-label">Connexion</h5>
-                    <button type="button" class="btn-close" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body row">
                     <div class="col-3"></div>
@@ -138,19 +136,19 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <div class="col-3"></div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" id="__close-login-modal" aria-label="Close">Annuler</button>
-                    <button class="btn btn-secondary">Inscription</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                    <button class="btn btn-secondary" data-bs-target="#register-modal" data-bs-toggle="modal">Inscription</button>
                     <button class="btn btn-primary">Connexion</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal" id="__register-modal" aria-hidden="true" aria-labelledby="register-modal-label" tabindex="-1">
+    <div class="modal" id="register-modal" aria-hidden="true" aria-labelledby="register-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="register-modal-label">Inscription</h5>
-                    <button type="button" class="btn-close" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="">
@@ -219,12 +217,10 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" id=" __close-register-modal" aria-label="Close">Annuler</button>
-                    <button class="btn btn-secondary">Connexion</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                    <button class="btn btn-secondary" data-bs-target="#login-modal" data-bs-toggle="modal">Connexion</button>
                     <button class="btn btn-primary">Inscription</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="js/modals.js"></script>
