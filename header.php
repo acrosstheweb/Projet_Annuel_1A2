@@ -162,56 +162,56 @@ flex, par défaut -> 'justify-content: space-between'  -->
                                 </select>
                             </div>
                             <div class="col">
-                                <label for="register-password">Date de naissance : </label>
+                                <label for="register-birthday">Date de naissance : </label>
                                 <input class="form-control" type="date" name="register-birthday"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <label for="register-email">Nom : </label>
-                                <input class="form-control" type="text" name="register-lastname" placeholder="Nom">
+                                <label for="register-lastname">Nom : </label>
+                                <input id = "register-lastname" class="form-control" type="text" name="register-lastname" placeholder="Nom">
                             </div>
 
                             <div class="col">
-                                <label for="register-password">Prénom : </label>
-                                <input class="form-control" type="text" name="register-firstname" placeholder="Prénom"><br>
+                                <label for="register-firstname">Prénom : </label>
+                                <input id = "register-firstname" class="form-control" type="text" name="register-firstname" placeholder="Prénom"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="register-email">Email : </label>
-                                <input class="form-control" type="email" name="register-email" placeholder="Adresse mail">
+                                <input id = "register-email" class="form-control" type="email" name="register-email" placeholder="Adresse mail">
                             </div>
 
                             <div class="col">
-                                <label for="register-password">Adresse : </label>
-                                <input class="form-control" type="text" name="register-address" placeholder="Adresse"><br>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <label for="register-email">Ville : </label>
-                                <input class="form-control" type="text" name="register-city" placeholder="Ville">
-                            </div>
-
-                            <div class="col">
-                                <label for="register-password">Code postal : </label>
-                                <input class="form-control" type="password" name="register-zip-code" placeholder="Code postal"><br>
+                                <label for="register-address">Adresse : </label>
+                                <input id = "register-address" class="form-control" type="text" name="register-address" placeholder="Adresse"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <label for="register-email">Mot de passe : </label>
-                                <input class="form-control" type="email" name="register-password" placeholder="Mot de passe">
+                                <label for="register-city">Ville : </label>
+                                <input id = "register-city" class="form-control" type="text" name="register-city" placeholder="Ville">
                             </div>
 
                             <div class="col">
-                                <label for="register-password">Confirmation mot de passe : </label>
-                                <input class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe"><br>
+                                <label for="register-zip-code">Code postal : </label>
+                                <input id = "register-zip-code" class="form-control" type="password" name="register-zip-code" placeholder="Code postal"><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="register-password">Mot de passe : </label>
+                                <input id = "register-password" class="form-control" type="email" name="register-password" placeholder="Mot de passe">
+                            </div>
+
+                            <div class="col">
+                                <label for="register-confirmed-password">Confirmation mot de passe : </label>
+                                <input id = "register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe"><br>
                             </div>
                         </div>
                     </form>
