@@ -19,7 +19,7 @@
     </div>
 
     <div class="row">
-        <button type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</button>
+        <a href="index.php" type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</a>
     </div>
 </div>
 
