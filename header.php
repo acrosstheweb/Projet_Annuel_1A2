@@ -151,14 +151,14 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="register.php" method="POST">
+                    <form action="register.php" method="POST" id="register-form">
                         <div class="row">
                             <div class="col">
                                 <label for="register-gender">Civilité :</label>
                                 <select class="form-select" name="register-gender" aria-label="Default select example">
                                     <option selected disabled>Veuillez choisir</option>
-                                    <option value="1">Homme</option>
-                                    <option value="2">Femme</option>
+                                    <option value="M">Homme</option>
+                                    <option value="F">Femme</option>
                                 </select>
                             </div>
                             <div class="col">
@@ -199,14 +199,14 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
                             <div class="col">
                                 <label for="register-zip-code">Code postal : </label>
-                                <input id = "register-zip-code" class="form-control" type="password" name="register-zip-code" placeholder="Code postal"><br>
+                                <input id = "register-zip-code" class="form-control" type="text" name="register-zip-code" placeholder="Code postal"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="register-password">Mot de passe : </label>
-                                <input id = "register-password" class="form-control" type="email" name="register-password" placeholder="Mot de passe">
+                                <input id = "register-password" class="form-control" type="password" name="register-password" placeholder="Mot de passe">
                             </div>
 
                             <div class="col">
@@ -219,7 +219,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
                     <button class="btn btn-secondary" data-bs-target="#login-modal" data-bs-toggle="modal">Connexion</button>
-                    <button class="btn btn-primary">Inscription</button>
+                    <button class="btn btn-primary" form="register-form">Inscription</button>
                 </div>
             </div>
         </div>
