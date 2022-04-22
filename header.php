@@ -126,7 +126,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
                 </div>
                 <div class="modal-body row">
                     <div class="col-3"></div>
-                    <form action="" class="col-6">
+                    <form action="login.php" method="POST" class="col-6">
                         <label for="login-email">Adresse mail : </label>
                         <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail"><br>
 
@@ -151,11 +151,11 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="register.php" method="POST">
                         <div class="row">
                             <div class="col">
                                 <label for="register-gender">Civilité :</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="register-gender" aria-label="Default select example">
                                     <option selected disabled>Veuillez choisir</option>
                                     <option value="1">Homme</option>
                                     <option value="2">Femme</option>
