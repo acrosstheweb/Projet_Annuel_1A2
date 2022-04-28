@@ -1,3 +1,6 @@
+<?php
+    require 'functions.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -90,6 +93,9 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <!-- Barre de recherche et bouton recherche -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                         <li class="nav-item">
+                            <a class="nav-link"href="session_kill.php" role="button">Kill session</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
                         </li>
                         <li class="nav-item">
@@ -151,67 +157,67 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="register.php" method="POST" id="register-form">
+                    <form id="register-form" action="register.php" method="POST">
                         <div class="row">
                             <div class="col">
-                                <label for="register-gender">Civilité :</label>
-                                <select class="form-select" name="register-gender" aria-label="Default select example">
-                                    <option selected disabled>Veuillez choisir</option>
+                                <label for="register-civility">Civilité :</label>
+                                <select id="register-civility" class="form-select" name="register-civility" aria-label="Default select example" required="required">
+                                    <option value="" selected disabled hidden>Veuillez choisir</option>
                                     <option value="M">Homme</option>
                                     <option value="F">Femme</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label for="register-birthday">Date de naissance : </label>
-                                <input class="form-control" type="date" name="register-birthday"><br>
+                                <input class="form-control" type="date" name="register-birthday" required="required"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="register-lastname">Nom : </label>
-                                <input id = "register-lastname" class="form-control" type="text" name="register-lastname" placeholder="Nom">
+                                <input id="register-lastname" class="form-control" type="text" name="register-lastname" placeholder="Nom" required="required">
                             </div>
 
                             <div class="col">
                                 <label for="register-firstname">Prénom : </label>
-                                <input id = "register-firstname" class="form-control" type="text" name="register-firstname" placeholder="Prénom"><br>
+                                <input id="register-firstname" class="form-control" type="text" name="register-firstname" placeholder="Prénom" required="required"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="register-email">Email : </label>
-                                <input id = "register-email" class="form-control" type="email" name="register-email" placeholder="Adresse mail">
+                                <input id="register-email" class="form-control" type="email" name="register-email" placeholder="Adresse mail" required="required">
                             </div>
 
                             <div class="col">
                                 <label for="register-address">Adresse : </label>
-                                <input id = "register-address" class="form-control" type="text" name="register-address" placeholder="Adresse"><br>
+                                <input id="register-address" class="form-control" type="text" name="register-address" placeholder="Adresse" required="required"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="register-city">Ville : </label>
-                                <input id = "register-city" class="form-control" type="text" name="register-city" placeholder="Ville">
+                                <input id="register-city" class="form-control" type="text" name="register-city" placeholder="Ville" required="required">
                             </div>
 
                             <div class="col">
                                 <label for="register-zip-code">Code postal : </label>
-                                <input id = "register-zip-code" class="form-control" type="text" name="register-zip-code" placeholder="Code postal"><br>
+                                <input id="register-zip-code" class="form-control" type="number" name="register-zip-code" placeholder="Code postal" required="required"><br>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <label for="register-password">Mot de passe : </label>
-                                <input id = "register-password" class="form-control" type="password" name="register-password" placeholder="Mot de passe">
+                                <input id="register-password" class="form-control" type="password" name="register-password" placeholder="Mot de passe" required="required">
                             </div>
 
                             <div class="col">
                                 <label for="register-confirmed-password">Confirmation mot de passe : </label>
-                                <input id = "register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe"><br>
+                                <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required"><br>
                             </div>
                         </div>
                     </form>

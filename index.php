@@ -3,6 +3,7 @@
     $content = "La page d'acceuil de Fitness Essential";
     $currentPage = 'index';
     include 'header.php';
+    Message('Register');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>
