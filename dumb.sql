@@ -5,7 +5,7 @@ CREATE TABLE RkU_USER(
     email VARCHAR(255) NOT NULL,
     address VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL,
-    gender CHAR(1) NOT NULL,
+    civility CHAR(1) NOT NULL,
     birthday DATE NOT NULL,
     pwd VARCHAR(255) NOT NULL,
     role INTEGER NOT NULL DEFAULT 0,

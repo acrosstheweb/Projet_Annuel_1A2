@@ -93,9 +93,6 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <!-- Barre de recherche et bouton recherche -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link"href="session_kill.php" role="button">Kill session</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
                         </li>
                         <li class="nav-item">
