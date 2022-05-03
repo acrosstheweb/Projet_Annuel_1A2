@@ -1,11 +1,12 @@
 <?php
-    $content = "Les différentes salles des Fitness Essential";
-    $title = "Fitness Essential - Les Salles";
+    $title = "Fitness Essential - Salles";
+    $content = "Les différentes salles de Fitness Essential";
     $currentPage = 'gyms';
     include 'header.php';
 ?>
 
-<h2> Les salles de Fitness Essential </h2>
+<h2 class="aligned-title"> Les salles de Fitness Essential </h2>
+
 
 <?php
     include 'footer.php';

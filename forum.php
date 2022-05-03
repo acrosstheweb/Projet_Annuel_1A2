@@ -1,11 +1,11 @@
 <?php
-    $content = "Le forum de Fitness Essential";
     $title = "Fitness Essential - Forum";
+    $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
     include 'header.php';
 ?>
 
-<h2> Forum de Fitness Essential </h2>
+<h2 class="aligned-title"> Forum de Fitness Essential </h2>
 
 
 <?php
