@@ -1,16 +1,16 @@
 <?php
+    $title = "Fitness Essential - Abonnements";
     $content = "Les différents abonnements de Fitness Essential";
-    $title = 'Fitness Essential - Abonnements';
     $currentPage = 'subscriptions';
-    
     include 'header.php';
+    Message('RegisterSuccess');
 ?>
 
-<h2 align='center'> Abonnements de Fitness Essential </h2>
+<h2 class="aligned-title"> Abonnements de Fitness Essential </h2>
 
 <div class="row justify-content-center">
     <div class="card" style="width: 18rem;background-color:rgb(80, 80, 80);border: 2px solid rgb(141, 233, 122);margin:50px 50px;">
-        <h4 align="center">Essential</h4>
+        <h4 class="aligned-title">Essential</h4>
         <div class="card-body">
             <h5 class="card-title">15,99€/mois</h5>
             <p class="card-text">C'est la même qualité, c'est juste le prix qui baisse. T'es pas obligé de faire le rat par contre.</p>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="card" style="width: 18rem;background-color:rgb(80, 80, 80);border: 2px solid rgb(141, 233, 122);margin:50px 50px;">
-        <h4 align="center">Classic</h4>
+        <h4 class="aligned-title">Classic</h4>
         <div class="card-body">
             <h5 class="card-title">23,99€/Mois</h5>
             <p class="card-text">Accès classique à la salle de sport. Catégorie socioprofessionnelle moyenne, tu ne mérites pas que je t'embête</p>
@@ -44,7 +44,7 @@
     </div>
 
     <div class="card" style="width: 18rem;background-color:rgb(80, 80, 80);border: 2px solid rgb(141, 233, 122);margin:50px 50px;">
-        <h4 align="center">Premium</h4>
+        <h4 class="aligned-title">Premium</h4>
         <div class="card-body">
             <h5 class="card-title">49,99€/Mois</h5>
             <p class="card-text">Wow, tu possèdes un maximum de valeur financière, ce qui te permet donc de profiter sur système capitaliste comme bon te semble.</p>
@@ -60,6 +60,7 @@
         </div>
     </div>
 </div>
+
 
 <?php
     include 'footer.php';
