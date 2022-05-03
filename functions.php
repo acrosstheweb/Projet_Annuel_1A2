@@ -12,21 +12,12 @@ function checkPassword($password): bool{
         return true;
     }else{
         return false;
-        /*
-        echo $password . '<pre>';
-        echo 'Nombres : ' . $hasDigits;
-        echo '<br>Minuscules : ' . $hasLowerCase;
-        echo '<br>Majuscules : ' . $hasUpperCase;
-        echo '<br>Caractères spéciaux : ' . $hasSpecialChar;
-        echo '<br>>=8 chars : ' . $has8chars;
-        echo '</pre>';
-        */
     }
 }
 
 function setMessage($title, $msgArray, $type){
     $_SESSION['MESSAGE'][$title] = [
-        'text' => $msgArray,
+        'content' => $msgArray,
         'type' => $type
     ];
 }
@@ -34,7 +25,7 @@ function setMessage($title, $msgArray, $type){
 function Message($title){
     if(isset($_SESSION['MESSAGE'][$title])){
         $type = $_SESSION['MESSAGE'][$title]['type'];
-        foreach($_SESSION['MESSAGE'][$title]['text'] as $msg){
+        foreach($_SESSION['MESSAGE'][$title]['content'] as $msg){
             if($msg != NULL){
             echo "<div class='alert alert-{$type}' alert-dismissible fade show role='alert'>
                       {$msg}

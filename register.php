@@ -20,11 +20,11 @@ if(
 
 $civility = $_POST['register-civility'];
 $birthday = $_POST['register-birthday'];
-$lastname = $_POST['register-lastname'];
-$firstname = $_POST['register-firstname'];
-$email = $_POST['register-email'];
-$address = $_POST['register-address'];
-$city = $_POST['register-city'];
+$lastname = strtoupper($_POST['register-lastname']);
+$firstname = ucwords(strtolower($_POST['register-firstname']));
+$email = strtolower(trim($_POST['register-email']));
+$address = ucwords(strolower($_POST['register-address']));
+$city = ucwords(strolower($_POST['register-city']));
 $zipCode = $_POST['register-zip-code'];
 $password = $_POST['register-password'];
 $passwordConfirmed = $_POST['register-confirmed-password'];
@@ -48,12 +48,14 @@ if(!checkdate($birthdayArray[1] ,$birthdayArray[2] ,$birthdayArray[0]) || count(
     }
 }
 
-if(strlen($lastname) < 2 || strlen($lastname) > 180 || !ctype_alpha(str_replace([' ', '-'], '', $lastname))){
-    $problems[] = 'Le nom de famille doit être entre 2 et 180 caractères alphabétiques sans accents :/ (lettres et tiret)'; // Alphabétique + ' ' + '-'
+$exceptions = [' ','-','é','è','ê','ë','à','â','î','ï','ô','ö','û','ü']; // Tableau qui permet de laisser passer ses caractères dans les vérifications des champs (les lettres accentuées n'étant pas reconnu comme des caractères alphabétiques)
+
+if(strlen($lastname) < 2 || strlen($lastname) > 180 || !ctype_alpha(str_replace($exceptions, '', $lastname))){
+    $problems[] = 'Le nom de famille doit être entre 2 et 180 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
 }
 
-if(strlen($firstname) < 2 || strlen($firstname) > 100 || !ctype_alpha(str_replace([' ', '-'], '', $firstname))){
-    $problems[] = 'Le prénom doit être entre 2 et 100 caractères alphabétiques sans accents :/ (lettres et tiret)'; // Alphabétique + ' ' + '-'
+if(strlen($firstname) < 2 || strlen($firstname) > 100 || !ctype_alpha(str_replace($exceptions, '', $firstname))){
+    $problems[] = 'Le prénom doit être entre 2 et 100 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
 }
 
 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -62,12 +64,12 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     // Gérer si l'adresse mail existe déjà
 }*/
 
-if(strlen($address) < 2 || strlen($address) > 200 || !ctype_alnum(str_replace(' ', '', $address))){
-    $problems[] = 'L\'adresse doit comprendre entre 2 et 200 caractères alphanumériques sans accents :/ (lettres et chiffres uniquements)'; // Alphnumériques + ' '
+if(strlen($address) < 2 || strlen($address) > 200 || !ctype_alnum(str_replace($exceptions, '', $address))){
+    $problems[] = 'L\'adresse doit comprendre entre 2 et 200 caractères alphanumériques'; // Alphnumériques + $exceptions autorisés
 }
 
-if(strlen($city) < 2 || strlen($city) > 180 || !ctype_alpha(str_replace([' ', '-'], '', $city))){
-    $problems[] = 'La ville doit contenir entre 2 et 180 caractères alphabétiques sans accents :/ (lettres et tiret)'; // Alphabétiques + ' ' + '-'
+if(strlen($city) < 2 || strlen($city) > 180 || !ctype_alpha(str_replace($exceptions, '', $city))){
+    $problems[] = 'La ville doit contenir entre 2 et 180 caractères alphabétiques'; // Alphabétiques + $exceptions autorisés
 }
 
 if(strlen($zipCode)!= 5 || !ctype_digit($zipCode)){
@@ -80,7 +82,6 @@ if(checkPassword($password) === true){
     }
 }else{
     $problems[] = 'Le mot de passe doit contenir 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial, 8 caractères minimum';
-    $problems[] = 'Resultat '. checkPassword($password);
 }
 
 if(count($problems) == 0){
@@ -106,9 +107,8 @@ if(count($problems) == 0){
     header('Location: subscriptions.php');
     die();
 }else{
-    $c = count($problems);
     // Rajouter dans en session un message pop up contenant les problèmes invalidant l'inscription
-    setMessage('Register', ['taille de problems = '.$c], 'warning');
+    setMessage('Register', $problems, 'warning');
     header('Location: index.php');
     die();
 }
