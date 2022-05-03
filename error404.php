@@ -3,6 +3,7 @@
     $content = "Page introuvable";
     $currentPage = 'error404';
     include 'header.php';
+    Message('RegisterHack');
 ?>
 
 <h2 class="aligned-title mt-5"> Page introuvable </h2>
