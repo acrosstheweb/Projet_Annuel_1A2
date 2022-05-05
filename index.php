@@ -116,12 +116,14 @@
                             <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">CYCLING</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        10H00 - 60 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">CYCLING</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            10H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -134,12 +136,14 @@
                             <img src="sources/img/zumba.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">ZUMBA</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        11H00 - 30 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ZUMBA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H00 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -152,12 +156,14 @@
                             <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">ABDOS-FESSIERS</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        11H30 - 30 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ABDOS-FESSIERS</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H30 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -170,12 +176,14 @@
                             <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">YOGA</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        12H00 - 60 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">YOGA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            12H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -203,12 +211,14 @@
                             <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">CYCLING</h5>
-                                    <p class="card-text">
-                                    Lundi 11 juillet<br>
-                                    10H00 - 60 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">CYCLING</h5>
+                                        <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        10H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -217,12 +227,14 @@
                             <img src="sources/img/zumba.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">ZUMBA</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        11H00 - 30 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ZUMBA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H00 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -237,12 +249,14 @@
                             <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">ABDOS-FESSIERS</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        11H30 - 30 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ABDOS-FESSIERS</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H30 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -251,12 +265,14 @@
                             <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <h5 class="card-title">YOGA</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        12H00 - 60 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">YOGA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            12H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

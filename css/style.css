@@ -108,12 +108,31 @@ h1{
     margin: 0 auto;
 }
 
+.__cardDescription{
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.5) 51.56%);
+    color: white;
+    height: 100%;
+    width: 100%;
+    position:relative;
+}
+
+.card-img-overlay{
+    padding:unset; /* Retrait du padding du cadre de la description de la carte pour que le background linear gradient prenne tout l'espace de la carte */
+}
+
+.__cardDescriptionText{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+}
+
 #carouselDesktop.carousel-caption{
-    width: 100rem;
+width: 100rem;
 }
 
 .__carouselControl{
-    color: var(--green3);
+color: var(--green3);
 >>>>>>> Stashed changes
 }
 
