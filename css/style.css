@@ -89,7 +89,31 @@ h1{
 
 .card{
     margin: 0 1.5rem;
-    width: 50rem;
+}
+
+.__cardTablet{
+    padding: 0;
+}
+
+.__cardDesktop{
+    margin: 0 1rem;
+    padding: 0;
+}
+
+.__classImage{
+    margin: 0 auto;
+}
+
+.carousel-caption{
+    bottom: 0;
+}
+
+#carouselDesktop.carousel-caption{
+    width: 100rem;
+}
+
+.__carouselControl{
+    color: var(--green3);
 }
 
 /* Erreur 404 */
