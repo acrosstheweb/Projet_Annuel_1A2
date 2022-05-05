@@ -1,46 +1,97 @@
 <?php
-    $title = "Fitness Essential - Forum";
-    $content = "Le forum de Fitness Essential";
-    $currentPage = 'forum';
-    include 'header.php';
-?>
-
-<div class="row">
-    <form action="forum.php" method = "POST" enctype ="multipart/form-data"> // Le enctype permet de spécifier que les données envoyées lors de l'envoie sont encodées lors de la soumission au serveur.
-        <div class="col-4 mb-2">
-            <label for="file" class="form-label">Veuillez insérer votre image</label>
-            <input class="form-control" type="file" id="formFile" name="file">
-        </div>
-        <div class="col-4">
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </div>
-    </form>
-</div>
-
-<?php
-    if(isset($_FILES['file'])){
+    if(!empty($_FILES['file'])){
         $name = $_FILES['file']['name'];
+        $type = $_FILES['file']['type'];
         $size = $_FILES['file']['size'];
-        $tmp_name = $_FILES['file']['tmp_name'];
+        $tmpName = $_FILES['file']['tmp_name'];
         $error = $_FILES['file']['error'];
-        $problems = [];
-        
-        $splitNameExtension = explode('.', $name); // On split le nom du fichier "image.png" en 2 avec le point comme séparateur
-        $nameExtension = strtolower(end($splitNameExtension)); // On met en minuscule le dernier élément du tableau $splitNameExtension
 
-        $extensionAllowed = ['png', 'jpeg', 'jpg', 'gif'];
-        $maxSize = 400000;
+    $extensionsAllowed = ['png', 'jpg', 'jpeg', 'gif'];
 
-        if(in_array($nameExtension, $extensionAllowed) && $size <= $maxSize && $error == 0){
+    $typeImage = ['image/png', 'image/jpg', 'image/jpeg', 'image.gif'];
 
-            $uniqueName = uniqid('', true);
-            $fileName = $uniqueName.''.$nameExtension;
+    $extension = explode('.', $name);
+    $maxSize = 900000;
 
-            move_uploaded_file($tmp_name, './uploadFiles/'.$fileName);   
+
+    $tempFile = 'temp.'.strtolower(end($extension));
+    move_uploaded_file($tmpName, './tmpUpload/'.$tempFile);
+
+    $logo = imagecreatefrompng('sources/img/logo.png');
+    $sizeLogo = filesize('sources/img/logo.png');
+
+    if(in_array($type, $typeImage)){
+        if(count($extension) <=2 && in_array(strtolower(end($extension)), $extensionsAllowed)){
+            if($size + $sizeLogo <= $maxSize){
+
+                // Traitement ajoute du filigrane
+            $image = imagecreatefromjpeg('./tmpUpload/'.$tempFile);
+
+            $marge_right = 10;
+            $marge_bottom = 10;
+            $sx = imagesx($logo);
+            $sy = imagesy($logo);
+
+            $imagex = imagesx($image);
+            $imagey = imagesy($image);
+            $centerX=round($imagex/2);
+            $centerY=round($imagey/2);
+
+            imagecopy($image, $logo, //$centerX, $centerY, $centerX, $centerY, $sx, $sy);
+            
+
+
+            // header('Content-type: image/jpeg');
+            //imagepng($image);
+            //imagedestroy($image);
+
+                if(rename('./tmpUpload/'.$tempFile, './uploadFiles/'.uniqid().'.'.strtolower(end($extension)))){
+                    //unlink('./tmpUpload/'.$tempFile);
+                    echo 'Le fichier a bien été uploadé';
+                    var_dump($image, 
+                    $sx,
+                    $sy,
+                    $imagex,
+                    $imagey,
+                    $centerX,
+                    $centerY,
+                    imagesx($logo),
+                    imagesy($logo));
+                }
+                else{
+                    //unlink('./tmpUpload/'.$tempFile);
+                    echo 'Le fichier n\'a pas pu être uploadé';
+                }
+            }
+            else
+                echo 'Fichier trop lourd ou format incorrect';
         }
-
+        else
+            echo 'Extension Incorrecte';
+    }
+    else
+        echo 'Type non autorisé';
     }
     else{
+        setMessage('Register', 'Impossible', 'warning');
+        header('Location: index.php');
         die();
     }
+
+    
+// // Création des instances d'image
+// $src = imagecreatefromjpeg('./tmpUpload/'.$tempFile);
+// $dest = imagecreatetruecolor(80, 40);
+
+// // Copie
+// imagecopy($dest, $src, 0, 0, 20, 13, 80, 40);
+
+// // Affichage et libération de la mémoire
+// header('Content-Type: image/jpeg');
+// imagegif($dest);
+
+// imagedestroy($dest);
+// imagedestroy($src);
+
+
 ?>
