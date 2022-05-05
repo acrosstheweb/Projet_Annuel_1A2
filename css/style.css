@@ -87,8 +87,12 @@ h1{
     padding: 0;
 }
 
+/* Carousels Séances */
 .card{
     margin: 0 1.5rem;
+<<<<<<< Updated upstream
+    width: 50rem;
+=======
 }
 
 .__cardTablet{
@@ -104,16 +108,13 @@ h1{
     margin: 0 auto;
 }
 
-.carousel-caption{
-    bottom: 0;
-}
-
 #carouselDesktop.carousel-caption{
     width: 100rem;
 }
 
 .__carouselControl{
     color: var(--green3);
+>>>>>>> Stashed changes
 }
 
 /* Erreur 404 */
