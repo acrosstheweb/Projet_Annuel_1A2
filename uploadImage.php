@@ -6,60 +6,76 @@
         $tmpName = $_FILES['file']['tmp_name'];
         $error = $_FILES['file']['error'];
 
-    $extensionsAllowed = ['png', 'jpg', 'jpeg', 'gif'];
+        var_dump($_FILES);
 
-    $typeImage = ['image/png', 'image/jpg', 'image/jpeg', 'image.gif'];
+    $extensionsAllowed = ['png', 'jpg', 'jpeg'];
 
-    $extension = explode('.', $name);
+    $typeImage = ['image/png', 'image/jpg', 'image/jpeg'];
+
+    $explodedFile = explode('.', $name);
+    $extension = $explodedFile[1];
     $maxSize = 900000;
 
 
-    $tempFile = 'temp.'.strtolower(end($extension));
+    $imgId = uniqid();
+
+    $tempFile = 'temp'.$imgId.'.'.strtolower($extension);
     move_uploaded_file($tmpName, './tmpUpload/'.$tempFile);
 
     $logo = imagecreatefrompng('sources/img/logo.png');
+
     $sizeLogo = filesize('sources/img/logo.png');
 
     if(in_array($type, $typeImage)){
-        if(count($extension) <=2 && in_array(strtolower(end($extension)), $extensionsAllowed)){
+        if(count($explodedFile) <=2 && in_array(strtolower($extension), $extensionsAllowed)){
             if($size + $sizeLogo <= $maxSize){
 
                 // Traitement ajoute du filigrane
-            $image = imagecreatefromjpeg('./tmpUpload/'.$tempFile);
 
-            $marge_right = 10;
-            $marge_bottom = 10;
-            $sx = imagesx($logo);
-            $sy = imagesy($logo);
+                // var_dump($extension);
 
-            $imagex = imagesx($image);
-            $imagey = imagesy($image);
-            $centerX=round($imagex/2);
-            $centerY=round($imagey/2);
+                if($extension == 'jpeg' || $extension == 'jpg'){
+                    $image = imagecreatefromjpeg('./tmpUpload/'.$tempFile);
+                }
+                else if($extension == 'png'){ // seul le format png peut passer dans le else
+                    $image = imagecreatefrompng('./tmpUpload/'.$tempFile);
+                }
 
-            imagecopy($image, $logo, //$centerX, $centerY, $centerX, $centerY, $sx, $sy);
-            
+                
+                $marge_right = 10;
+                $marge_bottom = 10;
 
+                $imageWidth = imagesx($image);
+                $imageHeight = imagesy($image);
 
-            // header('Content-type: image/jpeg');
-            //imagepng($image);
-            //imagedestroy($image);
+                $logoScale = imagescale($logo, $imageWidth/2, $imageHeight/2, IMG_BILINEAR_FIXED);
 
-                if(rename('./tmpUpload/'.$tempFile, './uploadFiles/'.uniqid().'.'.strtolower(end($extension)))){
-                    //unlink('./tmpUpload/'.$tempFile);
+                $logoWidth = imagesx($logo);
+                $logoHeight = imagesy($logo);
+
+                $centerX=round(($imageWidth/2) - $logoWidth/2);
+                $centerY=round(($imageHeight/2) - $logoHeight/2);
+
+                // header('Content-type: image/jpeg');
+                
+                // imagedestroy($image);
+
+                if(imagecopy($image, $logo, $centerX, $centerY, 0, 0, $logoWidth, $logoHeight)){ //On garde une trace des fichiers temporaires dans un dossier pour de la journalisation ou en cas d'injection de code malveillant à travers un fichier qui pourrait passer
+
+                    imagepng($image, './uploadFiles/fili'.$imgId.'.'.strtolower($extension));
                     echo 'Le fichier a bien été uploadé';
                     var_dump($image, 
-                    $sx,
-                    $sy,
-                    $imagex,
-                    $imagey,
+                    $logoWidth,
+                    $logoHeight,
+                    $imageWidth,
+                    $imageHeight,
                     $centerX,
                     $centerY,
-                    imagesx($logo),
-                    imagesy($logo));
+                    $logoWidth,
+                    $logoHeight);
                 }
                 else{
-                    //unlink('./tmpUpload/'.$tempFile);
+                    unlink('./tmpUpload/'.$tempFile);
                     echo 'Le fichier n\'a pas pu être uploadé';
                 }
             }
