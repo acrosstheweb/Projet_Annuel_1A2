@@ -1,3 +1,10 @@
+<?php
+    $title = "Fitness Essential - Forum";
+    $content = "Le forum de Fitness Essential";
+    $currentPage = 'forum';
+    include 'header.php';
+?>
+
 <div class="row">
     <form action="forum.php" method = "POST" enctype ="multipart/form-data"> // Le enctype permet de spécifier que les données envoyées lors de l'envoie sont encodées lors de la soumission au serveur.
         <div class="col-4 mb-2">
