@@ -4,6 +4,8 @@
     $currentPage = 'index';
     include 'header.php';
     Message('Register');
+    Message('RegisterSuccess');
+    Message('Connection');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>

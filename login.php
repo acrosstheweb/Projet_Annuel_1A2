@@ -17,13 +17,23 @@ $password = $_POST['login-password'];
 $problems = [];
 $db = database();
 
-$checkUserQuery = $db->query('SELECT id FROM rku_user WHERE email=:email');
+$checkUserQuery = $db->prepare('SELECT id, pwd FROM rku_user WHERE email=:email');
 $checkUserQuery->execute([':email'=>$email]);
-$userExist = $checkUserQuery->fetch();
+$user = $checkUserQuery->fetch();
 
-var_dump($userExist);
+if($user === false){
+    $userExist = false;
+    setMessage('Connection', ['Nom d\'utilisateur ou mot de passe incorrect'], 'warning');
+}else{
+    $userExist = true;
+    $pwdInDb = $user['pwd'];
 
-
-
-
-
+    if(password_verify($password, $pwdInDb)){
+        $_SESSION['userId'] = $user['id'];
+        setMessage('Connection', ['Connexion réussie'], 'success');
+    }else{
+        setMessage('Connection', ['Nom d\'utilisateur ou mot de passe incorrect'], 'warning');
+    }
+}
+header('Location: index.php');
+die();
