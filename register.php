@@ -104,7 +104,7 @@ if(count($problems) == 0){
         'coin' => 10
     ]);
     setMessage('RegisterSuccess', ['Inscription réussie !'], 'success');
-    header('Location: subscriptions.php');
+    header('Location: index.php');
     die();
 }else{
     // Rajouter dans en session un message pop up contenant les problèmes invalidant l'inscription
