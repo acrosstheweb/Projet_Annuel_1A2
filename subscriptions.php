@@ -3,6 +3,7 @@
     $content = "Les différents abonnements de Fitness Essential";
     $currentPage = 'subscriptions';
     include 'header.php';
+    Message('RegisterSuccess');
 ?>
 
 <h2 class="aligned-title"> Abonnements de Fitness Essential </h2>

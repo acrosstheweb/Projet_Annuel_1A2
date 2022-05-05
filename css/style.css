@@ -54,6 +54,45 @@ header {
     background-color: var(--green1);
 }
 
+h1{
+    margin: 10px 0 10px;
+}
+
+.__frontRow{
+    /* display: flex;
+    flex-direction: column; */
+    margin: 0 10px;
+}
+
+.__frontBgImage{
+    background-image: url("../sources/img/musculation.jpg");
+    background-position: center;
+    background-size: fill;
+}
+
+.__frontImage{
+    padding: 0;
+    object-fit: cover;
+}
+
+.__frontIamge-description{
+    padding: 1rem;
+    /* background-color: var(--green2); */
+    color: black;
+    font-size: 12pt;
+    margin: 0;
+}
+
+.container-fluid{
+    padding: 0;
+}
+
+.card{
+    margin: 0 1.5rem;
+    width: 50rem;
+}
+
+/* Erreur 404 */
 .__404 {
     font-size: 220pt;
     margin: auto auto;
@@ -71,7 +110,7 @@ header {
     border-color: var(--green3);
 }
 
-.__404btn:hover{
+.__404btn:hover {
     color: white;
     background-color: var(--green3);
     border-color: var(--green3);

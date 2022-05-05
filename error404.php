@@ -3,6 +3,7 @@
     $content = "Page introuvable";
     $currentPage = 'error404';
     include 'header.php';
+    Message('RegisterHack');
 ?>
 
 <h2 class="aligned-title mt-5"> Page introuvable </h2>
@@ -19,7 +20,7 @@
     </div>
 
     <div class="row">
-        <button type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</button>
+        <a href="index.php" type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</a>
     </div>
 </div>
 
