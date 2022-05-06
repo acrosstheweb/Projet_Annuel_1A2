@@ -1,7 +1,7 @@
 <?php
     $title = "Fitness Essential - Écrivez-nous";
     $content = "Création d'un message sur le forum";
-    $currentPage = 'messae';
+    $currentPage = 'message';
     include 'header.php';
 ?>
 

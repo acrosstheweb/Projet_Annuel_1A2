@@ -3,7 +3,6 @@
     $content = "La page d'acceuil de Fitness Essential";
     $currentPage = 'index';
     include 'header.php';
-    Message('Register');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>
@@ -34,11 +33,11 @@
         <h2 class="aligned-title">NOS PROCHAINES SÉANCES</h2>
 
         <div id="carouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner justify-content-evenly">
 
-                <div class="carousel-item active">
-                    <div class="row d-flex justify-content-center">
-                        <div class="card col-6">
+                <div class="carousel-item active justify-content-evenly">
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
                             <div class="card-body text-center">
                                 <h5 class="card-title">CYCLING</h5>
                                 <p class="card-text">
@@ -51,9 +50,9 @@
                     </div>
                 </div>
 
-                <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-                        <div class="card col-6">
+                <div class="carousel-item justify-content-evenly">
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
                             <div class="card-body text-center">
                                 <h5 class="card-title">ZUMBA</h5>
                                 <p class="card-text">
@@ -66,11 +65,11 @@
                     </div>
                 </div>
 
-                <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-                        <div class="card col-6">
+                <div class="carousel-item justify-content-evenly">
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
                             <div class="card-body text-center">
-                                <h5 class="card-title">ABDOS-FESSIERS</h5>
+                                <h5 class="card-title">ABDOS - FESSIERS</h5>
                                 <p class="card-text">
                                     Lundi 11 juillet<br>
                                     11H30 - 30 minutes
@@ -81,9 +80,9 @@
                     </div>
                 </div>
 
-                <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-                        <div class="card col-6">
+                <div class="carousel-item justify-content-evenly">
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
                             <div class="card-body text-center">
                                 <h5 class="card-title">YOGA</h5>
                                 <p class="card-text">
@@ -95,7 +94,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile" data-bs-slide="prev">
             <i class="fa-solid fa-angle-left __carouselControl fa-xl" aria-hidden="true"></i>
@@ -108,7 +106,7 @@
         </div>
 
         <div id="carouselTablet" class="carousel slide d-none d-md-block d-lg-none" data-bs-ride="carousel">
-            <div class="carousel-inner justify-content-evenly">
+            <div class="carousel-inner">
 
                 <div class="carousel-item active">
                     <div class="row d-flex justify-content-center">
@@ -128,6 +126,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-caption d-none d-md-block">
+                            <h5>CYCLING</h5>
+                            <p>
+                                Lundi 11 juillet<br>
+                                10H00 - 60 minutes
+                            </p>
+                            <a href="#" class="btn btn-primary">Réserver</a>
+                    </div>
                 </div>
 
                 <div class="carousel-item">
@@ -147,6 +153,14 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>ZUMBA</h5>
+                        <p>
+                            Lundi 11 juillet<br>
+                            11H00 - 30 minutes
+                        </p>
+                        <a href="#" class="btn btn-primary">Réserver</a>
                     </div>
                 </div>
 
@@ -168,6 +182,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>ABDOS - FESSIERS</h5>
+                        <p>
+                            Lundi 11 juillet<br>
+                            11H30 - 30 minutes
+                        </p>
+                        <a href="#" class="btn btn-primary">Réserver</a>
+                    </div>
                 </div>
 
                 <div class="carousel-item">
@@ -187,6 +209,14 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>YOGA</h5>
+                        <p>
+                            Lundi 11 juillet<br>
+                            12H00 - 60 minutes
+                        </p>
+                        <a href="#" class="btn btn-primary">Réserver</a>
                     </div>
                 </div>
 
@@ -205,78 +235,63 @@
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <div class="row d-flex justify-content-center">
-
-                        <div class="card __cardDesktop col-4">
-                            <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">CYCLING</h5>
-                                        <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        10H00 - 60 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
-                                    </div>
-                                </div>
+                    <div class="d-flex justify-content-center row">
+                        <img src="sources/img/cycling.jpg" class="d-block col-3" alt="...">
+                        <div class="col-1"></div>
+                        <img src="sources/img/zumba.jpg" class="d-block col-3" alt="...">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="d-flex justify-content-around row">
+                            <div class="col-5">
+                                <h5>CYCLING</h5>
+                                <p>
+                                    Lundi 11 juillet<br>
+                                    10H00 - 60 minutes
+                                </p>
+                                <a href="#" class="btn btn-primary">Réserver</a>
+                            </div>
+                                
+                            <div class="col-5">
+                                <h5>ZUMBA</h5>
+                                <p>
+                                    Lundi 11 juillet<br>
+                                    11H00 - 30 minutes
+                                </p>
+                                <a href="#" class="btn btn-primary">Réserver</a>
                             </div>
                         </div>
-
-                        <div class="card __cardDesktop col-4">
-                            <img src="sources/img/zumba.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">ZUMBA</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            11H00 - 30 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-
-                        <div class="card __cardDesktop col-4">
-                            <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">ABDOS-FESSIERS</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            11H30 - 30 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="row d-flex justify-content-evenly">
                         <div class="card __cardDesktop col-4">
                             <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">YOGA</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            12H00 - 60 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
-                                    </div>
+                                    <h5 class="card-title">ABDOS - FESSIERS</h5>
+                                    <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        11H30 - 30 minutes
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Réserver</a>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="card __cardDesktop col-4">
+                            <img src="sources/img/yoga.jpg" class="card-img" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <h5 class="card-title">YOGA</h5>
+                                    <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        12H00 - 60 minutes
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
