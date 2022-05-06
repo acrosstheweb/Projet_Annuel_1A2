@@ -90,9 +90,6 @@ h1{
 /* Carousels Séances */
 .card{
     margin: 0 1.5rem;
-<<<<<<< Updated upstream
-    width: 50rem;
-=======
 }
 
 .__cardTablet{
@@ -108,8 +105,12 @@ h1{
     margin: 0 auto;
 }
 
+.__classIcon{
+    color: var(--green2);
+}
+
 .__cardDescription{
-    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 0.01%, rgba(0, 0, 0, 0.5) 51.56%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 70%);
     color: white;
     height: 100%;
     width: 100%;
@@ -125,6 +126,7 @@ h1{
     bottom:0;
     left:50%;
     transform:translateX(-50%);
+    margin-bottom: 1rem;
 }
 
 #carouselDesktop.carousel-caption{
@@ -132,8 +134,7 @@ width: 100rem;
 }
 
 .__carouselControl{
-color: var(--green3);
->>>>>>> Stashed changes
+    color: var(--green3);
 }
 
 /* Erreur 404 */
