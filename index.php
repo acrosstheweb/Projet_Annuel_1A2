@@ -4,11 +4,11 @@
     $currentPage = 'index';
     include 'header.php';
     Message('Register');
+    Message('RegisterSuccess');
+    Message('Connection');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>
-
-<br><br><br>
 
 <div class="container-fluid">
     <div class="row __frontRow justify-content-evenly align-items-center px-md-3" style="position:relative;">
