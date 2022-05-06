@@ -36,7 +36,7 @@
     }
     ?>
 
-    <header class="sticky-top">
+    <header class="sticky-top px-3">
 
         <!-- Nativement, avec la classe 'navbar', les éléments enfants de la nav utilisent
 flex, par défaut -> 'justify-content: space-between'  -->

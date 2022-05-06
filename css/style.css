@@ -160,3 +160,16 @@ width: 100rem;
     background-color: var(--green3);
     border-color: var(--green3);
 }
+
+/* Page Informations Profil */
+.__profilePic{
+    object-fit: cover;
+}
+
+.__profileInfoInput{
+    display: none;
+}
+
+#__profileInfoSubmit{
+    display: none;
+}
