@@ -16,7 +16,7 @@
         <div class="__frontIamge-description col-12 col-md-6 col-lg-4">
             <h2 class="aligned-title">NOTRE MÉTHODE</h2>
             <p class="text-justify text-center my-lg-5">
-                <!-- Notre approche globale de l’entraînement, issue de la préparation physique d’athlètes, va permettre un développement réel de vos capacités physiques de manière durable. -->
+                <span class="d-none d-lg-block">Notre approche globale de l’entraînement, issue de la préparation physique d’athlètes, va permettre un développement réel de vos capacités physiques de manière durable.<br><br></span>
                 Nos entraîneurs vous accompagnent sur le meilleur assortiment sportif pour vous permettre d’atteindre rapidement vos objectifs, quelque soit votre niveau.<br><br>
                 <!-- Chacun de nos 7 sports a été choisi pour être efficace et complémentaire.<br><br>
                 À vous de créer un programme qui vous ressemble...<br><br>  -->
