@@ -8,7 +8,7 @@
 
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Accueil</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
+            <li class="nav-item"><a href="contact.php" class="nav-link px-2 text-muted">Contact</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">RGPD</a></li>
         </ul>
