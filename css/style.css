@@ -87,9 +87,54 @@ h1{
     padding: 0;
 }
 
+/* Carousels Séances */
 .card{
     margin: 0 1.5rem;
-    width: 50rem;
+}
+
+.__cardTablet{
+    padding: 0;
+}
+
+.__cardDesktop{
+    margin: 0 1rem;
+    padding: 0;
+}
+
+.__classImage{
+    margin: 0 auto;
+}
+
+.__classIcon{
+    color: var(--green2);
+}
+
+.__cardDescription{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 70%);
+    color: white;
+    height: 100%;
+    width: 100%;
+    position:relative;
+}
+
+.card-img-overlay{
+    padding:unset; /* Retrait du padding du cadre de la description de la carte pour que le background linear gradient prenne tout l'espace de la carte */
+}
+
+.__cardDescriptionText{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    margin-bottom: 1rem;
+}
+
+#carouselDesktop.carousel-caption{
+width: 100rem;
+}
+
+.__carouselControl{
+    color: var(--green3);
 }
 
 /* Erreur 404 */
@@ -114,4 +159,17 @@ h1{
     color: white;
     background-color: var(--green3);
     border-color: var(--green3);
+}
+
+/* Page Informations Profil */
+.__profilePic{
+    object-fit: cover;
+}
+
+.__profileInfoInput{
+    display: none;
+}
+
+#__profileInfoSubmit{
+    display: none;
 }

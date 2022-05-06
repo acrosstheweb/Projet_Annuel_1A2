@@ -13,11 +13,11 @@
 <div class="container-fluid">
     <div class="row __frontRow justify-content-evenly align-items-center px-md-3" style="position:relative;">
     <div class="__frontBgImage"></div>
-        <img src="sources/img/musculation.jpg" alt="La musculation"  class="__frontImage col-12 col-md-6">
-        <div class="__frontIamge-description col-12 col-md-6">
+        <img src="sources/img/musculation.jpg" alt="La musculation"  class="__frontImage col-12 col-md-6 col-lg-8">
+        <div class="__frontIamge-description col-12 col-md-6 col-lg-4">
             <h2 class="aligned-title">NOTRE MÉTHODE</h2>
             <p class="text-justify text-center my-lg-5">
-                <!-- Notre approche globale de l’entraînement, issue de la préparation physique d’athlètes, va permettre un développement réel de vos capacités physiques de manière durable. -->
+                <span class="d-none d-lg-block">Notre approche globale de l’entraînement, issue de la préparation physique d’athlètes, va permettre un développement réel de vos capacités physiques de manière durable.<br><br></span>
                 Nos entraîneurs vous accompagnent sur le meilleur assortiment sportif pour vous permettre d’atteindre rapidement vos objectifs, quelque soit votre niveau.<br><br>
                 <!-- Chacun de nos 7 sports a été choisi pour être efficace et complémentaire.<br><br>
                 À vous de créer un programme qui vous ressemble...<br><br>  -->
@@ -33,68 +33,259 @@
 
         <h2 class="aligned-title">NOS PROCHAINES SÉANCES</h2>
 
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
+        <div id="carouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+            <div class="carousel-inner justify-content-evenly">
 
-                <div class="carousel-item active justify-content-evenly">
-                    <div class="card">
-                        <img src="sources/img/cycling.jpg" class="card-img-top" alt="...">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">CYCLING</h5>
-                            <p class="card-text">
-                                Lundi 11 juillet<br>
-                                10H00 - 60 minutes
-                            </p>
-                            <a href="#" class="btn btn-primary">Réserver</a>
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">CYCLING</h5>
+                                <p class="card-text">
+                                    Lundi 11 juillet<br>
+                                    10H00 - 60 minutes
+                                </p>
+                                <a href="#" class="btn btn-primary">Réserver</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">ZUMBA</h5>
+                                <p class="card-text">
+                                    Lundi 11 juillet<br>
+                                    11H00 - 30 minutes
+                                </p>
+                                <a href="#" class="btn btn-primary">Réserver</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item justify-content-evenly">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">ZUMBA</h5>
-                            <p class="card-text">
-                                Lundi 11 juillet<br>
-                                11H00 - 30 minutes
-                            </p>
-                            <a href="#" class="btn btn-primary">Réserver</a>
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">ABDOS - FESSIERS</h5>
+                                <p class="card-text">
+                                    Lundi 11 juillet<br>
+                                    11H30 - 30 minutes
+                                </p>
+                                <a href="#" class="btn btn-primary">Réserver</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item justify-content-evenly">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">ABDOS - FESSIERS</h5>
-                            <p class="card-text">
-                                Lundi 11 juillet<br>
-                                11H30 - 30 minutes
-                            </p>
-                            <a href="#" class="btn btn-primary">Réserver</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item justify-content-evenly">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">CYCLING</h5>
-                            <p class="card-text">
-                                Lundi 11 juillet<br>
-                                12H00 - 60 minutes
-                            </p>
-                            <a href="#" class="btn btn-primary">Réserver</a>
+                    <div class="d-flex justify-content-center">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">YOGA</h5>
+                                <p class="card-text">
+                                    Lundi 11 juillet<br>
+                                    12H00 - 60 minutes
+                                </p>
+                                <a href="#" class="btn btn-primary">Réserver</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile" data-bs-slide="prev">
+            <i class="fa-solid fa-angle-left __carouselControl fa-xl" aria-hidden="true"></i>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMobile" data-bs-slide="next">
+            <i class="fa-solid fa-angle-right __carouselControl fa-xl" aria-hidden="true"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div id="carouselTablet" class="carousel slide d-none d-md-block d-lg-none" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="row d-flex justify-content-center">
+                        <div class="card __cardTablet col-9">
+                            <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">CYCLING</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            10H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row d-flex justify-content-center">
+                        <div class="card __cardTablet col-9">
+                            <img src="sources/img/ZUMBA.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ZUMBA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H00 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row d-flex justify-content-center">
+                        <div class="card __cardTablet col-9">
+                            <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ABDOS-FESSIERS</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H30 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row d-flex justify-content-center">
+                        <div class="card __cardTablet col-9">
+                            <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">YOGA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            12H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselTablet" data-bs-slide="prev">
+                <i class="fa-solid fa-angle-left __carouselControl fa-xl" aria-hidden="true"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselTablet" data-bs-slide="next">
+                <i class="fa-solid fa-angle-right __carouselControl fa-xl" aria-hidden="true"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div id="carouselDesktop" class="carousel slide d-none d-lg-block" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="row d-flex justify-content-center">
+
+                        <div class="card __cardDesktop col-4">
+                            <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">CYCLING</h5>
+                                        <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        10H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card __cardDesktop col-4">
+                            <img src="sources/img/zumba.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ZUMBA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H00 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row d-flex justify-content-center">
+
+                        <div class="card __cardDesktop col-4">
+                            <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">ABDOS-FESSIERS</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            11H30 - 30 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card __cardDesktop col-4">
+                            <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
+                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                <div class="__cardDescription">
+                                    <div class="__cardDescriptionText">
+                                        <h5 class="card-title">YOGA</h5>
+                                        <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            12H00 - 60 minutes
+                                        </p>
+                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselDesktop" data-bs-slide="prev">
+                <i class="fa-solid fa-angle-left __carouselControl fa-xl" aria-hidden="true"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselDesktop" data-bs-slide="next">
+                <i class="fa-solid fa-angle-right __carouselControl fa-xl" aria-hidden="true"></i>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
