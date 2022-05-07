@@ -94,12 +94,23 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
                     <!-- Barre de recherche et bouton recherche -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <?php if(isConnected()){
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
+                        </li>
+                    <?php
+                    }else{
+                    ?>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
                         </li>
+                    <?php
+                    }
+                    ?>
                         <li class="nav-item __research-bar">
                             <form action="#" class="d-flex">
                                 <div class="input-group">
