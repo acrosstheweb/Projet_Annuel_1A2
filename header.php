@@ -174,8 +174,8 @@ flex, par défaut -> 'justify-content: space-between'  -->
                                 <label for="register-civility">Civilité :</label>
                                 <select id="register-civility" class="form-select" name="register-civility" aria-label="Default select example" required="required">
                                     <option value="" selected disabled hidden>Veuillez choisir</option>
-                                    <option value="M">Homme</option>
-                                    <option value="F">Femme</option>
+                                    <option value="F">Madame</option>
+                                    <option value="M">Monsieur</option>
                                 </select>
                             </div>
                             <div class="col">
