@@ -38,7 +38,8 @@
 
                 <div class="carousel-item active">
                     <div class="d-flex justify-content-center">
-                        <div class="card">
+                        <div class="card col-9">
+                            <img src="sources/img/cycling.jpg" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">CYCLING</h5>
                                 <p class="card-text">
@@ -53,7 +54,8 @@
 
                 <div class="carousel-item">
                     <div class="d-flex justify-content-center">
-                        <div class="card">
+                        <div class="card col-9">
+                            <img src="sources/img/zumba.jpg" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">ZUMBA</h5>
                                 <p class="card-text">
@@ -68,7 +70,8 @@
 
                 <div class="carousel-item justify-content-evenly">
                     <div class="d-flex justify-content-center">
-                        <div class="card">
+                        <div class="card col-9">
+                            <img src="sources/img/abs.jpg" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">ABDOS - FESSIERS</h5>
                                 <p class="card-text">
@@ -83,7 +86,8 @@
 
                 <div class="carousel-item justify-content-evenly">
                     <div class="d-flex justify-content-center">
-                        <div class="card">
+                        <div class="card col-9">
+                            <img src="sources/img/yoga.jpg" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">YOGA</h5>
                                 <p class="card-text">
