@@ -6,6 +6,7 @@
     Message('Register');
     Message('RegisterSuccess');
     Message('Connection');
+    Message('Logout');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>
