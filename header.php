@@ -131,19 +131,19 @@ flex, par défaut -> 'justify-content: space-between'  -->
                 </div>
                 <div class="modal-body row">
                     <div class="col-3"></div>
-                    <form action="login.php" method="POST" class="col-6">
+                    <form id="login-form" action="login.php" method="POST" class="col-6">
                         <label for="login-email">Adresse mail : </label>
-                        <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail"><br>
+                        <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail" required="required"><br>
 
                         <label for="login-password">Mot de passe : </label>
-                        <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe">
+                        <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe" required="required">
                     </form>
                     <div class="col-3"></div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
                     <button class="btn btn-secondary" data-bs-target="#register-modal" data-bs-toggle="modal">Inscription</button>
-                    <button class="btn btn-primary">Connexion</button>
+                    <button class="btn btn-primary" form="login-form">Connexion</button>
                 </div>
             </div>
         </div>
