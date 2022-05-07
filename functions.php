@@ -55,7 +55,7 @@ function setToken($id){
     $tk = uniqid($prefix);
 
     $db = database();
-    $setTokenQuery = $db->prepare('UPDATE rku_user SET token=:tk WHERE id=:id');
+    $setTokenQuery = $db->prepare('UPDATE RkU_user SET token=:tk WHERE id=:id');
     $setTokenQuery->execute(['tk'=> $tk, 'id'=> $id]);
 
     return $tk;
@@ -66,7 +66,7 @@ function isConnected(){
         return false; // Si il n'y a pas de token en session, isConnected = false
     }else{
         $db = database();
-        $getTokenDbQuery = $db->prepare("SELECT token from rku_user WHERE id=:id");
+        $getTokenDbQuery = $db->prepare("SELECT token from RkU_user WHERE id=:id");
         $getTokenDbQuery->execute(['id' => $_SESSION['userId']]);
         
         $tokenDb = $getTokenDbQuery->fetch()['token'];

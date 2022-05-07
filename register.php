@@ -95,8 +95,8 @@ if(count($problems) == 0){
     $password = password_hash($_POST['register-password'], PASSWORD_DEFAULT);
 
     $db = database();
-    $insertUserQuery = $db->prepare("INSERT INTO rku_user (firstname,lastname,email,address,city,civility,birthday,pwd,role,coin) VALUES 
-                                                                (:firstname, :lastname, :email, :address, :city, :civility, :birthday, :pwd, :role, :coin)");
+    $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,civility,birthday,password,role,fitcoin) VALUES 
+                                                                (:firstname, :lastname, :email, :address, :city, :civility, :birthday, :password, :role, :fitcoin)");
 
     $insertUserQuery->execute([
         'firstname' => $firstname,
@@ -106,9 +106,9 @@ if(count($problems) == 0){
         'city' => $city,
         'civility' => $civility,
         'birthday' => $birthday,
-        'pwd' => $password,
+        'password' => $password,
         'role' => 0,
-        'coin' => 10
+        'fitcoin' => 0
     ]);
     setMessage('RegisterSuccess', ['Inscription réussie !'], 'success');
     header('Location: index.php');

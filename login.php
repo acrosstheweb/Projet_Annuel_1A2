@@ -21,7 +21,7 @@ $password = $_POST['login-password'];
 $problems = [];
 $db = database();
 
-$checkUserQuery = $db->prepare('SELECT id, pwd FROM rku_user WHERE email=:email');
+$checkUserQuery = $db->prepare('SELECT id, password FROM RkU_user WHERE email=:email');
 $checkUserQuery->execute([':email'=>$email]);
 $user = $checkUserQuery->fetch();
 
@@ -33,7 +33,7 @@ if($user === false){
 }else{
 
     $userExist = true;
-    $pwdInDb = $user['pwd'];
+    $pwdInDb = $user['password'];
 
     if(password_verify($password, $pwdInDb)){
         $_SESSION['userToken'] = setToken($user['id']);
