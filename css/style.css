@@ -164,9 +164,29 @@ width: 100rem;
 /* Page Informations Profil */
 .__profilePic{
     object-fit: cover;
+    padding: 0;
+}
+
+.__profilePicOverlay{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    height: 15%;
+    width: 100%;
+    position: relative;
+}
+
+.__profilePicChange{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .__profileInfoInput{
+    display: none;
+}
+
+#__profileInfoCancel{
     display: none;
 }
 
