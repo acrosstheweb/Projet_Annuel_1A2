@@ -47,6 +47,21 @@ function checkPassword($password): bool{
     }
 }
 
+function setToken($id){
+    $chars = "$^@&(-_)=";
+    $n1 = rand(0,9); $n2 = rand(0,9);
+    $c1 = $chars[rand(0, strlen($chars))]; $c2 = $chars[rand(0, strlen($chars))];
+    
+    $unId = uniqid(`{$c1}{$n1}{$c2}{$n2}`);
+    $tk = $unId . sha1($unId);
+
+    $db = database();
+    $setTokenQuery = $db->prepare('UPDATE rku_user SET token=:tk WHERE id=:id');
+    $setTokenQuery->execute(['tk'=> $tk, 'id'=> $id]);
+
+    return $tk;
+}
+
 /*function getUser($fields){
     // Fonction qui récupère les champs depuis la bdd grâce à un id;
     // Pour chaque $fields, retourner la valeur en bdd
