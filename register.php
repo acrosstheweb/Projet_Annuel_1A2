@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 if(
-    count($_POST) != 10 ||
+    count($_POST) != 11 ||
     empty($_POST['register-civility']) ||
     empty($_POST['register-birthday']) ||
     empty($_POST['register-lastname']) ||
@@ -10,6 +10,7 @@ if(
     empty($_POST['register-address']) ||
     empty($_POST['register-city']) ||
     empty($_POST['register-zip-code']) ||
+    empty($_POST['register-captcha']) ||
     empty($_POST['register-password']) ||
     empty($_POST['register-confirmed-password'])
 ){
@@ -23,11 +24,12 @@ $birthday = $_POST['register-birthday'];
 $lastname = strtoupper($_POST['register-lastname']);
 $firstname = ucwords(strtolower($_POST['register-firstname']));
 $email = strtolower(trim($_POST['register-email']));
-$address = ucwords(strolower($_POST['register-address']));
-$city = ucwords(strolower($_POST['register-city']));
+$address = ucwords(strtolower($_POST['register-address']));
+$city = ucwords(strtolower($_POST['register-city']));
 $zipCode = $_POST['register-zip-code'];
 $password = $_POST['register-password'];
 $passwordConfirmed = $_POST['register-confirmed-password'];
+$captcha = trim($_POST['register-captcha']);
 
 $problems = [];
 $supportedCivilties = ['M', 'F'];
@@ -76,6 +78,11 @@ if(strlen($zipCode)!= 5 || !ctype_digit($zipCode)){
     $problems[] = 'Le code postal doit contenir exactement 5 chiffres';
 }
 
+// Captcha : si celui entré lors de l'inscription est différent de celui généré
+if($_SESSION['captcha'] != $captcha){
+    $problems[] = 'Captcha incorrect';
+}
+
 if(checkPassword($password) === true){
     if($password != $passwordConfirmed){
         $problems[] = 'Les mots de passes ne correspondent pas';
@@ -87,7 +94,7 @@ if(checkPassword($password) === true){
 if(count($problems) == 0){
     $password = password_hash($_POST['register-password'], PASSWORD_DEFAULT);
 
-    $db = database();
+    /*$db = database();
     $insertUserQuery = $db->prepare("INSERT INTO rku_user (firstname,lastname,email,address,city,civility,birthday,pwd,role,coin) VALUES 
                                                                 (:firstname, :lastname, :email, :address, :city, :civility, :birthday, :pwd, :role, :coin)");
 
@@ -102,7 +109,7 @@ if(count($problems) == 0){
         'pwd' => $password,
         'role' => 0,
         'coin' => 10
-    ]);
+    ]);*/
     setMessage('RegisterSuccess', ['Inscription réussie !'], 'success');
     header('Location: index.php');
     die();
