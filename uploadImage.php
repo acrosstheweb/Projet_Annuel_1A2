@@ -1,4 +1,7 @@
 <?php
+
+    require 'functions.php';
+    
     if(!empty($_FILES['file'])){
         $name = $_FILES['file']['name'];
         $type = $_FILES['file']['type'];
@@ -63,30 +66,32 @@
                 if(imagecopy($image, $logo, $centerX, $centerY, 0, 0, $logoWidth, $logoHeight)){ //On garde une trace des fichiers temporaires dans un dossier pour de la journalisation ou en cas d'injection de code malveillant à travers un fichier qui pourrait passer
 
                     imagepng($image, './uploadFiles/fili'.$imgId.'.'.strtolower($extension));
-                    echo 'Le fichier a bien été uploadé';
-                    var_dump($image, 
-                    $logoWidth,
-                    $logoHeight,
-                    $imageWidth,
-                    $imageHeight,
-                    $centerX,
-                    $centerY,
-                    $logoWidth,
-                    $logoHeight);
+                    unlink('./tmpUpload/'.$tempFile);
+                    setMessage('Register', 'Le fichier a bien été uploadé', 'warning');
+                    header('Location: index.php');
+                    die();
                 }
                 else{
                     unlink('./tmpUpload/'.$tempFile);
-                    echo 'Le fichier n\'a pas pu être uploadé';
+                    setMessage('Register', 'Le fichier n\'a pas pu être uploadé', 'warning');
+                    header('Location: index.php');
+                    die();
                 }
             }
             else
-                echo 'Fichier trop lourd ou format incorrect';
+                setMessage('Register', 'Fichier trop lourd', 'warning');
+                header('Location: index.php');
+                die();
         }
         else
-            echo 'Extension Incorrecte';
+            setMessage('Register', 'Extension Incorrecte', 'warning');
+            header('Location: index.php');
+            die();
     }
     else
-        echo 'Type non autorisé';
+        setMessage('Register', 'Type non autorisé', 'warning');
+        header('Location: index.php');
+        die();
     }
     else{
         setMessage('Register', 'Impossible', 'warning');
