@@ -94,12 +94,19 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
                     <!-- Barre de recherche et bouton recherche -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <?php if(isConnected()){
-                    ?>
+                    <?php if(isConnected()){ ?>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profilePage.php" role="button"><img src="sources/img/avatar.jpg" alt="mon profil" style="width: 55px;border-radius: 50%;"></a>
+                        </li>
                     <?php
+                    if(isAdmin()){ ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" role="button">Back-Office</a>
+                        </li>
+                    <?php }
                     }else{
                     ?>
                         <li class="nav-item">
