@@ -94,12 +94,23 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
                     <!-- Barre de recherche et bouton recherche -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <?php if(isConnected()){
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
+                        </li>
+                    <?php
+                    }else{
+                    ?>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
                         </li>
+                    <?php
+                    }
+                    ?>
                         <li class="nav-item __research-bar">
                             <form action="#" class="d-flex">
                                 <div class="input-group">
@@ -137,6 +148,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
                         <label for="login-password">Mot de passe : </label>
                         <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe" required="required">
+
                     </form>
                     <div class="col-3"></div>
                 </div>
@@ -162,8 +174,8 @@ flex, par défaut -> 'justify-content: space-between'  -->
                                 <label for="register-civility">Civilité :</label>
                                 <select id="register-civility" class="form-select" name="register-civility" aria-label="Default select example" required="required">
                                     <option value="" selected disabled hidden>Veuillez choisir</option>
-                                    <option value="M">Homme</option>
-                                    <option value="F">Femme</option>
+                                    <option value="F">Madame</option>
+                                    <option value="M">Monsieur</option>
                                 </select>
                             </div>
                             <div class="col">
@@ -219,6 +231,18 @@ flex, par défaut -> 'justify-content: space-between'  -->
                                 <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required"><br>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <img class="col-12 mb-3" src="captcha.php" alt="captcha">
+                            </div>
+
+                            <div class="col">
+                                <label for="register-password">Captcha : </label>
+                                <input class="form-control" type="text" name="register-captcha" id="register-captcha" placeholder="Captcha" required="required">
+                            </div>
+                        </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">

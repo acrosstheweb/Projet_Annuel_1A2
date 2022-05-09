@@ -1,4 +1,7 @@
 <?php
+
+    require 'functions.php';
+
     if(!empty($_FILES['file'])){
         $name = $_FILES['file']['name'];
         $type = $_FILES['file']['type'];
@@ -13,13 +16,13 @@
     $typeImage = ['image/png', 'image/jpg', 'image/jpeg'];
 
     $explodedFile = explode('.', $name);
-    $extension = $explodedFile[1];
+    $extension = strtolower($explodedFile[1]);
     $maxSize = 900000;
 
 
     $imgId = uniqid();
 
-    $tempFile = 'temp'.$imgId.'.'.strtolower($extension);
+    $tempFile = 'temp'.$imgId.'.'.$extension;
     move_uploaded_file($tmpName, './tmpUpload/'.$tempFile);
 
     $logo = imagecreatefrompng('sources/img/logo.png');
@@ -27,7 +30,7 @@
     $sizeLogo = filesize('sources/img/logo.png');
 
     if(in_array($type, $typeImage)){
-        if(count($explodedFile) <=2 && in_array(strtolower($extension), $extensionsAllowed)){
+        if(count($explodedFile) <=2 && in_array($extension, $extensionsAllowed)){
             if($size + $sizeLogo <= $maxSize){
 
                 // Traitement ajoute du filigrane
@@ -41,7 +44,6 @@
                     $image = imagecreatefrompng('./tmpUpload/'.$tempFile);
                 }
 
-                
                 $marge_right = 10;
                 $marge_bottom = 10;
 
@@ -63,34 +65,34 @@
                 if(imagecopy($image, $logo, $centerX, $centerY, 0, 0, $logoWidth, $logoHeight)){ //On garde une trace des fichiers temporaires dans un dossier pour de la journalisation ou en cas d'injection de code malveillant à travers un fichier qui pourrait passer
 
                     imagepng($image, './uploadFiles/fili'.$imgId.'.'.strtolower($extension));
-                    echo 'Le fichier a bien été uploadé';
-                    var_dump($image, 
-                    $logoWidth,
-                    $logoHeight,
-                    $imageWidth,
-                    $imageHeight,
-                    $centerX,
-                    $centerY,
-                    $logoWidth,
-                    $logoHeight);
+                    unlink('./tmpUpload/'.$tempFile);
+                    setMessage('UploadImage', ['Le fichier a bien été uploadé'], 'success');
                 }
                 else{
                     unlink('./tmpUpload/'.$tempFile);
-                    echo 'Le fichier n\'a pas pu être uploadé';
+                    setMessage('UploadImage', ['Le fichier n\'a pas pu être uploadé'], 'warning');
                 }
+                header('Location: forum.php');
+                die();
             }
             else
-                echo 'Fichier trop lourd ou format incorrect';
+                setMessage('UploadImage', ['Fichier trop lourd'], 'warning');
+                header('Location: forum.php');
+                die();
         }
         else
-            echo 'Extension Incorrecte';
+            setMessage('UploadImage', ['Extension Incorrecte'], 'warning');
+            header('Location: forum.php');
+            die();
     }
     else
-        echo 'Type non autorisé';
+        setMessage('UploadImage', ['Type non autorisé'], 'warning');
+        header('Location: forum.php');
+        die();
     }
     else{
-        setMessage('Register', 'Impossible', 'warning');
-        header('Location: index.php');
+        setMessage('UploadImage', ['Impossible'], 'warning');
+        header('Location: forum.php');
         die();
     }
 
