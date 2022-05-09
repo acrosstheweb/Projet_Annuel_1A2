@@ -3,6 +3,7 @@
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
     include 'header.php';
+    Message('UploadImage');
 ?>
 
 <h2 class="aligned-title"> Forum de Fitness Essential </h2>

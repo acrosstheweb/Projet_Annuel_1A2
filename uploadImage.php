@@ -1,7 +1,7 @@
 <?php
 
     require 'functions.php';
-    
+
     if(!empty($_FILES['file'])){
         $name = $_FILES['file']['name'];
         $type = $_FILES['file']['type'];
@@ -66,35 +66,35 @@
 
                     imagepng($image, './uploadFiles/fili'.$imgId.'.'.strtolower($extension));
                     unlink('./tmpUpload/'.$tempFile);
-                    setMessage('Register', 'Le fichier a bien été uploadé', 'warning');
-                    header('Location: index.php');
+                    setMessage('UploadImage', ['Le fichier a bien été uploadé'], 'success');
+                    header('Location: forum.php');
                     die();
                 }
                 else{
                     unlink('./tmpUpload/'.$tempFile);
-                    setMessage('Register', 'Le fichier n\'a pas pu être uploadé', 'warning');
-                    header('Location: index.php');
+                    setMessage('UploadImage', ['Le fichier n\'a pas pu être uploadé'], 'warning');
+                    header('Location: forum.php');
                     die();
                 }
             }
             else
-                setMessage('Register', 'Fichier trop lourd', 'warning');
-                header('Location: index.php');
+                setMessage('UploadImage', ['Fichier trop lourd'], 'warning');
+                header('Location: forum.php');
                 die();
         }
         else
-            setMessage('Register', 'Extension Incorrecte', 'warning');
-            header('Location: index.php');
+            setMessage('UploadImage', ['Extension Incorrecte'], 'warning');
+            header('Location: forum.php');
             die();
     }
     else
-        setMessage('Register', 'Type non autorisé', 'warning');
-        header('Location: index.php');
+        setMessage('UploadImage', ['Type non autorisé'], 'warning');
+        header('Location: forum.php');
         die();
     }
     else{
-        setMessage('Register', 'Impossible', 'warning');
-        header('Location: index.php');
+        setMessage('UploadImage', ['Impossible'], 'warning');
+        header('Location: forum.php');
         die();
     }
 
