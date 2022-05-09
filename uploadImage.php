@@ -67,15 +67,13 @@
                     imagepng($image, './uploadFiles/fili'.$imgId.'.'.strtolower($extension));
                     unlink('./tmpUpload/'.$tempFile);
                     setMessage('UploadImage', ['Le fichier a bien été uploadé'], 'success');
-                    header('Location: forum.php');
-                    die();
                 }
                 else{
                     unlink('./tmpUpload/'.$tempFile);
                     setMessage('UploadImage', ['Le fichier n\'a pas pu être uploadé'], 'warning');
-                    header('Location: forum.php');
-                    die();
                 }
+                header('Location: forum.php');
+                die();
             }
             else
                 setMessage('UploadImage', ['Fichier trop lourd'], 'warning');
