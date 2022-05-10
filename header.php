@@ -94,6 +94,14 @@ flex, par défaut -> 'justify-content: space-between'  -->
 
                     <!-- Barre de recherche et bouton recherche -->
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="align-items: center">
+                        <li class="nav-item __research-bar">
+                            <form action="#" class="d-flex">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
+                                    <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
+                                </div>
+                            </form>
+                        </li>
                     <?php if(isConnected()){
                         if(isAdmin()){?>
                         <li class="nav-item">
@@ -118,14 +126,6 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <?php
                     }
                     ?>
-                        <li class="nav-item __research-bar">
-                            <form action="#" class="d-flex">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
-                                    <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
-                                </div>
-                            </form>
-                        </li>
                     </ul>
 
                     <!-- </div> -->
@@ -262,7 +262,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
     </div>
 
     <section id="__userSlide">
-        <nav class="navbar">
+        <nav class="navbar" id="__userVerticalNav">
             <ul>
                 <li class="nav-item">
                     <a class="nav-link " href="profilePage.php">Mon profil</a>

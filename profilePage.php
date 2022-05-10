@@ -39,7 +39,11 @@
                     </div>
                 </div>
                 <div class="col-8">
-                    <p class="d-flex align-items-start fw-bold fs-3"><?php echo $user['firstName'] . ' ' . $user['lastName'] ?></p>
+                    <p class="d-flex align-items-start fw-bold fs-3">
+                        <?php
+                            echo isset($user['firstName']) && isset($user['lastName']) ? $user['firstName'] . ' ' . $user['lastName'] : ''
+                        ?>
+                    </p>
                     <p class="d-flex align-items-end">
                         <a href="#" class="link-primary" id="__profileInfoModify--trigger">Modifier mes informations</a>
                     </p>
@@ -52,7 +56,11 @@
                         <div class="col-6 mb-3">
                             <label for="profileCivility" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Civilité</p>
-                                <p class="my-0 __profileInfoValue"><?php echo ($user['civility'] == 'M')?'Monsieur':'Madame' ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo isset($user['civility']) ? ($user['civility'] == 'M')?'Monsieur':'Madame' : ''
+                                    ?>
+                                </p>
                             </label>
                             <select id="profileCivility" class="form-select __profileInfoInput" name="profileCivility" aria-label="Default select example" required="required">
                                 <option value="M">Monsieur</option>
@@ -65,17 +73,25 @@
                         <div class="col-6 mb-3">
                             <label for="profileFirstName" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Prénom</p>
-                                <p class="my-0 __profileInfoValue"><?php echo $user['firstName'] ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo $user['firstName'] ?? ''
+                                    ?>
+                                </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileFirstName" value="<?php echo $user['firstName'] ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" id="profileFirstName" value="<?php echo $user['firstName'] ?? '' ?>" required="required">
                         </div>
 
                         <div class="col-6 mb-3">
                             <label for="profileLastName" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Nom</p>
-                                <p class="my-0 __profileInfoValue"><?php echo $user['lastName'] ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo $user['lastName'] ?? ''
+                                    ?>
+                                </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileLastName" value="<?php echo $user['lastName'] ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" id="profileLastName" value="<?php echo $user['lastName'] ?? '' ?>" required="required">
                         </div>
                     </div>
 
@@ -83,17 +99,25 @@
                         <div class="col-6 mb-3">
                             <label for="profileEmail" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Adresse e-mail</p>
-                                <p class="my-0 __profileInfoValue"><?php echo $user['email'] ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo $user['email'] ?? ''
+                                    ?>
+                                </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileEmail" value="<?php echo $user['email'] ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" id="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required">
                         </div>
 
                         <div class="col-6 mb-3">
                             <label for="profileBirthDate" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Date de naissance</p>
-                                <p class="my-0 __profileInfoValue"><?php echo $user['birthday'] ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo $user['birthday'] ?? ''
+                                    ?>
+                                </p>
                             </label>
-                            <input type="date" class="form-control __profileInfoInput" id="profileBirthDate" value="<?php echo $user['birthday'] ?>" required="required">
+                            <input type="date" class="form-control __profileInfoInput" id="profileBirthDate" value="<?php echo $user['birthday'] ?? '' ?>" required="required">
                         </div>
                     </div>
                     
@@ -102,9 +126,13 @@
                         <div class="col-6 mb-3">
                             <label for="profileAddress" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Adresse</p>
-                                <p class="my-0 __profileInfoValue"><?php echo $user['address'] ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo $user['address'] ?? ''
+                                    ?>
+                                </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileAddress" value="<?php echo $user['address'] ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" id="profileAddress" value="<?php echo $user['address'] ?? '' ?>" required="required">
                         </div>
                     </div>
 
@@ -112,17 +140,25 @@
                         <div class="col-6 mb-3">
                             <label for="profileZipCode" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Code Postal</p>
-                                <p class="my-0 __profileInfoValue"><?php echo $user['zipCode'] ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo $user['zipCode'] ?? ''
+                                    ?>
+                                </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileZipCode" value="<?php echo $user['zipCode'] ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" id="profileZipCode" value="<?php echo $user['zipCode'] ?? '' ?>" required="required">
                         </div>
                     
                         <div class="col-6 mb-3">
                             <label for="profileCity" class="form-label">
                                 <p class="fw-bold my-0 __profileInfoLabel">Ville</p>
-                                <p class="my-0 __profileInfoValue"><?php echo $user['city'] ?></p>
+                                <p class="my-0 __profileInfoValue">
+                                    <?php
+                                        echo $user['city'] ?? ''
+                                    ?>
+                                </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileCity" value="<?php echo $user['city'] ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" id="profileCity" value="<?php echo $user['city'] ?? '' ?>" required="required">
                         </div>
                     </div>
 
