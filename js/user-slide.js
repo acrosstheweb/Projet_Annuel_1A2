@@ -1,6 +1,6 @@
-const slide = document.getElementById('user-slide');
+const slide = document.getElementById('__userSlide');
 
-const button_trigger = document.getElementById('user-profile-button');
+const button_trigger = document.getElementById('__userProfileButton');
 
 button_trigger.addEventListener('click', function(){
 

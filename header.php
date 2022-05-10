@@ -93,21 +93,21 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     </ul>
 
                     <!-- Barre de recherche et bouton recherche -->
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <?php if(isConnected()){ ?>
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="align-items: center">
+                    <?php if(isConnected()){
+                        if(isAdmin()){?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" role="button">Back-Office</a>
+                        </li>
+                        <?php } ?>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="profilePage.php" role="button"><img src="sources/img/avatar.jpg" alt="mon profil" style="width: 55px;border-radius: 50%;"></a>
-                        </li>
-                    <?php
-                    if(isAdmin()){ ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" role="button">Back-Office</a>
+                            <a class="nav-link" href="#" id="__userProfileButton" role="button"><img src="sources/img/avatar.jpg" alt="mon profil" style="width: 55px;border-radius: 50%;"></a>
                         </li>
                     <?php }
-                    }else{
+                    else{
                     ?>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
@@ -260,3 +260,18 @@ flex, par défaut -> 'justify-content: space-between'  -->
             </div>
         </div>
     </div>
+
+    <section id="__userSlide">
+        <nav class="navbar">
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link " href="profilePage.php">Mon profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="logout.php">Déconnexion</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+
+<script src="js/user-slide.js"></script>

@@ -16,12 +16,13 @@
     border-radius: 50%;
 }
 
-#user-slide {
-    position: absolute;
+#__userSlide {
+    position: fixed;
     right: 0;
     display: none;
-    height: 90vh;
-    background-color: rgba(82, 121, 111, 0.7);
+    height: 91vh;
+    width: 15vw;
+    background-color: rgba(82, 121, 111, 0.9);
     border: 2px solid rgb(80, 107, 100);
     z-index: 1;
 }
