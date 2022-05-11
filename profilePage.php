@@ -1,12 +1,13 @@
 <?php
-    $title = "Fitness Essential - Page profil";
-    $content = "Profil utilisateur";
-    $currentPage = 'profile';
-    include 'header.php';
+    require 'functions.php';
     if(!isConnected()){
         header('Location: error404.php');
         die();
     }
+    $title = "Fitness Essential - Page profil";
+    $content = "Profil utilisateur";
+    $currentPage = 'profile';
+    require 'header.php';
     $db = database();
     $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM rku_user WHERE id=:id");
     $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);

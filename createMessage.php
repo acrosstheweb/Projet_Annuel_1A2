@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Écrivez-nous";
     $content = "Création d'un message sur le forum";
     $currentPage = 'message';
-    include 'header.php';
+    require 'header.php';
 ?>
 
 <h2 class="aligned-title"> Une question? Écrivez-nous </h2>

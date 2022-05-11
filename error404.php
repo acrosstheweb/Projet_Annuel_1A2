@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Page introuvable";
     $content = "Page introuvable";
     $currentPage = 'error404';
-    include 'header.php';
+    require 'header.php';
     Message('RegisterHack');
 ?>
 
