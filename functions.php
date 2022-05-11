@@ -81,6 +81,24 @@ function isConnected(){
 
 }
 
+function isAdmin(){
+    if(!isConnected()){
+        return false;
+    }
+
+    // Lorsque connecté l'user ID est disponible en session
+    $db = database();
+    $getRoleDbQuery = $db->prepare("SELECT role from RkU_user WHERE id=:id");
+    $getRoleDbQuery->execute(['id' => $_SESSION['userId']]);
+
+    $roleDb = $getRoleDbQuery->fetch()['role'];
+    if($roleDb >= 1){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 /*function getUser($fields){
     // Fonction qui récupère les champs depuis la bdd grâce à un id;
     // Pour chaque $fields, retourner la valeur en bdd

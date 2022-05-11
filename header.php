@@ -93,14 +93,29 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     </ul>
 
                     <!-- Barre de recherche et bouton recherche -->
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="align-items: center">
+                        <li class="nav-item __research-bar">
+                            <form action="#" class="d-flex">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
+                                    <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
+                                </div>
+                            </form>
+                        </li>
                     <?php if(isConnected()){
-                    ?>
+                        if(isAdmin()){?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" role="button">Back-Office</a>
+                        </li>
+                        <?php } ?>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
                         </li>
-                    <?php
-                    }else{
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="__userProfileButton" role="button"><img src="sources/img/avatar.jpg" alt="mon profil" style="width: 55px;border-radius: 50%;"></a>
+                        </li>
+                    <?php }
+                    else{
                     ?>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
@@ -111,14 +126,6 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <?php
                     }
                     ?>
-                        <li class="nav-item __research-bar">
-                            <form action="#" class="d-flex">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
-                                    <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
-                                </div>
-                            </form>
-                        </li>
                     </ul>
 
                     <!-- </div> -->
@@ -253,3 +260,18 @@ flex, par défaut -> 'justify-content: space-between'  -->
             </div>
         </div>
     </div>
+
+    <section id="__userSlide">
+        <nav class="navbar" id="__userVerticalNav">
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link " href="profilePage.php">Mon profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="logout.php">Déconnexion</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+
+<script src="js/user-slide.js"></script>

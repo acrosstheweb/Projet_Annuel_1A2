@@ -62,9 +62,18 @@ if(strlen($firstname) < 2 || strlen($firstname) > 100 || !ctype_alpha(str_replac
 
 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     $problems[] = 'Format de l\'adresse mail incorrecte';
-}/*else{
-    // Gérer si l'adresse mail existe déjà
-}*/
+}else{
+    // Gére si l'adresse mail existe déjà
+    $db = database();
+
+    $checkUserExistQuery = $db->prepare("SELECT id FROM rku_user WHERE email=:email LIMIT 1");
+    $checkUserExistQuery->execute(["email"=>$email]);
+    $checkUserExist = $checkUserExistQuery->fetch();
+
+    if(!empty($checkUserExist)){
+        $problems[] = "Ce mail est déjà utilisé";
+    }
+}
 
 if(strlen($address) < 2 || strlen($address) > 200 || !ctype_alnum(str_replace($exceptions, '', $address))){
     $problems[] = 'L\'adresse doit comprendre entre 2 et 200 caractères alphanumériques'; // Alphnumériques + $exceptions autorisés
@@ -94,7 +103,6 @@ if(checkPassword($password) === true){
 if(count($problems) == 0){
     $password = password_hash($_POST['register-password'], PASSWORD_DEFAULT);
 
-    $db = database();
     $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,civility,birthday,password,role,fitcoin) VALUES 
                                                                 (:firstname, :lastname, :email, :address, :city, :civility, :birthday, :password, :role, :fitcoin)");
 
