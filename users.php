@@ -65,11 +65,19 @@ require "header.php";
 									<div class="row">
 										<p><strong>Adresse e-mail</strong><br><?php echo $user["email"]?></p>
 									</div>
-									Êtes-vous sûr de vouloir le supprimer?
+									<p id="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer?</p>
+									
+									<div class="row" id="delete-adminPassword">
+										<div class="col">
+											<label for="delete-adminPasswordInput" class="fw-bold">Mot de passe Administrateur </label>
+											<input id="delete-adminPasswordInput" class="form-control" type="email" name="delete-adminPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
+										</div>
+									</div>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-									<a href="userDel.php?id=<?php echo $user["id"]?>" class="btn btn-danger">Supprimer</a>
+									<a href="#" class="btn btn-primary" id="delete-passwordConfirm">Supprimer</a>
+									<a href="userDel.php?id=<?php echo $user["id"]?>" class="btn btn-primary" id="delete-confirm">Supprimer</a>
 								</div>
 								</div>
 							</div>
@@ -169,3 +177,4 @@ include "footer.php";
 ?>
 
 <script src="js/modifyUserAdmin.js" crossorigin="anonymous"></script>
+<script src="js/deleteUserAdmin.js" crossorigin="anonymous"></script>

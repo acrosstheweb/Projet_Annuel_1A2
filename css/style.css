@@ -228,3 +228,12 @@ width: 100rem;
 #modify-confirm{
     display: none;
 }
+
+/* Modale suppression user Admin */
+#delete-adminPassword{
+    display: none;
+}
+
+#delete-confirm{
+    display: none;
+}
