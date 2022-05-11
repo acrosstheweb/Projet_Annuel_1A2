@@ -224,3 +224,21 @@ width: 100rem;
 #__profileInfoSubmit{
     display: none;
 }
+
+/* Modale modif user Admin */
+#modify-adminPassword{
+    display: none;
+}
+
+#modify-confirm{
+    display: none;
+}
+
+/* Modale suppression user Admin */
+#delete-adminPassword{
+    display: none;
+}
+
+#delete-confirm{
+    display: none;
+}
