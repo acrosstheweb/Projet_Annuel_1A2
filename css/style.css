@@ -63,6 +63,11 @@
     border-color: var(--green2);
 }
 
+.btn-primary:hover{
+    background-color: var(--green3);
+    border-color: var(--green3);
+}
+
 .span-close-modal {
     font-size: 24px;
 }
