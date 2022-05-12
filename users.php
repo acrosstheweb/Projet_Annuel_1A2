@@ -103,45 +103,47 @@ require 'header.php';
 								<div class="modal-body">
 									Vous êtes sur le point de modifier les informations de l'utilisateur suivant:
 									<form id="modify-form" action="userModify.php?id=<?php echo $userId;?>" method="POST">
-										<div class="row mt-3">
-											<div class="col-6">
-												<label for="modify-lastName" class="fw-bold">Nom </label>
-												<input id="modify-lastName" class="form-control" type="text" name="modify-lastName" value="<?php echo $userLastName;?>" required="required">
+										<div class="modifyFormInfo">
+											<div class="row mt-3">
+												<div class="col-6">
+													<label for="modify-lastName" class="fw-bold">Nom </label>
+													<input id="modify-lastName" class="form-control" type="text" name="modify-lastName" value="<?php echo $userLastName;?>" required="required">
+												</div>
+												<div class="col-6">
+													<label for="modify-firstName" class="fw-bold">Prénom </label>
+													<input id="modify-firstName" class="form-control" type="text" name="modify-firstName" value="<?php echo $userFirstName;?>" required="required">
+												</div>
 											</div>
-											<div class="col-6">
-												<label for="modify-firstName" class="fw-bold">Prénom </label>
-												<input id="modify-firstName" class="form-control" type="text" name="modify-firstName" value="<?php echo $userFirstName;?>" required="required">
+											<div class="row">
+												<div class="col-6">
+													<label for="modify-birthday" class="fw-bold">Date de naissance </label>
+													<input id="modify-birthday" class="form-control" type="date" name="modify-birthday" value="<?php echo $userBirthday;?>" required="required">
+												</div>
+											</div>
+											<div class="row mt-3">
+												<div class="col">
+													<label for="modify-email" class="fw-bold">Adresse e-mail </label>
+													<input id="modify-email" class="form-control" type="email" name="modify-email" value="<?php echo $userMail;?>" required="required">
+												</div>
+											</div>
+											<div class="row mt-3">
+												<div class="col">
+													<label for="modify-address" class="fw-bold">Adresse </label>
+													<input id="modify-address" class="form-control" type="text" name="modify-address" value="<?php echo $userAddress;?>" required="required">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<label for="modify-zipCode" class="fw-bold">Code postal </label>
+													<input id="modify-zipCode" class="form-control" type="text" name="modify-zipCode" value="<?php echo $userZipCode;?>" required="required">
+												</div>
+												<div class="col-6">
+													<label for="modify-city" class="fw-bold">Ville </label>
+													<input id="modify-city" class="form-control" type="text" name="modify-city" value="<?php echo $userCity;?>" required="required">
+												</div>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-6">
-												<label for="modify-birthday" class="fw-bold">Date de naissance </label>
-												<input id="modify-birthday" class="form-control" type="date" name="modify-birthday" value="<?php echo $userBirthday;?>" required="required">
-											</div>
-										</div>
-										<div class="row mt-3">
-											<div class="col">
-												<label for="modify-email" class="fw-bold">Adresse e-mail </label>
-												<input id="modify-email" class="form-control" type="email" name="modify-email" value="<?php echo $userMail;?>" required="required">
-											</div>
-										</div>
-										<div class="row mt-3">
-											<div class="col">
-												<label for="modify-address" class="fw-bold">Adresse </label>
-												<input id="modify-address" class="form-control" type="text" name="modify-address" value="<?php echo $userAddress;?>" required="required">
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-6">
-												<label for="modify-zipCode" class="fw-bold">Code postal </label>
-												<input id="modify-zipCode" class="form-control" type="text" name="modify-zipCode" value="<?php echo $userZipCode;?>" required="required">
-											</div>
-											<div class="col-6">
-												<label for="modify-city" class="fw-bold">Ville </label>
-												<input id="modify-city" class="form-control" type="text" name="modify-city" value="<?php echo $userCity;?>" required="required">
-											</div>
-										</div>
-										<div class="row mt-3" id="modify-adminPassword">
+										<div class="row mt-3 modify-adminPassword">
 											<div class="col">
 												<label for="modify-adminPasswordInput" class="fw-bold">Mot de passe Administrateur </label>
 												<input id="modify-adminPasswordInput" class="form-control" type="email" name="modify-adminPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
@@ -151,8 +153,8 @@ require 'header.php';
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-									<a href="#" class="btn btn-primary" id="modify-passwordConfirm">Modifier</a>
-									<button class="btn btn-primary" id="modify-confirm" form="modify-form" type="submit">Modifier</button>
+									<a href="#" class="btn btn-primary modify-passwordConfirm">Modifier</a>
+									<button class="btn btn-primary modify-confirm" form="modify-form" type="submit">Modifier</button>
 								</div>
 								</div>
 							</div>

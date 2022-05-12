@@ -1,12 +1,19 @@
-const modifyPasswordConfirm = document.getElementById("modify-passwordConfirm");
-const modifyAdminPassword = document.getElementById("modify-adminPassword");
-const modifyConfirm = document.getElementById("modify-confirm");
+const modifyPasswordConfirm = document.getElementsByClassName("modify-passwordConfirm");
+const modifyConfirm = document.getElementsByClassName("modify-confirm");
+const modifyFormInfo = document.getElementsByClassName("modifyFormInfo");
+const modifyAdminPassword = document.getElementsByClassName("modify-adminPassword");
 
 
 function jaaj() {
-    modifyPasswordConfirm.style.display = "none";
-    modifyAdminPassword.style.display = "block";
-    modifyConfirm.style.display = "inline-block";
+
+    for(let i = 0; i < modifyPasswordConfirm.length; i++){
+        modifyPasswordConfirm[i].style.display = "none";
+        modifyConfirm[i].style.display = "inline-block";
+        modifyFormInfo[i].style.display = "none";
+        modifyAdminPassword[i].style.display = "block";
+    }
 }
 
-modifyPasswordConfirm.addEventListener("click", jaaj);
+for(let i = 0; i < modifyPasswordConfirm.length; i++){
+    modifyPasswordConfirm[i].addEventListener("click", jaaj);
+}
