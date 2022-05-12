@@ -17,3 +17,20 @@ function jaaj() {
 for(let i = 0; i < modifyPasswordConfirm.length; i++){
     modifyPasswordConfirm[i].addEventListener("click", jaaj);
 }
+
+// Reset modal state on open
+const modifyModalTrigger = document.getElementsByClassName("modifyModal--trigger");
+
+function unjaaj() {
+
+    for(let i = 0; i < modifyModalTrigger.length; i++){
+        modifyPasswordConfirm[i].style.display = "inline-block";
+        modifyConfirm[i].style.display = "none";
+        modifyFormInfo[i].style.display = "inline-block";
+        modifyAdminPassword[i].style.display = "none";
+    }
+}
+
+for(let j = 0; j < modifyModalTrigger.length; j++){
+    modifyModalTrigger[j].addEventListener("click", unjaaj);
+}
