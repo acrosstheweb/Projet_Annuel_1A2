@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Abonnements";
     $content = "Les différents abonnements de Fitness Essential";
     $currentPage = 'subscriptions';
-    include 'header.php';
+    require 'header.php';
     Message('RegisterSuccess');
 ?>
 

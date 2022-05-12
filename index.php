@@ -2,7 +2,7 @@
     $title = "Fitness Essential";
     $content = "La page d'acceuil de Fitness Essential";
     $currentPage = 'index';
-    include 'header.php';
+    require 'header.php';
     Message('Register');
     Message('RegisterSuccess');
     Message('Connection');

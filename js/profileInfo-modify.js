@@ -9,7 +9,6 @@ const profileInfoInput = document.getElementsByClassName("__profileInfoInput");
 
 function jaaj() {
     for(let i = 0; i < profileInfoValue.length; i++){
-        console.log(profileInfoValue[i]);
         profileInfoValue[i].style.display = "none";
         profileInfoInput[i].style.display = "inline-block";
     }

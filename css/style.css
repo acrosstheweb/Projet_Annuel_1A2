@@ -226,11 +226,11 @@ width: 100rem;
 }
 
 /* Modale modif user Admin */
-#modify-adminPassword{
+.modify-adminPassword{
     display: none;
 }
 
-#modify-confirm{
+.modify-confirm{
     display: none;
 }
 

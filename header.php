@@ -1,5 +1,5 @@
 <?php
-    require 'functions.php';
+    require_once 'functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -105,7 +105,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <?php if(isConnected()){
                         if(isAdmin()){?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" role="button">Back-Office</a>
+                            <a class="nav-link" href="users.php" role="button">Back-Office</a>
                         </li>
                         <?php } ?>
                         <li class="nav-item">
