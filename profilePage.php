@@ -8,6 +8,7 @@
     $content = "Profil utilisateur";
     $currentPage = 'profile';
     require 'header.php';
+    Message('Update');
     $db = database();
     $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM rku_user WHERE id=:id");
     $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
@@ -52,7 +53,7 @@
             </div>
 
             <div class="row">
-                <form id="modifyProfile" method="POST">
+                <form id="modifyProfile" method="POST" action="updateprofile.php">
                     <div class="row">
                         <div class="col-6 mb-3">
                             <label for="profileCivility" class="form-label">
@@ -80,7 +81,7 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileFirstName" value="<?php echo $user['firstName'] ?? '' ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" name="profileFirstName" id="profileFirstName" value="<?php echo $user['firstName'] ?? '' ?>" required="required">
                         </div>
 
                         <div class="col-6 mb-3">
@@ -92,7 +93,7 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileLastName" value="<?php echo $user['lastName'] ?? '' ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" name="profileLastName" id="profileLastName" value="<?php echo $user['lastName'] ?? '' ?>" required="required">
                         </div>
                     </div>
 
@@ -106,7 +107,7 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" name="profileEmail" id="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required">
                         </div>
 
                         <div class="col-6 mb-3">
@@ -118,7 +119,7 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="date" class="form-control __profileInfoInput" id="profileBirthDate" value="<?php echo $user['birthday'] ?? '' ?>" required="required">
+                            <input type="date" class="form-control __profileInfoInput" name="profileBirthDate" id="profileBirthDate" value="<?php echo $user['birthday'] ?? '' ?>" required="required">
                         </div>
                     </div>
                     
@@ -133,7 +134,7 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileAddress" value="<?php echo $user['address'] ?? '' ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" name="profileAddress" id="profileAddress" value="<?php echo $user['address'] ?? '' ?>" required="required">
                         </div>
                     </div>
 
@@ -147,7 +148,7 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileZipCode" value="<?php echo $user['zipCode'] ?? '' ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" name="profileZipCode" id="profileZipCode" value="<?php echo $user['zipCode'] ?? '' ?>" required="required">
                         </div>
                     
                         <div class="col-6 mb-3">
@@ -159,10 +160,9 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" id="profileCity" value="<?php echo $user['city'] ?? '' ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" name="profileCity" id="profileCity" value="<?php echo $user['city'] ?? '' ?>" required="required">
                         </div>
                     </div>
-
                     <a href="profilePage.php" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
                     <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileInfoSubmit">Enregistrer les modifications</button>
                 </form>
