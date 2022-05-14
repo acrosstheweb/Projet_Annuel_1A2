@@ -235,10 +235,14 @@ width: 100rem;
 }
 
 /* Modale suppression user Admin */
-#delete-adminPassword{
+.delete-adminPassword{
     display: none;
 }
 
-#delete-confirm{
+.delete-confirm{
     display: none;
+}
+
+#tableHeaderSortable{
+    cursor: pointer;
 }
