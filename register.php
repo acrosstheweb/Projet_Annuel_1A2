@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 if(
-    count($_POST) != 11 ||
+    count($_POST) != 10 ||
     empty($_POST['register-civility']) ||
     empty($_POST['register-birthday']) ||
     empty($_POST['register-lastname']) ||
