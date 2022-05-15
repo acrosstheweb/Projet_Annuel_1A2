@@ -238,18 +238,6 @@ flex, par défaut -> 'justify-content: space-between'  -->
                                 <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required"><br>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <img class="col-12 mb-3" src="captcha.php" alt="captcha">
-                            </div>
-
-                            <div class="col">
-                                <label for="register-password">Captcha : </label>
-                                <input class="form-control" type="text" name="register-captcha" id="register-captcha" placeholder="Captcha" required="required">
-                            </div>
-                        </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">

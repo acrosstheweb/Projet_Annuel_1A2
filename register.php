@@ -10,7 +10,6 @@ if(
     empty($_POST['register-address']) ||
     empty($_POST['register-city']) ||
     empty($_POST['register-zip-code']) ||
-    empty($_POST['register-captcha']) ||
     empty($_POST['register-password']) ||
     empty($_POST['register-confirmed-password'])
 ){
@@ -29,7 +28,6 @@ $city = ucwords(strtolower($_POST['register-city']));
 $zipCode = $_POST['register-zip-code'];
 $password = $_POST['register-password'];
 $passwordConfirmed = $_POST['register-confirmed-password'];
-$captcha = trim($_POST['register-captcha']);
 
 $problems = [];
 $supportedCivilties = ['M', 'F'];
@@ -87,10 +85,6 @@ if(strlen($zipCode)!= 5 || !ctype_digit($zipCode)){
     $problems[] = 'Le code postal doit contenir exactement 5 chiffres';
 }
 
-// Captcha : si celui entré lors de l'inscription est différent de celui généré
-if($_SESSION['captcha'] != $captcha){
-    $problems[] = 'Captcha incorrect';
-}
 
 if(checkPassword($password) === true){
     if($password != $passwordConfirmed){
