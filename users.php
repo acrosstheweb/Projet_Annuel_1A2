@@ -74,46 +74,46 @@ Message('Delete');
                                                 <div class="row mt-3">
                                                     <div class="col-6">
                                                         <label for="modify-lastNameUid<?php echo $userId;?>" class="fw-bold">Nom </label>
-                                                        <input id="modify-lastNameUid<?php echo $userId;?>" class="form-control" type="text" name="modify-lastNameUid<?php echo $userId;?>" value="<?php echo $userLastName;?>" required="required">
+                                                        <input id="modify-lastNameUid<?php echo $userId;?>" class="form-control" type="text" name="modify-lastName" value="<?php echo $userLastName;?>" required="required">
                                                     </div>
                                                     <div class="col-6">
                                                         <label for="modify-firstNameUid<?php echo $userId;?>" class="fw-bold">Prénom </label>
-                                                        <input id="modify-firstNameUid<?php echo $userId;?>" class="form-control" type="text" name="modify-firstNameUid<?php echo $userId;?>" value="<?php echo $userFirstName;?>" required="required">
+                                                        <input id="modify-firstNameUid<?php echo $userId;?>" class="form-control" type="text" name="modify-firstName" value="<?php echo $userFirstName;?>" required="required">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="modify-birthdayUid<?php echo $userId;?>" class="fw-bold">Date de naissance </label>
-                                                        <input id="modify-birthdayUid<?php echo $userId;?>" class="form-control" type="date" name="modify-birthdayUid<?php echo $userId;?>" value="<?php echo $userBirthday;?>" required="required">
+                                                        <input id="modify-birthdayUid<?php echo $userId;?>" class="form-control" type="date" name="modify-birthday" value="<?php echo $userBirthday;?>" required="required">
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
                                                     <div class="col">
                                                         <label for="modify-emailUid<?php echo $userId;?>" class="fw-bold">Adresse e-mail </label>
-                                                        <input id="modify-emailUid<?php echo $userId;?>" class="form-control" type="email" name="modify-emailUid<?php echo $userId;?>" value="<?php echo $userMail;?>" required="required">
+                                                        <input id="modify-emailUid<?php echo $userId;?>" class="form-control" type="email" name="modify-email" value="<?php echo $userMail;?>" required="required">
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
                                                     <div class="col">
                                                         <label for="modify-addressUid<?php echo $userId;?>" class="fw-bold">Adresse </label>
-                                                        <input id="modify-addressUid<?php echo $userId;?>" class="form-control" type="text" name="modify-addressUid<?php echo $userId;?>" value="<?php echo $userAddress;?>" required="required">
+                                                        <input id="modify-addressUid<?php echo $userId;?>" class="form-control" type="text" name="modify-address" value="<?php echo $userAddress;?>" required="required">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="modify-zipCodeUid<?php echo $userId;?>" class="fw-bold">Code postal </label>
-                                                        <input id="modify-zipCodeUid<?php echo $userId;?>" class="form-control" type="text" name="modify-zipCodeUid<?php echo $userId;?>" value="<?php echo $userZipCode;?>" required="required">
+                                                        <input id="modify-zipCodeUid<?php echo $userId;?>" class="form-control" type="text" name="modify-zipCode" value="<?php echo $userZipCode;?>" required="required">
                                                     </div>
                                                     <div class="col-6">
                                                         <label for="modify-cityUid<?php echo $userId;?>" class="fw-bold">Ville </label>
-                                                        <input id="modify-cityUid<?php echo $userId;?>" class="form-control" type="text" name="modify-cityUid<?php echo $userId;?>" value="<?php echo $userCity;?>" required="required">
+                                                        <input id="modify-cityUid<?php echo $userId;?>" class="form-control" type="text" name="modify-city" value="<?php echo $userCity;?>" required="required">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mt-3 modify-adminPassword">
                                                 <div class="col">
                                                     <label for="modify-adminPasswordInputUid<?php echo $userId;?>" class="fw-bold">Mot de passe Administrateur </label>
-                                                    <input id="modify-adminPasswordInputUid<?php echo $userId;?>" class="form-control" type="password" name="modify-adminPasswordInputUid<?php echo $userId;?>" placeholder="Veuillez saisir votre mot de passe" required="required">
+                                                    <input id="modify-adminPasswordInputUid<?php echo $userId;?>" class="form-control" type="password" name="modify-adminPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
                                                 </div>
                                             </div>
                                         </form>
