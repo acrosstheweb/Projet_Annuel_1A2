@@ -17,28 +17,14 @@ for(let i = 0; i < modifyPasswordConfirm.length; i++){
     modifyPasswordConfirm[i].addEventListener("click", openModifyConfirm);
 }
 
-// Reset modal state on open
-const modifyModalTrigger = document.getElementsByClassName("modifyModal--trigger");
-
-function resetModalState() {
-    for(let i = 0; i < modifyModalTrigger.length; i++){
-        modifyPasswordConfirm[i].style.display = "inline-block";
-        modifyConfirm[i].style.display = "none";
-        modifyFormInfo[i].style.display = "inline-block";
-        modifyAdminPassword[i].style.display = "none";
-    }
-}
-
-for(let j = 0; j < modifyModalTrigger.length; j++){
-    modifyModalTrigger[j].addEventListener("click", resetModalState);
-}
 // ---- FIN de la partie modifyUserAdmin ----
 
 // ---- DEBUT de la partie deleteUserAdmin ----
 const deletePasswordConfirm = document.getElementsByClassName("delete-passwordConfirm"),
     deleteConfirm = document.getElementsByClassName("delete-confirm"),
     deletePasswordConfirmDescription = document.getElementsByClassName("delete-passwordConfirmDescription"),
-    deleteAdminPassword = document.getElementsByClassName("delete-adminPassword"); // Champ mot de passe de l'admin
+    deleteAdminPassword = document.getElementsByClassName("delete-adminPassword"), // Champ mot de passe de l'admin
+    deleteFormInfo = document.getElementsByClassName("deleteFormInfo");
 
 function openDeleteConfirm() {
     for(let i = 0; i < deletePasswordConfirm.length; i++) {
@@ -109,4 +95,37 @@ function sortColumn(n,tableId) {
             }
         }
     }
+}
+
+
+// Reset modal state on open
+const modifyModalTrigger = document.getElementsByClassName("modifyModal--trigger");
+
+function resetModifyModalState() {
+    for(let i = 0; i < modifyModalTrigger.length; i++){
+        modifyPasswordConfirm[i].style.display = "inline-block";
+        modifyConfirm[i].style.display = "none";
+        modifyFormInfo[i].style.display = "inline-block";
+        modifyAdminPassword[i].style.display = "none";
+    }
+}
+
+for(let j = 0; j < modifyModalTrigger.length; j++){
+    modifyModalTrigger[j].addEventListener("click", resetModifyModalState);
+}
+
+const deleteModalTrigger = document.getElementsByClassName("deleteModal--trigger");
+
+function resetDeleteModalState() {
+    for(let i = 0; i < modifyModalTrigger.length; i++){
+        deletePasswordConfirmDescription[i].innerHTML = "Êtes-vous sûr de vouloir le supprimer?"
+        deletePasswordConfirm[i].style.display = "inline-block";
+        deleteConfirm[i].style.display = "none";
+        deleteFormInfo[i].style.display = "inline-block";
+        deleteAdminPassword[i].style.display = "none";
+    }
+}
+
+for(let j = 0; j < deleteModalTrigger.length; j++){
+    deleteModalTrigger[j].addEventListener("click", resetDeleteModalState);
 }

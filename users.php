@@ -53,7 +53,7 @@ Message('Delete');
 							<td>
 								<div class="btn-group">
 									<a href="#" class="btn btn-primary modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalUid<?php echo $userId;?>">Modifier</a>
-									<a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModalUid<?php echo $userId;?>">Supprimer</a>
+									<a href="#" class="btn btn-danger deleteModal--trigger" data-bs-toggle="modal" data-bs-target="#delModalUid<?php echo $userId;?>">Supprimer</a>
 								</div>
 
 							</td>
@@ -136,16 +136,17 @@ Message('Delete');
                                     </div>
                                     <div class="modal-body">
                                         <form id="deleteUserFormUid<?php echo $userId;?>" action="userDel.php?id=<?php echo $userId;?>" method="POST" >
-                                            <h5>Vous êtes sur le point de supprimer l'utilisateur suivant:</h5>
-                                            <div class="row">
-                                                <p class="col"><strong>Nom</strong><br><?php echo $userLastName;?></p>
-                                                <p class="col"><strong>Prénom</strong><br><?php echo $userFirstName;?></p>
+                                            <div class="deleteFormInfo">
+                                                <h5>Vous êtes sur le point de supprimer l'utilisateur suivant:</h5>
+                                                <div class="row">
+                                                    <p class="col"><strong>Nom</strong><br><?php echo $userLastName;?></p>
+                                                    <p class="col"><strong>Prénom</strong><br><?php echo $userFirstName;?></p>
+                                                </div>
+                                                <div class="row">
+                                                    <p><strong>Adresse e-mail</strong><br><?php echo $userMail;?></p>
+                                                </div>
+                                                <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer?</p>
                                             </div>
-                                            <div class="row">
-                                                <p><strong>Adresse e-mail</strong><br><?php echo $userMail;?></p>
-                                            </div>
-                                            <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer?</p>
-
                                             <div class="row delete-adminPassword">
                                                 <div class="col">
                                                     <label for="delete-adminPasswordInput" class="fw-bold">Mot de passe Administrateur </label>
