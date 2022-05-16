@@ -97,8 +97,8 @@ if(checkPassword($password) === true){
 if(count($problems) == 0){
     $password = password_hash($_POST['register-password'], PASSWORD_DEFAULT);
 
-    $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,civility,birthday,password,role,fitcoin) VALUES 
-                                                                (:firstname, :lastname, :email, :address, :city, :civility, :birthday, :password, :role, :fitcoin)");
+    $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin) VALUES 
+                                                                (:firstname, :lastname, :email, :address, :city, :zipcode, :civility, :birthday, :password, :role, :fitcoin)");
 
     $insertUserQuery->execute([
         'firstname' => $firstname,
@@ -106,6 +106,7 @@ if(count($problems) == 0){
         'email' => $email,
         'address' => $address,
         'city' => $city,
+        'zipcode' => $zipCode,
         'civility' => $civility,
         'birthday' => $birthday,
         'password' => $password,
