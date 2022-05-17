@@ -16,6 +16,10 @@
     border-radius: 50%;
 }
 
+.navbar-brand,.footer-logo{
+    width: 3rem;
+}
+
 #__userSlide {
     position: fixed;
     right: 0;
@@ -245,4 +249,8 @@ width: 100rem;
 
 #tableHeaderSortable{
     cursor: pointer;
+}
+
+table{
+    color: unset;
 }
