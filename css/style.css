@@ -16,8 +16,24 @@
     border-radius: 50%;
 }
 
-.navbar-brand,.footer-logo{
-    width: 3rem;
+/* Header */
+.navbar-brand,.footer-logo,.__logoIcon{
+    width: 2.5rem;
+}
+
+.__navIcon{
+    font-size: 20px;
+    margin: 0 .75rem;
+}
+
+.__navbarIcons{
+    flex-direction: row;
+}
+
+.navbar-nav .dropdown-menu{
+    padding: 0 1rem;
+    position: absolute;
+    min-width: 7rem;
 }
 
 #__userSlide {
