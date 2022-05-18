@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $categorie['title'] ?></h5>
                             <p class="card-text"><?php echo $categorie['description'] ?></p>
-                            <a href="question.php?id=<?php echo $categorie['id'] ?>" class="btn btn-primary">Go somewhere</a>
+                            <a href="categorie.php?id=<?php echo $categorie['id'] ?>" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>        
