@@ -36,6 +36,21 @@
     min-width: 7rem;
 }
 
+#search-addon{
+    background-color: unset;
+    margin-left: .75rem;
+}
+
+@media (min-width: 992px){
+    #__search-trigger {
+        display: inline;
+    }
+ 
+    #__searchbar{
+        display: none;
+    }
+}
+
 #__userSlide {
     position: fixed;
     right: 0;

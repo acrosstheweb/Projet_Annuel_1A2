@@ -44,14 +44,15 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid d-flex flex-column">
                 <div class="container-fluid row">
-                    <div class="col-5 p-0">
+                    <!-- LIENS NAVBAR -->
+                    <div class="col-5 p-0 d-flex align-items-center">
                         <ul class="navbar-nav __navbarIcons justify-content-start">
                             <li class="navbar-toggler border-0 px-0" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-bars"></i></a>
                             </li>
                         </ul>
                         <div class="d-none d-lg-inline">
-                            <ul class="navbar-nav ms-3">
+                            <ul class="navbar-nav ms-3 align-items-center">
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "gyms");
@@ -83,24 +84,31 @@
                                                             isActive($currentPage, "about");
                                                         } ?>" href="about.php">Informations</a>
                                 </li>
-                                <li class="input-group rounded nav-item">
-                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
-                                    <span class="d-flex align-items-center border-0 nav-item" id="search-addon">
-                                        <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                    </span>
-                                </li>
                             </ul>
                         </div>
                     </div>
                     
+                    <!-- LOGO -->
                     <div class="col-2 text-center">
                         <a href="index.php" class="navbar-brand mx-auto">
                             <img src="sources/img/icon.png" alt="logo" class="img-fluid __logoIcon">
                         </a>
                     </div>
 
-                    <div class="col-5 p-0">
+                    <!-- ICONES -->
+                    <div class="col-5 p-0 align-items-center">
                         <ul class="navbar-nav __navbarIcons justify-content-end">
+                            <div id="__searchbar">
+                            <li class="input-group rounded">
+                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <span class="input-group-text border-0 __navIcon nav-link" id="search-addon">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </span>
+                            </li>
+                            </div>
+                            <li class="nav-item" id="__search-trigger">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link __navIcon" href="#" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-user"></i>
@@ -123,6 +131,8 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- MENU BURGER CACHÉ EN DESKTOP -->
                 <div class="container-fluid row d-lg-none">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-3">
@@ -157,7 +167,7 @@
                                                         isActive($currentPage, "about");
                                                     } ?>" href="about.php">Informations</a>
                             </li>
-                            <li class="input-group rounded nav-item">
+                            <li class="input-group rounded nav-item d-lg-none">
                                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
                                 <span class="d-flex align-items-center border-0 nav-item" id="search-addon">
                                     <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -301,4 +311,5 @@
         </nav>
     </section>
 
-<script src="js/user-slide.js"></script>
+<!-- <script src="js/user-slide.js"></script> -->
+<script src="js/searchbar.js"></script>
