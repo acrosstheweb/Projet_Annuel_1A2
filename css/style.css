@@ -41,13 +41,19 @@
     margin-left: .75rem;
 }
 
+#__search-trigger {
+    display: none;
+}
+
+@media all {
+    #__searchbar{
+        display: none;
+    }
+}
+
 @media (min-width: 992px){
     #__search-trigger {
         display: inline;
-    }
- 
-    #__searchbar{
-        display: none;
     }
 }
 
