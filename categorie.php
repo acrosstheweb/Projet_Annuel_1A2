@@ -20,6 +20,9 @@
     $results = $req->fetchAll();
 ?>
 
+<a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
+<a class="btn btn-primary" href="newCategorie.php" role="button">Poser votre question</a>
+
 <h2 class="center aligned-title"> Les différentes questions du topic</h2>
 
         <div class="container">

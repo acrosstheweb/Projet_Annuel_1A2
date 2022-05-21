@@ -19,7 +19,7 @@
                             FROM RkU_QUESTION Q
                             LEFT JOIN RkU_USER U ON Q.userID = U.id
                             WHERE q.topic = $idTopic AND q.id = $idQestion
-                            ORDER BY q.creationDate DESC",
+                            ORDER BY q.creationDate DESC"
                         );
 
     $results = $req->fetch();
@@ -29,7 +29,19 @@
         die();
       }  
 
+    
+    $reqComments = $pdo->query("SELECT m.*, DATE_FORMAT(m.dateSend, ' le %d/%m/%Y à %Hh%i') as dateSend, U.firstname, U.lastname
+                FROM RkU_MESSAGE M
+                LEFT JOIN RkU_USER U ON M.userId = U.id
+                WHERE M.question = $idQestion
+                ORDER BY m.dateSend DESC"
+                                        );
+    
+    $resultsComments = $reqComments->fetchAll();
+
 ?>
+
+<a class="btn btn-primary" href="categorie.php?id=<?php echo $idTopic ?>" role="button">Revenir à la page précedente</a>
 
 
 <div class="container">
@@ -49,9 +61,36 @@
                 <div style="color: #CCC; font-size: 10px; text-align: right">
                     <?php echo $results["creationDate"] ?> par <?php echo $results["firstname"] ?>
                 </div>
+
+                <div style="background: white; box-shadow: 0 5px 15px rgba(0, 0, 0, .15); padding: 5px 10px; border-radius: 10px; margin-top: 20px">
+                    <h3>Commentaires</h3>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <?php foreach($resultsComments as $comment){ ?>
+
+
+                                <tr>
+                                    <td>De <?php echo $comment['firstname'] ?> <?php echo $comment['lastname'] ?></td>
+                                    <td><?php echo $comment['content'] ?></td>
+                                    <td><?php echo $comment['dateSend'] ?></td>
+                                </tr>   
+                            <?php
+                            }
+                            ?>
+                        </table>
+                    
+                    </div>
+                </div>      
+
+
+
             </div>
         </div>
-                
+               
+        
+
 
     </div>
 </div>
+
