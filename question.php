@@ -2,16 +2,24 @@
     $title = "Fitness Essential - Question";
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
-    require 'header.php';
-    Message('UploadImage');
-    
+
+    require_once 'functions.php';
+
     $idTopic = $_GET['idTopic'];
     $idQestion = $_GET['idQuestion'];
-
+    $_SESSION['idQuestion'] = $idQestion;
+    $_SESSION['idTopic'] = $idTopic;
+    
     if(empty($idTopic) || empty($idQestion)){
-        header('Location: /forum');
+        header('Location: forum.php');
         die();
     }
+    
+    require 'header.php';
+    Message('UploadImage');
+    Message('createComment');
+    Message('Delete');
+    
 
     $pdo = database();
 
@@ -24,8 +32,9 @@
 
     $results = $req->fetch();
 
+    require_once 'functions.php';
     if(!isset($results['id'])){
-        header('Location: /forum/' . $idTopic);
+        header('Location: forum.php/' . $idTopic);
         die();
       }  
 
@@ -62,6 +71,27 @@
                     <?php echo $results["creationDate"] ?> par <?php echo $results["firstname"] ?>
                 </div>
 
+                <?php
+                    if (isConnected()) {
+                ?>
+
+                <div style="background: white; box-shadow: 0 5px 15px rgba(0, 0, 0, .15); padding: 5px 10px; border-radius: 10px; margin-top: 20px">
+					<h3>Participer à la discussion</h3>
+
+                    <form method="post" action = "addComment.php">
+						<div class="form-group">
+						    <textarea class="form-control" name="content" id = "content" rows="4"></textarea>
+						</div>
+                        <div class="form-group">
+					        <button class="btn btn-primary" type="submit" name="addComment">Envoyer</button>
+                        </div>
+                    </form>
+                
+                </div>
+                <?php
+                    }
+                ?>
+
                 <div style="background: white; box-shadow: 0 5px 15px rgba(0, 0, 0, .15); padding: 5px 10px; border-radius: 10px; margin-top: 20px">
                     <h3>Commentaires</h3>
                     
@@ -74,6 +104,46 @@
                                     <td>De <?php echo $comment['firstname'] ?> <?php echo $comment['lastname'] ?></td>
                                     <td><?php echo $comment['content'] ?></td>
                                     <td><?php echo $comment['dateSend'] ?></td>
+                                    <?php
+                                        if($comment['userId']==$_SESSION['userId']){
+                                    ?>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn btn-danger deleteModal--trigger" data-bs-toggle="modal" data-bs-target="#delModalComment<?php echo $comment['id'];?>">Supprimer</a>
+                                        </div>
+                                    </td>
+
+                                    <div class="modal fade" id="delModalComment<?php echo $comment['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Suppression commentaire</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="deleteCommentUser<?php echo $comment['id'];?>" action="delComment.php?id=<?php echo $comment['id'];?>" method="POST" >
+                                                        <div class="deleteFormInfo">
+                                                            <h5>Vous êtes sur le point de supprimer votre commentaire</h5>
+                                                            <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer?</p>
+                                                        </div>
+                                                        <div class="row delete-userPassword">
+                                                            <div class="col">
+                                                                <label for="delete-userPasswordInput" class="fw-bold">Votre mot de passe</label>
+                                                                <input id="delete-userPasswordInput" class="form-control" type="password" name="delete-userPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <button class="btn btn-primary delete-passwordConfirm" form="deleteCommentUser<?php echo $comment['id'];?>" type="submit">Supprimer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <?php } ?>
+
                                 </tr>   
                             <?php
                             }
