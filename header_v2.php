@@ -100,10 +100,10 @@
                         <ul class="navbar-nav __navbarIcons justify-content-end">
                             <div id="__searchbar">
                             <li class="input-group rounded">
-                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                    <span class="input-group-text border-0 __navIcon nav-link" id="search-addon">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </span>
+                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <!--<span class="input-group-text border-0 __navIcon nav-link" id="search-addon"> A quoi sert cet élémént ? et pourquoi quand on le commente, la barre de recherche est surélevée
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </span>-->
                             </li>
                             </div>
                             <li class="nav-item" id="__search-trigger">
@@ -114,12 +114,26 @@
                                     <i class="fa-solid fa-user"></i>
                                 </a>
                                 <ul class="dropdown-menu __userDropdown" aria-labelledby="dropdownMenuButton1">
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
-                                    </li>
+                                    <?php if(isConnected()){ ?>
+                                        <?php if(isAdmin()){ ?>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="users.php" role="button">Back-Office</a>
+                                            </li>
+                                        <?php } ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="profilePage.php" role="button">Mon profil</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
+                                        </li>
+                                    <?php } else{ ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li class="nav-item">
