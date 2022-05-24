@@ -96,8 +96,8 @@
                     </div>
 
                     <!-- ICONES -->
-                    <div class="col-5 p-0 align-items-center">
-                        <ul class="navbar-nav __navbarIcons justify-content-end">
+                    <div class="col-5 p-0">
+                        <ul class="navbar-nav __navbarIcons justify-content-end align-items-center">
                             <div id="__searchbar">
                             <li class="input-group rounded">
                                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
