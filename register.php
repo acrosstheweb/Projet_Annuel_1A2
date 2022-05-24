@@ -97,23 +97,38 @@ if(checkPassword($password) === true){
 if(count($problems) == 0){
     $password = password_hash($_POST['register-password'], PASSWORD_DEFAULT);
 
-    $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin) VALUES 
-                                                                (:firstname, :lastname, :email, :address, :city, :zipcode, :civility, :birthday, :password, :role, :fitcoin)");
+    $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin,token_confirm_inscription) VALUES 
+                                                                (:firstname, :lastname, :email, :address, :city, :zipcode, :civility, :birthday, :password, :role, :fitcoin, :token_confirm_inscription)");
+    $tk = genToken();
 
-    $insertUserQuery->execute([
-        'firstname' => $firstname,
-        'lastname' => $lastname,
-        'email' => $email,
-        'address' => $address,
-        'city' => $city,
-        'zipcode' => $zipCode,
-        'civility' => $civility,
-        'birthday' => $birthday,
-        'password' => $password,
-        'role' => 0,
-        'fitcoin' => 0
-    ]);
-    setMessage('RegisterSuccess', ['Inscription réussie !'], 'success');
+    $to = $email;
+    $subject = 'Inscription Fitness Essential 💪';
+    $message = register_mail($firstname, $tk, 'http://localhost/Projet_Annuel_1A2_github');
+    $headers = 'From: "Fitness Essential" fitness3ssential@gmail.com' . PHP_EOL;
+    $headers .= "MIME-Version: 1.0" . PHP_EOL;
+    $headers .= 'Content-type: text/html; charset=iso-8859-1';
+
+    if(mail($to,$subject, $message, $headers)){
+
+        $insertUserQuery->execute([
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email,
+            'address' => $address,
+            'city' => $city,
+            'zipcode' => $zipCode,
+            'civility' => $civility,
+            'birthday' => $birthday,
+            'password' => $password,
+            'role' => 0,
+            'fitcoin' => 0,
+            'token_confirm_inscription' => $tk
+        ]);
+
+        setMessage('Register', ['Inscription réussie ! Vous allez recevoir un mail de confirmation à l\'adresse ' . $email], 'success');
+    }else{
+        setMessage('Register', [' Echec de l\'envoi du mail'], 'warning');
+    }
     header('Location: index.php');
     die();
 }else{
