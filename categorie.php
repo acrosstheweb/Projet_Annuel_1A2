@@ -6,12 +6,11 @@
     Message('UploadImage');
     Message('createQuestion');
     
-    $idTopic = $_GET['id'];
+    $idTopic = $_GET['idTopic'];
     
-
     $pdo = database();
 
-    $req = $pdo->query("SELECT q.*, DATE_FORMAT(q.creationDate, ' le %d/%m/%Y à %Hh%i') as creationDate, U.firstname
+    $req = $pdo->query("SELECT q.*, DATE_FORMAT(q.creationDate, ' le %d/%m/%Y à %Hh%i') as creationDate, U.firstname, U.lastname
                             FROM RkU_QUESTION Q
                             LEFT JOIN RkU_USER U ON Q.userID = U.id
                             WHERE q.topic = $idTopic
@@ -19,14 +18,18 @@
                             );
 
     $results = $req->fetchAll();
+
+    $req_title_topic = $pdo->query("SELECT title FROM RkU_TOPIC WHERE id=$idTopic");
+
+    $titleTopic = $req_title_topic->fetch()['title'];
 ?>
 
 <a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
 
 <?php if(isConnected()){ ?>
-    <a class="btn btn-primary" href="newQuestion.php" role="button">Poser votre question</a>
+    <a class="btn btn-primary" href="newQuestion.php?idTopic=<?= $idTopic ?>" role="button">Poser votre question</a>
 <?php }?>
-<h2 class="center aligned-title"> Les différentes questions du topic</h2>
+<h2 class="center aligned-title"> Les différentes questions <?= $titleTopic ?> </h2>
 
         <div class="container">
             <div class="row">
@@ -39,33 +42,33 @@
                     <div class="card" style="width: 60rem;">
                         <img src="..." class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $question['title'] ?></h5>
+                            <h5 class="card-title"><?= $question['title'] ?></h5>
                             <?php     
                                 if($question['status'] == 1)
                                     echo "open"; 
                                 elseif ($question['status'] == 0) 
                                     echo"closed";
                             ?>
-                            <p class="card-text">Publiée par <?php echo $question['firstname'],  $question['creationDate'] ?></p>
-                            <p class="card-text"><?php echo $question['content'] ?></p>
-                            <a href="question.php?idTopic=<?php echo $idTopic ?>&idQuestion=<?php echo $question['id'] ?>" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text">Publiée par <?= $question['firstname']?> <?= $question['lastname']?> le <?= $question['creationDate'] ?></p>
+                            <p class="card-text"><?= $question['content'] ?></p>
+                            <a href="question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary">Go somewhere</a>
 
                             <?php
                             if (isConnected()) {
                                 if($question['userId']==$_SESSION['userId']){
                             ?>
                             <div class="btn-group">
-                            <a href="#" class="btn btn-primary modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?php echo $question['userId'];?>">
+                            <a href="#" class="btn btn-primary modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?= $question['id'];?>">
                                 <?php 
                                     if($question['status'] == 1)
-                                        echo "Modifier"; 
+                                        echo "Fermer "; 
                                     elseif ($question['status'] == 0) 
-                                        echo "Réouvrir";
+                                        echo "Réouvrir ";
                                 ?>
                             </a>
                             </div>
 
-                            <div class="modal fade" id="modifyModalStatus<?php echo $question['userId'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modifyModalStatus<?= $question['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
                                     <div class="modal-header">
@@ -73,7 +76,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                            <form id="closeQuestion<?php echo $question['id'];?>" action="closeQuestion.php?id=<?php echo $question['id'];?>" method="POST" >
+                                            <form id="closeQuestion<?= $question['id'];?>" action="manageQuestion.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'];?>&status=<?= $question['status'] ?>" method="POST" >
                                                 <div class="deleteFormInfo">
                                                     <h5>
                                                         <?php 
@@ -102,7 +105,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                        <button class="btn btn-primary modify-passwordConfirm" form="closeQuestion<?php echo $question['id'];?>" type="submit">Modifier</button>
+                                        <button class="btn btn-primary modify-passwordConfirm" form="closeQuestion<?= $question['id'];?>" type="submit">Modifier</button>
                                     </div>
 								</div>
 							</div>

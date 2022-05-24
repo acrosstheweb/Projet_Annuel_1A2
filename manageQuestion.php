@@ -1,10 +1,10 @@
 <?php
 require 'functions.php';
 
-var_dump($_GET); var_dump($_POST); die();
 
-$idQuestion = $_SESSION['idQuestion'];
-$idTopic = $_SESSION['idTopic'];
+$idTopic = $_GET['idTopic'];
+$idQuestion = $_GET['idQuestion'];
+$status = $_GET['status'];
 
 if(empty($_POST['delete-userPasswordInput'])){
     header('Location: error404.php');
@@ -24,11 +24,16 @@ if(!password_verify($InputPwd, $userPwdInDb)){
     die();
 }
 
-$idQuestionToClose = $_GET['id'];
 
-$userDelQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 0 WHERE id=:id");
-$userDelQuery->execute(["id"=>$idQuestionToClose]);
-setMessage('Closed', ["La question" . $idQuestionToClose . " a bien été clôturée."], 'success');
+if($status == 1)
+    $questionManageQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 0 WHERE id=:idQuestion");
+elseif ($status == 0) {
+    $questionManageQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 1 WHERE id=:idQuestion");
+}
+
+
+$questionManageQuery->execute(["idQuestion"=>$idQuestion]);
+setMessage('Closed', ["La question" . $idQuestion . " a bien été clôturée."], 'success');
 header('Location: categorie.php?idTopic='.$idTopic);
 die();
 

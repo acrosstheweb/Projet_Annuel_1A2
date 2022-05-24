@@ -2,8 +2,9 @@
 
 require 'functions.php';
 
-$idQuestion = $_SESSION['idQuestion'];
-$idTopic = $_SESSION['idTopic'];
+$idTopic = $_GET['idTopic'];
+$idQuestion = $_GET['idQuestion'];
+$status = $_GET['status'];
 
 if(!empty($_POST)){
     extract($_POST);
@@ -36,7 +37,7 @@ if(!empty($_POST)){
         ]);
         
         setMessage('createComment', ['Votre commentaire a bien été ajouté'], 'success');
-        header('Location: question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion);
+        header('Location: question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion.'&status='.$status);
         exit;
     }
 
