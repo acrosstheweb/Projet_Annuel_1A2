@@ -10,7 +10,7 @@
 
         <div class="row justify-content-evenly px-md-3 my-3">
             <div class="col-8 text-center">
-                <video controls width="1000" class="my-3">
+                <video controls class="my-3">
 
                     <source src="/media/cc0-videos/flower.webm"
                             type="video/webm">
@@ -49,39 +49,23 @@
                 
                 <h2 class="text-center mt-5">Retrouvez d'autres articles</h2>
                 <div class="row justify-content-evenly px-md-3 my-3">
-                    <div class="col-6">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="m_halley.jpg" class="img-fluid rounded-start __img-related" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title">La comète de Halley</h3>
-                                        <p class="card-text">Edmond Halley, célèbre astronome, a prédit le retour d’une comète dans le ciel nocturne de la Terre pour 1758, cette comète porte depuis son nom : la comète de Halley.</p>
-                                        <a href="m_article2.php" class="btn btn-primary stretched-link">Lire l'article</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card" style="width: 20rem;">
+                    <img src="m_halley.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title __cardTitleIndex">La comète de Halley</h3>
+                        <p class="card-text __cardTextIndex">Edmond Halley, célèbre astronome, a prédit le retour d’une comète dans le ciel nocturne de la Terre pour 1758, cette comète porte depuis son nom : la comète de Halley.</p>
+                        <a href="m_article2.php" class="btn btn-primary stretched-link">Lire l'article</a>
                     </div>
+                </div>
 
-                    <div class="col-6">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="m_betelgeuse.jpg" class="img-fluid rounded-start __img-related" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title">L'avenir de Bételgeuse</h3>
-                                        <p class="card-text">Bételgeuse est une étoile supergéante rouge sur son lit de mort dans la constellation d'Orion. Supernova ou pas, telle est la question.</p>
-                                        <a href="m_article3.php" class="btn btn-primary stretched-link">Lire l'article</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card" style="width: 20rem;">
+                    <img src="m_betelgeuse.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title __cardTitleIndex">L'avenir de Bételgeuse</h3>
+                        <p class="card-text __cardTextIndex">Bételgeuse est une étoile supergéante rouge sur son lit de mort dans la constellation d'Orion. Supernova ou pas, telle est la question.</p>
+                        <a href="m_article3.php" class="btn btn-primary stretched-link">Lire l'article</a>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

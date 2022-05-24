@@ -87,3 +87,8 @@ h1{
     width: auto;
     object-fit: cover;
 }
+
+video{
+    width: 100%;
+    height: auto;
+}

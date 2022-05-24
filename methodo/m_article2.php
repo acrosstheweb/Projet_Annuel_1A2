@@ -57,37 +57,21 @@
                 
                 <h2 class="text-center mt-5">Retrouvez d'autres articles</h2>
                 <div class="row justify-content-evenly px-md-3 my-3">
-                    <div class="col-6">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="m_etoile.jpg" class="img-fluid rounded-start __img-related" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title">Le cycle de vie des étoiles</h3>
-                                        <p class="card-text">Durant toute la durée de son existence, l’étoile traverse plusieurs stades différents mais alors, quel est le cycle de vie des étoiles ?</p>
-                                        <a href="m_article1.php" class="btn btn-primary stretched-link">Lire l'article</a>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="card" style="width: 20rem;">
+                        <img src="m_etoile.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-title __cardTitleIndex">Le cycle de vie des étoiles</h3>
+                            <p class="card-text __cardTextIndex">Durant toute la durée de son existence, l’étoile traverse plusieurs stades différents mais alors, quel est le cycle de vie des étoiles ?</p>
+                            <a href="m_article1.php" class="btn btn-primary stretched-link">Lire l'article</a>
                         </div>
                     </div>
 
-                    <div class="col-6">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="m_betelgeuse.jpg" class="img-fluid rounded-start __img-related" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h3 class="card-title">L'avenir de Bételgeuse</h3>
-                                        <p class="card-text">Bételgeuse est une étoile supergéante rouge sur son lit de mort dans la constellation d'Orion. Supernova ou pas, telle est la question.</p>
-                                        <a href="m_article3.php" class="btn btn-primary stretched-link">Lire l'article</a>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="card" style="width: 20rem;">
+                        <img src="m_betelgeuse.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-title __cardTitleIndex">L'avenir de Bételgeuse</h3>
+                            <p class="card-text __cardTextIndex">Bételgeuse est une étoile supergéante rouge sur son lit de mort dans la constellation d'Orion. Supernova ou pas, telle est la question.</p>
+                            <a href="m_article3.php" class="btn btn-primary stretched-link">Lire l'article</a>
                         </div>
                     </div>
                 </div>
