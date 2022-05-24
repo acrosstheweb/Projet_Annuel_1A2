@@ -5,6 +5,7 @@
     require 'header.php';
     Message('UploadImage');
     Message('createQuestion');
+    Message('manageQuestion');
     
     $idTopic = $_GET['idTopic'];
     

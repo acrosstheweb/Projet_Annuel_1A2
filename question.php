@@ -17,7 +17,6 @@
     require 'header.php';
     Message('UploadImage');
     Message('createComment');
-    Message('Delete');
     
 
     $pdo = database();
