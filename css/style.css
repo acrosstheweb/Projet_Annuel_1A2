@@ -16,6 +16,47 @@
     border-radius: 50%;
 }
 
+/* Header */
+.navbar-brand,.footer-logo,.__logoIcon{
+    width: 2.5rem;
+}
+
+.__navIcon{
+    font-size: 20px;
+    margin: 0 .75rem;
+}
+
+.__navbarIcons{
+    flex-direction: row;
+}
+
+.navbar-nav .dropdown-menu{
+    padding: 0 1rem;
+    position: absolute;
+    min-width: 7rem;
+}
+
+#search-addon{
+    background-color: unset;
+    margin-left: .75rem;
+}
+
+#__search-trigger {
+    display: none;
+}
+
+@media all {
+    #__searchbar{
+        display: none;
+    }
+}
+
+@media (min-width: 992px){
+    #__search-trigger {
+        display: inline;
+    }
+}
+
 #__userSlide {
     position: fixed;
     right: 0;
@@ -161,7 +202,7 @@ h1{
 }
 
 #carouselDesktop.carousel-caption{
-width: 100rem;
+    width: 100rem;
 }
 
 .__carouselControl{
@@ -245,4 +286,8 @@ width: 100rem;
 
 #tableHeaderSortable{
     cursor: pointer;
+}
+
+table{
+    color: unset;
 }

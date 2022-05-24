@@ -12,7 +12,7 @@
                                         } else {
                                             echo "Bienvenue sur Fitness Essential";
                                         } ?>>
-    <link rel="icon" type="image/x-icon" href="sources/img/logo.png">
+    <link rel="icon" type="image/x-icon" href="sources/img/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
@@ -36,109 +36,165 @@
     }
     ?>
 
-    <header class="sticky-top px-3">
+    <header class="sticky-top px-1">
 
-        <!-- Nativement, avec la classe 'navbar', les éléments enfants de la nav utilisent
-flex, par défaut -> 'justify-content: space-between'  -->
+        <!-- Nativement, avec la classe 'navbar', les éléments enfants de la nav utilisent flex, par défaut -> 'justify-content: space-between'  -->
 
         <!-- Création de la navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <a href="index.php" class="navbar-brand">
-                    <img src="sources/img/logo.png" alt="logo">
-                </a>
+            <div class="container-fluid d-flex flex-column">
+                <div class="container-fluid row">
+                    <!-- LIENS NAVBAR -->
+                    <div class="col-5 p-0 d-flex align-items-center">
+                        <ul class="navbar-nav __navbarIcons justify-content-start">
+                            <li class="navbar-toggler border-0 px-0" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-bars"></i></a>
+                            </li>
+                        </ul>
+                        <div class="d-none d-lg-inline">
+                            <ul class="navbar-nav ms-3 align-items-center">
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "gyms");
+                                                        } ?>" href="gyms.php">Salles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "subscriptions");
+                                                        } ?>" href="subscriptions.php">Abonnements</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "reservations");
+                                                        } ?>" href="reservations.php">Réservations</a>
+                                </li>
 
-                <!-- Création du burger menu  -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "programs");
+                                                        } ?>" href="programs.php">Programmes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "forum");
+                                                        } ?>" href="forum.php">Forum</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "about");
+                                                        } ?>" href="about.php">Informations</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- LOGO -->
+                    <div class="col-2 text-center">
+                        <a href="index.php" class="navbar-brand mx-auto">
+                            <img src="sources/img/icon.png" alt="logo" class="img-fluid __logoIcon">
+                        </a>
+                    </div>
 
-                <!-- Contenu de la navbar -->
-                <!-- NE PAS METTRE D'ESPACE DANS LES NOMS DES DIFFÉRENTES PAGES -->
+                    <!-- ICONES -->
+                    <div class="col-5 p-0 align-items-center">
+                        <ul class="navbar-nav __navbarIcons justify-content-end">
+                            <div id="__searchbar">
+                            <li class="input-group rounded">
+                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <!--<span class="input-group-text border-0 __navIcon nav-link" id="search-addon"> A quoi sert cet élémént ? et pourquoi quand on le commente, la barre de recherche est surélevée
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </span>-->
+                            </li>
+                            </div>
+                            <li class="nav-item" id="__search-trigger">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link __navIcon" href="#" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu __userDropdown" aria-labelledby="dropdownMenuButton1">
+                                    <?php if(isConnected()){ ?>
+                                        <?php if(isAdmin()){ ?>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="users.php" role="button">Back-Office</a>
+                                            </li>
+                                        <?php } ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="profilePage.php" role="button">Mon profil</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
+                                        </li>
+                                    <?php } else{ ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-bag-shopping"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-moon"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- MENU BURGER CACHÉ EN DESKTOP -->
+                <div class="container-fluid row d-lg-none">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-3">
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "gyms");
+                                                    } ?>" href="gyms.php">Salles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "subscriptions");
+                                                    } ?>" href="subscriptions.php">Abonnements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "reservations");
+                                                    } ?>" href="reservations.php">Réservations</a>
+                            </li>
 
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "gyms");
-                                                } ?>" href="gyms.php">Salles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "subscriptions");
-                                                } ?>" href="subscriptions.php">Abonnements</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "reservations");
-                                                } ?>" href="reservations.php">Réservations</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "programs");
-                                                } ?>" href="programs.php">Programmes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "forum");
-                                                } ?>" href="forum.php">Forum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "about");
-                                                } ?>" href="about.php">Informations</a>
-                        </li>
-                    </ul>
-
-                    <!-- Barre de recherche et bouton recherche -->
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="align-items: center">
-                        <li class="nav-item __research-bar">
-                            <form action="#" class="d-flex">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
-                                    <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
-                                </div>
-                            </form>
-                        </li>
-                    <?php if(isConnected()){
-                        if(isAdmin()){?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="users.php" role="button">Back-Office</a>
-                        </li>
-                        <?php } ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="__userProfileButton" role="button"><img src="sources/img/avatar.jpg" alt="mon profil" style="width: 55px;border-radius: 50%;"></a>
-                        </li>
-                    <?php }
-                    else{
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                    </ul>
-
-                    <!-- </div> -->
-
-                    <!-- Il faudra penser à rajouter le petit panier ici -->
-
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "programs");
+                                                    } ?>" href="programs.php">Programmes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "forum");
+                                                    } ?>" href="forum.php">Forum</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "about");
+                                                    } ?>" href="about.php">Informations</a>
+                            </li>
+                            <li class="input-group rounded nav-item d-lg-none">
+                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
+                                <span class="d-flex align-items-center border-0 nav-item" id="search-addon">
+                                    <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
         </nav>
 
     </header>
-
-    <!-- Modales INSCRIPTION / CONNEXION -->
 
     <div class="modal" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -167,6 +223,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
             </div>
         </div>
     </div>
+
     <div class="modal" id="register-modal" aria-hidden="true" aria-labelledby="register-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -252,6 +309,12 @@ flex, par défaut -> 'justify-content: space-between'  -->
     <section id="__userSlide">
         <nav class="navbar" id="__userVerticalNav">
             <ul>
+                <?php 
+                if(isAdmin()){?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="users.php" role="button">Back-Office</a>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
                     <a class="nav-link " href="profilePage.php">Mon profil</a>
                 </li>
@@ -262,4 +325,5 @@ flex, par défaut -> 'justify-content: space-between'  -->
         </nav>
     </section>
 
-<script src="js/user-slide.js"></script>
+<!-- <script src="js/user-slide.js"></script> -->
+<script src="js/searchbar.js"></script>
