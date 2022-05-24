@@ -13,7 +13,7 @@ if(!empty($_POST)){
     if(isset($_POST['createQuestion'])){
         $question = $_POST['question'];
         $content = $_POST['content'];
-        $topic = $_POST['topic'];
+        $idTopic = $_GET['idTopic'];
         
         if(empty($question)){
             $valid = false;
@@ -25,14 +25,14 @@ if(!empty($_POST)){
             $errors = ("Il faut mettre un contenu");
         }
             
-        if(empty($topic)){
+        if(empty($idTopic)){
             $valid = false;
             $errors = "La catégorie ne peut pas être vide";
         }
         
         else{
 
-            $checkTopic = $pdo->query("SELECT id, title FROM RkU_TOPIC WHERE id = $topic");
+            $checkTopic = $pdo->query("SELECT id, title FROM RkU_TOPIC WHERE id = $idTopic");
 
             $results = $checkTopic->fetch();
 
@@ -54,17 +54,17 @@ if(!empty($_POST)){
             'title'=>$question,
             'content'=>$content,
             'userId'=>$_SESSION['userId'],
-            'topic'=>$topic,
+            'topic'=>$idTopic,
             'status'=>1
         ]);
 
         setMessage('createQuestion', ['Votre question a bien été enregistrée'], 'success');
-        header('Location: categorie.php?id='.$topic);
+        header('Location: categorie.php?idTopic='.$idTopic);
         exit;
     }
     else{
         setMessage('createQuestion', [$errors], 'warning');
-        header('Location: categorie.php?id='.$topic);
+        header('Location: categorie.php?idTopic='.$idTopic);
         exit;
     }
         

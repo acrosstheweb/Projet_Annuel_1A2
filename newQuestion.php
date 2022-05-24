@@ -3,6 +3,8 @@
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
 
+    $idTopic = $_GET['idTopic'];
+
     require_once 'functions.php';
 
     if(!isConnected()){
@@ -15,18 +17,19 @@
 
     $pdo = database();
 
-    $req = $pdo->query("SELECT id, title FROM RkU_TOPIC");
+    $req = $pdo->query("SELECT title FROM RkU_TOPIC");
     $results = $req->fetchAll();
 
 ?>
 
+<a class="btn btn-primary" href="categorie.php?idTopic=<?php echo $idTopic ?>" role="button">Revenir à la page précedente</a>
 
 <h2 class="aligned-title"> Une question</h2>
 
     <p class="text-center">Votre demande sera traitée dans les plus brefs délais.</p>
 
     <div class="row d-flex justify-content-center">
-        <form action="addNewQuestion.php" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
+        <form action="addNewQuestion.php?idTopic=<?php echo $idTopic ?>" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
             <div class="row my-3">
                 <label for="topic">Sélectionnez un sujet : </label>
                 <select class="form-select" name="topic" id="topic"><br>
@@ -34,7 +37,7 @@
                     <?php 
                         foreach($results as $topic){
                     ?>
-                        <option value="<?php echo $topic['id'] ?>"> <?php echo $topic['title'] ?> </option>
+                        <option value="<?php echo $idTopic ?>"> <?php echo $topic['title'] ?> </option>
                     <?php
                         }
                     ?>
