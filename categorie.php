@@ -51,6 +51,7 @@
                             <a href="question.php?idTopic=<?php echo $idTopic ?>&idQuestion=<?php echo $question['id'] ?>" class="btn btn-primary">Go somewhere</a>
 
                             <?php
+                            if (isConnected()) {
                                 if($question['userId']==$_SESSION['userId']){
                             ?>
                             <div class="btn-group">
@@ -107,7 +108,7 @@
 							</div>
 						</div>
 
-                            <?php } ?>
+                            <?php } }?>
                         </div>
                     </div>
                 </div>
