@@ -5,6 +5,11 @@
     require 'header.php';
     Message('UploadImage');
     Message('No Topic');
+
+    if(!isConnected()){
+        echo "Connecte toi bouffon";
+        die();
+    }
     
     $pdo = database();
 

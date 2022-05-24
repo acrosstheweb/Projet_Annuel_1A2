@@ -21,7 +21,7 @@ $password = $_POST['login-password'];
 $problems = [];
 $db = database();
 
-$checkUserQuery = $db->prepare('SELECT id, password FROM RkU_user WHERE email=:email');
+$checkUserQuery = $db->prepare('SELECT id, password, role FROM RkU_user WHERE email=:email');
 $checkUserQuery->execute([':email'=>$email]);
 $user = $checkUserQuery->fetch();
 
@@ -36,9 +36,13 @@ if($user === false){
     $pwdInDb = $user['password'];
 
     if(password_verify($password, $pwdInDb)){
-        $_SESSION['userToken'] = setToken($user['id']);
-        $_SESSION['userId'] = $user['id'];
-        setMessage('Connection', ['Connexion réussie'], 'success');
+        if($user['role'] < 1){
+            setMessage('Connection', ['Vous n\'avez pas confirmé votre compte via le mail envoyé :)'], 'success');
+        }else{
+            $_SESSION['userToken'] = setToken($user['id']);
+            $_SESSION['userId'] = $user['id'];
+            setMessage('Connection', ['Connexion réussie'], 'success');
+        }
     }else{
         setMessage('Connection', ['Nom d\'utilisateur ou mot de passe incorrect'], 'warning');
     }
