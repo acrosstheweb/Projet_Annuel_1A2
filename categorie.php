@@ -1,0 +1,124 @@
+<?php
+    $title = "Fitness Essential - Catégorie";
+    $content = "Le forum de Fitness Essential";
+    $currentPage = 'forum';
+    require 'header.php';
+    Message('UploadImage');
+    Message('createQuestion');
+    
+    $idTopic = $_GET['id'];
+    
+
+    $pdo = database();
+
+    $req = $pdo->query("SELECT q.*, DATE_FORMAT(q.creationDate, ' le %d/%m/%Y à %Hh%i') as creationDate, U.firstname
+                            FROM RkU_QUESTION Q
+                            LEFT JOIN RkU_USER U ON Q.userID = U.id
+                            WHERE q.topic = $idTopic
+                            ORDER BY q.creationDate DESC",
+                            );
+
+    $results = $req->fetchAll();
+?>
+
+<a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
+
+<?php if(isConnected()){ ?>
+    <a class="btn btn-primary" href="newQuestion.php" role="button">Poser votre question</a>
+<?php }?>
+<h2 class="center aligned-title"> Les différentes questions du topic</h2>
+
+        <div class="container">
+            <div class="row">
+
+<?php
+    foreach($results as $question){
+?>
+
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card" style="width: 60rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $question['title'] ?></h5>
+                            <?php     
+                                if($question['status'] == 1)
+                                    echo "open"; 
+                                elseif ($question['status'] == 0) 
+                                    echo"closed";
+                            ?>
+                            <p class="card-text">Publiée par <?php echo $question['firstname'],  $question['creationDate'] ?></p>
+                            <p class="card-text"><?php echo $question['content'] ?></p>
+                            <a href="question.php?idTopic=<?php echo $idTopic ?>&idQuestion=<?php echo $question['id'] ?>" class="btn btn-primary">Go somewhere</a>
+
+                            <?php
+                            if (isConnected()) {
+                                if($question['userId']==$_SESSION['userId']){
+                            ?>
+                            <div class="btn-group">
+                            <a href="#" class="btn btn-primary modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?php echo $question['userId'];?>">
+                                <?php 
+                                    if($question['status'] == 1)
+                                        echo "Modifier"; 
+                                    elseif ($question['status'] == 0) 
+                                        echo "Réouvrir";
+                                ?>
+                            </a>
+                            </div>
+
+                            <div class="modal fade" id="modifyModalStatus<?php echo $question['userId'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Fermeture de la question</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <form id="closeQuestion<?php echo $question['id'];?>" action="closeQuestion.php?id=<?php echo $question['id'];?>" method="POST" >
+                                                <div class="deleteFormInfo">
+                                                    <h5>
+                                                        <?php 
+                                                            if($question['status'] == 1)
+                                                                echo "Vous êtes sur le point de clôturer votre question"; 
+                                                            elseif ($question['status'] == 0) 
+                                                                echo "Voulez-vous réouvrir votre question ?";
+                                                        ?>
+                                                    </h5>
+                                                    <p class="delete-passwordConfirmDescription">
+                                                        <?php 
+                                                            if($question['status'] == 1)
+                                                                echo "Êtes vous certain de vouloir la fermer ?"; 
+                                                            elseif ($question['status'] == 0) 
+                                                                echo "Êtes vous certain de vouloir la réouvrir ?";
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                                <div class="row delete-userPassword">
+                                                    <div class="col">
+                                                        <label for="delete-userPasswordInput" class="fw-bold">Votre mot de passe</label>
+                                                        <input id="delete-userPasswordInput" class="form-control" type="password" name="delete-userPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        <button class="btn btn-primary modify-passwordConfirm" form="closeQuestion<?php echo $question['id'];?>" type="submit">Modifier</button>
+                                    </div>
+								</div>
+							</div>
+						</div>
+
+                            <?php } }?>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+<?php
+} 
+?>
+
+            </div>
+        </div>
