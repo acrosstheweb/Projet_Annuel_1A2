@@ -41,13 +41,14 @@
 
 
 <h1 class="center aligned-title"> Bienvenue sur le forum <?= $titleTopic ?> </h1>
-        <div class="container">
-            <div class="row justify-content-center">
 
-<?php
-    foreach($results as $question){
-?>
 
+<div class="container">
+    <div class="row justify-content-center">
+
+        <?php
+            foreach($results as $question){
+        ?>
                 <div class="col-12">
                     <div class="card <?php echo ($question['status'] == 0) ? "__categoryCardOpen" : ""; ?>">
                         <div class="card-body">
@@ -78,8 +79,8 @@
                             </div>
 
                             <div class="modal fade" id="modifyModalStatus<?= $question['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Fermeture de la question</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -116,21 +117,18 @@
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                                         <button class="btn btn-primary modify-passwordConfirm" form="closeQuestion<?= $question['id'];?>" type="submit">Modifier</button>
                                     </div>
-								</div>
-							</div>
-						</div>
+                                </div>
+                            </div>
+                        </div>
 
                             <?php } }?>
                         </div>
                     </div>
                 </div>
                 
-                
-                
-                
-<?php
-} 
-?>
+                <?php
+                } 
+                ?>
 
             </div>
         </div>
@@ -138,6 +136,5 @@
 <?php
     include "footer.php";
 ?>
-
 
 <script src="js/categories.js" crossorigin="anonymous"></script>
