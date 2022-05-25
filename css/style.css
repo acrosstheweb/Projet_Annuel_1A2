@@ -210,17 +210,6 @@ h1{
 }
 
 /* Erreur 404 */
-.__404 {
-    font-size: 220pt;
-    margin: auto auto;
-}
-
-.__404plate {
-    height: 210px;
-    object-fit: scale-down;
-    padding: 0;
-}
-
 .__404btn {
     width: fit-content;
     color: var(--green3);
