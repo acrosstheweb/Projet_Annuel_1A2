@@ -24,32 +24,41 @@
     $titleTopic = $req_title_topic->fetch()['title'];
 ?>
 
-<a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
 
-<?php if(isConnected()){ ?>
-    <a class="btn btn-primary" href="newQuestion.php?idTopic=<?= $idTopic ?>" role="button">Poser votre question</a>
-<?php }?>
-<h2 class="center aligned-title"> Les différentes questions <?= $titleTopic ?> </h2>
+<div class="container-fluid">
+    <div class="row __categoryControls pt-3 px-5">
+        <div class="col">
+            <a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
+        </div>
 
+        <div class="col d-flex justify-content-end">
+            <?php if(isConnected()){ ?>
+                <a class="btn btn-primary" href="newQuestion.php?idTopic=<?= $idTopic ?>" role="button">Poser votre question</a>
+            <?php }?>
+        </div>
+    </div>
+</div>
+
+
+<h1 class="center aligned-title"> Bienvenue sur le forum <?= $titleTopic ?> </h1>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
 
 <?php
     foreach($results as $question){
 ?>
 
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div class="card" style="width: 60rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                <div class="col-12">
+                    <div class="card <?php echo ($question['status'] == 0) ? "__categoryCardOpen" : ""; ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $question['title'] ?></h5>
-                            <?php     
+                            <!-- <?php     
                                 if($question['status'] == 1)
                                     echo "open"; 
                                 elseif ($question['status'] == 0) 
                                     echo"closed";
-                            ?>
-                            <p class="card-text">Publiée par <?= $question['firstname']?> <?= $question['lastname']?> le <?= $question['creationDate'] ?></p>
+                            ?> -->
+                            <p class="card-text text-muted"><small>Publiée par <?= $question['firstname']?> <?= $question['lastname']?> le <?= $question['creationDate'] ?></small></p>
                             <p class="card-text"><?= $question['content'] ?></p>
                             <a href="question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary">Go somewhere</a>
 
@@ -61,7 +70,7 @@
                             <a href="#" class="btn btn-primary modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?= $question['id'];?>">
                                 <?php 
                                     if($question['status'] == 1)
-                                        echo "Fermer "; 
+                                        echo "Marquer comme résolu "; 
                                     elseif ($question['status'] == 0) 
                                         echo "Réouvrir ";
                                 ?>
@@ -125,3 +134,10 @@
 
             </div>
         </div>
+
+<?php
+    include "footer.php";
+?>
+
+
+<script src="js/categories.js" crossorigin="anonymous"></script>
