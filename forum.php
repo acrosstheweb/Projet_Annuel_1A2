@@ -18,7 +18,7 @@
     $results = $req->fetchAll();
 ?>
 
-<h2 class="aligned-title"> Forum de Fitness Essential </h2>
+<h2 class="aligned-title"> Les réponses à vos questions </h2>
 
         <div class="container">
             <div class="row">
@@ -27,13 +27,13 @@
     foreach($results as $categorie){
 ?>
 
-                <div class="col-sm-12 col-md-12 col-lg-6">
-                    <div class="card" style="width: 30rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card __topic">
+                        <img src="sources/img/<?php echo $categorie['path'] ?>.jpg" class="card-img-top __topicImg" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $categorie['title'] ?></h5>
-                            <p class="card-text"><?php echo $categorie['description'] ?></p>
-                            <a href="categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
+                            <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
+                            <a href="categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
                         </div>
                     </div>
                 </div>        

@@ -16,6 +16,20 @@
     border-radius: 50%;
 }
 
+
+/* Boutons */
+.btn-primary,
+.button-close-modal {
+    background-color: var(--green2);
+    border-color: var(--green2);
+}
+
+.btn-primary:hover{
+    background-color: var(--green3);
+    border-color: var(--green3);
+}
+
+
 /* Header */
 .navbar-brand,.footer-logo,.__logoIcon{
     width: 2.5rem;
@@ -57,6 +71,8 @@
     }
 }
 
+
+
 #__userSlide {
     position: fixed;
     right: 0;
@@ -96,17 +112,6 @@
 .modal-header,
 .modal-footer {
     background-color: var(--green1);
-}
-
-.btn-primary,
-.button-close-modal {
-    background-color: var(--green2);
-    border-color: var(--green2);
-}
-
-.btn-primary:hover{
-    background-color: var(--green3);
-    border-color: var(--green3);
 }
 
 .span-close-modal {
@@ -279,4 +284,34 @@ h1{
 
 table{
     color: unset;
+}
+
+/* Forum */
+.__topic{
+    text-align: center;
+    margin: 1rem;
+}
+
+.__topic:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+.__topicImg{
+    height: 10rem;
+    object-fit: cover;
+}
+
+.__topicDescription{
+    height: 3rem;
+}
+
+@media (min-width: 992px){
+    .__topicDescription{
+        height: 1.5rem;
+    }
+
+    .__topicImg{
+        height: 15rem;
+    }
 }
