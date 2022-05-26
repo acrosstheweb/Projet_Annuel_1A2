@@ -10,10 +10,8 @@
 <h2 class="aligned-title mt-5"> Page introuvable </h2>
 
 <div class="container">
-    <div class="row __404 align-items-baseline justify-content-center">
-        <p class="col-2 text-end"> 4 </p>
-        <img src="sources/img/weight-plate.png" alt="" class="__404plate col-2">
-        <p class="col-2"> 4 </p>
+    <div class="row justify-content-center">
+        <img src="sources/img/404.png" alt="" class="col-6">
     </div>
 
     <div class="row">
