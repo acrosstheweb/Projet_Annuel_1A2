@@ -8,7 +8,6 @@ if(!empty($_POST)){
     extract($_POST);
     $valid = true;
     $errors = [];
-    echo "Ca fonctionne";
 
     if(isset($_POST['createQuestion'])){
         $question = $_POST['question'];
