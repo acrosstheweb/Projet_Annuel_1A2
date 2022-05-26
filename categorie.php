@@ -26,7 +26,7 @@
 
 
 <div class="container-fluid">
-    <div class="row __categoryControls pt-3 px-5">
+    <div class="row __categoryControls pt-3 px-3 px-md-5">
         <div class="col">
             <a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
         </div>
@@ -61,14 +61,14 @@
                             ?> -->
                             <p class="card-text text-muted"><small>Publiée par <?= $question['firstname']?> <?= $question['lastname']?> le <?= $question['creationDate'] ?></small></p>
                             <p class="card-text"><?= $question['content'] ?></p>
-                            <a href="question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary">Go somewhere</a>
+                            <a href="question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary m-1">Go somewhere</a>
 
                             <?php
                             if (isConnected()) {
                                 if($question['userId']==$_SESSION['userId']){
                             ?>
                             <div class="btn-group">
-                            <a href="#" class="btn btn-primary modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?= $question['id'];?>">
+                            <a href="#" class="btn btn-primary modifyModal--trigger m-1" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?= $question['id'];?>">
                                 <?php 
                                     if($question['status'] == 1)
                                         echo "Marquer comme résolu "; 

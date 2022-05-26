@@ -49,18 +49,23 @@
 
 ?>
 
-<a class="btn btn-primary" href="categorie.php?idTopic=<?= $idTopic ?>" role="button">Revenir à la page précedente</a>
+<div class="container-fluid">
+    <div class="row __categoryControls pt-3 px-3 px-md-5">
+        <div class="col">
+            <a class="btn btn-primary" href="categorie.php?idTopic=<?= $idTopic ?>" role="button">Revenir à la page précedente</a>
+        </div>
+    </div>
+</div>
+
 
 
 <div class="container">
     <div class="row">
         
         
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <h2 class="center aligned-title"> <?= $results["title"] ?> </h2>
-
-            <div style="background: white; box-shadow: 0 5px 15px rgba(0, 0, 0, .15); padding: 5px 10px; border-radius: 10px">
-                <h3>Question</h3>
+        <div class="col-12">
+            <div class="__question">
+                <h1><?= $results["title"] ?> </h1>
 
                 <div style="border-top: 2px solid #eee; padding: 10px 0">
                     <?= $results["content"] ?> <br>
@@ -70,29 +75,10 @@
                     <?= $results["creationDate"] ?> par <?= $results["firstname"] ?>
                 </div>
 
-                <?php
-                    if (isConnected() && $status == 1) {
-                ?>
-
-                <div style="background: white; box-shadow: 0 5px 15px rgba(0, 0, 0, .15); padding: 5px 10px; border-radius: 10px; margin-top: 20px">
-					<h3>Participer à la discussion</h3>
-
-                    <form method="post" action="addComment.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $idQuestion ?>&status=<?= $status ?>">
-						<div class="form-group">
-						    <textarea class="form-control" name="content" id="content" rows="4"></textarea>
-						</div>
-                        <div class="form-group">
-					        <button class="btn btn-primary" type="submit" name="addComment">Envoyer</button>
-                        </div>
-                    </form>
                 
-                </div>
-                <?php
-                    }
-                ?>
 
-                <div style="background: white; box-shadow: 0 5px 15px rgba(0, 0, 0, .15); padding: 5px 10px; border-radius: 10px; margin-top: 20px">
-                    <h3>Commentaires</h3>
+                <div class="__questionComments">
+                    <h2>Commentaires</h2>
                     
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -100,15 +86,17 @@
 
 
                                 <tr>
-                                    <td>De <?= $comment['firstname'] ?> <?= $comment['lastname'] ?></td>
-                                    <td><?= $comment['content'] ?></td>
-                                    <td><?= $comment['dateSend'] ?></td>
-                                    <?php
-                                        if($comment['userId']==$_SESSION['userId']){
-                                    ?>
                                     <td>
-                                        <div class="btn-group">
-                                            <a href="#" class="btn btn-danger deleteModal--trigger" data-bs-toggle="modal" data-bs-target="#delModalComment<?= $comment['id'];?>">Supprimer</a>
+                                        <?= $comment['content'] ?><br>
+                                        <div class="text-muted"><small>Écrit par <?= $comment['firstname'] ?> <?= $comment['lastname'] ?>, <?= $comment['dateSend'] ?></small></div>
+                                        
+                                        <div class="float-end">
+                                        <?php
+                                            if($comment['userId']==$_SESSION['userId']){
+                                        ?>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-danger deleteModal--trigger py-1 px-2" data-bs-toggle="modal" data-bs-target="#delModalComment<?= $comment['id'];?>"><small>Supprimer</small></a>
+                                            </div>
                                         </div>
                                     </td>
 
@@ -147,11 +135,34 @@
                             <?php
                             }
                             ?>
+                            <tr>
+                                <td>
+                                    <?php
+                                        if (isConnected() && $status == 1) {
+                                    ?>
+                                        <h2>Participer à la discussion</h2>
+
+                                        <form method="post" action="addComment.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $idQuestion ?>&status=<?= $status ?>">
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="content" id="content" rows="4" placeholder="Écrivez votre commentaire"></textarea>
+                                            </div>
+                                            <div class="form-group mt-3">
+                                                <button class="btn btn-primary" type="submit" name="addComment">Envoyer</button>
+                                            </div>
+                                        </form>
+                                    
+                                    <?php
+                                        }
+                                    ?>
+                                </td>
+                            </tr>
                         </table>
                     
                     </div>
                 </div>      
 
+                
+                
 
 
             </div>
@@ -163,3 +174,6 @@
     </div>
 </div>
 
+<?php
+    include "footer.php";
+?>
