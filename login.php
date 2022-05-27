@@ -37,7 +37,7 @@ if($user === false){
 
     if(password_verify($password, $pwdInDb)){
         if($user['role'] < 1){
-            setMessage('Connection', ['Vous n\'avez pas confirmé votre compte via le mail envoyé :)'], 'success');
+            setMessage('Connection', ['Vous n\'avez pas confirmé votre compte via le mail envoyé :)'], 'info');
         }else{
             $_SESSION['userToken'] = setToken($user['id']);
             $_SESSION['userId'] = $user['id'];

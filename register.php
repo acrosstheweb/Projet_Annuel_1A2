@@ -99,7 +99,7 @@ if(count($problems) == 0){
 
     $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin,token_confirm_inscription) VALUES 
                                                                 (:firstname, :lastname, :email, :address, :city, :zipcode, :civility, :birthday, :password, :role, :fitcoin, :token_confirm_inscription)");
-    $tk = genToken();
+    $tk = genToken(); // Génération du token pour vérifier l'inscription par mail
 
     $to = $email;
     $subject = 'Inscription Fitness Essential 💪';
@@ -127,7 +127,7 @@ if(count($problems) == 0){
 
         setMessage('Register', ['Inscription réussie ! Vous allez recevoir un mail de confirmation à l\'adresse ' . $email], 'success');
     }else{
-        setMessage('Register', [' Echec de l\'envoi du mail'], 'warning');
+        setMessage('Register', [' Echec de l\'envoi du mail', error_get_last()['message']], 'warning'); // error_get_last()['message'] affiche la dernière erreur rencontrée dans le cas où le mail n'est pas envoyé, c'est la raison de l'échec qui sera affichée; TODO potentiellment le retirer en PROD
     }
     header('Location: index.php');
     die();
