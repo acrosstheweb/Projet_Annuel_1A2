@@ -6,6 +6,7 @@
     Message('UploadImage');
     Message('No Topic');
     Message('createCategorie');
+    Message('Modify');
 
     if(!isConnected()){
         echo "Pour accéder au forum, merci de vous inscrire";
@@ -46,10 +47,48 @@
                             <?php
                                 if(isAdmin()){
                             ?>
-                                <a href="manageCategorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Modifier</a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#modifyCategorie<?= $categorie['id'];?>" class="btn btn-primary">Modifier</a>
                             <?php } ?>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="modifyCategorie<?= $categorie['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modification de la catégorie</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <form id="manageCategorie<?= $categorie['id'];?>" action="manageCategorie.php?idTopic=<?= $categorie['id'] ?>" method="POST" >
+                                                <div class="row deleteFormInfo">
+                                                    <h5>Vous modifiez la catégorie <?= $categorie['title'];?> </h5>
+
+                                                    <div class="col-12">
+                                                        <label for="modify-title<?php echo $categorie['title'];?>" class="fw-bold">Nom </label>
+                                                        <input id="modify-title<?php echo $categorie['title'];?>" class="form-control" type="text" name="modify-title" value="<?php echo $categorie['title'];?>">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="modify-description<?php echo $categorie['description'];?>" class="fw-bold">Prénom </label>
+                                                        <input id="modify-description<?php echo $categorie['description'];?>" class="form-control" type="text" name="modify-description" value="<?php echo $categorie['description'];?>">
+                                                    </div>
+
+                                                </div>
+                                                <div class="row modify-userPassword">
+                                                    <div class="col-12">
+                                                        <label for="modify-adminPasswordInput" class="fw-bold">Votre mot de passe</label>
+                                                        <input id="modify-adminPasswordInput" class="form-control" type="password" name="modify-adminPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        <button class="btn btn-primary modify-passwordConfirm" form="manageCategorie<?= $categorie['id'];?>" type="submit">Modifier</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>        
                 
                 
