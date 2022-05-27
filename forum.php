@@ -42,6 +42,11 @@
                             <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
                             <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
                             <a href="categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
+                            <?php
+                                if(isAdmin()){
+                            ?>
+                                <a href="manageCategorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Modifier</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>        

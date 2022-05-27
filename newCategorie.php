@@ -31,10 +31,10 @@
                 <input type="number" class="form-control" name="categorieOrder" id="categorieOrder">
             </div>
 
-            <!-- <div class="mb-3">
+            <div class="mb-3">
                 <label for="categorieImage" class="form-label">Image de la catégorie</label>
-                <input class="form-control" type="file" id="categorieImage">
-            </div> -->
+                <input class="form-control" type="file" name="categorieImage" id="categorieImage">
+            </div>
 
             <div class="text-center mt-4">
                 <button type="submit" name="createCategorie" class="btn btn-primary">Envoyer</button>

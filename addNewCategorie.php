@@ -13,7 +13,7 @@ if(!empty($_POST)){
         $categorie = $_POST['categorieName'];
         $description = $_POST['categorieDescription'];
         $order = $_POST['categorieOrder'];
-        // $image = $_POST['categorieImage'];
+        $image = $_POST['categorieImage'];
         
         if(empty($categorie)){
             $valid = false;
@@ -30,24 +30,24 @@ if(!empty($_POST)){
             $errors = ("Il faut ajouter un ordre");
         }
             
-        // if(empty($image)){
-        //     $valid = false;
-        //     $errors = "Il faut ajouter une image à la catégorie";
-        // }
+        if(empty($image)){
+            $valid = false;
+            $errors = "Il faut ajouter une image à la catégorie";
+        }
     }
 
     //insertion base de données si valide à faire
     if ($valid) {
 
-        $insertQuestionQuery = $pdo->prepare("INSERT INTO RkU_TOPIC (title, description, topicOrder)
+        $insertQuestionQuery = $pdo->prepare("INSERT INTO RkU_TOPIC (title, description, topicOrder, path)
                 VALUES 
-                (:title, :description, :topicOrder)");
+                (:title, :description, :topicOrder, :path)");
 
         $insertQuestionQuery->execute([
             'title'=>$categorie,
-            'content'=>$description,
-            'topicOrder'=>$order
-            // 'path'=>$image
+            'description'=>$description,
+            'topicOrder'=>$order,
+            'path'=>$image
         ]);
 
         setMessage('createQuestion', ['Votre nouvelle catégorie a bien été créée'], 'success');
