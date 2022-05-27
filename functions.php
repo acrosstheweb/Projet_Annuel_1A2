@@ -25,7 +25,7 @@ function Message($title){
 
 function database(){
     try {
-        $pdo = new PDO("mysql:host=localhost;dbname=fitness_essential;port=3306", "root", "root");
+        $pdo = new PDO("mysql:host=localhost;dbname=fitness_essential;port=3306", "root", "");
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (Exception $e) {
         die("Erreur lors de la connexion à la base de données :  " . $e->getMessage());
@@ -208,7 +208,7 @@ function register_mail($firstname, $tk, $domain): string
         <html>
             <section align='center'>
                 <h1>Vérification inscription Fitness Essential</h1>
-                <img src='sources/img/icon.png' alt='logo'>
+                <img src='https://pa-atw.fr/sources/img/logo.png' alt='logo'>
                 <h3>Bonjour " . $firstname . ", merci de nous faire confiance pour être la salle de vos nombreux futurs entrainements intensifs 💪</h3>
                 <p>Pour confirmer votre inscription nous vons prions de bien vouloir cliquer sur le lien afin de vérifier que vous n'êtes pas un robot 🔌</p>
                 <a href='$domain/confirmRegister.php?fn=$firstname&tk=$tk'>Vérifier votre addresse mail</a>
