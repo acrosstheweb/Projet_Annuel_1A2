@@ -37,7 +37,7 @@
 
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card __topic">
-                        <img src="sources/img/<?php echo $categorie['path'] ?>.jpg" class="card-img-top __topicImg" alt="...">
+                        <img src="sources/img/<?php echo $categorie['path'] ?>" class="card-img-top __topicImg" alt="...">
                         <div class="card-body">
                             <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
                             <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
