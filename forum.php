@@ -5,6 +5,7 @@
     require 'header.php';
     Message('UploadImage');
     Message('No Topic');
+    Message('createCategorie');
 
     if(!isConnected()){
         echo "Pour accéder au forum, merci de vous inscrire";

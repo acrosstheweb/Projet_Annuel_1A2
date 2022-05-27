@@ -15,7 +15,7 @@
 <a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
 
     <div class="row d-flex justify-content-center">
-        <form action="addNewCategorie.php" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
+        <form action="addNewCategorie.php" method="POST" enctype ="multipart/form-data" class="col-10 col-md-8 col-lg-6 my-3">
             <div class="row my-3">
                 <label for="categorieName">Nouvelle catégorie : </label>
                 <input type="text" class="form-control" name="categorieName" id="categorieName" placeholder="Entrez le nom de la nouvelle catégorie"> <br>
