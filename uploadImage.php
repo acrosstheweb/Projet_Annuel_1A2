@@ -35,7 +35,8 @@
 
                 // Traitement ajoute du filigrane
 
-                if($extension == 'jpeg' || $extension == 'jpg'){
+
+                if($extension == 'jpeg' || $extension == 'jpg'){ // on créé une image jpg ou jpeg ou png selon l'extension
                     $image = imagecreatefromjpeg('./tmpUpload/'.$tempFile);
                 }
                 else if($extension == 'png'){ // seul le format png peut passer dans le else
