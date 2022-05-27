@@ -188,7 +188,7 @@ h1{
 
 .__cardDescription{
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 70%);
-    color: white;
+    color: whitesmoke;
     height: 100%;
     width: 100%;
     position:relative;
@@ -199,11 +199,13 @@ h1{
 }
 
 .__cardDescriptionText{
+    width: 100%;
     position:absolute;
     bottom:0;
     left:50%;
     transform:translateX(-50%);
     margin-bottom: 1rem;
+    color: whitesmoke;
 }
 
 #carouselDesktop.carousel-caption{
@@ -349,4 +351,22 @@ table{
 
 .__captcha{
     width: 600px;
+}
+
+/* Programmes */
+.__programCard{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.__programImage{
+    height: 100%;
+}
+
+.__programContent{
+    width: 100%;
+    text-align: start;
+}
+
+.__programControl{
+    display: none;
 }
