@@ -25,8 +25,16 @@ require 'header.php';
     </div>
 
     <script type="text/javascript" crossorigin="anonymous">
+
+        const avatar = []; // Tableau qui va contenir : Visage = x, Yeux = y, ...
+
+
+
         function displayIt(src){
             document.getElementById("__preview-avatar").setAttribute('src', src);
+            const elementType = src.split('__')[1];
+            avatar.push(elementType);
+            console.log(`avatar = ${avatar}`);
         }
         const elements = document.querySelector("div#__elements-avatar").children;
         for(const element of elements){
