@@ -9,8 +9,6 @@
         $tmpName = $_FILES['file']['tmp_name'];
         $error = $_FILES['file']['error'];
 
-        var_dump($_FILES);
-
     $extensionsAllowed = ['png', 'jpg', 'jpeg'];
 
     $typeImage = ['image/png', 'image/jpg', 'image/jpeg'];

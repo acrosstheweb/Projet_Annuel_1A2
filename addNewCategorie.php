@@ -3,6 +3,10 @@
 require 'functions.php';
 
 $pdo = database();
+
+// var_dump($_FILES); echo "<br>";
+// var_dump($_POST); 
+// die();
     
 if(!empty($_POST)){
     extract($_POST);
@@ -13,7 +17,8 @@ if(!empty($_POST)){
         $categorie = $_POST['categorieName'];
         $description = $_POST['categorieDescription'];
         $order = $_POST['categorieOrder'];
-        $image = $_POST['categorieImage'];
+        $tempNameImage = $_FILES['categorieImage']['tmp_name'];
+        $nameImage = $_FILES['categorieImage']['name'];
         
         if(empty($categorie)){
             $valid = false;
@@ -30,7 +35,7 @@ if(!empty($_POST)){
             $errors = ("Il faut ajouter un ordre");
         }
             
-        if(empty($image)){
+        if(empty($nameImage)){
             $valid = false;
             $errors = "Il faut ajouter une image à la catégorie";
         }
@@ -38,6 +43,8 @@ if(!empty($_POST)){
 
     //insertion base de données si valide à faire
     if ($valid) {
+
+        move_uploaded_file($tempNameImage, './sources/img/'.$nameImage);
 
         $insertQuestionQuery = $pdo->prepare("INSERT INTO RkU_TOPIC (title, description, topicOrder, path)
                 VALUES 
@@ -47,15 +54,15 @@ if(!empty($_POST)){
             'title'=>$categorie,
             'description'=>$description,
             'topicOrder'=>$order,
-            'path'=>$image
+            'path'=>$nameImage
         ]);
 
-        setMessage('createQuestion', ['Votre nouvelle catégorie a bien été créée'], 'success');
+        setMessage('createCategorie', ['Votre nouvelle catégorie a bien été créée'], 'success');
         header('Location: forum.php');
         exit;
     }
     else{
-        setMessage('createQuestion', [$errors], 'warning');
+        setMessage('createCategorie', [$errors], 'warning');
         header('Location: forum.php');
         exit;
     }
