@@ -41,7 +41,7 @@
                 FROM RkU_MESSAGE M
                 LEFT JOIN RkU_USER U ON M.userId = U.id
                 WHERE M.question = $idQuestion
-                ORDER BY m.dateSend DESC"
+                ORDER BY m.dateSend"
                                         );
     
     $resultsComments = $reqComments->fetchAll();
