@@ -19,22 +19,28 @@ $userPwdInDbQuery->execute(["id"=>$userId]);
 $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $userPwdInDb)){
-    setMessage('Delete', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
-    header('Location: question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion);
+    setMessage('manageQuestion', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
+    header('Location: categorie.php?idTopic='.$idTopic);
     die();
 }
 
 
-if($status == 1)
+if($status == 1){
     $questionManageQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 0 WHERE id=:idQuestion");
+    $questionManageQuery->execute(["idQuestion"=>$idQuestion]);
+    setMessage('manageQuestion', ["La question a bien été clôturée."], 'success');
+    header('Location: categorie.php?idTopic='.$idTopic);
+    die();
+}
 elseif ($status == 0) {
     $questionManageQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 1 WHERE id=:idQuestion");
+    $questionManageQuery->execute(["idQuestion"=>$idQuestion]);
+    setMessage('manageQuestion', ["La question a bien été réouverte."], 'success');
+    header('Location: categorie.php?idTopic='.$idTopic);
+    die();
 }
 
 
-$questionManageQuery->execute(["idQuestion"=>$idQuestion]);
-setMessage('Closed', ["La question" . $idQuestion . " a bien été clôturée."], 'success');
-header('Location: categorie.php?idTopic='.$idTopic);
-die();
+
 
 ?>
