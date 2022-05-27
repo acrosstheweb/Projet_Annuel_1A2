@@ -316,13 +316,28 @@ table{
     }
 }
 
+/* Catégorie */
+.__categoryCardClosed{
+    background-color: var(--green1);
+    border: 1px solid var(--green3);
+}
+
+.__questionStatusBg{
+    background-color: var(--green3);
+}
+
 /* Question */
-/* .__question{
+/* .__questionTitle{
     background: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
     padding: 5px 10px;
     border-radius: 10px;
 } */
+
+.__questionContent{
+    border-top: 2px solid var(--green1);
+    padding: 10px 0
+}
 
 .__questionComments{
     background: white;

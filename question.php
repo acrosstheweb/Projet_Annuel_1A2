@@ -63,10 +63,12 @@
         
         
         <div class="col-12">
-            <div class="__question">
+            <div class="__questionTitle">
                 <h1><?= $results["title"] ?> </h1>
 
-                <div style="border-top: 2px solid #eee; padding: 10px 0">
+                <div class="<?php echo ($results["status"] == 0) ? "__questionClosed" : "" ?>"></div>
+
+                <div class="__questionContent">
                     <?= $results["content"] ?> <br>
                 </div>
 
