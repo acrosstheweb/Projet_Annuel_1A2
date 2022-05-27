@@ -5,7 +5,7 @@
     require 'header.php';
 ?>
 
-<h2 class="aligned-title"> Les programmes de Fitness Essential </h2>
+<h1 class="aligned-title"> Qui que vous soyez, nous vous proposons des programmes adaptés à vos envies </h1>
 
 
 <?php

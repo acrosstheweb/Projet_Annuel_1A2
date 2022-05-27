@@ -7,7 +7,7 @@
     Message('No Topic');
 
     if(!isConnected()){
-        echo "Connecte toi bouffon";
+        echo "Pour accéder au forum, merci de vous inscrire";
         die();
     }
     
@@ -19,6 +19,14 @@
 ?>
 
 <h2 class="aligned-title"> Les réponses à vos questions </h2>
+
+<div class="container-fluid">
+    <div class="col d-flex justify-content-center">
+        <?php if(isAdmin()){ ?>
+            <a class="btn btn-primary" href="newCategorie.php" role="button">Nouvelle catégorie</a>
+        <?php }?>
+    </div>
+</div>
 
         <div class="container">
             <div class="row">
@@ -34,6 +42,11 @@
                             <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
                             <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
                             <a href="categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
+                            <?php
+                                if(isAdmin()){
+                            ?>
+                                <a href="manageCategorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Modifier</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>        

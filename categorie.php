@@ -5,6 +5,7 @@
     require 'header.php';
     Message('UploadImage');
     Message('createQuestion');
+    Message('manageQuestion');
     
     $idTopic = $_GET['idTopic'];
     
@@ -26,7 +27,7 @@
 
 
 <div class="container-fluid">
-    <div class="row __categoryControls pt-3 px-5">
+    <div class="row __categoryControls pt-3 px-3 px-md-5">
         <div class="col">
             <a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
         </div>
@@ -50,9 +51,15 @@
             foreach($results as $question){
         ?>
                 <div class="col-12">
-                    <div class="card <?php echo ($question['status'] == 0) ? "__categoryCardOpen" : ""; ?>">
+                    <div class="card <?php echo ($question['status'] == 0) ? "__categoryCardClosed" : ""; ?> m-2">
                         <div class="card-body">
+
+                            <?php if($question['status'] == 0) { ?>
+                                <span class="badge rounded-pill float-end __questionStatusBg">Résolu</span>
+                            <?php } ?>
+                            
                             <h5 class="card-title"><?= $question['title'] ?></h5>
+                            
                             <!-- <?php     
                                 if($question['status'] == 1)
                                     echo "open"; 
@@ -60,22 +67,22 @@
                                     echo"closed";
                             ?> -->
                             <p class="card-text text-muted"><small>Publiée par <?= $question['firstname']?> <?= $question['lastname']?> le <?= $question['creationDate'] ?></small></p>
-                            <p class="card-text"><?= $question['content'] ?></p>
-                            <a href="question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text"><?= $question['content'] ?><br></p>
+                            <a href="question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary m-1">Voir plus</a>
 
                             <?php
                             if (isConnected()) {
                                 if($question['userId']==$_SESSION['userId']){
                             ?>
-                            <div class="btn-group">
-                            <a href="#" class="btn btn-primary modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?= $question['id'];?>">
-                                <?php 
-                                    if($question['status'] == 1)
-                                        echo "Marquer comme résolu "; 
-                                    elseif ($question['status'] == 0) 
-                                        echo "Réouvrir ";
-                                ?>
-                            </a>
+                            <div class="btn-group float-end">
+                                <a href="#" class="btn btn-primary modifyModal--trigger m-1" data-bs-toggle="modal" data-bs-target="#modifyModalStatus<?= $question['id'];?>">
+                                    <?php 
+                                        if($question['status'] == 1)
+                                            echo "Marquer comme résolu "; 
+                                        elseif ($question['status'] == 0) 
+                                            echo "Réouvrir ";
+                                    ?>
+                                </a>
                             </div>
 
                             <div class="modal fade" id="modifyModalStatus<?= $question['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -136,5 +143,3 @@
 <?php
     include "footer.php";
 ?>
-
-<script src="js/categories.js" crossorigin="anonymous"></script>
