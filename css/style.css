@@ -386,3 +386,18 @@ table{
 .__subscriptionTableBorder{
     background-color: white;
 }
+
+.__subscriptionHead{
+    position: sticky;
+}
+
+.__subscriptionIcon{
+    width: 2rem;
+    height: auto;
+    vertical-align: baseline;
+}
+
+.__subscriptionCard{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
