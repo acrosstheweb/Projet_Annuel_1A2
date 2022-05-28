@@ -132,11 +132,7 @@
                 </div>
             </div>
         </div>
-<!-- 
-    </div>
-
-    <div class="row d-flex justify-content-around"> -->
-
+        
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
             <img src="sources/img/pull2.jpg" class="card-img __programImage" alt="pull2">
             <div class="card-img-overlay">
@@ -241,7 +237,7 @@
                                 </tr>
                                 <tr>
                                     <td>Presse incliné serré</td>
-                                    <td>4X10+10</td>
+                                    <td>4X10</td>
                                 </tr>
                                 <tr>
                                     <td>Fentes smith machine</td>
@@ -253,7 +249,7 @@
                                 </tr>
                                 <tr>
                                     <td>Mollet</td>
-                                    <td>4X10-15</td>
+                                    <td>4X10</td>
                                 </tr>
                             </tbody>
                         </table>
