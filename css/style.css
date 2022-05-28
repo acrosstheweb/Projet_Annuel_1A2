@@ -370,3 +370,19 @@ table{
 .__programControl{
     display: none;
 }
+
+/* Abonnements */
+.__subscriptionTable{
+    overflow: hidden;
+}
+.__subscriptionTable .fa-check{
+    color: var(--bs-success);
+}
+
+.__subscriptionTable .fa-xmark{
+    color: var(--bs-danger);
+}
+
+.__subscriptionTableBorder{
+    background-color: white;
+}

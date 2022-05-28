@@ -12,7 +12,13 @@
     require 'header.php';
 ?>
 
-<a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
+<div class="container-fluid">
+    <div class="row __categoryControls pt-3 px-3 px-md-5">
+        <div class="col">
+            <a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
+        </div>
+    </div>
+</div>
 
     <div class="row d-flex justify-content-center">
         <form action="addNewCategorie.php" method="POST" enctype ="multipart/form-data" class="col-10 col-md-8 col-lg-6 my-3">

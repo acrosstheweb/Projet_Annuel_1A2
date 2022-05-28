@@ -6,11 +6,11 @@
     Message('RegisterSuccess');
 ?>
 
-<h2 class="aligned-title"> Abonnements de Fitness Essential </h2>
+<h1 class="aligned-title"> Choisissez votre abonnement </h1>
 
 <div class="row justify-content-center">
-    <div class="card" style="width: 18rem;background-color:rgb(80, 80, 80);border: 2px solid rgb(141, 233, 122);margin:50px 50px;">
-        <h4 class="aligned-title">Essential</h4>
+    <div class="card col-10 col-md-5 col-lg-3">
+        <h4 class="aligned-title text-uppercase">Essential</h4>
         <div class="card-body">
             <h5 class="card-title">15,99€/mois</h5>
             <p class="card-text">C'est la même qualité, c'est juste le prix qui baisse. T'es pas obligé de faire le rat par contre.</p>
@@ -26,8 +26,8 @@
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;background-color:rgb(80, 80, 80);border: 2px solid rgb(141, 233, 122);margin:50px 50px;">
-        <h4 class="aligned-title">Classic</h4>
+    <div class="card col-10 col-md-5 col-lg-3">
+        <h4 class="aligned-title text-uppercase">Classic</h4>
         <div class="card-body">
             <h5 class="card-title">23,99€/Mois</h5>
             <p class="card-text">Accès classique à la salle de sport. Catégorie socioprofessionnelle moyenne, tu ne mérites pas que je t'embête</p>
@@ -43,8 +43,8 @@
         </div>
     </div>
 
-    <div class="card" style="width: 18rem;background-color:rgb(80, 80, 80);border: 2px solid rgb(141, 233, 122);margin:50px 50px;">
-        <h4 class="aligned-title">Premium</h4>
+    <div class="card col-10 col-md-5 col-lg-3">
+        <h4 class="aligned-title text-uppercase">Premium</h4>
         <div class="card-body">
             <h5 class="card-title">49,99€/Mois</h5>
             <p class="card-text">Wow, tu possèdes un maximum de valeur financière, ce qui te permet donc de profiter sur système capitaliste comme bon te semble.</p>
@@ -58,6 +58,85 @@
             <a href="#" class="card-link">Achète ici</a>
             <a href="#" class="card-link">Ici aussi en fait</a>
         </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-10 col-lg-8">
+        <table class="table table-striped text-center __subscriptionTable">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col" class="text-uppercase">Essential</th>
+                <th scope="col" class="text-uppercase">Classic</th>
+                <th scope="col" class="text-uppercase">Premium</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="text-start" scope="row">Accès à toutes les salles Fitness Essential</th>
+                <td><i class="fa-solid fa-check"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            
+            <tr>
+                <th class="text-start" scope="row">Gourde isotherme en métal offerte</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            
+            <tr>
+                <th class="text-start" scope="row">10 fitcoins crédités par mois</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            
+            <tr>
+                <th class="text-start" scope="row">Partage de la carte de membre avec une personne résidant à la même adresse</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            
+            <tr>
+                <th class="text-start" scope="row">1 snack protéiné offert par séance</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+
+            <tr>
+                <th class="text-start" scope="row">Inviter une personne pour s'entraîner avec vous</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+
+            <tr>
+                <th class="text-start" scope="row">1 séance collective offerte par mois</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            
+            <tr>
+                <th class="text-start" scope="row">1 boisson énergisante offerte par séance</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            
+            <tr>
+                <th class="text-start" scope="row">Jaaj</th>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-xmark"></i></td>
+                <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+        </tbody>
+        </table>
     </div>
 </div>
 
