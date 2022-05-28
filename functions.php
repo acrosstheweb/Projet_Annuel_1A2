@@ -103,8 +103,13 @@ function isAdmin(){
     }
 }
 
+/*
+ * checkFields retourne un tableau de 2 éléments un booléen et un tableau. Dans le cas où la vérification se passe bien le booléen vaut true et le tableau contient les champs, prêts à être insérés en BDD; Sinon le booléen vaut false et le tableau contient les problemes de la vérification.
+ * checkFields gère un tableau de champ, les champs gérés sont : 'civility', 'lastname', 'firstname', 'birthday', 'email', 'address', 'city', 'zipcode'
+ */
 function checkFields($fields): array
 {
+    $results = [];
     $problems = [];
     $exceptions = [' ','-','é','è','ê','ë','à','â','î','ï','ô','ö','û','ü']; // Tableau qui permet de laisser passer ses caractères dans les vérifications des champs (les lettres accentuées n'étant pas reconnu comme des caractères alphabétiques)
 
@@ -115,31 +120,42 @@ function checkFields($fields): array
                 $supportedCivilties = ['M', 'F'];
                 if(!in_array($civility, $supportedCivilties)){
                     $problems[] = 'Civilité non supportée';
+                }else{
+                    $results['civility'] = $civility;
                 }
                 break;
             case 'lastname':
-                $lastname = $fields['lastname'];
+                $lastname = strtoupper($fields['lastname']);
                 if(strlen($lastname) < 2 || strlen($lastname) > 180 || !ctype_alpha(str_replace($exceptions, '', $lastname))){
                     $problems[] = 'Le nom de famille doit être entre 2 et 180 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
+                }else{
+                    $results['lastname'] = strtoupper($lastname);
                 }
                 break;
             case 'firstname':
                 $firstname = $fields['firstname'];
                 if(strlen($firstname) < 2 || strlen($firstname) > 100 || !ctype_alpha(str_replace($exceptions, '', $firstname))){
                     $problems[] = 'Le prénom doit être entre 2 et 100 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
+                }else{
+                    $results['firstname'] = ucwords(strtolower($firstname));
                 }
                 break;
             case 'birthday':
                 $birthday = $fields['birthday'];
                 $birthdayArray = explode('-',$birthday); // From "YYYY-MM-DD To [YYYY,MM,DD]
 
-                if(!checkdate($birthdayArray[1] ,$birthdayArray[2] ,$birthdayArray[0]) || count($birthdayArray)!= 3){
+                if(!checkdate($birthdayArray[1] ,$birthdayArray[2] ,$birthdayArray[0]) || count($birthdayArray)!= 3 || strlen((string)$birthdayArray[0]) > 4){
                     $problems[] = 'Format de la date de naissance incorrecte';
                 }else{ // Si le format de la date est correcte
                     $ageInSeconds = time() - strtotime($birthday);
-                    $age = $ageInSeconds / (60/60/24/365.25); // (60/60/24/365.25) permet de convertir des secondes en années
+                    $age = $ageInSeconds / (60*60*24*365.25); // (60*60*24*365.25) permet de convertir des secondes en années
+
                     if($age < 18){
                         $problems[] = 'Vous devez avoir plus de 18 ans pour vous inscrire';
+                    }elseif($age > 122){
+                        $problems[] = 'Je doute que vous ayez ' . round($age) . ' ans. La doyenne de l\'humanité n\'a vécu que 122 ans, revoyez votre date de naissance svp';
+                    }else{
+                        $results['birthday'] = strtoupper($birthday);
                     }
                 }
             case 'email':
@@ -156,6 +172,8 @@ function checkFields($fields): array
 
                     if(!empty($checkUserExist)){
                         $problems[] = "Ce mail est déjà utilisé";
+                    }else{
+                        $results['email'] = strtolower(trim($email));
                     }
                 }
                 break;
@@ -163,40 +181,70 @@ function checkFields($fields): array
                 $address = $fields['address'];
                 if(strlen($address) < 2 || strlen($address) > 200 || !ctype_alnum(str_replace($exceptions, '', $address))){
                     $problems[] = 'L\'adresse doit comprendre entre 2 et 200 caractères alphanumériques'; // Alphnumériques + $exceptions autorisés
+                }else{
+                    $results['address'] = ucwords(strtolower($address));
                 }
                 break;
             case 'city':
                 $city = $fields['city'];
                 if(strlen($city) < 2 || strlen($city) > 180 || !ctype_alpha(str_replace($exceptions, '', $city))){
                     $problems[] = 'La ville doit contenir entre 2 et 180 caractères alphabétiques'; // Alphabétiques + $exceptions autorisés
+                }else{
+                    $results['city'] = ucwords(strtolower($city));
                 }
                 break;
             case 'zipcode':
                 $zipcode = $fields['zipcode'];
                 if(strlen($zipcode)!= 5 || !ctype_digit($zipcode)){
                     $problems[] = 'Le code postal doit contenir exactement 5 chiffres';
+                }else{
+                    $results['zipcode'] = ucwords(strtolower($zipcode));
+                }
+                break;
+            case 'password':
+                $pwd = $fields['password'];
+                if(!checkPassword($pwd)){
+                    $problems[] = 'Le mot de passe doit contenir 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial, 8 caractères minimum';
+                }else{ // Si le mdp a les bons critères
+                    $results['password'] = password_hash($pwd, PASSWORD_DEFAULT);
+                }
+                break;
+            case 'password-confirm': // On part du principe que s'il y'a un champ password-confirm c'est qu'il y'a un champ password renseigné avant
+                $pwdConfirm = $fields['password-confirm'];
+                if(!isset($pwd)){
+                    $problems[] = 'Erreur champs password et/ou password-confirm';
+                }else{
+                    if($pwd != $pwdConfirm){
+                        $problems[] = 'Les mots de passe ne correspondent pas';
+                    }
                 }
                 break;
             default:
-                $problems[] = 'Ce champ n\'est pas géré';
+                $problems[] = "Le champ '". $field ."' n'est pas géré";
                 break;
         }
     }
     if(count($problems) == 0){
-        return [
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'civility' => $civility,
-            'birthday' => $birthday,
-            'email' => $email,
-            'address' => $address,
-            'city' => $city,
-            'zipcode' => $zipcode
-        ];
+
+        return [true, $results];
+
     }else{
-        return $problems;
+        return [false, $problems];
     }
 }
+/* JEU DE TEST POUR checkFieds
+echo "<pre>";
+    var_dump(checkFields([
+        "lastname" => "BOMBEUR",
+        "firstname" => "Jean",
+        "civility" => "M",
+        "birthday" => "2003-06-07",
+        "email" => "wissem.derghalz@gmail.com",
+        "city" => "Saint-Ours",
+        "zipcode" => "73410"
+    ]));
+    echo "</pre>";
+*/
 
 /*
  * $domain correspond au serveur sur lequel le script est executé, si local alors mettre http://localhost/Projet_Annuel_1A2_github, si prod mettre = pat-atw.fr

@@ -1,27 +1,28 @@
 <?php
 require 'functions.php';
-if(empty($_POST['delete-adminPasswordInput'])){
+if(empty($_POST['userPassword'])){
     header('Location: error404.php');
     die();
 }
-$InputPwd = $_POST['delete-adminPasswordInput'];
+
+$pwd = $_POST['userPassword'];
 $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'admin)
 $db = database();
 
-$adminPwdInDbQuery = $db->prepare("SELECT password FROM rku_user WHERE id=:id");
-$adminPwdInDbQuery->execute(["id"=>$userId]);
-$adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
+$pwdInDbQuery = $db->prepare("SELECT password FROM rku_user WHERE id=:id");
+$pwdInDbQuery->execute(["id"=>$userId]);
+$pwdInDb = $pwdInDbQuery->fetch()['password'];
 
-if(!password_verify($InputPwd, $adminPwdInDb)){
-    setMessage('Delete', ["Mot de passe incorrect, attention \"l'admin\", plus que x essais !"], 'warning');
-    header('Location: users.php');
+if(!password_verify($pwd, $pwdInDb)){
+    setMessage('DeleteUser', ["Mot de passe incorrect"], 'warning');
+    header('Location: profilePageSecurity.php');
     die();
 }
 
-$userToDeleteId = $_GET['id'];
-
 $userDelQuery = $db->prepare("DELETE FROM rku_user WHERE id=:id");
-$userDelQuery->execute(["id"=>$userToDeleteId]);
-setMessage('Delete', ["L'utilisateur n°" . $userToDeleteId . " a bien été supprimé."], 'success');
-header('Location: users.php');
+$userDelQuery->execute(["id"=>$userId]);
+unset($_SESSION['userToken']);
+unset($_SESSION['userId']);
+setMessage('DeleteUser', ["Votre compte a bien été supprimé."], 'success');
+header('Location: index.php');
 die();

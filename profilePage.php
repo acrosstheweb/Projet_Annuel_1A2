@@ -20,8 +20,8 @@
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="#">Mon Profil</a>
-                <a class="nav-link" href="#">Sécurité</a>
+                <a class="nav-link active" aria-current="page" href="profilePage.php">Mon Profil</a>
+                <a class="nav-link" href="profilePageSecurity.php">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>

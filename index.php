@@ -7,15 +7,7 @@
     Message('Connection');
     Message('Logout');
     Message('ConfirmRegistration');
-    /*print_r(checkFields([
-        "lastname" => "DERGHAL",
-        "firstname" => "Wissem",
-        "civility" => "M",
-        "birthday" => "2003-07-06",
-        "email" => "wissem.derghal@gmail.com",
-        "city" => "Saint-Ours",
-        "zipcode" => "73410"
-    ]));*/
+    Message('DeleteUser');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>
