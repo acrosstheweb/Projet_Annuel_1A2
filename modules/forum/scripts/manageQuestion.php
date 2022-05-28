@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../../../functions.php';
 
 
 $idTopic = $_GET['idTopic'];

@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 require "header.php";
 
 $filename = "sources/captcha/1.jpg";

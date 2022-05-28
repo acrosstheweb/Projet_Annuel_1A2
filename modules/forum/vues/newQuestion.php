@@ -12,7 +12,7 @@
         die();
     }
 
-    require 'header.php';
+    require '../../../header.php';
     Message('UploadImage');
 
     $pdo = database();
@@ -34,7 +34,7 @@
     <p class="text-center">Votre demande sera traitée dans les plus brefs délais.</p>
 
     <div class="row d-flex justify-content-center">
-        <form action="addNewQuestion.php?idTopic=<?php echo $idTopic ?>" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
+        <form action="../scripts/addNewQuestion.php?idTopic=<?php echo $idTopic ?>" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
             <div class="row my-3">
                 <label for="topic">Sélectionnez un sujet : </label>
                 <select class="form-select" name="topic" id="topic"><br>

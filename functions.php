@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+function webroot(): string
+{
+    return $_SERVER['DOCUMENT_ROOT'] . '/Projet_Annuel_1A2_github/';
+}
+
 function setMessage($title, $msgArray, $type){
     $_SESSION['MESSAGE'][$title] = [
         'content' => $msgArray,

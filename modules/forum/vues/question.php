@@ -14,7 +14,7 @@
         die();
     }
     
-    require 'header.php';
+    require '../../../header.php';
     Message('UploadImage');
     Message('createComment');
     
@@ -85,7 +85,6 @@
                         <table class="table table-striped">
                             <?php foreach($resultsComments as $comment){ ?>
 
-
                                 <tr>
                                     <td>
                                         <?= $comment['content'] ?><br>
@@ -109,7 +108,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form id="deleteCommentUser<?= $comment['id'];?>" action="delComment.php?id=<?= $comment['id'];?>" method="POST" >
+                                                    <form id="deleteCommentUser<?= $comment['id'];?>" action="../scripts/delComment.php?id=<?= $comment['id'];?>" method="POST" >
                                                         <div class="deleteFormInfo">
                                                             <h5>Vous êtes sur le point de supprimer votre commentaire</h5>
                                                             <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer?</p>
@@ -143,7 +142,7 @@
                                     ?>
                                         <h2>Participer à la discussion</h2>
 
-                                        <form method="post" action="addComment.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $idQuestion ?>&status=<?= $status ?>">
+                                        <form method="post" action="../scripts/addComment.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $idQuestion ?>&status=<?= $status ?>">
                                             <div class="form-group">
                                                 <textarea class="form-control" name="content" id="content" rows="4" placeholder="Écrivez votre commentaire"></textarea>
                                             </div>

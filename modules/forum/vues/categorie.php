@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Catégorie";
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
-    require 'header.php';
+    require '../../../header.php';
     Message('UploadImage');
     Message('createQuestion');
     Message('manageQuestion');
@@ -93,7 +93,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                            <form id="closeQuestion<?= $question['id'];?>" action="manageQuestion.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'];?>&status=<?= $question['status'] ?>" method="POST" >
+                                            <form id="closeQuestion<?= $question['id'];?>" action="../scripts/manageQuestion.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'];?>&status=<?= $question['status'] ?>" method="POST" >
                                                 <div class="deleteFormInfo">
                                                     <h5>
                                                         <?php 

@@ -9,7 +9,7 @@
         header('Location: error404.php');
         die();
     }
-    require 'header.php';
+    require '../../../header.php';
 ?>
 
 <div class="container-fluid">
@@ -21,7 +21,7 @@
 </div>
 
     <div class="row d-flex justify-content-center">
-        <form action="addNewCategorie.php" method="POST" enctype ="multipart/form-data" class="col-10 col-md-8 col-lg-6 my-3">
+        <form action="../scripts/addNewCategorie.php" method="POST" enctype ="multipart/form-data" class="col-10 col-md-8 col-lg-6 my-3">
             <div class="row my-3">
                 <label for="categorieName">Nouvelle catégorie : </label>
                 <input type="text" class="form-control" name="categorieName" id="categorieName" placeholder="Entrez le nom de la nouvelle catégorie"> <br>

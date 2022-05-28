@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Forum";
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
-    require 'header.php';
+    require '../../../header.php';
     Message('UploadImage');
     Message('No Topic');
     Message('createCategorie');
@@ -62,7 +62,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="manageCategorie<?= $categorie['id'];?>" action="manageCategorie.php?idTopic=<?= $categorie['id'] ?>" enctype ="multipart/form-data" method="POST" >
+                                    <form id="manageCategorie<?= $categorie['id'];?>" action="../scripts/manageCategorie.php?idTopic=<?= $categorie['id'] ?>" enctype ="multipart/form-data" method="POST" >
                                         <div class="row deleteFormInfo">
                                             <h5>Vous modifiez la catégorie <?= $categorie['title'];?> </h5>
 
@@ -104,7 +104,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="deleteCategorie<?= $categorie['id'];?>" action="delCategorie.php?idTopic=<?= $categorie['id'];?>" method="POST" >
+                                    <form id="deleteCategorie<?= $categorie['id'];?>" action="../scripts/delCategorie.php?idTopic=<?= $categorie['id'];?>" method="POST" >
                                         <div class="deleteFormInfo">
                                             <h5>Vous êtes sur le point de supprimer cette catégorie</h5>
                                             <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir la supprimer?</p>

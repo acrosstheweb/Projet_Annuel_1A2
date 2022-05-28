@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../../../functions.php';
 
 $idQuestion = $_SESSION['idQuestion'];
 $idTopic = $_SESSION['idTopic'];

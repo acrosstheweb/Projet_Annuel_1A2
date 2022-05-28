@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../../../functions.php';
 
 $title = $_POST['modify-title'];
 $description = $_POST['modify-description'];

@@ -66,7 +66,7 @@ Message('DeleteUser');
                     </div>
 
                     <a href="userDel.php" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
-                    <a href="exportDataRGPD.php" class="btn btn-secondary mt-5">Export données RGPD</a>
+                    <a href="exportDataRGPD.php" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
 
                     <a href="profilePageSecurity.php" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
                     <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileInfoSubmit">Enregistrer les modifications</button>
