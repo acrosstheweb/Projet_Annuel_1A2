@@ -3,14 +3,17 @@ require 'functions.php';
 
 $title = $_POST['modify-title'];
 $description = $_POST['modify-description'];
+$order = $_POST['modify-order'];
+$image = $_POST['modify-image'];
 $id = $_GET['idTopic'];
 $InputPwd = $_POST['modify-adminPasswordInput'];
 
 if(
     !isset($title) ||
     !isset($description) ||
+    !isset($order) ||
     empty($InputPwd) ||
-    count($_POST) != 3
+    count($_POST) != 4
 ){
     header('Location: error404.php');
     die();
@@ -29,11 +32,12 @@ if(!password_verify($InputPwd, $adminPwdInDb)){
     die();
 }
 
-$userModifyQuery = $db->prepare("UPDATE RkU_TOPIC SET title=:title, description=:description WHERE id=:idTopic");
+$userModifyQuery = $db->prepare("UPDATE RkU_TOPIC SET title=:title, description=:description, topicOrder=:topicOrder WHERE id=:idTopic");
 $userModifyQuery->execute([
     "title" => $title,
     "description" => $description,
-    "idTopic" => $id
+    "idTopic" => $id,
+    "topicOrder"=> $order
 ]);
 setMessage('Modify', ["La catégorie a bien été modifiée."], 'success');
 header('Location: forum.php');
