@@ -67,11 +67,11 @@
                                             <h5>Vous modifiez la catégorie <?= $categorie['title'];?> </h5>
 
                                             <div class="col-12">
-                                                <label for="modify-title<?php echo $categorie['title'];?>" class="fw-bold">Nom </label>
+                                                <label for="modify-title<?php echo $categorie['title'];?>" class="fw-bold">Titre</label>
                                                 <input id="modify-title<?php echo $categorie['title'];?>" class="form-control" type="text" name="modify-title" value="<?php echo $categorie['title'];?>">
                                             </div>
                                             <div class="col-12">
-                                                <label for="modify-description<?php echo $categorie['description'];?>" class="fw-bold">Prénom </label>
+                                                <label for="modify-description<?php echo $categorie['description'];?>" class="fw-bold">Description</label>
                                                 <input id="modify-description<?php echo $categorie['description'];?>" class="form-control" type="text" name="modify-description" value="<?php echo $categorie['description'];?>">
                                             </div>
 
