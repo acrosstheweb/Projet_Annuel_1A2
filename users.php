@@ -81,7 +81,7 @@ Message('CreateUser');
                                             </div>
                                             <div class="modal-body">
                                                 Vous êtes sur le point de modifier les informations de l'utilisateur suivant:
-                                                <form id="modifyUserFormUid<?php echo $userId;?>" action="userModify.php?id=<?php echo $userId;?>" method="POST">
+                                                <form id="modifyUserFormUid<?php echo $userId;?>" action="userModifyAdmin.php?id=<?php echo $userId;?>" method="POST">
                                                     <div class="modifyFormInfo">
                                                         <div class="row mt-3">
                                                             <div class="col-6">
@@ -147,7 +147,7 @@ Message('CreateUser');
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form id="deleteUserFormUid<?php echo $userId;?>" action="userDel.php?id=<?php echo $userId;?>" method="POST" >
+                                                <form id="deleteUserFormUid<?php echo $userId;?>" action="userDelAdmin.php?id=<?php echo $userId;?>" method="POST" >
                                                     <div class="deleteFormInfo">
                                                         <h5>Vous êtes sur le point de supprimer l'utilisateur suivant:</h5>
                                                         <div class="row">
