@@ -358,8 +358,13 @@ table{
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 .__programImage{
     height: 100%;
+}
+
+.__programOverlay{
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 .__programContent{

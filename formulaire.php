@@ -57,44 +57,49 @@ require 'header.php';
     <div class="col-11 col-lg-3 d-flex justify-content-center">
         <div class="card bg-dark text-white col-12 col-md-6 col-lg-12 text-center p-0 __programCard">
             <img src="sources/img/pull2.jpg" class="card-img __programImage" alt="pull2">
-            <div class="card-img-overlay">
+            <div class="card-img-overlay __programOverlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">
-                        <h5 class="card-title">PULL #2</h5>
+                        <h5 class="card-title"  id="__programNamePreview"></h5>
                         <table class="table text-light card-text __programContent">
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>5X5</td>
+                                <tr id="__programExercicePreview1">
+                                    <td id="__programExerciceNamePreview1"></td>
+                                    <td id="__programExerciceRepsPreview1"></td>
+                                    <td id="__programExerciceDelete1"></td>
                                 </tr>
-                                <tr>
-                                    <td>Tirage horizontal</td>
-                                    <td>4X8</td>
+                                <tr id="__programExercicePreview2">
+                                    <td id="__programExerciceNamePreview2"></td>
+                                    <td id="__programExerciceRepsPreview2"></td>
+                                    <td id="__programExerciceDelete2"></td>
                                 </tr>
-                                <tr>
-                                    <td>Face pull</td>
-                                    <td>4X15</td>
+                                <tr id="__programExercicePreview3">
+                                    <td id="__programExerciceNamePreview3"></td>
+                                    <td id="__programExerciceRepsPreview3"></td>
+                                    <td id="__programExerciceDelete3"></td>
                                 </tr>
-                                <tr>
-                                    <td>Lat pulldown</td>
-                                    <td>3X15</td>
+                                <tr id="__programExercicePreview4">
+                                    <td id="__programExerciceNamePreview4"></td>
+                                    <td id="__programExerciceRepsPreview4"></td>
+                                    <td id="__programExerciceDelete4"></td>
                                 </tr>
-                                <tr>
-                                    <td>Tirage vertical serré</td>
-                                    <td>4X8</td>
+                                <tr id="__programExercicePreview5">
+                                    <td id="__programExerciceNamePreview5"></td>
+                                    <td id="__programExerciceRepsPreview5"></td>
+                                    <td id="__programExerciceDelete5"></td>
                                 </tr>
-                                <tr>
-                                    <td>Curl poulie</td>
-                                    <td>4X12</td>
+                                <tr id="__programExercicePreview6">
+                                    <td id="__programExerciceNamePreview6"></td>
+                                    <td id="__programExerciceRepsPreview6"></td>
+                                    <td id="__programExerciceDelete6"></td>
                                 </tr>
-                                <tr>
-                                    <td>Curl poulie corde</td>
-                                    <td>4X12</td>
+                                <tr id="__programExercicePreview7">
+                                    <td id="__programExerciceNamePreview7"></td>
+                                    <td id="__programExerciceRepsPreview7"></td>
+                                    <td id="__programExerciceDelete7"></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="#" id="__seeMorePull2" class="btn btn-primary __programControl">Voir plus</a>
-                        <a href="#" id="__seeLessPull2" class="btn btn-primary __programControl">Voir moins</a>
                     </div>
                 </div>
             </div>
