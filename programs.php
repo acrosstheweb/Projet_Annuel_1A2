@@ -15,8 +15,8 @@
     $results = $req->fetchAll();
 
 // var_dump(sizeof($results)); die();
-echo "<pre>";
-print_r($results); die();
+// echo "<pre>";
+// print_r($results); die();
 
 ?>
 
@@ -29,17 +29,15 @@ print_r($results); die();
         <table class="table text-primary card-text __programContent">
             <tbody>
         <?php
-                        $lastProgramId = "";
-            // for($i = 0; $i<=sizeof($results); $i++){
-            //     $lastProgramName = $results[$i]['program'];
-                    foreach($results as $program){
-                    if (($program['programId'] != $lastProgramId)) {
-                        echo "<tr><td>".$program['nameProgram'].'</td></tr>';
-                        $lastProgramId = $program['programId'];
-                    }
-                            echo '<tr><td>'.$program['exercice'].'</td>';
-                            echo '<td>'.$program['series']. 'x' . $program['repeats'].'</td></tr>';
-                        ?>
+            $lastProgramId = "";
+            foreach($results as $program){
+                if (($program['programId'] != $lastProgramId)) {
+                    echo "<tr><td>".$program['nameProgram'].'</td></tr>';
+                    $lastProgramId = $program['programId'];
+                }
+                    echo '<tr><td>'.$program['nameExercice'].'</td>';
+                    echo '<td>'.$program['series']. 'x' . $program['repeats'].'</td></tr>';
+                    ?>
 
         <?php
             }
