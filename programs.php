@@ -3,6 +3,21 @@
     $content = "Les différents programmes de Fitness Essential";
     $currentPage = 'programs';
     require 'header.php';
+
+    $pdo = database();
+
+    $req = $pdo->query("SELECT C.*, P.*, E.*
+                        FROM RkU_CONTAINS C
+                        LEFT JOIN RkU_PROGRAM P ON C.programId = P.id
+                        LEFT JOIN RkU_EXERCICE E ON C.exerciceId = E.id
+                            ");
+
+    $results = $req->fetchAll();
+
+// var_dump(sizeof($results)); die();
+echo "<pre>";
+print_r($results); die();
+
 ?>
 
 <h1 class="aligned-title"> Qui que vous soyez, nous vous proposons des programmes adaptés à vos envies </h1>
@@ -10,46 +25,28 @@
 <div class="container-fluid">
     <div class="row d-flex justify-content-around">
 
-        <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
-            <img src="sources/img/pull1.jpg" class="card-img __programImage" alt="pull1">
-            <div class="card-img-overlay">
-                <div class="__programDescription">
-                    <div class="__cardDescriptionText p-4">
-                        <h5 class="card-title">PULL #1</h5>
-                        <table class="table text-light card-text __programContent">
-                            <tbody>
-                                <tr>
-                                    <td>Tirage vertical pronation</td>
-                                    <td>4X12</td>
-                                </tr>
-                                <tr>
-                                    <td>Rowing barre</td>
-                                    <td>4X15</td>
-                                </tr>
-                                <tr>
-                                    <td>Rowing unilateral</td>
-                                    <td>3X12</td>
-                                </tr>
-                                <tr>
-                                    <td>Tirage vertical supination</td>
-                                    <td>4X8</td>
-                                </tr>
-                                <tr>
-                                    <td>Curl barre droite</td>
-                                    <td>4X10</td>
-                                </tr>
-                                <tr>
-                                    <td>Curl marteau</td>
-                                    <td>4X12</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="#" id="__seeMorePull1" class="btn btn-primary __programControl">Voir plus</a>
-                        <a href="#" id="__seeLessPull1" class="btn btn-primary __programControl">Voir moins</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        <table class="table text-primary card-text __programContent">
+            <tbody>
+        <?php
+                        $lastProgramId = "";
+            // for($i = 0; $i<=sizeof($results); $i++){
+            //     $lastProgramName = $results[$i]['program'];
+                    foreach($results as $program){
+                    if (($program['programId'] != $lastProgramId)) {
+                        echo "<tr><td>".$program['nameProgram'].'</td></tr>';
+                        $lastProgramId = $program['programId'];
+                    }
+                            echo '<tr><td>'.$program['exercice'].'</td>';
+                            echo '<td>'.$program['series']. 'x' . $program['repeats'].'</td></tr>';
+                        ?>
+
+        <?php
+            }
+        ?>
+            
+            </tbody>
+        </table>
 
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
             <img src="sources/img/push1.jpg" class="card-img __programImage" alt="push1">
