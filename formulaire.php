@@ -9,43 +9,43 @@ require 'header.php';
 
 <div class="row d-flex justify-content-center">
     <div class="col-10 col-lg-8 d-flex justify-content-center">
-        <form id="__programAddForm" action="" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
+        <form id="__programAddForm" action="newProgram.php" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
             <div class="row my-3">
                 <label for="__programTitle">Programme : </label>
-                <input class="form-control" type="text" name="programTitle" id="__programTitle" placeholder="Pull #2"><br>
+                <input class="form-control" type="text" name="programTitle" id="__programTitle" placeholder="Pull #2" required="required"><br>
             </div>
 
             <div class="row my-3">
                 <label for="__programFile">Illustration : </label>
-                <input type="file" name="programFile" id="__programFile">
+                <input type="file" name="programFile" id="__programFile" required="required">
             </div>
 
             <div class="row my-3">
                 <label for="__programExerciceDropdown" class="form-label">Exercice #1</label>
-                <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown"><br>
+                <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown" required="required"><br>
                     <option selected disabled>Exercice</option>
-                    <option value="1">Biceps Curl</option>
-                    <option value="2">Developpé couché</option>
-                    <option value="3">Rowing barre</option>
-                    <option value="4">Squat</option>
+                    <option value="BC">Biceps Curl</option>
+                    <option value="DC">Developpé couché</option>
+                    <option value="RB">Rowing barre</option>
+                    <option value="SQ">Squat</option>
                 </select>
                 <p>L'exercice n'est pas dans la liste? Créez-le</p>
-                <button class="btn btn-primary">+ Créer un exercice</button>
+                <a href="#" class="btn btn-primary">+ Créer un exercice</a>
             </div>
 
             <div class="row my-3">
                 <div class="col-12 col-md-6">
                     <label for="__programSeries">Série(s) : </label>
-                    <input type="number" name="programSeries" id="__programSeries">
+                    <input type="number" name="programSeries" id="__programSeries" required="required">
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="__programReps">Répétitions : </label>
-                    <input type="number" name="programReps" id="__programReps">
+                    <input type="number" name="programReps" id="__programReps" required="required">
                 </div>
             </div>
 
             <div class="text-left mt-4">
-                <button class="btn btn-primary" id="__addExercice">+ Ajouter un exercice</button>
+                <a href="#" class="btn btn-primary" id="__addExercice">+ Ajouter un exercice</a>
             </div> <br> <br> <br>
 
             <div class="text-center">

@@ -158,6 +158,7 @@ function checkFields($fields): array
                         $results['birthday'] = strtoupper($birthday);
                     }
                 }
+                break;
             case 'email':
                 $email = $fields['email'];
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){

@@ -8,6 +8,7 @@ require 'functions.php';
 
 require 'header.php';
 Message('Delete');
+Message('Modify');
 Message('CreateUser');
 ?>
 
@@ -102,7 +103,8 @@ Message('CreateUser');
                                                         <div class="row mt-3">
                                                             <div class="col">
                                                                 <label for="modify-emailUid<?php echo $userId;?>" class="fw-bold">Adresse e-mail </label>
-                                                                <input id="modify-emailUid<?php echo $userId;?>" class="form-control" type="email" name="modify-email" value="<?php echo $userMail;?>" required="required">
+                                                                <p id="modify-emailUid<?php echo $userId;?>" class="form-control"><?php echo $userMail;?></p>
+                                                                <small class="form-text text-muted">Seul le propriétaire du compte peut modifier son adresse mail</small>
                                                             </div>
                                                         </div>
                                                         <div class="row mt-3">
