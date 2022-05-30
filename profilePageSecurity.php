@@ -35,7 +35,6 @@ Message('DeleteUser');
                         echo isset($user['firstName']) && isset($user['lastName']) ? $user['firstName'] . ' ' . $user['lastName'] : ''
                         ?>
                     </p>
-                    <a href="#" class="link-primary" id="__profileInfoModify--trigger">Modifier mes informations</a>
                 </div>
             </div>
 
@@ -50,6 +49,7 @@ Message('DeleteUser');
                                     echo $user['email'] ?? ''
                                     ?>
                                 </p>
+                                <a href="#" class="link-primary" id="__profileModifyEmail">Modifier mon adresse e-mail</a>
                             </label>
                             <input type="text" class="form-control __profileInfoInput" name="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required">
                         </div>
@@ -60,13 +60,14 @@ Message('DeleteUser');
                                 <p class="my-0 __profileInfoValue">
                                     **************
                                 </p>
+                                <a href="#" class="link-primary" id="__profileModifyPassword">Modifier mon mot de passe</a>
                             </label>
                             <input type="password" class="form-control __profileInfoInput" name="profilePassword" value="" required="required">
                         </div>
                     </div>
 
-                    <a href="userDel.php" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
-                    <a href="exportDataRGPD.php" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
+                    <a href="userDel.php" id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
+                    <a href="exportDataRGPD.php" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
 
                     <a href="profilePageSecurity.php" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
                     <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileInfoSubmit">Enregistrer les modifications</button>
@@ -112,4 +113,4 @@ Message('DeleteUser');
 include 'footer.php';
 ?>
 
-<script src="js/profileInfo-modify.js" crossorigin="anonymous"></script>
+<script src="js/profilePageSecurity.js" crossorigin="anonymous"></script>
