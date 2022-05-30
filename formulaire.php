@@ -11,7 +11,7 @@ require 'header.php';
     <div class="col-10 col-lg-7 d-flex justify-content-center">
         <form id="__programAddForm" action="" method="POST" class="col-10 my-3">
             <div class="row my-3">
-                <label for="__programTitle">Programme : </label>
+                <label for="__programTitle">Nom du rogramme : </label>
                 <input class="form-control" type="text" name="programTitle" id="__programTitle" placeholder="Pull #2" oninput="displayProgramTitle()"><br>
             </div>
 
@@ -20,29 +20,42 @@ require 'header.php';
                 <input type="file" name="programFile" id="__programFile" required="required">
             </div>
 
-            <div id="__programExerciceList">
-                <div id="__programExercice1" class="__programExercice my-5 border-top">
-                    <div class="row my-3">
-                        <label for="__programExerciceDropdown1" class="form-label fw-bold">Exercice #1</label>
-                        <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required" onchange="displayExercice(1)"><br>
-                            <option selected disabled>Exercice</option>
-                            <option value="1">Biceps Curl</option>
-                            <option value="2">Developpé couché</option>
-                            <option value="3">Rowing barre</option>
-                            <option value="4">Squat</option>
-                        </select>
-                        <p>L'exercice n'est pas dans la liste? Créez-le</p>
-                        <button class="btn btn-primary">+ Créer un exercice</button>
-                    </div>
+            <div id="__programExerciceList" class="accordion" >
 
-                    <div class="row my-3">
-                        <div class="col-12 col-md-6">
-                            <label for="__programSeries1">Série(s) : </label><br>
-                            <input type="number" name="programSeries" id="__programSeries1" oninput="displayReps(1)">
+                <div id="__programExercice1" class="__programExercice accordion-item">
+                    <div class="row">
+                        <label for="__programExerciceDropdown1" class="accordion-header form-label fw-bold p-0 col-11">
+                            <button class="__programExerciceButton accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse1" aria-expanded="true" aria-controls="collapseOne">
+                                Exercice #1
+                            </button>
+                        </label>
+                        <div id="__programExerciceDeleteHeader1" class="__programExerciceDelete col-1">
+                            <i class="fa-solid fa-trash-can"></i>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <label for="__programReps1">Répétitions : </label><br>
-                            <input type="number" name="programReps" id="__programReps1" oninput="displayReps(1)">
+                    </div>
+                    <div id="__programExerciceCollapse1" class="__programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
+                        <div class="accordion-body">
+                            <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required" onchange="displayExercice(1)"><br>
+                                <option selected disabled>Exercice</option>
+                                <option value="1">Biceps Curl</option>
+                                <option value="2">Developpé couché</option>
+                                <option value="3">Rowing barre</option>
+                                <option value="4">Squat</option>
+                            </select>
+                            <p>L'exercice n'est pas dans la liste? Créez-le</p>
+                            <button class="btn btn-primary">+ Créer un exercice</button>
+                        
+
+                            <div class="row my-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="__programSeries1">Série(s) : </label><br>
+                                    <input type="number" name="programSeries" id="__programSeries1" oninput="displayReps(1)">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="__programReps1">Répétitions : </label><br>
+                                    <input type="number" name="programReps" id="__programReps1" oninput="displayReps(1)">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -411,3 +411,12 @@ table{
 .__programCardPreview{
     max-height: 600px;
 }
+
+.__programExerciceDelete{
+    background-color: var(--bs-danger);
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #dee2e6;
+}
