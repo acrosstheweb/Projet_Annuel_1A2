@@ -15,8 +15,8 @@
     $results = $req->fetchAll();
 
 // var_dump(sizeof($results)); die();
-// echo "<pre>";
-// print_r($results); die();
+echo "<pre>";
+print_r($results); die();
 
 ?>
 
@@ -25,27 +25,28 @@
 <div class="container-fluid">
     <div class="row d-flex justify-content-around">
 
+        
+        <table class="table text-primary card-text __programContent">
+            <tbody>
         <?php
-            for($i = 0; $i<=sizeof($results); $i++){
-                ?>
-                <table class="table text-primary card-text __programContent">
-                    <tbody>
-                        <?php
-                        $lastProgramName = $results[0]['nameProgram'];
-                        echo "<tr>".$results[0]['nameProgram'];
+                        $lastProgramId = "";
+            // for($i = 0; $i<=sizeof($results); $i++){
+            //     $lastProgramName = $results[$i]['program'];
                     foreach($results as $program){
-                    if ($program['nameProgram'] != $lastProgramName) {
-                        echo "<tr>".$program['nameProgram'];
+                    if (($program['programId'] != $lastProgramId)) {
+                        echo "<tr><td>".$program['nameProgram'].'</td></tr>';
+                        $lastProgramId = $program['programId'];
                     }
-                            echo '<td>'.$program['nameExercice'].'</td>';
+                            echo '<tr><td>'.$program['exercice'].'</td>';
                             echo '<td>'.$program['series']. 'x' . $program['repeats'].'</td></tr>';
                         ?>
-                    </tbody>
-                </table>
 
         <?php
-            }}
+            }
         ?>
+            
+            </tbody>
+        </table>
 
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
             <img src="sources/img/push1.jpg" class="card-img __programImage" alt="push1">
