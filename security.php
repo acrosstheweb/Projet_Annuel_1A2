@@ -16,15 +16,15 @@ Message('CreateUser');
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="users.php">Liste des utilisateurs</a>
-                <a class="nav-link" href="security.php">Sécurité</a>
+                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'users.php'?>">Liste des utilisateurs</a>
+                <a class="nav-link" href="<?= DOMAIN . 'security.php'?>">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>
         </div>
     
         <div class="col-2">
-            <a href="createUser.php" class="btn btn-primary">Créer un utilisateur</a>
+            <a href="<?= DOMAIN . 'createUser.php'?>" class="btn btn-primary">Créer un utilisateur</a>
         </div>
     </div>
     <div class="modal-dialog">
@@ -97,4 +97,4 @@ Message('CreateUser');
 include "footer.php";
 ?>
 
-<script src="js/admin-users.js" crossorigin="anonymous"></script>
+<script src="<?= DOMAIN . 'js/admin-users.js'?>" crossorigin="anonymous"></script>

@@ -49,7 +49,7 @@ require 'header.php';
             </div>
 
             <div class="text-left my-4">
-                <a href="#" class="btn btn-primary" id="__addExercice">+ Ajouter un exercice</a>
+                <a href="<?= DOMAIN . '#'?>" class="btn btn-primary" id="__addExercice">+ Ajouter un exercice</a>
             </div>
 
             <div class="text-center">
@@ -60,7 +60,7 @@ require 'header.php';
 
     <div class="col-11 col-lg-4 d-flex justify-content-center">
         <div class="card bg-dark text-white col-12 col-md-6 col-lg-8 text-center p-0 __programCard __programCardPreview">
-            <img src="sources/img/pull2.jpg" class="card-img __programImage" alt="pull2">
+            <img src="<?= DOMAIN . 'sources/img/pull2.jpg'?>" class="card-img __programImage" alt="pull2">
             <div class="card-img-overlay __programOverlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">
@@ -85,4 +85,4 @@ require 'header.php';
     include "footer.php";
 ?>
 
-<script src="js/formulaire.js" crossorigin="anonymous"></script>
+<script src="<?= DOMAIN . 'js/formulaire.js'?>" crossorigin="anonymous"></script>

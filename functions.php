@@ -1,10 +1,6 @@
 <?php
 session_start();
-
-function webroot(): string
-{
-    return $_SERVER['DOCUMENT_ROOT'] . '/Projet_Annuel_1A2_github/';
-}
+require 'conf.inc.php';
 
 function setMessage($title, $msgArray, $type){
     $_SESSION['MESSAGE'][$title] = [
@@ -258,16 +254,18 @@ echo "<pre>";
  */
 function register_mail($firstname, $tk, $domain): string
 {
-    return "<!DOCTYPE html>
+    $src = DOMAIN . 'sources/img/logo.png';
+    $href = "$domain/confirmRegister.php?fn=$firstname&tk=$tk";
+    return '<!DOCTYPE html>
         <html>
-            <section align='center'>
+            <section align="center">
                 <h1>Vérification inscription Fitness Essential</h1>
-                <img src='https://pa-atw.fr/sources/img/logo.png' alt='logo'>
-                <h3>Bonjour " . $firstname . ", merci de nous faire confiance pour être la salle de vos nombreux futurs entrainements intensifs 💪</h3>
-                <p>Pour confirmer votre inscription nous vons prions de bien vouloir cliquer sur le lien afin de vérifier que vous n'êtes pas un robot 🔌</p>
-                <a href='$domain/confirmRegister.php?fn=$firstname&tk=$tk'>Vérifier votre addresse mail</a>
+                <img src=' . $src . ' alt="logo">
+                <h3>Bonjour ' . $firstname . ', merci de nous faire confiance pour être la salle de vos nombreux futurs entrainements intensifs 💪</h3>
+                <p>Pour confirmer votre inscription nous vons prions de bien vouloir cliquer sur le lien afin de vérifier que vous n\'êtes pas un robot 🔌</p>
+                <a href='. $href .'>Vérifier votre adresse mail</a>
             </section>
-        </html>";
+        </html>';
 }
 
 /*function getUser($fields){

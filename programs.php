@@ -47,7 +47,7 @@
         </table>
 
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
-            <img src="sources/img/push1.jpg" class="card-img __programImage" alt="push1">
+            <img src="<?= DOMAIN . 'sources/img/push1.jpg'?>" class="card-img __programImage" alt="push1">
             <div class="card-img-overlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">
@@ -88,7 +88,7 @@
         </div>
 
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
-            <img src="sources/img/legs1.jpg" class="card-img __programImage" alt="legs1">
+            <img src="<?= DOMAIN . 'sources/img/legs1.jpg'?>" class="card-img __programImage" alt="legs1">
             <div class="card-img-overlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">
@@ -129,7 +129,7 @@
         </div>
         
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
-            <img src="sources/img/pull2.jpg" class="card-img __programImage" alt="pull2">
+            <img src="<?= DOMAIN . 'sources/img/pull2.jpg'?>" class="card-img __programImage" alt="pull2">
             <div class="card-img-overlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">
@@ -174,7 +174,7 @@
         </div>
 
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
-            <img src="sources/img/push2.jpg" class="card-img __programImage" alt="push2">
+            <img src="<?= DOMAIN . 'sources/img/push2.jpg'?>" class="card-img __programImage" alt="push2">
             <div class="card-img-overlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">
@@ -215,7 +215,7 @@
         </div>
 
         <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
-            <img src="sources/img/legs2.jpg" class="card-img" alt="legs2">
+            <img src="<?= DOMAIN . 'sources/img/legs2.jpg'?>" class="card-img" alt="legs2">
             <div class="card-img-overlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">

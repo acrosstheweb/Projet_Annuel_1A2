@@ -12,7 +12,7 @@
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
         <h4 class="aligned-title text-uppercase">
             Essential
-            <img src="sources/img/essential.png" alt="" class="img-fluid __subscriptionIcon">
+            <img src="<?= DOMAIN . 'sources/img/essential.png'?>" alt="" class="img-fluid __subscriptionIcon">
         </h4>
         <div class="card-body">
             <h5 class="card-title">15,99€/mois</h5>
@@ -32,7 +32,7 @@
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
         <h4 class="aligned-title text-uppercase">
             Classic
-            <img src="sources/img/classic.png" alt="" class="img-fluid __subscriptionIcon">
+            <img src="<?= DOMAIN . 'sources/img/classic.png'?>" alt="" class="img-fluid __subscriptionIcon">
         </h4>
         <div class="card-body">
             <h5 class="card-title">23,99€/Mois</h5>
@@ -52,7 +52,7 @@
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
         <h4 class="aligned-title text-uppercase">
             Premium
-            <img src="sources/img/premium.png" alt="" class="img-fluid __subscriptionIcon">
+            <img src="<?= DOMAIN . 'sources/img/premium.png'?>" alt="" class="img-fluid __subscriptionIcon">
         </h4>
         <div class="card-body">
             <h5 class="card-title">49,99€/Mois</h5>
@@ -77,13 +77,13 @@
             <tr class="d-md-none">
                 <th scope="col" class="__subscriptionHead"></th>
                 <th scope="col">
-                    <img src="sources/img/essential.png" alt="" class="img-fluid">
+                    <img src="<?= DOMAIN . 'sources/img/essential.png'?>" alt="" class="img-fluid">
                 </th>
                 <th scope="col">
-                    <img src="sources/img/classic.png" alt="" class="img-fluid">
+                    <img src="<?= DOMAIN . 'sources/img/classic.png'?>" alt="" class="img-fluid">
                 </th>
                 <th scope="col">
-                    <img src="sources/img/premium.png" alt="" class="img-fluid">
+                    <img src="<?= DOMAIN . 'sources/img/premium.png'?>" alt="" class="img-fluid">
                 </th>
             </tr>
             <tr class="d-none d-md-table-row">

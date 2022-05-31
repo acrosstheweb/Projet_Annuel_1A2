@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row __frontRow justify-content-evenly align-items-center px-md-3" style="position:relative;">
     <div class="__frontBgImage"></div>
-        <img src="sources/img/musculation.jpg" alt="La musculation"  class="__frontImage col-12 col-md-6 col-lg-8">
+        <img src="<?= DOMAIN . 'sources/img/musculation.jpg'?>" alt="La musculation"  class="__frontImage col-12 col-md-6 col-lg-8">
         <div class="__frontIamge-description col-12 col-md-6 col-lg-4">
             <h2 class="aligned-title">NOTRE MÉTHODE</h2>
             <p class="text-justify text-center my-lg-5">
@@ -41,7 +41,7 @@
                 <div class="carousel-item active">
                     <div class="d-flex justify-content-center">
                         <div class="card col-9">
-                            <img src="sources/img/cycling.jpg" class="card-img-top" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">CYCLING</h5>
                                 <p class="card-text">
@@ -57,7 +57,7 @@
                 <div class="carousel-item">
                     <div class="d-flex justify-content-center">
                         <div class="card col-9">
-                            <img src="sources/img/zumba.jpg" class="card-img-top" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">ZUMBA</h5>
                                 <p class="card-text">
@@ -73,7 +73,7 @@
                 <div class="carousel-item justify-content-evenly">
                     <div class="d-flex justify-content-center">
                         <div class="card col-9">
-                            <img src="sources/img/abs.jpg" class="card-img-top" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">ABDOS - FESSIERS</h5>
                                 <p class="card-text">
@@ -89,7 +89,7 @@
                 <div class="carousel-item justify-content-evenly">
                     <div class="d-flex justify-content-center">
                         <div class="card col-9">
-                            <img src="sources/img/yoga.jpg" class="card-img-top" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <h5 class="card-title">YOGA</h5>
                                 <p class="card-text">
@@ -118,7 +118,7 @@
                 <div class="carousel-item active">
                     <div class="row d-flex justify-content-center">
                         <div class="card __cardTablet col-9">
-                            <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">
@@ -138,7 +138,7 @@
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
                         <div class="card __cardTablet col-9">
-                            <img src="sources/img/ZUMBA.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/ZUMBA.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">
@@ -158,7 +158,7 @@
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
                         <div class="card __cardTablet col-9">
-                            <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">
@@ -178,7 +178,7 @@
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
                         <div class="card __cardTablet col-9">
-                            <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">
@@ -213,7 +213,7 @@
                     <div class="row d-flex justify-content-center">
 
                         <div class="card __cardDesktop col-4">
-                            <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">
@@ -229,7 +229,7 @@
                         </div>
 
                         <div class="card __cardDesktop col-4">
-                            <img src="sources/img/zumba.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">
@@ -251,7 +251,7 @@
                     <div class="row d-flex justify-content-center">
 
                         <div class="card __cardDesktop col-4">
-                            <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">
@@ -267,7 +267,7 @@
                         </div>
 
                         <div class="card __cardDesktop col-4">
-                            <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
+                            <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img __classImage" alt="...">
                             <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                 <div class="__cardDescription">
                                     <div class="__cardDescriptionText">

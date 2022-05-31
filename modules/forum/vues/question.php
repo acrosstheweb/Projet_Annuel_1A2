@@ -51,7 +51,7 @@
 <div class="container-fluid">
     <div class="row __categoryControls pt-3 px-3 px-md-5">
         <div class="col">
-            <a class="btn btn-primary" href="categorie.php?idTopic=<?= $idTopic ?>" role="button">Revenir à la page précedente</a>
+            <a class="btn btn-primary" href="<?= DOMAIN ?>categorie.php?idTopic=<?= $idTopic ?>" role="button">Revenir à la page précedente</a>
         </div>
     </div>
 </div>

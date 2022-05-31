@@ -8,14 +8,14 @@ require 'header.php';
 
     <div align="center">
         <span id="__switch-left">G</span>
-            <img id="__preview-avatar" src="sources/img/avatar.jpg" width="128" height="128">
+            <img id="__preview-avatar" src="<?= DOMAIN . 'sources/img/avatar.jpg'?>" width="128" height="128">
         <span id="__switch-right">D</span>
         <br><br>
         <div id="__elements-avatar">
             <?php
                 $avatar_files = glob("sources/avatar/*.png");
                 foreach($avatar_files as $image){
-                    echo "<img src='$image' width='64' height='64' style='border:1px solid black;cursor:pointer;margin:5px;' onclick='displayIt(this.src)'>";
+                    echo "<img src=". DOMAIN . $image." width='64' height='64' style='border:1px solid black;cursor:pointer;margin:5px;' onclick='displayIt(this.src)'>";
                 }
             ?>
             <div id="__backgrounds-avatar"></div>

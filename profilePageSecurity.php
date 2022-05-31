@@ -20,8 +20,8 @@ Message('DeleteUser');
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="profilePage.php">Mon Profil</a>
-                <a class="nav-link" href="profilePageSecurity.php">Sécurité</a>
+                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'profilePage.php'?>">Mon Profil</a>
+                <a class="nav-link" href="<?= DOMAIN . 'profilePageSecurity.php'?>">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>
@@ -66,10 +66,10 @@ Message('DeleteUser');
                         </div>
                     </div>
 
-                    <a href="userDel.php" id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
-                    <a href="exportDataRGPD.php" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
+                    <a href="<?= DOMAIN . 'userDel.php'?>" id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
+                    <a href="<?= DOMAIN . 'exportDataRGPD.php'?>" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
 
-                    <a href="profilePageSecurity.php" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
+                    <a href="<?= DOMAIN . 'profilePageSecurity.php'?>" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
                     <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileInfoSubmit">Enregistrer les modifications</button>
                 </form>
             </div>
@@ -113,4 +113,4 @@ Message('DeleteUser');
 include 'footer.php';
 ?>
 
-<script src="js/profilePageSecurity.js" crossorigin="anonymous"></script>
+<script src="<?= DOMAIN . 'js/profilePageSecurity.js'?>" crossorigin="anonymous"></script>

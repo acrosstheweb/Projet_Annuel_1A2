@@ -29,12 +29,12 @@
 <div class="container-fluid">
     <div class="row __categoryControls pt-3 px-3 px-md-5">
         <div class="col">
-            <a class="btn btn-primary" href="forum.php" role="button">Revenir à la page précedente</a>
+            <a class="btn btn-primary" href="<?= DOMAIN . 'forum.php'?>" role="button">Revenir à la page précedente</a>
         </div>
 
         <div class="col d-flex justify-content-end">
             <?php if(isConnected()){ ?>
-                <a class="btn btn-primary" href="newQuestion.php?idTopic=<?= $idTopic ?>" role="button">Poser votre question</a>
+                <a class="btn btn-primary" href="<?= DOMAIN . 'newQuestion.php?idTopic=' . $idTopic ?>" role="button">Poser votre question</a>
             <?php }?>
         </div>
     </div>
@@ -68,7 +68,7 @@
                             ?> -->
                             <p class="card-text text-muted"><small>Publiée par <?= $question['firstname']?> <?= $question['lastname']?> le <?= $question['creationDate'] ?></small></p>
                             <p class="card-text"><?= $question['content'] ?><br></p>
-                            <a href="question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary m-1">Voir plus</a>
+                            <a href="<?= DOMAIN ?>question.php?idTopic=<?= $idTopic ?>&idQuestion=<?= $question['id'] ?>&status=<?= $question['status'] ?>" class="btn btn-primary m-1">Voir plus</a>
 
                             <?php
                             if (isConnected()) {

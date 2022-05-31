@@ -20,8 +20,8 @@
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="profilePage.php">Mon Profil</a>
-                <a class="nav-link" href="profilePageSecurity.php">Sécurité</a>
+                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'profilePage.php'?>">Mon Profil</a>
+                <a class="nav-link" href="<?= DOMAIN . 'profilePageSecurity.php'?>">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>
@@ -31,7 +31,7 @@
             <div class="row border-bottom py-3 mb-3">
                 <!-- <img src="sources/img/avatar.jpg" alt="" class="img-fluid "> -->
                 <div class="card col-4 col-md-3 col-lg-2 __profilePic">
-                    <img src="sources/img/avatar.jpg" class="card-img" alt="...">
+                    <img src="<?= DOMAIN . 'sources/img/avatar.jpg'?>" class="card-img" alt="...">
                     <div class="card-img-overlay text-center d-flex align-items-end">
                         <div class="__profilePicOverlay">
                             <div class="__profilePicChange">
@@ -163,7 +163,7 @@
                             <input type="text" class="form-control __profileInfoInput" name="profileCity" id="profileCity" value="<?php echo $user['city'] ?? '' ?>" required="required">
                         </div>
                     </div>
-                    <a href="profilePage.php" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
+                    <a href="<?= DOMAIN . 'profilePage.php'?>" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
                     <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileInfoSubmit">Enregistrer les modifications</button>
                 </form>
             </div>
@@ -176,4 +176,4 @@
     include 'footer.php';
 ?>
 
-<script src="js/profileInfo-modify.js" crossorigin="anonymous"></script>
+<script src="<?= DOMAIN . 'js/profileInfo-modify.js'?>" crossorigin="anonymous"></script>

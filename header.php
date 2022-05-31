@@ -12,10 +12,10 @@
                                         } else {
                                             echo "Bienvenue sur Fitness Essential";
                                         } ?>>
-    <link rel="icon" type="image/x-icon" href="sources/img/icon.png">
+    <link rel="icon" type="image/x-icon" href="<?= DOMAIN . 'sources/img/icon.png'?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href='http://localhost/GitHub/Projet_Annuel_1A2/css/style.css'>
+    <link rel="stylesheet" href=<?= DOMAIN . 'css/style.css'?>>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://kit.fontawesome.com/17a81231c9.js" crossorigin="anonymous"></script>
     <title><?php if (isset($title)) {
@@ -56,33 +56,33 @@
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "gyms");
-                                                        } ?>" href="gyms.php">Salles</a>
+                                                        } ?>" href="<?= DOMAIN . 'gyms.php'?>">Salles</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "subscriptions");
-                                                        } ?>" href="subscriptions.php">Abonnements</a>
+                                                        } ?>" href="<?= DOMAIN . 'subscriptions.php'?>">Abonnements</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "reservations");
-                                                        } ?>" href="reservations.php">Réservations</a>
+                                                        } ?>" href="<?= DOMAIN . 'reservations.php'?>">Réservations</a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "programs");
-                                                        } ?>" href="programs.php">Programmes</a>
+                                                        } ?>" href="<?= DOMAIN . 'programs.php'?>">Programmes</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "forum");
-                                                        } ?>" href="modules/forum/vues/forum.php">Forum</a>
+                                                        } ?>" href="<?= DOMAIN . 'modules/forum/vues/forum.php'?>">Forum</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "about");
-                                                        } ?>" href="about.php">Informations</a>
+                                                        } ?>" href="<?= DOMAIN . 'about.php'?>">Informations</a>
                                 </li>
                             </ul>
                         </div>
@@ -90,8 +90,8 @@
                     
                     <!-- LOGO -->
                     <div class="col-2 text-center">
-                        <a href="index.php" class="navbar-brand mx-auto">
-                            <img src="sources/img/icon.png" alt="logo" class="img-fluid __logoIcon">
+                        <a href="<?= DOMAIN . 'index.php'?>" class="navbar-brand mx-auto">
+                            <img src="<?= DOMAIN . 'sources/img/icon.png'?>" alt="logo" class="img-fluid __logoIcon">
                         </a>
                     </div>
 
@@ -326,4 +326,4 @@
     </section>
 
 <!-- <script src="js/user-slide.js"></script> -->
-<script src="js/searchbar.js"></script>
+<script src="<?= DOMAIN . 'js/searchbar.js'?>"></script>

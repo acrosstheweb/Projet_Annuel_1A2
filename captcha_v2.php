@@ -33,7 +33,7 @@ shuffle($pathArray);
             }
     ?>
         <div id="__captchaTile<?php  echo $i ?>" class="col-4 p-1">
-            <img class="img-fluid" id="__tile<?php echo $pathArray[$i][0] ?>" src="<?php echo $pathArray[$i][1] ?>">
+            <img class="img-fluid" id="__tile<?php echo $pathArray[$i][0] ?>" src="<?php echo DOMAIN . $pathArray[$i][1] ?>">
         </div> 
     <?php
             if ($i % 3 == 2){
@@ -43,4 +43,4 @@ shuffle($pathArray);
     ?>
 </div>
 
-<script src="js/captcha.js" crossorigin="anonymous"></script>
+<script src="<?= DOMAIN . 'js/captcha.js'?>" crossorigin="anonymous"></script>

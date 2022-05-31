@@ -26,7 +26,7 @@
 <div class="container-fluid">
     <div class="col d-flex justify-content-center">
         <?php if(isAdmin()){ ?>
-            <a class="btn btn-primary" href="newCategorie.php" role="button">Nouvelle catégorie</a>
+            <a class="btn btn-primary" href="<?= DOMAIN . 'newCategorie.php'?>" role="button">Nouvelle catégorie</a>
         <?php }?>
     </div>
 </div>
@@ -40,11 +40,11 @@
 
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card __topic">
-                        <img src="sources/img/<?php echo $categorie['path'] ?>" class="card-img-top __topicImg" alt="...">
+                        <img src="<?= DOMAIN . 'sources/img/' . $categorie['path'] ?>" class="card-img-top __topicImg" alt="...">
                         <div class="card-body">
                             <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
                             <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
-                            <a href="categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
+                            <a href="<?= DOMAIN ?>categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
                             <?php
                                 if(isAdmin()){
                             ?>
