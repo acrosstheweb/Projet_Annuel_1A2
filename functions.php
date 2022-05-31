@@ -252,10 +252,10 @@ echo "<pre>";
  * $domain correspond au serveur sur lequel le script est executé, si local alors mettre http://localhost/Projet_Annuel_1A2_github, si prod mettre = pat-atw.fr
  * $tk correspond au token qui est utilisé pour identifier l'inscription d'un nouvel utilisateur, il est envoyé dans le mail et est inséré en BDD
  */
-function register_mail($firstname, $tk, $domain): string
+function register_mail($firstname, $tk): string
 {
-    $src = DOMAIN . 'sources/img/logo.png';
-    $href = "$domain/confirmRegister.php?fn=$firstname&tk=$tk";
+    $src = /*DOMAIN .*/'https://pa-atw.fr/sources/img/logo.png';
+    $href = DOMAIN . "confirmRegister.php?fn=$firstname&tk=$tk";
     return '<!DOCTYPE html>
         <html>
             <section align="center">

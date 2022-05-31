@@ -52,7 +52,7 @@ if($verifChamps[0] === true){
 
     $to = $email;
     $subject = 'Inscription Fitness Essential 💪';
-    $message = register_mail($firstname, $tk, 'http://localhost/Projet_Annuel_1A2_github');
+    $message = register_mail($firstname, $tk);
     $headers = 'From: "Fitness Essential" fitness3ssential@gmail.com' . PHP_EOL;
     $headers .= "MIME-Version: 1.0" . PHP_EOL;
     $headers .= 'Content-type: text/html; charset=iso-8859-1';
