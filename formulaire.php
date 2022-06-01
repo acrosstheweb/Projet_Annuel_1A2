@@ -25,17 +25,17 @@ require 'header.php';
                 <div id="__programExercice1" class="__programExercice accordion-item">
                     <div class="row">
                         <label for="__programExerciceDropdown1" id="__programExerciceDropdown1-label" class="accordion-header form-label fw-bold p-0 col-10 col-md-11">
-                            <button class="__programExerciceButton accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse1" aria-expanded="true" aria-controls="collapseOne">
+                            <button id="__programExerciceDropdown1-button" class="__programExerciceButton accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse1" aria-expanded="true" aria-controls="collapseOne">
                                 Exercice #1
                             </button>
                         </label>
-                        <div id="__programExerciceDeleteHeader1" class="__programExerciceDelete col-2 col-md-1">
+                        <div id="__programExerciceDeleteHeader1" class="__programExerciceDelete col-2 col-md-1" onclick="deleteExercice(1)">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
                     <div id="__programExerciceCollapse1" class="__programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
                         <div class="accordion-body">
-                            <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required" onchange="displayExercice(1)"><br>
+                            <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required"><br>
                                 <option selected disabled>Exercice</option>
                                 <option value="1">Biceps Curl</option>
                                 <option value="2">Developpé couché</option>
@@ -80,10 +80,10 @@ require 'header.php';
                         <h5 class="card-title" id="__programNamePreview"></h5>
                         <table class="table text-light card-text __programContent">
                             <tbody id="__programContentPreview">
-                                <tr id="__programExercicePreview1">
+                                <tr id="__programExercicePreview1" class="__programExercicePreview">
                                     <td id="__programExerciceNamePreview1"></td>
                                     <td id="__programExerciceRepsPreview1"></td>
-                                    <td id="__programExerciceDelete1"><i class="fa-solid fa-trash-can"></i></td>
+                                    <td id="__programExerciceDelete1" class="text-end"><i class="fa-solid fa-trash-can" onclick="deleteExercice(1)"></i></td>
                                 </tr>
                             </tbody>
                         </table>
