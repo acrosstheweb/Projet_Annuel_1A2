@@ -29,6 +29,12 @@
     border-color: var(--green3);
 }
 
+.btn-primary.disabled{
+    color: #fff;
+    background-color: var(--green1);
+    border-color: var(--green1);
+}
+
 
 /* Header */
 .navbar-brand,.footer-logo,.__logoIcon{

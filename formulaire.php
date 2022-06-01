@@ -24,12 +24,12 @@ require 'header.php';
 
                 <div id="__programExercice1" class="__programExercice accordion-item">
                     <div class="row">
-                        <label for="__programExerciceDropdown1" class="accordion-header form-label fw-bold p-0 col-11">
+                        <label for="__programExerciceDropdown1" id="__programExerciceDropdown1-label" class="accordion-header form-label fw-bold p-0 col-10 col-md-11">
                             <button class="__programExerciceButton accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse1" aria-expanded="true" aria-controls="collapseOne">
                                 Exercice #1
                             </button>
                         </label>
-                        <div id="__programExerciceDeleteHeader1" class="__programExerciceDelete col-1">
+                        <div id="__programExerciceDeleteHeader1" class="__programExerciceDelete col-2 col-md-1">
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </div>
@@ -48,11 +48,11 @@ require 'header.php';
 
                             <div class="row my-3">
                                 <div class="col-12 col-md-6">
-                                    <label for="__programSeries1">Série(s) : </label><br>
+                                    <label for="__programSeries1" id="__programSeries1-label">Série(s) : </label><br>
                                     <input type="number" name="programSeries" id="__programSeries1" oninput="displayReps(1)">
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <label for="__programReps1">Répétitions : </label><br>
+                                    <label for="__programReps1" id="__programReps1-label">Répétitions : </label><br>
                                     <input type="number" name="programReps" id="__programReps1" oninput="displayReps(1)">
                                 </div>
                             </div>
