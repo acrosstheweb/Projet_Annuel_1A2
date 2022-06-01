@@ -24,20 +24,46 @@
 
 <div class="container-fluid">
     <div class="row d-flex justify-content-around">
-
-        
-        <table class="table text-primary card-text __programContent">
-            <tbody>
         <?php
-            $lastProgramId = "";
-            foreach($results as $program){
-                if (($program['programId'] != $lastProgramId)) {
+        $lastProgramId = "";
+        foreach($results as $program){
+            if (($program['programId'] != $lastProgramId)) { ?>
+            
+        <div class="card bg-dark text-white col-10 col-md-5 col-lg-3 text-center p-0 __programCard">
+            <img src="sources/img/push1.jpg" class="card-img __programImage" alt="push1">
+            <div class="card-img-overlay">
+                <div class="__programDescription">
+                    <div class="__cardDescriptionText p-4">
+                        <?php echo "<h5 class='card-title'>".$program['nameProgram'].'</h5>';
+            $lastProgramId = $program['programId'];
+            }?>
+                        <table class="table text-light card-text __programContent">
+                            <tbody>
+                                <?php
+                                        echo '<tr><td>'.$program['nameExercice'].'</td>';
+                                        echo '<td>'.$program['series']. 'x' . $program['repeats'].'</td></tr>';
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        
+
+
+
+
+
+
+                <!-- if (($program['programId'] != $lastProgramId)) {
                     echo "<tr><td>".$program['nameProgram'].'</td></tr>';
                     $lastProgramId = $program['programId'];
                 }
                     echo '<tr><td>'.$program['nameExercice'].'</td>';
                     echo '<td>'.$program['series']. 'x' . $program['repeats'].'</td></tr>';
-                    ?>
+                    ?> -->
 
         <?php
             }
