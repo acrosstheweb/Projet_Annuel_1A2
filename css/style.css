@@ -415,7 +415,8 @@ table{
 
 
 .__programCardPreview{
-    max-height: 600px;
+    width: 340px;
+    height: 510px;
 }
 
 .__programExerciceDelete{

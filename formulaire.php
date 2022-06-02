@@ -8,6 +8,7 @@ $pdo = database();
 
     $req = $pdo->query("SELECT nameExercice
                         FROM RkU_EXERCICE
+                        ORDER BY nameExercice ASC
                         ");
 
     $results = $req->fetchAll();
