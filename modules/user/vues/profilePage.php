@@ -1,5 +1,5 @@
 <?php
-    require 'functions.php';
+    require '../../../functions.php';
     if(!isConnected()){
         header('Location: error404.php');
         die();
@@ -7,7 +7,7 @@
     $title = "Fitness Essential - Page profil";
     $content = "Profil utilisateur";
     $currentPage = 'profile';
-    require 'header.php';
+    require '../../../header.php';
     Message('Update');
     $db = database();
     $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM rku_user WHERE id=:id");
@@ -20,8 +20,8 @@
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'profilePage.php'?>">Mon Profil</a>
-                <a class="nav-link" href="<?= DOMAIN . 'profilePageSecurity.php'?>">Sécurité</a>
+                <a class="nav-link active" aria-current="page" href="profilePage.php">Mon Profil</a>
+                <a class="nav-link" href="profilePageSecurity.php">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="row">
-                <form id="modifyProfile" method="POST" action="updateprofile.php">
+                <form id="modifyProfile" method="POST" action="../scripts/updateprofile.php">
                     <div class="row">
                         <div class="col-6 mb-3">
                             <label for="profileCivility" class="form-label">
@@ -163,7 +163,7 @@
                             <input type="text" class="form-control __profileInfoInput" name="profileCity" id="profileCity" value="<?php echo $user['city'] ?? '' ?>" required="required">
                         </div>
                     </div>
-                    <a href="<?= DOMAIN . 'profilePage.php'?>" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
+                    <a href="" class="btn btn-secondary mt-5" id="__profileInfoCancel">Annuler les modifications</a>
                     <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileInfoSubmit">Enregistrer les modifications</button>
                 </form>
             </div>
@@ -173,7 +173,7 @@
 </div>
 
 <?php
-    include 'footer.php';
+    include '../../../footer.php';
 ?>
 
 <script src="<?= DOMAIN . 'js/profileInfo-modify.js'?>" crossorigin="anonymous"></script>

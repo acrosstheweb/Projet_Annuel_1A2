@@ -1,7 +1,7 @@
 <?php
-require 'functions.php';
+require '../../../../functions.php';
 if(empty($_POST['userPassword'])){
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 }
 
@@ -15,7 +15,7 @@ $pwdInDb = $pwdInDbQuery->fetch()['password'];
 
 if(!password_verify($pwd, $pwdInDb)){
     setMessage('DeleteUser', ["Mot de passe incorrect"], 'warning');
-    header('Location: profilePageSecurity.php');
+    header('Location: ../vues/profilePageSecurity.php');
     die();
 }
 
@@ -24,5 +24,5 @@ $userDelQuery->execute(["id"=>$userId]);
 unset($_SESSION['userToken']);
 unset($_SESSION['userId']);
 setMessage('DeleteUser', ["Votre compte a bien été supprimé."], 'success');
-header('Location: index.php');
+header('Location: ../../../index.php');
 die();

@@ -1,7 +1,7 @@
 <?php
-require 'functions.php';
+require '../../../../functions.php';
 if(empty($_POST['delete-adminPasswordInput'])){
-    header('Location: error404.php');
+    header('Location: ../../../../error404.php');
     die();
 }
 
@@ -15,7 +15,7 @@ $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $adminPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'admin\", plus que x essais !"], 'warning');
-    header('Location: users.php');
+    header('Location: ../../vues/admin/users.php');
     die();
 }
 
@@ -24,5 +24,5 @@ $userToDeleteId = $_GET['id'];
 $userDelQuery = $db->prepare("DELETE FROM rku_user WHERE id=:id");
 $userDelQuery->execute(["id"=>$userToDeleteId]);
 setMessage('Delete', ["L'utilisateur n°" . $userToDeleteId . " a bien été supprimé."], 'success');
-header('Location: users.php');
+header('Location: ../../vues/admin/users.php');
 die();

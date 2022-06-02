@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../../../../functions.php';
 if(
     empty($_POST['modify-lastName']) ||
     empty($_POST['modify-firstName']) ||
@@ -10,7 +10,7 @@ if(
     empty($_POST['modify-adminPasswordInput']) ||
     count($_POST) != 7
 ){
-    header('Location: error404.php');
+    header('Location: ../../../../error404.php');
     die();
 }
 $InputPwd = $_POST['modify-adminPasswordInput'];
@@ -23,7 +23,7 @@ $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $adminPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'admin\", plus que x essais !"], 'warning');
-    header('Location: users.php');
+    header('Location: ../../vues/admin/users.php');
     die();
 }
 
@@ -62,5 +62,5 @@ if($verifChamps[0] === true){
 }else{
     setMessage('Modify', $verifChamps[1], 'warning');
 }
-header('Location: users.php');
+header('Location: ../../vues/admin/users.php');
 die();

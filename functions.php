@@ -255,7 +255,7 @@ echo "<pre>";
 function register_mail($firstname, $tk): string
 {
     $src = /*DOMAIN .*/'https://pa-atw.fr/sources/img/logo.png';
-    $href = DOMAIN . "confirmRegister.php?fn=$firstname&tk=$tk";
+    $href = DOMAIN . "modules/user/scripts/confirmRegister.php?fn=$firstname&tk=$tk";
     return '<!DOCTYPE html>
         <html>
             <section align="center">
@@ -272,3 +272,15 @@ function register_mail($firstname, $tk): string
     // Fonction qui récupère les champs depuis la bdd grâce à un id;
     // Pour chaque $fields, retourner la valeur en bdd
 }*/
+
+/*
+ * $id est l'id de l'utilisateur
+ * $action est le type d'action effectuée (Visite de page, Connexion, Déconnexion, ...)
+ */
+function atw_log($id, string $action){
+    $logfile = fopen(__DIR__ . "/logs/visits.log", "a");
+    $currentDateTime = date("d/m/Y H:i:s");
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    fwrite($logfile, "UserID : $id - $currentDateTime - $action $currentPage\n");
+    fclose($logfile);
+}

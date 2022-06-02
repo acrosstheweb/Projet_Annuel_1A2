@@ -1,6 +1,6 @@
 <?php
 
-require 'functions.php';
+require '../../../../functions.php';
 if(
     count($_POST) != 9 ||
     empty($_POST['createUser-birthday']) ||
@@ -14,7 +14,7 @@ if(
     empty($_POST['createUser-adminPasswordInput'])
 ){
     setMessage('RegisterHack', ['Non respect des règles du formulaire d\'ajout utilisateur'],'danger');
-    header('Location: error404.php');
+    header('Location: ../../../../error404.php');
     die();
 }
 $passwordAdmin = $_POST['createUser-adminPasswordInput'];
@@ -27,7 +27,7 @@ $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($passwordAdmin, $adminPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'admin\", plus que x essais !"], 'warning');
-    header('Location: security.php');
+    header('Location: ../../vues/admin/security.php');
     die();
 }
 
@@ -86,10 +86,10 @@ if($verifChamps[0] === true){
     }else{
         setMessage('CreateUser', [' Echec de l\'envoi du mail', error_get_last()['message']], 'warning'); // error_get_last()['message'] affiche la dernière erreur rencontrée dans le cas où le mail n'est pas envoyé, c'est la raison de l'échec qui sera affichée; TODO potentiellment le retirer en PROD
     }
-    header('Location: users.php');
+    header('Location: ../../vues/admin/users.php');
 }else{
     // Rajouter dans en session un message pop up contenant les problèmes invalidant l'inscription
     setMessage('CreateUser', $verifChamps[1], 'warning');
-    header('Location: security.php');
+    header('Location: ../../vues/admin/security.php');
 }
 die();

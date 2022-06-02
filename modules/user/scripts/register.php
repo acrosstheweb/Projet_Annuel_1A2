@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../../../functions.php';
 if(
     count($_POST) != 10 ||
     empty($_POST['register-civility']) ||
@@ -14,7 +14,7 @@ if(
     empty($_POST['register-confirmed-password'])
 ){
     setMessage('RegisterHack', ['Non respect des règles du formulaire d\'inscription'],'danger');
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 }
 
@@ -78,11 +78,9 @@ if($verifChamps[0] === true){
     }else{
         setMessage('Register', [' Echec de l\'envoi du mail', error_get_last()['message']], 'warning'); // error_get_last()['message'] affiche la dernière erreur rencontrée dans le cas où le mail n'est pas envoyé, c'est la raison de l'échec qui sera affichée; TODO potentiellment le retirer en PROD
     }
-    header('Location: index.php');
-    die();
 }else{
     // Rajouter dans en session un message pop up contenant les problèmes invalidant l'inscription
     setMessage('Register', $verifChamps[1], 'warning');
-    header('Location: index.php');
-    die();
 }
+header('Location: ../../../index.php');
+die();

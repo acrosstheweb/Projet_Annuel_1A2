@@ -1,12 +1,12 @@
 <?php
-require 'functions.php';
+require '../../../../functions.php';
 
 	if(!isAdmin()) {
-        header('Location: error404.php');
+        header('Location: ../../../../error404.php');
         die();
     }
 
-require 'header.php';
+require '../../../../header.php';
 Message('Delete');
 Message('Modify');
 Message('CreateUser');
@@ -17,8 +17,8 @@ Message('CreateUser');
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'users.php'?>">Liste des utilisateurs</a>
-                <a class="nav-link" href="<?= DOMAIN . 'security.php'?>">Sécurité</a>
+                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/users.php'?>">Liste des utilisateurs</a>
+                <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/security.php'?>">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>
@@ -82,7 +82,7 @@ Message('CreateUser');
                                             </div>
                                             <div class="modal-body">
                                                 Vous êtes sur le point de modifier les informations de l'utilisateur suivant:
-                                                <form id="modifyUserFormUid<?php echo $userId;?>" action="userModifyAdmin.php?id=<?php echo $userId;?>" method="POST">
+                                                <form id="modifyUserFormUid<?php echo $userId;?>" action="../../scripts/admin/userModifyAdmin.php?id=<?php echo $userId;?>" method="POST">
                                                     <div class="modifyFormInfo">
                                                         <div class="row mt-3">
                                                             <div class="col-6">
@@ -149,7 +149,7 @@ Message('CreateUser');
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form id="deleteUserFormUid<?php echo $userId;?>" action="userDelAdmin.php?id=<?php echo $userId;?>" method="POST" >
+                                                <form id="deleteUserFormUid<?php echo $userId;?>" action="../../scripts/admin/userDelAdmin.php?id=<?php echo $userId;?>" method="POST" >
                                                     <div class="deleteFormInfo">
                                                         <h5>Vous êtes sur le point de supprimer l'utilisateur suivant:</h5>
                                                         <div class="row">
@@ -191,7 +191,7 @@ Message('CreateUser');
 </div>
 
 <?php
-include "footer.php";
+include "../../../../footer.php";
 ?>
 
 <script src="<?= DOMAIN . 'js/admin-users.js'?>" crossorigin="anonymous"></script>

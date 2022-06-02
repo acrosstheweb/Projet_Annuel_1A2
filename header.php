@@ -1,5 +1,8 @@
 <?php
     require_once 'functions.php';
+    if(isConnected()){
+        atw_log($_SESSION['userId'], "Visit");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -117,14 +120,14 @@
                                     <?php if(isConnected()){ ?>
                                         <?php if(isAdmin()){ ?>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="users.php" role="button">Back-Office</a>
+                                                <a class="nav-link" href="<?= DOMAIN ?>modules/user/vues/admin/users.php" role="button">Back-Office</a>
                                             </li>
                                         <?php } ?>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="profilePage.php" role="button">Mon profil</a>
+                                            <a class="nav-link" href="<?= DOMAIN ?>modules/user/vues/profilePage.php" role="button">Mon profil</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
+                                            <a class="nav-link" href="<?= DOMAIN ?>modules/user/scripts/logout.php" role="button">Déconnexion</a>
                                         </li>
                                     <?php } else{ ?>
                                         <li class="nav-item">
@@ -205,7 +208,7 @@
                 </div>
                 <div class="modal-body row">
                     <div class="col-3"></div>
-                    <form id="login-form" action="login.php" method="POST" class="col-6">
+                    <form id="login-form" action="modules/user/scripts/login.php" method="POST" class="col-6">
                         <label for="login-email">Adresse mail : </label>
                         <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail" required="required"><br>
 
@@ -232,7 +235,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="register-form" action="register.php" method="POST">
+                    <form id="register-form" action="modules/user/scripts/register.php" method="POST">
                         <div class="row">
                             <div class="col">
                                 <label for="register-civility">Civilité :</label>
@@ -312,14 +315,14 @@
                 <?php 
                 if(isAdmin()){?>
                     <li class="nav-item">
-                        <a class="nav-link" href="users.php" role="button">Back-Office</a>
+                        <a class="nav-link" href="modules/user/scripts/admin/users.php" role="button">Back-Office</a>
                     </li>
                 <?php } ?>
                 <li class="nav-item">
-                    <a class="nav-link " href="profilePage.php">Mon profil</a>
+                    <a class="nav-link " href="modules/user/vues/profilePage.php">Mon profil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="logout.php">Déconnexion</a>
+                    <a class="nav-link " href="modules/user/scripts/logout.php">Déconnexion</a>
                 </li>
             </ul>
         </nav>

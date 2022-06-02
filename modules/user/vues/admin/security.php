@@ -1,12 +1,12 @@
 <?php
-require 'functions.php';
+require '../../../../functions.php';
 
 	if(!isAdmin()) {
-        header('Location: error404.php');
+        header('Location: ../../../../error404.php');
         die();
     }
 
-require 'header.php';
+require '../../../../header.php';
 Message('Delete');
 Message('CreateUser');
 ?>
@@ -16,15 +16,15 @@ Message('CreateUser');
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'users.php'?>">Liste des utilisateurs</a>
-                <a class="nav-link" href="<?= DOMAIN . 'security.php'?>">Sécurité</a>
+                <a class="nav-link active" href="<?= DOMAIN . 'modules/user/vues/admin/users.php'?>">Liste des utilisateurs</a>
+                <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/security.php'?>">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>
         </div>
     
         <div class="col-2">
-            <a href="<?= DOMAIN . 'createUser.php'?>" class="btn btn-primary">Créer un utilisateur</a>
+            <a href="<?= DOMAIN . 'modules/user/scripts/admin/userCreateAdmin.php'?>" class="btn btn-primary">Créer un utilisateur</a>
         </div>
     </div>
     <div class="modal-dialog">
@@ -35,7 +35,7 @@ Message('CreateUser');
             </div>
             <div class="modal-body">
                 Formulaire de création d'un nouvel utilisateur:
-                <form id="createUserForm" action="createUser.php" method="POST">
+                <form id="createUserForm" action="../../scripts/admin/userCreateAdmin.php" method="POST">
                     <div class="createUserFormInfo">
                         <div class="row mt-3">
                             <div class="col-6">
@@ -94,7 +94,7 @@ Message('CreateUser');
 </div>
 
 <?php
-include "footer.php";
+include "../../../../footer.php";
 ?>
 
 <script src="<?= DOMAIN . 'js/admin-users.js'?>" crossorigin="anonymous"></script>

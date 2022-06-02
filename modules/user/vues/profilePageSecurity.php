@@ -1,13 +1,13 @@
 <?php
-require 'functions.php';
+require '../../../functions.php';
 if(!isConnected()){
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 }
 $title = "Fitness Essential - Page profil Sécurité";
 $content = "Profil utilisateur";
 
-require 'header.php';
+require '../../../header.php';
 $db = database();
 $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email FROM rku_user WHERE id=:id");
 $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
@@ -20,8 +20,8 @@ Message('DeleteUser');
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
             <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'profilePage.php'?>">Mon Profil</a>
-                <a class="nav-link" href="<?= DOMAIN . 'profilePageSecurity.php'?>">Sécurité</a>
+                <a class="nav-link active" href="profilePage.php">Mon Profil</a>
+                <a class="nav-link" aria-current="page" href="profilePageSecurity.php">Sécurité</a>
                 <a class="nav-link" href="#">jaaj 1</a>
                 <a class="nav-link disabled">jaaj 2</a>
             </nav>
@@ -86,7 +86,7 @@ Message('DeleteUser');
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="deleteUserForm" action="userDel.php" method="POST" >
+                <form id="deleteUserForm" action="../scripts/userDel.php" method="POST" >
                     <div class="deleteFormInfo">
                         <h5>Vous êtes sur le point de supprimer votre compte Fitness Essential :</h5>
                         <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer?</p>
@@ -110,7 +110,7 @@ Message('DeleteUser');
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <?php
-include 'footer.php';
+include '../../../footer.php';
 ?>
 
 <script src="<?= DOMAIN . 'js/profilePageSecurity.js'?>" crossorigin="anonymous"></script>

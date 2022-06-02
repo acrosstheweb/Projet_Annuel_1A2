@@ -1,5 +1,5 @@
 <?php
-require 'functions.php';
+require '../../../functions.php';
 
 if(
 
@@ -10,7 +10,7 @@ if(
 ){
 
     setMessage('LoginHack', ['Non respect des règles du formulaire de connexion'],'danger');
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 
 }
@@ -42,11 +42,12 @@ if($user === false){
             $_SESSION['userToken'] = setToken($user['id']);
             $_SESSION['userId'] = $user['id'];
             setMessage('Connection', ['Connexion réussie'], 'success');
+            atw_log($user['id'], "Connexion");
         }
     }else{
         setMessage('Connection', ['Nom d\'utilisateur ou mot de passe incorrect'], 'warning');
     }
 
 }
-header('Location: index.php');
+header('Location: ../../../index.php');
 die();
