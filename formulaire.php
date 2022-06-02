@@ -3,6 +3,16 @@ $title = "Fitness Essential - Créer un programme";
 $content = "Création d'un programme";
 $currentPage = 'message';
 require 'header.php';
+
+$pdo = database();
+
+    $req = $pdo->query("SELECT nameExercice
+                        FROM RkU_EXERCICE
+                        ");
+
+    $results = $req->fetchAll();
+
+$counter = 1;
 ?>
 
 <h1 class="aligned-title">Création d'un programme d'entraînement</h1>
@@ -37,10 +47,16 @@ require 'header.php';
                         <div class="accordion-body">
                             <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required" onchange="displayExercice(1)"><br>
                                 <option selected disabled>Exercice</option>
-                                <option value="1">Biceps Curl</option>
-                                <option value="2">Developpé couché</option>
-                                <option value="3">Rowing barre</option>
-                                <option value="4">Squat</option>
+
+                                <?php
+
+                                    foreach ($results as $exercice){
+                                        echo '<option value="'.$counter.'">'.$exercice['nameExercice'].'</option>';
+                                        $counter++;
+                                    }
+
+                                ?>
+
                             </select>
                             <p>L'exercice n'est pas dans la liste? Créez-le</p>
                             <button class="btn btn-primary">+ Créer un exercice</button>
@@ -49,7 +65,7 @@ require 'header.php';
                             <div class="row my-3">
                                 <div class="col-12 col-md-6">
                                     <label for="__programSeries1" id="__programSeries1-label">Série(s) : </label><br>
-                                    <input type="number" name="programSeries" id="__programSeries1" min="1" max="999" oninput="displayReps(1)">
+                                    <input type="number" name="programSeries" id="__programSeries1" maxlength="3" min="1" max="999" oninput="displayReps(1)">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="__programReps1" id="__programReps1-label">Répétitions : </label><br>

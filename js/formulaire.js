@@ -46,6 +46,8 @@ function displayProgramTitle(){
     programNamePreview.innerText = programTitle.value;
 };
 
+const options = document.getElementById('__programExerciceDropdown1').innerHTML;
+
 
 
 //Ajout d'un exercice
@@ -67,11 +69,7 @@ function addExercice(){
         <div id="__programExerciceCollapse${counter}" class="__programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
             <div class="accordion-body">
                 <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown${counter}" required="required" onchange="displayExercice(${counter})"><br>
-                    <option selected disabled>Exercice</option>
-                    <option value="1">Biceps Curl</option>
-                    <option value="2">Developpé couché</option>
-                    <option value="3">Rowing barre</option>
-                    <option value="4">Squat</option>
+                    ${options}
                 </select>
                 <p>L'exercice n'est pas dans la liste? Créez-le</p>
                 <button class="btn btn-primary">+ Créer un exercice</button>
@@ -121,7 +119,9 @@ function displayExercice(n){
     //Nom exercice
     let exercice = document.getElementById(`__programExerciceDropdown${n}`);
     let exercicePreview = document.getElementById(`__programExerciceNamePreview${n}`);
-    exercicePreview.innerText = exercice.options[exercice.selectedIndex].text;
+    if (!(exercice.options[exercice.selectedIndex].text == "Exercice")){
+        exercicePreview.innerText = exercice.options[exercice.selectedIndex].text;
+    };
 };
 
 function displayReps(n){
