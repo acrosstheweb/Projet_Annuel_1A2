@@ -5,7 +5,6 @@ const programContentPreview = document.getElementById('__programContentPreview')
 let counter = 1;
 
 function trash(){
-    console.log('jaaj');
     if (counter == 1){
         const label = document.getElementById('__programExerciceDropdown1-label');
         label.classList.remove('col-10');
@@ -61,11 +60,11 @@ function addExercice(){
                     Exercice #${counter}
                 </button>
             </label>
-            <div id="__programExerciceDeleteHeader${counter}" class="__programExerciceDelete col-2 col-md-1">
+            <div id="__programExerciceDeleteHeader${counter}" class="__programExerciceDelete col-2 col-md-1" onclick="deleteExercice(${counter})">
                 <i class="fa-solid fa-trash-can"></i>
             </div>
         </div>
-        <div id="__programExerciceCollapse${counter}" class=" __programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
+        <div id="__programExerciceCollapse${counter}" class="__programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
             <div class="accordion-body">
                 <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown${counter}" required="required" onchange="displayExercice(${counter})"><br>
                     <option selected disabled>Exercice</option>
@@ -144,85 +143,88 @@ addExercice_trigger.addEventListener('click', function(){
 });
 
 
+
+let toDelete;
+let toModify;
+
 //Suppression d'un exercice
 function deleteExercice(n){
 
-    let programExercices = document.getElementsByClassName('__programExercice');
-    let programExercicesPreviews = document.getElementsByClassName('__programExercicePreview');
+    const programExercices = document.getElementsByClassName('__programExercice');
+    const programExercicesPreviews = document.getElementsByClassName('__programExercicePreview');
 
+    if (n == counter) {
 
-    for (let i = n; i < programExercices.length - 1; i++){
+        programExercices[programExercices.length - 1].remove();
+
+        programExercicesPreviews[programExercicesPreviews.length - 1].remove();
+    } else {
+
+        document.getElementById(`__programExercice${n}`).remove();
+        document.getElementById(`__programExercicePreview${n}`).remove();
+
+        for (let i = n; i < counter; i++){
+
+            
+            toModify = document.getElementById(`__programExerciceDelete${n+1}`);
+            toModify.setAttribute("onclick", `deleteExercice(${n})`);
+            toModify.setAttribute('id', `__programExerciceDelete${n}`);
+
+            toModify = document.getElementById(`__programExerciceRepsPreview${n+1}`);
+            toModify.id = `__programExerciceRepsPreview${n}`;
+
+            toModify = document.getElementById(`__programExerciceNamePreview${n+1}`);
+            toModify.id = `__programExerciceNamePreview${n}`;
+
+            toModify = document.getElementById(`__programExercicePreview${n+1}`);
+            toModify.id = `__programExercicePreview${n}`;
+
+            toModify = document.getElementById(`__programReps${n+1}`);
+            toModify.setAttribute("oninput", `displayReps(${n})`);
+            toModify.id = `__programReps${n}`;
+
+            toModify = document.getElementById(`__programReps${n+1}-label`);
+            toModify.setAttribute("for", `__programReps${n}`);
+            toModify.id = `__programReps${n}-label`;
+
+            toModify = document.getElementById(`__programSeries${n+1}`);
+            toModify.setAttribute("oninput", `displayReps(${n})`);
+            toModify.id = `__programSeries${n}`;
+            
+            toModify = document.getElementById(`__programSeries${n+1}-label`);
+            toModify.setAttribute("for", `__programSeries${n}`);
+            toModify.id = `__programSeries${n}`;
+
+            toModify = document.getElementById(`__programExerciceDropdown${n+1}`);
+            toModify.setAttribute("onchange", `displayExercice(${n})`);
+            toModify.id = `__programExerciceDropdown${n}`;
+
+            toModify = document.getElementById(`__programExerciceCollapse${n+1}`);
+            toModify.id = `__programExerciceCollapse${n}`;
+
+            toModify = document.getElementById(`__programExerciceDeleteHeader${n+1}`);
+            toModify.setAttribute("onclick", `deleteExercice(${n})`);
+            toModify.id = `__programExerciceDeleteHeader${n}`;
+            
+            toModify = document.getElementById(`__programExerciceDropdown${n+1}-button`);
+            toModify.setAttribute("data-bs-target",`#__programExerciceCollapse${n}`);
+            toModify.innerText = `Exercice #${n}`;
+            toModify.id = `__programExerciceDropdown${n}-button`;
+
+            toModify = document.getElementById(`__programExerciceDropdown${n+1}-label`);
+            toModify.setAttribute("for",`__programExerciceDropdown${n}`);
+            toModify.setAttribute('id',  `__programExerciceDropdown${n}-label`);
         
-        let src = document.getElementById(`__programExercice${n+1}`);
-        let dest = document.getElementById(`__programExercice${n}`);
-        dest.id = src.id;
+            toModify = document.getElementById(`__programExercice${n+1}`);
+            toModify.setAttribute('id', `__programExercice${n}`);
 
-        src = document.getElementById(`__programExerciceDropdown${n+1}-label`);
-        dest = document.getElementById(`__programExerciceDropdown${n}-label`);
-        dest.setAttribute("for",`__programExerciceDropdown${n+1}`);
-        dest.id = src.id;
-
-        src = document.getElementById(`__programExerciceDropdown${n+1}-button`);
-        dest = document.getElementById(`__programExerciceDropdown${n}-button`);
-        dest.setAttribute("data-bs-target",`#__programExerciceCollapse${n+1}`)
-        dest.innerHTML = src.innerHTML;
-        dest.id = src.id;
-        
-        src = document.getElementById(`__programExerciceDeleteHeader${n+1}`);
-        dest = document.getElementById(`__programExerciceDeleteHeader${n}`);
-        dest.id = src.id;
-        
-        src = document.getElementById(`__programExerciceCollapse${n+1}`);
-        dest = document.getElementById(`__programExerciceCollapse${n}`);
-        dest.id = src.id;
-
-        src = document.getElementById(`__programExerciceDropdown${n+1}`);
-        dest = document.getElementById(`__programExerciceDropdown${n}`);
-        dest.setAttribute("onchange", displayExercice(n));
-        dest.id = src.id;
-        
-        src = document.getElementById(`__programSeries${n+1}-label`);
-        dest = document.getElementById(`__programSeries${n}-label`);
-        dest.setAttribute("for", `__programSeries${n}`);
-        dest.id = src.id;
-
-        src = document.getElementById(`__programSeries${n+1}`);
-        dest = document.getElementById(`__programSeries${n}`);
-        dest.setAttribute("oninput", displayReps(n));
-        dest.id = src.id;
-
-        src = document.getElementById(`__programReps${n+1}-label`);
-        dest = document.getElementById(`__programReps${n}-label`);
-        dest.setAttribute("for", `__programReps${n}`);
-        dest.id = src.id;
-
-        src = document.getElementById(`__programReps${n+1}`);
-        dest = document.getElementById(`__programSeries${n}`);
-        dest.setAttribute("oninput", displayReps(n));
-        dest.id = src.id;
-
-        src = document.getElementById(`__programExercicePreview${n+1}`);
-        dest = document.getElementById(`__programExercicePreview${n}`);
-        dest.id = src.id;
-
-        src = document.getElementById(`__programExerciceNamePreview${n+1}`);
-        dest = document.getElementById(`__programExerciceNamePreview${n}`);
-        dest.id = src.id;
-        
-        src = document.getElementById(`__programExerciceRepsPreview${n+1}`);
-        dest = document.getElementById(`__programExerciceRepsPreview${n}`);
-        dest.id = src.id;
-        
-        src = document.getElementById(`__programExerciceDelete${n+1}`);
-        dest = document.getElementById(`__programExerciceDelete${n}`);
-        dest.id = src.id;
+            displayExercice(n);
 
         };
-    
-    programExercices[programExercices.length-1].remove();
-    programExercicesPreviews[programExercicesPreviews.length-1].remove();
 
-    counter--;
+    };
+
+    counter-=1;
     trash();
 
 };

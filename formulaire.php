@@ -35,7 +35,7 @@ require 'header.php';
                     </div>
                     <div id="__programExerciceCollapse1" class="__programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
                         <div class="accordion-body">
-                            <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required"><br>
+                            <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required" onchange="displayExercice(1)"><br>
                                 <option selected disabled>Exercice</option>
                                 <option value="1">Biceps Curl</option>
                                 <option value="2">Developpé couché</option>
@@ -49,11 +49,11 @@ require 'header.php';
                             <div class="row my-3">
                                 <div class="col-12 col-md-6">
                                     <label for="__programSeries1" id="__programSeries1-label">Série(s) : </label><br>
-                                    <input type="number" name="programSeries" id="__programSeries1" oninput="displayReps(1)">
+                                    <input type="number" name="programSeries" id="__programSeries1" min="1" max="999" oninput="displayReps(1)">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="__programReps1" id="__programReps1-label">Répétitions : </label><br>
-                                    <input type="number" name="programReps" id="__programReps1" oninput="displayReps(1)">
+                                    <input type="number" name="programReps" id="__programReps1" min="1" max="999" oninput="displayReps(1)">
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ require 'header.php';
 
     <div class="col-11 col-lg-4 d-flex justify-content-center">
         <div class="card bg-dark text-white col-12 col-md-6 col-lg-8 text-center p-0 __programCard __programCardPreview">
-            <img src="sources/img/pull2.jpg" class="card-img __programImage" alt="pull2">
+            <img src="sources/img/preview.png" id="__programImagePreview" class="card-img __programImage" alt="pull2">
             <div class="card-img-overlay __programOverlay">
                 <div class="__programDescription">
                     <div class="__cardDescriptionText p-4">
