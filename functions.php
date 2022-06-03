@@ -59,7 +59,7 @@ function genToken(){
 function setToken($id){
     $tk = genToken();
     $db = database();
-    $setTokenQuery = $db->prepare('UPDATE RkU_user SET token=:tk WHERE id=:id');
+    $setTokenQuery = $db->prepare('UPDATE RkU_USER SET token=:tk WHERE id=:id');
     $setTokenQuery->execute(['tk'=> $tk, 'id'=> $id]);
 
     return $tk;
@@ -70,7 +70,7 @@ function isConnected(){
         return false; // Si il n'y a pas de token en session, isConnected = false
     }else{
         $db = database();
-        $getTokenDbQuery = $db->prepare("SELECT token from RkU_user WHERE id=:id");
+        $getTokenDbQuery = $db->prepare("SELECT token from RkU_USER WHERE id=:id");
         $getTokenDbQuery->execute(['id' => $_SESSION['userId']]);
         
         $tokenDb = $getTokenDbQuery->fetch()['token'];
@@ -92,7 +92,7 @@ function isAdmin(){
 
     // Lorsque connecté l'user ID est disponible en session
     $db = database();
-    $getRoleDbQuery = $db->prepare("SELECT role from RkU_user WHERE id=:id");
+    $getRoleDbQuery = $db->prepare("SELECT role from RkU_USER WHERE id=:id");
     $getRoleDbQuery->execute(['id' => $_SESSION['userId']]);
 
     $roleDb = $getRoleDbQuery->fetch()['role'];
@@ -167,7 +167,7 @@ function checkFields($fields): array
                     // Gére si l'adresse mail existe déjà
                     $db = database();
 
-                    $checkUserExistQuery = $db->prepare("SELECT id FROM rku_user WHERE email=:email LIMIT 1");
+                    $checkUserExistQuery = $db->prepare("SELECT id FROM RkU_USER WHERE email=:email LIMIT 1");
                     $checkUserExistQuery->execute(["email"=>$email]);
                     $checkUserExist = $checkUserExistQuery->fetch();
 

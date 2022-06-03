@@ -46,7 +46,7 @@ if($verifChamps[0] === true){
     $champs = $verifChamps[1];
 
     $db = database();
-    $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin,token_confirm_inscription) VALUES 
+    $insertUserQuery = $db->prepare("INSERT INTO RkU_USER (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin,token_confirm_inscription) VALUES 
                                                                 (:firstname, :lastname, :email, :address, :city, :zipcode, :civility, :birthday, :password, :role, :fitcoin, :token_confirm_inscription)");
     $tk = genToken(); // Génération du token pour vérifier l'inscription par mail
 

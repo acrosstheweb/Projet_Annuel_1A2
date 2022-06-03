@@ -22,7 +22,7 @@ if(
 $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'admin)
 $db = database();
 
-$adminPwdInDbQuery = $db->prepare("SELECT password FROM rku_user WHERE id=:id");
+$adminPwdInDbQuery = $db->prepare("SELECT password FROM RkU_USER WHERE id=:id");
 $adminPwdInDbQuery->execute(["id"=>$userId]);
 $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 

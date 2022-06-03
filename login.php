@@ -21,7 +21,7 @@ $password = $_POST['login-password'];
 $problems = [];
 $db = database();
 
-$checkUserQuery = $db->prepare('SELECT id, password, role FROM RkU_user WHERE email=:email');
+$checkUserQuery = $db->prepare('SELECT id, password, role FROM RkU_USER WHERE email=:email');
 $checkUserQuery->execute([':email'=>$email]);
 $user = $checkUserQuery->fetch();
 

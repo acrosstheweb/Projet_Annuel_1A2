@@ -10,7 +10,7 @@
     require 'header.php';
     Message('Update');
     $db = database();
-    $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM rku_user WHERE id=:id");
+    $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM RkU_USER WHERE id=:id");
     $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
     $user = $getUserInfoQuery->fetch();
 ?>

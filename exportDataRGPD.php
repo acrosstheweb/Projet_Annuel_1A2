@@ -8,7 +8,7 @@ if(!isConnected()){
 $userId = $_SESSION['userId'];
 $db = database();
 
-$getUserInfoQuery = $db->query("SELECT * FROM RkU_user WHERE id=$userId");
+$getUserInfoQuery = $db->query("SELECT * FROM RkU_USER WHERE id=$userId");
 $getUserInfo = $getUserInfoQuery->fetch();
 $lastname = $getUserInfo['lastName']; $firstname = $getUserInfo['firstName']; $email = $getUserInfo['email'];
 $address = $getUserInfo['address']; $city = $getUserInfo['city']; $zipcode = $getUserInfo['zipCode'];

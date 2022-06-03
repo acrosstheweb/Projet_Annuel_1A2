@@ -60,7 +60,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     // Gere si l'adresse mail existe déjà
     $db = database();
 
-    $checkUserExistQuery = $db->prepare("SELECT id FROM rku_user WHERE email=:email AND id!=:id LIMIT 1");
+    $checkUserExistQuery = $db->prepare("SELECT id FROM RkU_USER WHERE email=:email AND id!=:id LIMIT 1");
     $checkUserExistQuery->execute(["email"=>$email, "id"=>$id]);
     $checkUserExist = $checkUserExistQuery->fetch();
 
@@ -83,7 +83,7 @@ if(strlen($zipCode)!= 5 || !ctype_digit($zipCode)){
 
 if(count($problems) == 0){
 
-    $insertUserQuery = $db->prepare("UPDATE RkU_user SET 
+    $insertUserQuery = $db->prepare("UPDATE RkU_USER SET 
                                             firstname = :firstname,
                                             lastname = :lastname,
                                             email = :email,

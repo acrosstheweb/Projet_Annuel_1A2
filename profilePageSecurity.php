@@ -9,7 +9,7 @@ $content = "Profil utilisateur";
 
 require 'header.php';
 $db = database();
-$getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email FROM rku_user WHERE id=:id");
+$getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email FROM RkU_USER WHERE id=:id");
 $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
 $user = $getUserInfoQuery->fetch();
 Message('DeleteUser');
