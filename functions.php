@@ -49,10 +49,10 @@ function checkPassword($password): bool{
 }
 
 function genToken(){
-    $chars = ['$','^','@','&','(','-','_',')','='];
+    $chars = ['$','^','@','&','(','-','_',')'];
     $n1 = rand(0,9); $n2 = rand(0,9);
     $c1 = $chars[array_rand($chars)]; $c2 = $chars[array_rand($chars)];
-    $prefix = "{$c1}{$n1}{$c2}{$n2}";
+    $prefix = "{$n1}{$c1}{$c2}{$n2}";
     $tk = uniqid($prefix);
     return strrev($tk);
 }
@@ -60,7 +60,7 @@ function genToken(){
 function setToken($id){
     $tk = genToken();
     $db = database();
-    $setTokenQuery = $db->prepare('UPDATE RkU_user SET token=:tk WHERE id=:id');
+    $setTokenQuery = $db->prepare('UPDATE RkU_USER SET token=:tk WHERE id=:id');
     $setTokenQuery->execute(['tk'=> $tk, 'id'=> $id]);
 
     return $tk;
@@ -71,7 +71,7 @@ function isConnected(){
         return false; // Si il n'y a pas de token en session, isConnected = false
     }else{
         $db = database();
-        $getTokenDbQuery = $db->prepare("SELECT token from RkU_user WHERE id=:id");
+        $getTokenDbQuery = $db->prepare("SELECT token from RkU_USER WHERE id=:id");
         $getTokenDbQuery->execute(['id' => $_SESSION['userId']]);
         
         $tokenDb = $getTokenDbQuery->fetch()['token'];
@@ -93,7 +93,7 @@ function isAdmin(){
 
     // Lorsque connecté l'user ID est disponible en session
     $db = database();
-    $getRoleDbQuery = $db->prepare("SELECT role from RkU_user WHERE id=:id");
+    $getRoleDbQuery = $db->prepare("SELECT role from RkU_USER WHERE id=:id");
     $getRoleDbQuery->execute(['id' => $_SESSION['userId']]);
 
     $roleDb = $getRoleDbQuery->fetch()['role'];
@@ -107,8 +107,9 @@ function isAdmin(){
 /*
  * checkFields retourne un tableau de 2 éléments un booléen et un tableau. Dans le cas où la vérification se passe bien le booléen vaut true et le tableau contient les champs, prêts à être insérés en BDD; Sinon le booléen vaut false et le tableau contient les problemes de la vérification.
  * checkFields gère un tableau de champ, les champs gérés sont : 'civility', 'lastname', 'firstname', 'birthday', 'email', 'address', 'city', 'zipcode'
+ * ajout d'un paramètre $checkMailExists, la vérification de l'unicité de l'adresse mail n'étant pas obligatoirement requises lors de la vérification de l'adresse
  */
-function checkFields($fields): array
+function checkFields(array $fields, bool $checkMailExists = true): array
 {
     $results = [];
     $problems = [];
@@ -165,17 +166,19 @@ function checkFields($fields): array
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                     $problems[] = 'Format de l\'adresse mail incorrecte';
                 }else{
-                    // Gére si l'adresse mail existe déjà
-                    $db = database();
+                    if($checkMailExists){
+                        // Gére si l'adresse mail existe déjà
+                        $db = database();
 
-                    $checkUserExistQuery = $db->prepare("SELECT id FROM rku_user WHERE email=:email LIMIT 1");
-                    $checkUserExistQuery->execute(["email"=>$email]);
-                    $checkUserExist = $checkUserExistQuery->fetch();
+                        $checkUserExistQuery = $db->prepare("SELECT id FROM RkU_USER WHERE email=:email LIMIT 1");
+                        $checkUserExistQuery->execute(["email"=>$email]);
+                        $checkUserExist = $checkUserExistQuery->fetch();
 
-                    if(!empty($checkUserExist)){
-                        $problems[] = "Ce mail est déjà utilisé";
-                    }else{
-                        $results['email'] = strtolower(trim($email));
+                        if(!empty($checkUserExist)){
+                            $problems[] = "Ce mail est déjà utilisé";
+                        }else{
+                            $results['email'] = strtolower(trim($email));
+                        }
                     }
                 }
                 break;
@@ -283,4 +286,13 @@ function atw_log($id, string $action){
     $currentPage = basename($_SERVER['PHP_SELF']);
     fwrite($logfile, "UserID : $id - $currentDateTime - $action $currentPage\n");
     fclose($logfile);
+}
+
+/*
+ * Dump and Die
+ */
+function dd($var){
+    echo "<pre>";
+    var_dump($var);
+    die();
 }

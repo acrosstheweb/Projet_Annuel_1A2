@@ -17,7 +17,7 @@ $InputPwd = $_POST['modify-adminPasswordInput'];
 $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'admin)
 $db = database();
 
-$adminPwdInDbQuery = $db->prepare("SELECT password FROM rku_user WHERE id=:id");
+$adminPwdInDbQuery = $db->prepare("SELECT password FROM RkU_USER WHERE id=:id");
 $adminPwdInDbQuery->execute(["id"=>$userId]);
 $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 
@@ -48,7 +48,7 @@ $verifChamps = checkFields([
 if($verifChamps[0] === true){
     $champs = $verifChamps[1];
 
-    $userModifyQuery = $db->prepare("UPDATE rku_user SET lastname=:lastname, firstname=:firstname, birthday=:birthday, address=:address, zipcode=:zipcode, city=:city WHERE id=:id");
+    $userModifyQuery = $db->prepare("UPDATE RkU_USER SET lastname=:lastname, firstname=:firstname, birthday=:birthday, address=:address, zipcode=:zipcode, city=:city WHERE id=:id");
     $userModifyQuery->execute([
         "lastname" => $champs['lastname'],
         "firstname" => $champs['firstname'],

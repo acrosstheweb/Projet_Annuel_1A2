@@ -9,7 +9,7 @@ $InputPwd = $_POST['delete-adminPasswordInput'];
 $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'admin)
 $db = database();
 
-$adminPwdInDbQuery = $db->prepare("SELECT password FROM rku_user WHERE id=:id");
+$adminPwdInDbQuery = $db->prepare("SELECT password FROM RkU_USER WHERE id=:id");
 $adminPwdInDbQuery->execute(["id"=>$userId]);
 $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 
@@ -21,7 +21,7 @@ if(!password_verify($InputPwd, $adminPwdInDb)){
 
 $userToDeleteId = $_GET['id'];
 
-$userDelQuery = $db->prepare("DELETE FROM rku_user WHERE id=:id");
+$userDelQuery = $db->prepare("DELETE FROM RkU_USER WHERE id=:id");
 $userDelQuery->execute(["id"=>$userToDeleteId]);
 setMessage('Delete', ["L'utilisateur n°" . $userToDeleteId . " a bien été supprimé."], 'success');
 header('Location: ../../vues/admin/users.php');

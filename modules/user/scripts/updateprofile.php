@@ -1,11 +1,10 @@
 <?php
 require '../../../functions.php';
 if(
-    count($_POST) != 8 ||
+    count($_POST) != 7 ||
     empty($_POST['profileCivility']) ||
     empty($_POST['profileFirstName']) ||
     empty($_POST['profileLastName']) ||
-    empty($_POST['profileEmail']) ||
     empty($_POST['profileBirthDate']) ||
     empty($_POST['profileAddress']) ||
     empty($_POST['profileZipCode']) ||
@@ -20,7 +19,6 @@ $civility = $_POST['profileCivility'];
 $birthday = $_POST['profileBirthDate'];
 $lastname = strtoupper($_POST['profileLastName']);
 $firstname = ucwords(strtolower($_POST['profileFirstName']));
-$email = strtolower(trim($_POST['profileEmail']));
 $address = ucwords(strtolower($_POST['profileAddress']));
 $city = ucwords(strtolower($_POST['profileCity']));
 $zipCode = $_POST['profileZipCode'];
@@ -30,20 +28,19 @@ $verifChamps = checkFields([
     'birthday' => $birthday,
     'lastname' => $lastname,
     'firstname' => $firstname,
-    'email' => $email,
     'address' => $address,
     'city' => $city,
     'zipcode' => $zipCode,
-]);
+], false);
 
+/*TODO SI POST = BDD ALORS echo (AUCUNE MISE A JOUR)*/
 if($verifChamps[0] === true){
     $champs = $verifChamps[1];
 
     $db = database();
-    $insertUserQuery = $db->prepare("UPDATE RkU_user SET 
+    $insertUserQuery = $db->prepare("UPDATE RkU_USER SET 
                                             firstname = :firstname,
                                             lastname = :lastname,
-                                            email = :email,
                                             address = :address,
                                             city = :city,
                                             zipcode = :zipcode,
@@ -54,7 +51,6 @@ if($verifChamps[0] === true){
     $insertUserQuery->execute([
         'firstname' => $firstname,
         'lastname' => $lastname,
-        'email' => $email,
         'address' => $address,
         'city' => $city,
         'zipcode' => $zipCode,

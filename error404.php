@@ -5,6 +5,7 @@
     require 'header.php';
     Message('RegisterHack');
     Message('ConfirmRegistration');
+    Message('UpdateHack');
 ?>
 
 <h2 class="aligned-title mt-5"> Page introuvable </h2>

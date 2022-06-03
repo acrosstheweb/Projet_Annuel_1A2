@@ -42,7 +42,7 @@ Message('CreateUser');
                     <?php
                         $pdo = database();
                         
-                        $query = $pdo->query("SELECT * FROM rku_user");
+                        $query = $pdo->query("SELECT * FROM RkU_USER");
                         $results = $query->fetchAll();
 
                         foreach($results as $user)

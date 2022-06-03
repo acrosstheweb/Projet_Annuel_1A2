@@ -10,7 +10,7 @@
     require '../../../header.php';
     Message('Update');
     $db = database();
-    $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM rku_user WHERE id=:id");
+    $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM RkU_USER WHERE id=:id");
     $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
     $user = $getUserInfoQuery->fetch();
 ?>
@@ -107,7 +107,9 @@
                                     ?>
                                 </p>
                             </label>
-                            <input type="text" class="form-control __profileInfoInput" name="profileEmail" id="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required">
+                            <input type="text" class="form-control __profileInfoInput" name="profileEmail" id="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required" disabled="disabled">
+                            <br>
+                            <small class="form-text text-muted __profileInfoInput">La modification de l'adresse e-mail s'effectue dans l'onglet Sécurité</small>
                         </div>
 
                         <div class="col-6 mb-3">

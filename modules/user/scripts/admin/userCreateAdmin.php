@@ -21,7 +21,7 @@ $passwordAdmin = $_POST['createUser-adminPasswordInput'];
 $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'admin)
 $db = database();
 
-$adminPwdInDbQuery = $db->prepare("SELECT password FROM rku_user WHERE id=:id");
+$adminPwdInDbQuery = $db->prepare("SELECT password FROM RkU_USER WHERE id=:id");
 $adminPwdInDbQuery->execute(["id"=>$userId]);
 $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 
@@ -54,7 +54,7 @@ $verifChamps = checkFields([
 if($verifChamps[0] === true){
     $champs = $verifChamps[1];
 
-    $insertUserQuery = $db->prepare("INSERT INTO RkU_user (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin,token_confirm_inscription) VALUES 
+    $insertUserQuery = $db->prepare("INSERT INTO RkU_USER (firstname,lastname,email,address,city,zipcode,civility,birthday,password,role,fitcoin,token_confirm_inscription) VALUES 
                                                                 (:firstname, :lastname, :email, :address, :city, :zipcode, :civility, :birthday, :password, :role, :fitcoin, :token_confirm_inscription)");
     $tk = genToken(); // Génération du token pour vérifier l'inscription par mail
 
