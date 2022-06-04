@@ -29,6 +29,12 @@
     border-color: var(--green3);
 }
 
+.btn-primary.disabled{
+    color: #fff;
+    background-color: var(--green1);
+    border-color: var(--green1);
+}
+
 
 /* Header */
 .navbar-brand,.footer-logo,.__logoIcon{
@@ -409,5 +415,15 @@ table{
 
 
 .__programCardPreview{
-    max-height: 600px;
+    width: 340px;
+    height: 510px;
+}
+
+.__programExerciceDelete{
+    background-color: var(--bs-danger);
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #dee2e6;
 }
