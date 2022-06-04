@@ -10,29 +10,34 @@ if(
     die();
 }
 
-
 $userId = $_SESSION['userId'];
 $db = database();
-$getUserInfoQuery = $db->query("SELECT firstname, email FROM RkU_USER WHERE id=$userId");
+$getUserInfoQuery = $db->query("SELECT firstname, email, password FROM RkU_USER WHERE id=$userId");
 $getUserInfo = $getUserInfoQuery->fetch();
 $firstname = $getUserInfo['firstname'];
-$email = $getUserInfo['firstname'];
+$email = $getUserInfo['email'];
+$pwdInDb = $getUserInfo['password'];
+
+if(!password_verify($_POST['profilePassword'], $pwdInDb)){
+    setMessage('updatePassword', ["Mot de passe incorrect"], 'warning');
+    header('Location: ../vues/profilePageSecurity.php');
+    die();
+}
 
 $verifpassword = checkFields([
-    'password' => $_POST['profilePassword']
+    'password' => $_POST['profileNewPassword'],
+    'password-confirm'=> $_POST['profileConfirmNewPassword']
 ]);
 
 if($verifpassword[0] === true){
-    $newPassword = $verifpassword[1]['password'];$tk = genToken();
+    $newPassword = $verifpassword[1]['password']; // Mdp déjà chiffré hashé crypté (tout ce que tu veux) dans la fonction checkFields :)
 
-    $href = DOMAIN . "modules/user/scripts/confirmRegister.php?fn=$firstname&tk=$tk";
     $mailContent = '<!DOCTYPE html><html>';
     $mailContent.= '<section align="center">';
     $mailContent.=     '<h1>Changement mot de passe Fitness Essential</h1>';
     $mailContent.=     '<img src="https://pa-atw.fr/sources/img/logo.png" alt="logo">';
-    $mailContent.=     '<h3>Bonjour '.$firstname.', vous avez initié un changement d\'adresse mail</h3>';
-    $mailContent.=     '<p>Pour acter ce changement merci de bien vouloir cliquer sur le lien ci-dessous 🔌</p>';
-    $mailContent.=     '<a href='.$href.'>Changer mon mot de passe</a>';
+    $mailContent.=     '<h3>Bonjour '.$firstname.', vous avez initié un changement de mot de passe</h3>';
+    $mailContent.=     '<p>Si vous n\'êtes pas à l\'origine de ce changement, veuillez contacter un administrateur 🔌</p>';
     $mailContent.= '</section>';
     $mailContent.= '</html>';
 
@@ -43,22 +48,24 @@ if($verifpassword[0] === true){
 
     if(mail($email,$subject, $mailContent, $headers)) {
 
-        $updatePasswordQuery = $db->prepare("");
+        $updatePasswordQuery = $db->prepare("UPDATE RkU_USER SET password=:password WHERE id=:id");
         $updatePasswordQuery->execute([
-
+            ':password'=> $newPassword,
+            ':id'=>$userId
         ]);
 
-
         logout();
-        setMessage('updateMail', ["Vous avez été déconnecté vous avez reçu un mail à votre nouvelle adresse mail : $newMail"],'success');
+        setMessage('updatePassword', ["Vous avez été déconnecté par mesure de sécurité, vous pouvez vous reconnecter avec votre nouveau mot de passe"],'success');
         header('Location: ../../../index.php');
     }else{
-        setMessage('updateMail', [' Echec de l\'envoi du mail à la nouvelle adresse', error_get_last()['message']], 'warning'); // error_get_last(['message'] affiche la dernière erreur rencontrée dans le cas où le mail n'est pas envoyé, c'est la raison de l'échec qui sera affichée; TODO potentiellment le retirer en PROD
+        $lastError = (string)error_get_last()['message'];
+        setMessage('updatePassword', ["Echec de l'envoi du mail à la nouvelle adresse", "$lastError"], 'warning'); // error_get_last(['message'] affiche la dernière erreur rencontrée dans le cas où le mail n'est pas envoyé, c'est la raison de l'échec qui sera affichée; TODO potentiellment le retirer en PROD
+        /*dd(error_get_last()['message']);*/
         header('Location: ../vues/profilePageSecurity.php');
     }
 
 }else{
-    setMessage('updateMail', $verifpassword[1], 'warning');
+    setMessage('updatePassword', $verifpassword[1], 'warning');
     header('Location: ../vues/profilePageSecurity.php');
 }
 die();

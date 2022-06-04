@@ -14,6 +14,7 @@ $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
 $user = $getUserInfoQuery->fetch();
 Message('DeleteUser');
 Message('updateMail');
+Message('updatePassword');
 ?>
 
 <h2 class="aligned-title"> Mon profil </h2>
@@ -54,14 +55,11 @@ Message('updateMail');
                         </div>
 
                         <div class="col-6 mb-3" id="__profileSecPasswordGroup">
-                            <form id="updatePassword" method="POST" action="../scripts/updatePassword.php">
-                                <label for="__profileSecPasswordInput" class="form-label">
-                                    <p class="fw-bold my-0 __profileInfoLabel">Mot de passe</p>
-                                    <p id="__profileSecPasswordValue" class="my-0"> ************** </p>
-                                    <a href="#" class="link-primary" id="__profileSecModifyPassword" data-bs-toggle="modal" data-bs-target="#modifyPasswordModal">Modifier mon mot de passe</a>
-                                </label>
-                                <input type="password" class="form-control" id="__profileSecPasswordInput" name="profilePassword" value="" required="required">
-                            </form>
+                            <label for="__profileSecPasswordInput" class="form-label">
+                                <p class="fw-bold my-0 __profileInfoLabel">Mot de passe</p>
+                                <p id="__profileSecPasswordValue" class="my-0"> ************** </p>
+                                <a href="#" class="link-primary" id="__profileSecModifyPassword" data-bs-toggle="modal" data-bs-target="#modifyPasswordModal">Modifier mon mot de passe</a>
+                            </label>
                         </div>
                     </div>
                     <span id="__buttonGroup">
@@ -99,7 +97,7 @@ Message('updateMail');
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                 <!--<button class="btn btn-primary delete-passwordConfirm">Supprimer</button>-->
-                <button class="btn btn-primary <!--delete-confirm-->" form="modifyProfile" type="submit">Changer d'adresse mail</button>
+                <button class="btn btn-primary <!--delete-confirm-->" form="updateEmail" type="submit">Changer d'adresse mail</button>
             </div>
         </div>
     </div>
@@ -121,19 +119,19 @@ Message('updateMail');
                     <div class="row deletePassword">
                         <div class="col">
                             <label for="profilePassword" class="fw-bold">Ancien mot de passe </label>
-                            <input form="modifyProfile" id="profilePassword" class="form-control" type="password" name="profilePassword" required="required">
+                            <input id="profilePassword" class="form-control" type="password" name="profilePassword" required="required">
                         </div>
                     </div>
                     <div class="row deletePassword">
                         <div class="col">
                             <label for="profileNewPassword" class="fw-bold">Nouveau mot de passe </label>
-                            <input form="modifyProfile" id="profileNewPassword" class="form-control" type="password" name="profileNewPassword" required="required">
+                            <input id="profileNewPassword" class="form-control" type="password" name="profileNewPassword" required="required">
                         </div>
                     </div>
                     <div class="row deletePassword">
                         <div class="col">
                             <label for="profileConfirmNewPassword" class="fw-bold">Confirmer le nouveau mot de passe </label>
-                            <input form="modifyProfile" id="profileConfirmNewPassword" class="form-control" type="password" name="profileConfirmNewPassword" required="required">
+                            <input form="updatePassword" id="profileConfirmNewPassword" class="form-control" type="password" name="profileConfirmNewPassword" required="required">
                         </div>
                     </div>
                 </form>
