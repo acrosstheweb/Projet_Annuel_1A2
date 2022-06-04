@@ -73,8 +73,8 @@ function isConnected(){
         $db = database();
         $getTokenDbQuery = $db->prepare("SELECT token from RkU_USER WHERE id=:id");
         $getTokenDbQuery->execute(['id' => $_SESSION['userId']]);
-        
-        $tokenDb = $getTokenDbQuery->fetch()['token'];
+
+        $tokenDb = $getTokenDbQuery->fetch()['token'] ?? "";
         $tokenSession = $_SESSION['userToken'];
         if($tokenDb == $tokenSession){
             return true;
@@ -276,6 +276,22 @@ function register_mail($firstname, $tk): string
     // Pour chaque $fields, retourner la valeur en bdd
 }*/
 
+function getIP() {
+    //whether ip is from the share internet
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = 'HTTP_CLIENT_IP : ' . $_SERVER['HTTP_CLIENT_IP'];
+    }
+    //whether ip is from the proxy
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = 'HTTP_X_FORWARDED_FOR : ' . $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    //whether ip is from the remote address
+    else{
+        $ip = 'REMOTE_ADDR : ' . $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
 /*
  * $id est l'id de l'utilisateur
  * $action est le type d'action effectuée (Visite de page, Connexion, Déconnexion, ...)
@@ -284,7 +300,8 @@ function atw_log($id, string $action){
     $logfile = fopen(__DIR__ . "/logs/visits.log", "a");
     $currentDateTime = date("d/m/Y H:i:s");
     $currentPage = basename($_SERVER['PHP_SELF']);
-    fwrite($logfile, "UserID : $id - $currentDateTime - $action $currentPage\n");
+    $ip = getIP();
+    fwrite($logfile, "UserID : $id - $currentDateTime - $action $currentPage - $ip\n");
     fclose($logfile);
 }
 

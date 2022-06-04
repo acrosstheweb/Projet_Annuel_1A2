@@ -19,6 +19,7 @@ function jaaj() {
     profileInfoModify_trigger.style.display = "none";
     profileInfoSubmit.style.display = "inline-block";
     profileInfoCancel.style.display = "inline-block";
+    console.log('jaaj profilePageSecurity.js');
 }
 
-profileInfoModify_trigger.addEventListener("click", jaaj);
+modify_email_trigger.addEventListener("click", jaaj);
