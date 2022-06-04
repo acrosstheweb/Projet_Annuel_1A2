@@ -235,7 +235,7 @@ h1{
     border-color: var(--green3);
 }
 
-/* Page Informations Profil */
+/* Page Informations Profil et ProfilSecurity*/
 .__profilePic{
     object-fit: cover;
     padding: 0;
@@ -256,11 +256,11 @@ h1{
     transform: translate(-50%, -50%);
 }
 
-.__profileInfoInput{
+.__profileInfoInput, #__profileSecMailInput, #__profileSecPasswordInput{
     display: none;
 }
 
-#__profileInfoCancel{
+#__profileInfoCancel, #__profileSecCancel, #__profileSecSubmit{
     display: none;
 }
 

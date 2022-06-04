@@ -8,6 +8,7 @@
     Message('Logout');
     Message('ConfirmRegistration');
     Message('DeleteUser');
+    Message('updateMail');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>

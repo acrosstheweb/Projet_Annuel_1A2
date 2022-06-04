@@ -13,6 +13,7 @@ $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email FROM RkU_USE
 $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
 $user = $getUserInfoQuery->fetch();
 Message('DeleteUser');
+Message('updateMail');
 ?>
 
 <h2 class="aligned-title"> Mon profil </h2>
@@ -39,39 +40,37 @@ Message('DeleteUser');
             </div>
 
             <div class="row">
-                <form id="modifyProfile" method="POST" action="">
                     <div class="row">
                         <div class="col-6 mb-3">
-                            <label for="profileEmail" class="form-label">
-                                <p class="fw-bold my-0 __profileInfoLabel">Adresse e-mail</p>
-                                <p class="my-0 __profileInfoValue">
-                                    <?php
-                                    echo $user['email'] ?? ''
-                                    ?>
-                                </p>
-                                <a href="#" class="link-primary" id="__profileModifyEmail">Modifier mon adresse e-mail</a>
-                            </label>
-                            <input type="text" class="form-control __profileInfoInput" name="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required">
+                            <form id="modifyProfile" method="POST" action="../scripts/updateMail.php">
+                                <label for="__profileSecMailInput" class="form-label">
+                                    <p class="fw-bold my-0 __profileInfoLabel">Adresse e-mail</p>
+                                    <p id="__profileSecMailValue" class="my-0"> <?= $user['email'] ?? '' ?> </p>
+                                    <a href="#" class="link-primary" id="__profileSecModifyEmail">Modifier mon adresse e-mail</a>
+                                </label>
+                                <input type="text" class="form-control" id="__profileSecMailInput" name="profileEmail" value="<?= $user['email'] ?? '' ?>" required="required">
+                                <br><small class="form-text text-muted">/!\ Une fois l'adresse changée vous serez déconnecté et devrez obligatoirement confirmer par mail pour pouvoir vous reconnecter</small>
+                            </form>
                         </div>
 
                         <div class="col-6 mb-3">
-                            <label for="profileEmail" class="form-label">
-                                <p class="fw-bold my-0 __profileInfoLabel">Mot de passe</p>
-                                <p class="my-0 __profileInfoValue">
-                                    **************
-                                </p>
-                                <a href="#" class="link-primary" id="__profileModifyPassword">Modifier mon mot de passe</a>
-                            </label>
-                            <input type="password" class="form-control __profileInfoInput" name="profilePassword" value="" required="required">
+                            <form id="modifyProfile" method="POST" action="../scripts/updatePassword.php">
+                                <label for="__profileSecPasswordInput" class="form-label">
+                                    <p class="fw-bold my-0 __profileInfoLabel">Mot de passe</p>
+                                    <p id="__profileSecPasswordValue" class="my-0"> ************** </p>
+                                    <a href="#" class="link-primary" id="__profileSecModifyPassword">Modifier mon mot de passe</a>
+                                </label>
+                                <input type="password" class="form-control" id="__profileSecPasswordInput" name="profilePassword" value="" required="required">
+                            </form>
                         </div>
                     </div>
+                    <span id="__buttonGroup">
+                        <a href="<?= DOMAIN . 'modules/user/scripts/userDel.php'?>" id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
+                        <a href="<?= DOMAIN . 'modules/user/scripts/exportDataRGPD.php'?>" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
 
-                    <a href="<?= DOMAIN . 'userDel.php'?>" id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
-                    <a href="<?= DOMAIN . 'exportDataRGPD.php'?>" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
-
-                    <a href="<?= DOMAIN . 'profilePageSecurity.php'?>" class="btn btn-secondary mt-5" id="__profileInfoCancel"">Annuler les modifications</a>
-                    <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileInfoSubmit">Enregistrer les modifications</button>
-                </form>
+                        <a href="" class="btn btn-secondary mt-5" id="__profileSecCancel"">Annuler les modifications</a>
+                        <button form="modifyProfile" class="btn btn-primary mt-5" id="__profileSecSubmit">Enregistrer les modifications</button>
+                    </span>
             </div>
 
         </div>

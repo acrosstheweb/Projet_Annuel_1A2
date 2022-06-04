@@ -1,25 +1,37 @@
-const modify_email_trigger = document.getElementById("__profileModifyEmail");
-const modify_password_trigger = document.getElementById("__profileModifyPassword");
-
 const delete_account_button = document.getElementById("__profileDeleteAccount");
 const export_data_button = document.getElementById("__profileExportDataRGPD");
-const profileInfoSubmit = document.getElementById("__profileInfoSubmit");
-const profileInfoCancel = document.getElementById("__profileInfoCancel");
+const Submit_button = document.getElementById("__profileSecSubmit");
+const Cancel_button = document.getElementById("__profileSecCancel");
 
+const modify_email_trigger = document.getElementById("__profileSecModifyEmail");
+const email_Value = document.getElementById("__profileSecMailValue");
+const email_Input = document.getElementById("__profileSecMailInput");
 
-const profileInfoValue = document.getElementsByClassName("__profileInfoValue");
-const profileInfoInput = document.getElementsByClassName("__profileInfoInput");
+const modify_password_trigger = document.getElementById("__profileSecModifyPassword");
+const password_Value = document.getElementById("__profileSecPasswordValue");
+const password_Input = document.getElementById("__profileSecPasswordInput");
 
+function modifyEmail() {
+    modify_email_trigger.style.display = "none";
+    delete_account_button.style.display = "none";
+    export_data_button.style.display = "none";
+    email_Value.style.display = "none";
 
-function jaaj() {
-    for(let i = 0; i < profileInfoValue.length; i++){
-        profileInfoValue[i].style.display = "none";
-        profileInfoInput[i].style.display = "inline-block";
-    }
-    profileInfoModify_trigger.style.display = "none";
-    profileInfoSubmit.style.display = "inline-block";
-    profileInfoCancel.style.display = "inline-block";
-    console.log('jaaj profilePageSecurity.js');
+    Submit_button.style.display = "inline-block";
+    Cancel_button.style.display = "inline-block";
+    email_Input.style.display = "inline-block";
 }
 
-modify_email_trigger.addEventListener("click", jaaj);
+function modifyPassword() {
+    modify_password_trigger.style.display = "none";
+    delete_account_button.style.display = "none";
+    export_data_button.style.display = "none";
+    password_Value.style.display = "none";
+
+    Submit_button.style.display = "inline-block";
+    Cancel_button.style.display = "inline-block";
+    password_Input.style.display = "inline-block";
+}
+
+modify_email_trigger.addEventListener("click", modifyEmail);
+modify_password_trigger.addEventListener("click", modifyPassword);
