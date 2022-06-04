@@ -264,7 +264,7 @@ h1{
     display: none;
 }
 
-#__profileInfoSubmit{
+#__profileInfoSubmit, #__modifyEmailButton, #__modifyPasswordButton{
     display: none;
 }
 

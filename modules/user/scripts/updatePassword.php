@@ -1,7 +1,9 @@
 <?php
 require '../../../functions.php';
 if(
-    empty($_POST['profilePassword'])
+    empty($_POST['profilePassword']) ||
+    empty($_POST['profileNewPassword']) ||
+    empty($_POST['profileConfirmNewPassword'])
 ){
     setMessage('UpdateSecHack', ['Aucun champ renseigné, bypass form'],'danger');
     header('Location: ../../../error404.php');
@@ -11,43 +13,42 @@ if(
 
 $userId = $_SESSION['userId'];
 $db = database();
-$getUserInfoQuery = $db->query("SELECT firstname FROM RkU_USER WHERE id=$userId");
+$getUserInfoQuery = $db->query("SELECT firstname, email FROM RkU_USER WHERE id=$userId");
 $getUserInfo = $getUserInfoQuery->fetch();
 $firstname = $getUserInfo['firstname'];
-
+$email = $getUserInfo['firstname'];
 
 $verifpassword = checkFields([
     'password' => $_POST['profilePassword']
 ]);
 
 if($verifpassword[0] === true){
-    $newMail = $verifpassword[1]['email'];$tk = genToken();
+    $newPassword = $verifpassword[1]['password'];$tk = genToken();
 
     $href = DOMAIN . "modules/user/scripts/confirmRegister.php?fn=$firstname&tk=$tk";
     $mailContent = '<!DOCTYPE html><html>';
     $mailContent.= '<section align="center">';
-    $mailContent.=     '<h1>Vérification inscription Fitness Essential</h1>';
+    $mailContent.=     '<h1>Changement mot de passe Fitness Essential</h1>';
     $mailContent.=     '<img src="https://pa-atw.fr/sources/img/logo.png" alt="logo">';
     $mailContent.=     '<h3>Bonjour '.$firstname.', vous avez initié un changement d\'adresse mail</h3>';
-    $mailContent.=     '<p>Pour vous reconnecter merci de bien vouloir cliquer sur le lien afin d\'authentifier votre accès 🔌</p>';
-    $mailContent.=     '<a href='.$href.'>Vérifier votre nouvelle adresse mail</a>';
+    $mailContent.=     '<p>Pour acter ce changement merci de bien vouloir cliquer sur le lien ci-dessous 🔌</p>';
+    $mailContent.=     '<a href='.$href.'>Changer mon mot de passe</a>';
     $mailContent.= '</section>';
     $mailContent.= '</html>';
 
-    $subject = 'Changement adresse mail Fitness Essential 💪';
+    $subject = 'Changement mot de passe Fitness Essential 💪';
     $headers = 'From: "Fitness Essential" fitness3ssential@gmail.com' . PHP_EOL;
     $headers .= "MIME-Version: 1.0" . PHP_EOL;
     $headers .= 'Content-type: text/html; charset=iso-8859-1';
 
-    if(mail($newMail,$subject, $mailContent, $headers)) {
+    if(mail($email,$subject, $mailContent, $headers)) {
 
-        $updateMailQuery = $db->prepare("UPDATE RkU_USER SET email=:email, token_confirm_inscription=:tk, role=:role WHERE id=:id");
-        $updateMailQuery->execute([
-            ':email'=> $newMail,
-            ':tk'=> $tk,
-            ':role'=> 0,
-            ':id'=> $userId
+        $updatePasswordQuery = $db->prepare("");
+        $updatePasswordQuery->execute([
+
         ]);
+
+
         logout();
         setMessage('updateMail', ["Vous avez été déconnecté vous avez reçu un mail à votre nouvelle adresse mail : $newMail"],'success');
         header('Location: ../../../index.php');

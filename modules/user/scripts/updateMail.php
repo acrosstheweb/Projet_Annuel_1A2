@@ -1,7 +1,8 @@
 <?php
 require '../../../functions.php';
 if(
-    empty($_POST['profileEmail'])
+    empty($_POST['profileEmail']) ||
+    empty($_POST[''])
 ){
     setMessage('UpdateSecHack', ['bypass form'],'danger');
     header('Location: ../../../error404.php');
@@ -24,9 +25,9 @@ if($verifmail[0] === true){
     $href = DOMAIN . "modules/user/scripts/confirmRegister.php?fn=$firstname&tk=$tk";
     $mailContent = '<!DOCTYPE html><html>';
     $mailContent.= '<section align="center">';
-    $mailContent.=     '<h1>Vérification inscription Fitness Essential</h1>';
+    $mailContent.=     '<h1>Vérification adresse e-mail Fitness Essential</h1>';
     $mailContent.=     '<img src="https://pa-atw.fr/sources/img/logo.png" alt="logo">';
-    $mailContent.=     '<h3>Bonjour '.$firstname.', vous avez initié un changement d\'adresse mail</h3>';
+    $mailContent.=     '<h3>Bonjour '.$firstname.', vous avez initié un changement d\'adresse e-mail</h3>';
     $mailContent.=     '<p>Pour vous reconnecter merci de bien vouloir cliquer sur le lien afin d\'authentifier votre accès 🔌</p>';
     $mailContent.=     '<a href='.$href.'>Vérifier votre nouvelle adresse mail</a>';
     $mailContent.= '</section>';
