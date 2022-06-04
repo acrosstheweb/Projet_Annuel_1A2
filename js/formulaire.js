@@ -1,6 +1,9 @@
 const programExerciceList = document.getElementById('__programExerciceList');
 const programContentPreview = document.getElementById('__programContentPreview');
 
+let values = [];
+let ex = [];
+
 
 let counter = 1;
 
@@ -54,7 +57,16 @@ const options = document.getElementById('__programExerciceDropdown1').innerHTML;
 const addExercice_trigger = document.getElementById('__addExercice');
 
 function addExercice(){
-    let exercice = `
+    
+    for (let i = 1; i < counter; i++){
+        values[i] = [];
+
+        values[i][0] = document.getElementById(`__programExerciceDropdown${i}`).value;
+        values[i][1] = document.getElementById(`__programSeries${i}`).value;
+        values[i][2] = document.getElementById(`__programReps${i}`).value;
+    };
+
+    let newExercice = `
     <div id="__programExercice${counter}" class="__programExercice accordion-item">
         <div class="row">
             <label for="__programExerciceDropdown${counter}" id="__programExerciceDropdown${counter}-label" class="accordion-header form-label fw-bold p-0 col-10 col-md-11">
@@ -89,7 +101,7 @@ function addExercice(){
         </div>
     </div>
     `;
-    programExerciceList.innerHTML += exercice;
+    programExerciceList.innerHTML += newExercice;
 
 
     
@@ -111,6 +123,12 @@ function addExercice(){
     for (let i = 0; i < programExerciceCollapses.length - 1; i++){
         programExerciceCollapses[i].classList.remove("show");
         programExerciceButtons[i].classList.add("collapsed");
+    };
+
+    for (let i = 1; i < counter; i++){
+        document.getElementById(`__programExerciceDropdown${i}`).value = values[i][0];
+        document.getElementById(`__programSeries${i}`).value = values[i][1];
+        document.getElementById(`__programReps${i}`).value = values[i][2];
     };
 
 };
