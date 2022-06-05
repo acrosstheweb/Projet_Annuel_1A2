@@ -18,39 +18,43 @@
 
 
 /* Boutons */
+
 .btn-primary,
 .button-close-modal {
     background-color: var(--green2);
     border-color: var(--green2);
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
     background-color: var(--green3);
     border-color: var(--green3);
 }
 
 
 /* Header */
-.navbar-brand,.footer-logo,.__logoIcon{
+
+.navbar-brand,
+.footer-logo,
+.__logoIcon {
     width: 2.5rem;
 }
 
-.__navIcon{
+.__navIcon {
     font-size: 20px;
     margin: 0 .75rem;
 }
 
-.__navbarIcons{
+.__navbarIcons {
     flex-direction: row;
 }
 
-.navbar-nav .dropdown-menu{
+.navbar-nav .dropdown-menu {
     padding: 0 1rem;
     position: absolute;
     min-width: 7rem;
 }
 
-#search-addon{
+#search-addon {
     background-color: unset;
     margin-left: .75rem;
 }
@@ -60,18 +64,16 @@
 }
 
 @media all {
-    #__searchbar{
+    #__searchbar {
         display: none;
     }
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
     #__search-trigger {
         display: inline;
     }
 }
-
-
 
 #__userSlide {
     position: fixed;
@@ -82,8 +84,6 @@
     background-color: rgb(202 210 197 / 85%);
     border: 2px solid rgb(80, 107, 100);
     z-index: 1;
-
-
     -webkit-animation: all;
     -webkit-animation-name: slide-in;
     -webkit-animation-duration: 0.3s;
@@ -101,12 +101,12 @@
     }
 }
 
-#__userVerticalNav ul{
+#__userVerticalNav ul {
     list-style-type: none;
 }
 
-#__userVerticalNav a{
-    color: rgba(0,0,0,.55);
+#__userVerticalNav a {
+    color: rgba(0, 0, 0, .55);
 }
 
 .modal-header,
@@ -131,28 +131,28 @@ header {
     background-color: var(--green1);
 }
 
-h1{
+h1 {
     margin: 10px 0 10px;
 }
 
-.__frontRow{
+.__frontRow {
     /* display: flex;
     flex-direction: column; */
     margin: 0 10px;
 }
 
-.__frontBgImage{
+.__frontBgImage {
     background-image: url("../sources/img/musculation.jpg");
     background-position: center;
     background-size: fill;
 }
 
-.__frontImage{
+.__frontImage {
     padding: 0;
     object-fit: cover;
 }
 
-.__frontIamge-description{
+.__frontIamge-description {
     padding: 1rem;
     /* background-color: var(--green2); */
     color: black;
@@ -160,63 +160,68 @@ h1{
     margin: 0;
 }
 
-.container-fluid{
+.container-fluid {
     padding: 0;
 }
 
+
 /* Carousels Séances */
-.card{
+
+.card {
     margin: 0 1.5rem;
 }
 
-.__cardTablet{
+.__cardTablet {
     padding: 0;
 }
 
-.__cardDesktop{
+.__cardDesktop {
     margin: 0 1rem;
     padding: 0;
 }
 
-.__classImage{
+.__classImage {
     margin: 0 auto;
 }
 
-.__classIcon{
+.__classIcon {
     color: var(--green2);
 }
 
-.__cardDescription{
+.__cardDescription {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 70%);
     color: whitesmoke;
     height: 100%;
     width: 100%;
-    position:relative;
+    position: relative;
 }
 
-.card-img-overlay{
-    padding:unset; /* Retrait du padding du cadre de la description de la carte pour que le background linear gradient prenne tout l'espace de la carte */
+.card-img-overlay {
+    padding: unset;
+    /* Retrait du padding du cadre de la description de la carte pour que le background linear gradient prenne tout l'espace de la carte */
 }
 
-.__cardDescriptionText{
+.__cardDescriptionText {
     width: 100%;
-    position:absolute;
-    bottom:0;
-    left:50%;
-    transform:translateX(-50%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     margin-bottom: 1rem;
     color: whitesmoke;
 }
 
-#carouselDesktop.carousel-caption{
+#carouselDesktop.carousel-caption {
     width: 100rem;
 }
 
-.__carouselControl{
+.__carouselControl {
     color: var(--green3);
 }
 
+
 /* Erreur 404 */
+
 .__404btn {
     width: fit-content;
     color: var(--green3);
@@ -229,13 +234,15 @@ h1{
     border-color: var(--green3);
 }
 
+
 /* Page Informations Profil */
-.__profilePic{
+
+.__profilePic {
     object-fit: cover;
     padding: 0;
 }
 
-.__profilePicOverlay{
+.__profilePicOverlay {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     height: 15%;
@@ -243,92 +250,102 @@ h1{
     position: relative;
 }
 
-.__profilePicChange{
+.__profilePicChange {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.__profileInfoInput{
+.__profileInfoInput {
     display: none;
 }
 
-#__profileInfoCancel{
+#__profileInfoCancel {
     display: none;
 }
 
-#__profileInfoSubmit{
+#__profileInfoSubmit {
     display: none;
 }
+
 
 /* Modale modif user Admin */
-.modify-adminPassword{
+
+.modify-adminPassword {
     display: none;
 }
 
-.modify-confirm{
+.modify-confirm {
     display: none;
 }
+
 
 /* Modale suppression user Admin */
-.delete-adminPassword{
+
+.delete-adminPassword {
     display: none;
 }
 
-.delete-confirm{
+.delete-confirm {
     display: none;
 }
 
-#tableHeaderSortable{
+#tableHeaderSortable {
     cursor: pointer;
 }
 
-table{
+table {
     color: unset;
 }
 
+
 /* Forum */
-.__topic{
+
+.__topic {
     text-align: center;
     margin: 1rem;
 }
 
-.__topic:hover{
+.__topic:hover {
     background-color: rgba(0, 0, 0, 0.1);
     margin: 0;
 }
 
-.__topicImg{
+.__topicImg {
     height: 10rem;
     object-fit: cover;
 }
 
-.__topicDescription{
+.__topicDescription {
     height: 3rem;
 }
 
-@media (min-width: 992px){
-    .__topicDescription{
+@media (min-width: 992px) {
+    .__topicDescription {
         height: 1.5rem;
     }
-
-    .__topicImg{
+    .__topicImg {
         height: 15rem;
     }
 }
 
+
 /* Catégorie */
-.__categoryCardClosed{
+
+.__categoryCardClosed {
     background-color: var(--green1);
     border: 1px solid var(--green3);
 }
 
-.__questionStatusBg{
+.__questionStatusBg {
     background-color: var(--green3);
 }
 
+
 /* Question */
+
+
 /* .__questionTitle{
     background: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
@@ -336,12 +353,12 @@ table{
     border-radius: 10px;
 } */
 
-.__questionContent{
+.__questionContent {
     border-top: 2px solid var(--green1);
     padding: 10px 0
 }
 
-.__questionComments{
+.__questionComments {
     background: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
     padding: 5px 10px;
@@ -349,65 +366,102 @@ table{
     margin-top: 40px;
 }
 
-.__captcha{
+.__captcha {
     width: 600px;
 }
 
+
 /* Programmes */
-.__programCard{
+
+.__programCard {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-.__programImage{
+.__programImage {
     height: 100%;
 }
 
-.__programOverlay{
+.__programOverlay {
     background-color: rgba(0, 0, 0, 0.25);
 }
 
-.__programContent{
+.__programContent {
     width: 100%;
     text-align: start;
 }
 
-.__programControl{
+.__programControl {
     display: none;
 }
 
+
 /* Abonnements */
-.__subscriptionTable{
+
+.__subscriptionTable {
     overflow: hidden;
 }
-.__subscriptionTable .fa-check{
+
+.__subscriptionTable .fa-check {
     color: var(--bs-success);
 }
 
-.__subscriptionTable .fa-xmark{
+.__subscriptionTable .fa-xmark {
     color: var(--bs-danger);
 }
 
-.__subscriptionTableBorder{
+.__subscriptionTableBorder {
     background-color: white;
 }
 
-.__subscriptionHead{
+.__subscriptionHead {
     position: sticky;
 }
 
-.__subscriptionIcon{
+.__subscriptionIcon {
     width: 2rem;
     height: auto;
     vertical-align: baseline;
 }
 
-.__subscriptionCard{
+.__subscriptionCard {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-
-.__programCardPreview{
+.__programCardPreview {
     max-height: 600px;
+}
+
+
+/* Réservation */
+
+.__calendarTable {
+    width: 100%;
+    height: 59.5vh;
+}
+
+.__calendarTable td {
+    padding: 10px;
+    border: 1px solid #CCC;
+    vertical-align: top;
+    width: 14%;
+}
+
+.__calendarTable--6weeks td {
+    height: 59.5/6vh;
+}
+
+.__calendarWeekDay {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.2em;
+}
+
+.__calendarDay {
+    font-size: 1.3em;
+}
+
+.__calendarOtherMonth .__calendarDay {
+    opacity: 0.3;
 }
