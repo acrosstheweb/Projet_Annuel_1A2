@@ -69,7 +69,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "reservations");
-                                                        } ?>" href="<?= DOMAIN . 'reservations.php'?>">Réservations</a>
+                                                        } ?>" href="<?= DOMAIN . 'modules/calendar/vues/reservations.php'?>">Réservations</a>
                                 </li>
 
                                 <li class="nav-item">
