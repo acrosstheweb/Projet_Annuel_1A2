@@ -1,5 +1,5 @@
 <?php
-
+// Utilisé pour confirmation d'inscription mais également confirmation du changement d'adresse mail
 require '../../../functions.php';
 
 $firstname = $_GET['fn'];

@@ -73,8 +73,8 @@ function isConnected(){
         $db = database();
         $getTokenDbQuery = $db->prepare("SELECT token from RkU_USER WHERE id=:id");
         $getTokenDbQuery->execute(['id' => $_SESSION['userId']]);
-        
-        $tokenDb = $getTokenDbQuery->fetch()['token'];
+
+        $tokenDb = $getTokenDbQuery->fetch()['token'] ?? "";
         $tokenSession = $_SESSION['userToken'];
         if($tokenDb == $tokenSession){
             return true;
@@ -131,7 +131,7 @@ function checkFields(array $fields, bool $checkMailExists = true): array
                 if(strlen($lastname) < 2 || strlen($lastname) > 180 || !ctype_alpha(str_replace($exceptions, '', $lastname))){
                     $problems[] = 'Le nom de famille doit être entre 2 et 180 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
                 }else{
-                    $results['lastname'] = strtoupper($lastname);
+                    $results['lastname'] = strtoupper(htmlspecialchars($lastname));
                 }
                 break;
             case 'firstname':
@@ -139,7 +139,7 @@ function checkFields(array $fields, bool $checkMailExists = true): array
                 if(strlen($firstname) < 2 || strlen($firstname) > 100 || !ctype_alpha(str_replace($exceptions, '', $firstname))){
                     $problems[] = 'Le prénom doit être entre 2 et 100 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
                 }else{
-                    $results['firstname'] = ucwords(strtolower($firstname));
+                    $results['firstname'] = ucwords(strtolower(htmlspecialchars($firstname)));
                 }
                 break;
             case 'birthday':
@@ -177,7 +177,7 @@ function checkFields(array $fields, bool $checkMailExists = true): array
                         if(!empty($checkUserExist)){
                             $problems[] = "Ce mail est déjà utilisé";
                         }else{
-                            $results['email'] = strtolower(trim($email));
+                            $results['email'] = strtolower(trim(htmlspecialchars($email)));
                         }
                     }
                 }
@@ -187,7 +187,7 @@ function checkFields(array $fields, bool $checkMailExists = true): array
                 if(strlen($address) < 2 || strlen($address) > 200 || !ctype_alnum(str_replace($exceptions, '', $address))){
                     $problems[] = 'L\'adresse doit comprendre entre 2 et 200 caractères alphanumériques'; // Alphnumériques + $exceptions autorisés
                 }else{
-                    $results['address'] = ucwords(strtolower($address));
+                    $results['address'] = ucwords(strtolower(htmlspecialchars($address)));
                 }
                 break;
             case 'city':
@@ -195,7 +195,7 @@ function checkFields(array $fields, bool $checkMailExists = true): array
                 if(strlen($city) < 2 || strlen($city) > 180 || !ctype_alpha(str_replace($exceptions, '', $city))){
                     $problems[] = 'La ville doit contenir entre 2 et 180 caractères alphabétiques'; // Alphabétiques + $exceptions autorisés
                 }else{
-                    $results['city'] = ucwords(strtolower($city));
+                    $results['city'] = ucwords(strtolower(htmlspecialchars($city)));
                 }
                 break;
             case 'zipcode':
@@ -276,6 +276,22 @@ function register_mail($firstname, $tk): string
     // Pour chaque $fields, retourner la valeur en bdd
 }*/
 
+function getIP() {
+    //whether ip is from the share internet
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = 'HTTP_CLIENT_IP : ' . $_SERVER['HTTP_CLIENT_IP'];
+    }
+    //whether ip is from the proxy
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = 'HTTP_X_FORWARDED_FOR : ' . $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    //whether ip is from the remote address
+    else{
+        $ip = 'REMOTE_ADDR : ' . $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
 /*
  * $id est l'id de l'utilisateur
  * $action est le type d'action effectuée (Visite de page, Connexion, Déconnexion, ...)
@@ -284,7 +300,8 @@ function atw_log($id, string $action){
     $logfile = fopen(__DIR__ . "/logs/visits.log", "a");
     $currentDateTime = date("d/m/Y H:i:s");
     $currentPage = basename($_SERVER['PHP_SELF']);
-    fwrite($logfile, "UserID : $id - $currentDateTime - $action $currentPage\n");
+    $ip = getIP();
+    fwrite($logfile, "UserID : $id - $currentDateTime - $action $currentPage - $ip\n");
     fclose($logfile);
 }
 
@@ -295,4 +312,12 @@ function dd($var){
     echo "<pre>";
     var_dump($var);
     die();
+}
+
+function logout(){
+    /*unset($_SESSION['userToken']);
+    unset($_SESSION['userId']);*/
+    atw_log($_SESSION['userId'], "Logout");
+    session_destroy();
+    session_start();
 }

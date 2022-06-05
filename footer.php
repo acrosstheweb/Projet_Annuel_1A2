@@ -7,10 +7,10 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="<?= DOMAIN . '#'?>" class="nav-link px-2 text-muted">Accueil</a></li>
+            <li class="nav-item"><a href="<?= DOMAIN . 'index.php'?>" class="nav-link px-2 text-muted">Accueil</a></li>
             <li class="nav-item"><a href="<?= DOMAIN . 'contact.php'?>" class="nav-link px-2 text-muted">Contact</a></li>
-            <li class="nav-item"><a href="<?= DOMAIN . '#'?>" class="nav-link px-2 text-muted">FAQs</a></li>
-            <li class="nav-item"><a href="<?= DOMAIN . '#'?>" class="nav-link px-2 text-muted">RGPD</a></li>
+            <li class="nav-item"><a href="<?= DOMAIN . 'faq.php'?>" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="<?= DOMAIN . 'rgpd.php'?>" class="nav-link px-2 text-muted">RGPD</a></li>
         </ul>
     </footer>
 </div>
