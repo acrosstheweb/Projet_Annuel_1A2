@@ -8,6 +8,9 @@ list($width, $height) = getimagesize($filename);
 
 $pathArray = [];
 $tileId = 0;
+$numbers = [0,1,2,3,4,5,6,7,8];
+
+shuffle($numbers);
 
 for ($i = 0; $i < 3; $i++){
     for ($j = 0; $j < 3; $j++){
@@ -16,16 +19,21 @@ for ($i = 0; $i < 3; $i++){
 
         imagejpeg($dst_image, "sources/captcha/1-".$i."_".$j.".jpeg");
 
-        array_push($pathArray, [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"]);
+        // array_push($pathArray, [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"]);
+        $pathArray[$numbers[$tileId]] = [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"];
         $tileId++;
     }
 }
-
-shuffle($pathArray);
-
+echo '<pre>';
+var_dump($numbers);
+$_SESSION['captcha'] = $numbers;
+// shuffle($pathArray);
+// echo '<br>';
+var_dump($pathArray);
 ?>
 
-<div class="container-fluid" style="width: 600px;">
+<div class="container-fluid col-11 col-md-8 col-lg-6">
+    <form id="verifyCaptcha" method="POST" action="verifyCaptcha.php"></form>
     <?php 
         for ($i = 0; $i < 9; $i++){ 
             if ($i % 3 == 0){
@@ -33,7 +41,7 @@ shuffle($pathArray);
             }
     ?>
         <div id="__captchaTile<?php  echo $i ?>" class="col-4 p-1">
-            <img class="img-fluid" id="__tile<?php echo $pathArray[$i][0] ?>" src="<?php echo DOMAIN . $pathArray[$i][1] ?>">
+            <input type="image" class="img-fluid" id="__tile<?php echo $pathArray[$numbers[$i]][0] ?>" src="<?php echo DOMAIN . $pathArray[$i][1] ?>" value="<?php echo $pathArray[$numbers[$i]][0] ?>">
         </div> 
     <?php
             if ($i % 3 == 2){
@@ -41,6 +49,10 @@ shuffle($pathArray);
             }
         }
     ?>
+    <button form="verifyCaptcha" class="btn btn-primary mt-5" id="__captchaSubmit">Valider</button>
 </div>
+<?php
+    var_dump($_SESSION);
+?>
 
 <script src="<?= DOMAIN . 'js/captcha.js'?>" crossorigin="anonymous"></script>
