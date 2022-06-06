@@ -32,27 +32,29 @@ $_SESSION['captcha'] = $numbers;
 var_dump($pathArray);
 ?>
 
-<div class="container-fluid col-11 col-md-8 col-lg-6">
-    <form id="verifyCaptcha" method="POST" action="verifyCaptcha.php"></form>
-    <?php 
-        for ($i = 0; $i < 9; $i++){ 
-            if ($i % 3 == 0){
-                echo '<div class="row">';
+<div class="container-fluid" style="max-width: 660px">
+    <form id="verifyCaptcha" method="POST" action="verifyCaptcha.php">
+        <?php 
+            for ($i = 0; $i < 9; $i++){ 
+                if ($i % 3 == 0){
+                    echo '<div class="row">';
+                }
+        ?>
+            <div id="__captchaTile<?php  echo $i ?>" class="col-4 p-1">
+                    <img class="img-fluid float-start" src="<?php echo DOMAIN . $pathArray[$i][1] ?>" alt="">
+                    <input type="hidden" 
+                            id="__tile<?php echo $i ?>"
+                            name="__tile<?php echo $i ?>"
+                            value="<?php echo $pathArray[$numbers[$i]][0] ?>">
+            </div> 
+        <?php
+                if ($i % 3 == 2){
+                    echo '</div>';
+                }
             }
-    ?>
-        <div id="__captchaTile<?php  echo $i ?>" class="col-4 p-1">
-            <input type="image" class="img-fluid" id="__tile<?php echo $pathArray[$numbers[$i]][0] ?>" src="<?php echo DOMAIN . $pathArray[$i][1] ?>" value="<?php echo $pathArray[$numbers[$i]][0] ?>">
-        </div> 
-    <?php
-            if ($i % 3 == 2){
-                echo '</div>';
-            }
-        }
-    ?>
-    <button form="verifyCaptcha" class="btn btn-primary mt-5" id="__captchaSubmit">Valider</button>
+        ?>
+    </form>
+    <button type="submit" form="verifyCaptcha" class="btn btn-primary mt-5" id="__captchaSubmit">Valider</button>
 </div>
-<?php
-    var_dump($_SESSION);
-?>
 
 <script src="<?= DOMAIN . 'js/captcha.js'?>" crossorigin="anonymous"></script>

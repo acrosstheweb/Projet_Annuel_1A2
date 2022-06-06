@@ -8,12 +8,28 @@ const tile6 = document.getElementById('__captchaTile6');
 const tile7 = document.getElementById('__captchaTile7');
 const tile8 = document.getElementById('__captchaTile8');
 
+
+
+
 let selection = [];
 
 function swap(el1,el2){
-    const tmp = el1.innerHTML;
+    let tmp = el1.innerHTML;
     el1.innerHTML = el2.innerHTML;
     el2.innerHTML = tmp;
+
+    let tileName1 = document.getElementById(`__tile${el1.id.substring(13,14)}`);
+    let tileName2 = document.getElementById(`__tile${el2.id.substring(13,14)}`);
+
+    tmp = tileName1.name;
+    tileName1.name = tileName2.name;
+    tileName2.name = tmp;
+
+    tmp = tileName1.id;
+    tileName1.id = tileName2.id;
+    tileName2.id = tmp;
+
+    console.log(tileName1);
 };
 
 function addToSelection(el){
@@ -36,3 +52,4 @@ tiles.forEach(function(item){
         addToSelection(item);
     });
 });
+
