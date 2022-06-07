@@ -147,11 +147,6 @@ h1 {
     background-size: fill;
 }
 
-.__frontImage {
-    padding: 0;
-    object-fit: cover;
-}
-
 .__frontIamge-description {
     padding: 1rem;
     /* background-color: var(--green2); */
@@ -464,4 +459,9 @@ table {
 
 .__calendarOtherMonth .__calendarDay {
     opacity: 0.3;
+}
+
+.__listeVerticale{
+    list-style-type: none;
+    padding-left: 0;
 }

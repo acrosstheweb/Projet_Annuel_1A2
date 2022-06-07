@@ -16,17 +16,13 @@ Message('CreateUser');
 <div class="container-fluid">
     <div class="row">
         <div class="d-none col-2 d-md-flex justify-content-center">
-            <nav class="nav flex-column py-3">
-                <a class="nav-link active" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/users.php'?>">Liste des utilisateurs</a>
-                <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/security.php'?>">Sécurité</a>
-                <a class="nav-link" href="#">jaaj 1</a>
-                <a class="nav-link disabled">jaaj 2</a>
-            </nav>
+            <?php include "adminNavbar.php"; ?>
         </div>
     
-
-        <div class="row col-10 d-flex justify-content-center">
-            <div class="col-10">
+        <div class="col-8">
+            <div class="text-end my-3">
+                <a href="<?= DOMAIN . 'modules/user/scripts/admin/userCreateAdmin.php'?>" class="btn btn-primary">Créer un utilisateur</a>
+            </div>
             <table class="table" id="usersTable">
                 <thead>
                     <tr>
@@ -185,7 +181,6 @@ Message('CreateUser');
 
                 </tbody>
             </table>
-            </div>
         </div>
     </div>
 </div>
