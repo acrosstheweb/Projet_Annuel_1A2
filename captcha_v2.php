@@ -1,5 +1,4 @@
 <?php
-require "header.php";
 
 $filename = "sources/captcha/1.jpg";
 
@@ -24,12 +23,12 @@ for ($i = 0; $i < 3; $i++){
         $tileId++;
     }
 }
-echo '<pre>';
-var_dump($numbers);
+/*echo '<pre>';
+var_dump($numbers);*/
 $_SESSION['captcha'] = $numbers;
 // shuffle($pathArray);
 // echo '<br>';
-var_dump($pathArray);
+/*var_dump($pathArray);*/
 ?>
 
 <div class="container-fluid" style="max-width: 660px">
