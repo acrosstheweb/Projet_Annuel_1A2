@@ -1,4 +1,5 @@
 <?php
+require_once 'header.php';
 
 $filename = "sources/captcha/1.jpg";
 
@@ -7,9 +8,12 @@ list($width, $height) = getimagesize($filename);
 
 $pathArray = [];
 $tileId = 0;
-$numbers = [0,1,2,3,4,5,6,7,8];
+$combinaison = []; // Tableau qui contient le bon ordre de résolution du captcha
+for ($i=0;$i<9;$i++){
+    $combinaison[] = uniqidreal(4);
+}
 
-shuffle($numbers);
+shuffle($combinaison);
 
 for ($i = 0; $i < 3; $i++){
     for ($j = 0; $j < 3; $j++){
@@ -19,20 +23,20 @@ for ($i = 0; $i < 3; $i++){
         imagejpeg($dst_image, "sources/captcha/1-".$i."_".$j.".jpeg");
 
         // array_push($pathArray, [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"]);
-        $pathArray[$numbers[$tileId]] = [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"];
+        $pathArray[$combinaison[$tileId]] = [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"];
         $tileId++;
     }
 }
 /*echo '<pre>';
-var_dump($numbers);*/
-$_SESSION['captcha'] = $numbers;
+var_dump($combinaison);*/
+$_SESSION['captcha'] = $combinaison;
 // shuffle($pathArray);
-// echo '<br>';
-/*var_dump($pathArray);*/
+// echo '<pre>';
+// var_dump($pathArray);
 ?>
 
 <div class="container-fluid" style="max-width: 660px">
-    <form id="verifyCaptcha" method="POST" action="verifyCaptcha.php">
+    <form id="verifyCaptcha" method="POST" action="<?= DOMAIN . 'verifyCaptcha.php'?>">
         <?php 
             for ($i = 0; $i < 9; $i++){ 
                 if ($i % 3 == 0){
@@ -40,11 +44,11 @@ $_SESSION['captcha'] = $numbers;
                 }
         ?>
             <div id="__captchaTile<?php  echo $i ?>" class="col-4 p-1">
-                    <img class="img-fluid float-start" src="<?php echo DOMAIN . $pathArray[$i][1] ?>" alt="">
+                    <img class="img-fluid float-start" src="<?php echo DOMAIN . $pathArray[$combinaison[$i]][1] ?>" alt="">
                     <input type="hidden" 
                             id="__tile<?php echo $i ?>"
                             name="__tile<?php echo $i ?>"
-                            value="<?php echo $pathArray[$numbers[$i]][0] ?>">
+                            value="<?php echo $combinaison[$i] ?>">
             </div> 
         <?php
                 if ($i % 3 == 2){

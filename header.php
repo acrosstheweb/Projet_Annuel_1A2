@@ -298,9 +298,9 @@
                                 <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required"><br>
                             </div>
                         </div>
-                        <div class="row">
-                            <?php include 'captcha_v2.php'; ?>
-                        </div>
+                        <!--<div class="row">
+                            <?php /*include 'captcha_v2.php'; */?>
+                        </div>-->
                     </form>
                 </div>
                 <div class="modal-footer">

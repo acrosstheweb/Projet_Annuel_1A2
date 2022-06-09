@@ -321,3 +321,17 @@ function logout(){
     session_destroy();
     session_start();
 }
+/**
+ * @throws Exception
+ */
+function uniqidReal($len) { // FONCTION RECUPEREE DEPUIS https://www.php.net/manual/fr/function.uniqid.php#120123
+    // uniqid gives 13 chars, but you could adjust it to your needs.
+    if (function_exists("random_bytes")) {
+        $bytes = random_bytes(ceil($len / 2));
+    } elseif (function_exists("openssl_random_pseudo_bytes")) {
+        $bytes = openssl_random_pseudo_bytes(ceil($len / 2));
+    } else {
+        throw new Exception("no cryptographically secure random function available");
+    }
+    return substr(bin2hex($bytes), 0, $len);
+}

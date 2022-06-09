@@ -1,11 +1,12 @@
 <?php
     require "header.php";
+    echo "<pre>";
+    var_dump($_POST);
+
     var_dump($_SESSION['captcha']);
 
-    echo '<br>';
+    echo "</pre>";
 
-    var_dump($_POST);
-    
     echo '<br>';
 
     if ($_POST['__tile0'] == $_SESSION['captcha'][0] &&
@@ -22,4 +23,5 @@
     } else {
         echo 'fréro, tu es cringe';
     }
+    // unset($_SESSION['captcha']);
 ?>
