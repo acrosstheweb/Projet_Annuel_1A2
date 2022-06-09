@@ -433,7 +433,7 @@ table {
 
 .__calendarTable {
     width: 100%;
-    height: 59.5vh;
+    height: 59.9vh;
 }
 
 .__calendarTable td {
@@ -444,7 +444,7 @@ table {
 }
 
 .__calendarTable--6weeks td {
-    height: 59.5/6vh;
+    height: 59.9/6vh;
 }
 
 .__calendarWeekDay {
@@ -461,7 +461,7 @@ table {
     opacity: 0.3;
 }
 
-.__listeVerticale{
+.__listeVerticale {
     list-style-type: none;
     padding-left: 0;
 }

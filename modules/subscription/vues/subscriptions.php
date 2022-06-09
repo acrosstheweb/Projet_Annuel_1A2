@@ -2,26 +2,36 @@
     $title = "Fitness Essential - Abonnements";
     $content = "Les différents abonnements de Fitness Essential";
     $currentPage = 'subscriptions';
-    require 'header.php';
+    require '../../../header.php';
     Message('RegisterSuccess');
+
+    $pdo = database();
+
+    $request = $pdo->query("SELECT * FROM RkU_SUBSCRIPTION");
+    $results = $request->fetchAll();
+
 ?>
 
 <h1 class="aligned-title"> Choisissez votre abonnement </h1>
 
 <div class="row justify-content-center">
+<?php
+foreach($results as $subscription){
+?>
+
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
         <h4 class="aligned-title text-uppercase">
-            Essential
-            <img src="<?= DOMAIN . 'sources/img/essential.png'?>" alt="" class="img-fluid __subscriptionIcon">
+            <?= $subscription['name'] ?>
+            <img src="<?= DOMAIN . 'sources/img/' . $subscription['path']?>" alt="" class="img-fluid __subscriptionIcon">
         </h4>
         <div class="card-body">
-            <h5 class="card-title">15,99€/mois</h5>
-            <p class="card-text">C'est la même qualité, c'est juste le prix qui baisse. T'es pas obligé de faire le rat par contre.</p>
+            <h5 class="card-title"><?= $subscription['price'] ?>€/mois</h5>
+            <p class="card-text"><?= $subscription['content'] ?></p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Etudiant</li>
-            <li class="list-group-item">+ Bénefice</li>
-            <li class="list-group-item">- Investissement</li>
+            <li class="list-group-item"><?= $subscription['firstAttribut'] ?></li>
+            <li class="list-group-item"><?= $subscription['secondAttribut'] ?></li>
+            <li class="list-group-item"><?= $subscription['thirdAttribut'] ?></li>
         </ul>
         <div class="card-body">
             <a href="#" class="card-link">Achète ici</a>
@@ -29,6 +39,17 @@
         </div>
     </div>
 
+<?php
+}
+?>
+
+
+
+
+
+
+
+<!-- 
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
         <h4 class="aligned-title text-uppercase">
             Classic
@@ -68,7 +89,7 @@
             <a href="#" class="card-link">Ici aussi en fait</a>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="row d-flex justify-content-center">
     <div class="col-10 col-lg-8 __subscriptionTableScroll">
@@ -164,5 +185,5 @@
 
 
 <?php
-    include 'footer.php';
+    include '../../../footer.php';
 ?>

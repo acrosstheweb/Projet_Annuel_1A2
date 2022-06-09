@@ -64,7 +64,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "subscriptions");
-                                                        } ?>" href="<?= DOMAIN . 'subscriptions.php'?>">Abonnements</a>
+                                                        } ?>" href="<?= DOMAIN . 'modules/subscription/vues/subscriptions.php'?>">Abonnements</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
@@ -75,7 +75,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "programs");
-                                                        } ?>" href="<?= DOMAIN . 'programs.php'?>">Programmes</a>
+                                                        } ?>" href="<?= DOMAIN . 'modules/program/vues/programs.php'?>">Programmes</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {

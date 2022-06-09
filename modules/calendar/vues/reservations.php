@@ -8,15 +8,16 @@
     $startDay = $month->getStartingDay()->modify('last monday');
 ?>
 
+<h1 class="aligned-title"> Réserver une séance </h1>
 <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
-    <h1 class="aligned-title"> Réserver une séance </h1>
+    <h2><?= $month->toString(); ?></h2>
+
     <div>
         <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?month=' . $month->previousMonth()->month . '&year=' . $month->previousMonth()->year ?>" class = "btn btn-primary">&lt</a>
         <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?month=' . $month->nextMonth()->month . '&year=' . $month->nextMonth()->year ?>" class = "btn btn-primary">&gt</a>
     </div>
 </div>
 
-<h2><?= $month->toString(); ?></h2>
 
 <table class = "__calendarTable __calendarTable--<?php $month->getWeeks(); ?>weeks">
     <?php for($i = 0; $i < $month->getWeeks(); $i++){ ?>

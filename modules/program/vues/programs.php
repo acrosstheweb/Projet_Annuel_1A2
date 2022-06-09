@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Programmes";
     $content = "Les différents programmes de Fitness Essential";
     $currentPage = 'programs';
-    require 'header.php';
+    require '../../../header.php';
 
     $pdo = database();
 
@@ -89,5 +89,5 @@
 
 
 <?php
-    include 'footer.php';
+    include '../../../footer.php';
 ?>
