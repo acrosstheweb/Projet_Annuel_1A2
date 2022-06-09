@@ -1,5 +1,5 @@
 <?php
-require_once 'header.php';
+require_once 'functions.php';
 
 $filename = "sources/captcha/1.jpg";
 
@@ -27,16 +27,18 @@ for ($i = 0; $i < 3; $i++){
         $tileId++;
     }
 }
-/*echo '<pre>';
-var_dump($combinaison);*/
+// echo '<pre>';
+// var_dump($combinaison);
+// echo '<Br>';
+// var_dump($pathArray);
 $_SESSION['captcha'] = $combinaison;
-// shuffle($pathArray);
+shuffle($combinaison);
 // echo '<pre>';
 // var_dump($pathArray);
 ?>
 
 <div class="container-fluid" style="max-width: 660px">
-    <form id="verifyCaptcha" method="POST" action="<?= DOMAIN . 'verifyCaptcha.php'?>">
+    <!--<form id="verifyCaptcha" method="POST" action="<?/*= DOMAIN . 'verifyCaptcha.php'*/?>">-->
         <?php 
             for ($i = 0; $i < 9; $i++){ 
                 if ($i % 3 == 0){
@@ -56,8 +58,8 @@ $_SESSION['captcha'] = $combinaison;
                 }
             }
         ?>
-    </form>
-    <button type="submit" form="verifyCaptcha" class="btn btn-primary mt-5" id="__captchaSubmit">Valider</button>
+    <!--</form>-->
+    <!--<button type="submit" form="verifyCaptcha" class="btn btn-primary mt-5" id="__captchaSubmit">Valider</button>-->
 </div>
 
 <script src="<?= DOMAIN . 'js/captcha.js'?>" crossorigin="anonymous"></script>

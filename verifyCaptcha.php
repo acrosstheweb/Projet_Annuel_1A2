@@ -1,5 +1,5 @@
 <?php
-    require "header.php";
+    require "functions.php";
     echo "<pre>";
     var_dump($_POST);
 
@@ -24,4 +24,3 @@
         echo 'fréro, tu es cringe';
     }
     // unset($_SESSION['captcha']);
-?>

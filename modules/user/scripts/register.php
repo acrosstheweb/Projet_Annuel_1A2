@@ -1,7 +1,7 @@
 <?php
 require '../../../functions.php';
 if(
-    count($_POST) != 10 ||
+    count($_POST) != 10+9 ||
     empty($_POST['register-civility']) ||
     empty($_POST['register-birthday']) ||
     empty($_POST['register-lastname']) ||
@@ -17,6 +17,22 @@ if(
     header('Location: ../../../error404.php');
     die();
 }
+
+if ($_POST['__tile0'] != $_SESSION['captcha'][0] ||
+    $_POST['__tile1'] != $_SESSION['captcha'][1] ||
+    $_POST['__tile2'] != $_SESSION['captcha'][2] ||
+    $_POST['__tile3'] != $_SESSION['captcha'][3] ||
+    $_POST['__tile4'] != $_SESSION['captcha'][4] ||
+    $_POST['__tile5'] != $_SESSION['captcha'][5] ||
+    $_POST['__tile6'] != $_SESSION['captcha'][6] ||
+    $_POST['__tile7'] != $_SESSION['captcha'][7] ||
+    $_POST['__tile8'] != $_SESSION['captcha'][8]
+){
+    setMessage('Register', ['Captcha incorrect (:'], 'warning');
+    header('Location: ../../../index.php');
+    die();
+}
+unset($_SESSION['captcha']);
 
 $civility = $_POST['register-civility'];
 $birthday = $_POST['register-birthday'];
