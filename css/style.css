@@ -465,3 +465,48 @@ table {
     list-style-type: none;
     padding-left: 0;
 }
+
+.__avatarPreviewContainer{
+    padding-top: 1rem;
+    position: relative;
+    width: 100%
+}
+
+.__avatarPreview{
+    position: absolute;
+}
+
+#__avatarPreview{
+    z-index: 1;
+}
+#__avatarBackgroundPreview{
+    z-index: 2;
+}
+
+#__avatarFacePreview{
+    z-index: 3;
+}
+
+#__avatarColorPreview{
+    z-index: 3;
+}
+
+#__avatarEyesPreview{
+    z-index: 4;
+}
+
+#__avatarNosePreview{
+    z-index: 5;
+}
+
+#__avatarGlassesPreview{
+    z-index: 6;
+}
+
+.__avatarChoiceRow{
+    padding-top: 1rem;
+}
+
+.__avatarChoice{
+    width: 100px;
+}
