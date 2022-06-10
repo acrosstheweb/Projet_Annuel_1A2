@@ -3,7 +3,7 @@
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
 
-    require_once 'functions.php';
+    require_once '../../../functions.php';
 
     if(!isAdmin()){
         header('Location: error404.php');
@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row __categoryControls pt-3 px-3 px-md-5">
         <div class="col">
-            <a class="btn btn-primary" href="<?= DOMAIN . 'forum.php'?>" role="button">Revenir à la page précedente</a>
+            <a class="btn btn-primary" href="<?= DOMAIN . 'modules/forum/vues/forum.php'?>" role="button">Revenir à la page précedente</a>
         </div>
     </div>
 </div>

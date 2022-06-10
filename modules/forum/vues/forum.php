@@ -26,7 +26,7 @@
 <div class="container-fluid">
     <div class="col d-flex justify-content-center">
         <?php if(isAdmin()){ ?>
-            <a class="btn btn-primary" href="<?= DOMAIN . 'newCategorie.php'?>" role="button">Nouvelle catégorie</a>
+            <a class="btn btn-primary" href="<?= DOMAIN . 'modules/forum/vues/newCategorie.php'?>" role="button">Nouvelle catégorie</a>
         <?php }?>
     </div>
 </div>
@@ -44,7 +44,7 @@
                         <div class="card-body">
                             <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
                             <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
-                            <a href="<?= DOMAIN ?>categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
+                            <a href="<?= DOMAIN ?>modules/forum/vues/categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
                             <?php
                                 if(isAdmin()){
                             ?>
@@ -151,5 +151,5 @@
 
 
 <?php
-    include 'footer.php';
+    include '../../../footer.php';
 ?>

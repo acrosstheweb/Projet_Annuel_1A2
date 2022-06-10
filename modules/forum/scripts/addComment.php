@@ -36,7 +36,7 @@ if(!empty($_POST)){
         ]);
         
         setMessage('createComment', ['Votre commentaire a bien été ajouté'], 'success');
-        header('Location: question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion.'&status='.$status);
+        header('Location: ../vues/question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion.'&status='.$status);
         exit;
     }
 

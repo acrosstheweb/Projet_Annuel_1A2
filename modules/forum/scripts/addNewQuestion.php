@@ -63,7 +63,7 @@ if(!empty($_POST)){
     }
     else{
         setMessage('createQuestion', [$errors], 'warning');
-        header('Location: categorie.php?idTopic='.$idTopic);
+        header('Location: ../vues/categorie.php?idTopic='.$idTopic);
         exit;
     }
         

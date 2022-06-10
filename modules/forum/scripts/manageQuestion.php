@@ -29,14 +29,14 @@ if($status == 1){
     $questionManageQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 0 WHERE id=:idQuestion");
     $questionManageQuery->execute(["idQuestion"=>$idQuestion]);
     setMessage('manageQuestion', ["La question a bien été clôturée."], 'success');
-    header('Location: categorie.php?idTopic='.$idTopic);
+    header('Location: ../vues/categorie.php?idTopic='.$idTopic);
     die();
 }
 elseif ($status == 0) {
     $questionManageQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 1 WHERE id=:idQuestion");
     $questionManageQuery->execute(["idQuestion"=>$idQuestion]);
     setMessage('manageQuestion', ["La question a bien été réouverte."], 'success');
-    header('Location: categorie.php?idTopic='.$idTopic);
+    header('Location: ../vues/categorie.php?idTopic='.$idTopic);
     die();
 }
 
