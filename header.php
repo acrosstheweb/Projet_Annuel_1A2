@@ -208,7 +208,7 @@
                 </div>
                 <div class="modal-body row">
                     <div class="col-3"></div>
-                    <form id="login-form" action="modules/user/scripts/login.php" method="POST" class="col-6">
+                    <form id="login-form" action=<?= DOMAIN . "modules/user/scripts/login.php"?> method="POST" class="col-6">
                         <label for="login-email">Adresse mail : </label>
                         <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail" required="required"><br>
 
@@ -235,7 +235,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="register-form" action="modules/user/scripts/register.php" method="POST">
+                    <form id="register-form" action=<?= DOMAIN . "modules/user/scripts/register.php"?> method="POST">
                         <div class="row">
                             <div class="col">
                                 <label for="register-civility">Civilité :</label>
