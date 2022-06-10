@@ -58,7 +58,7 @@ if(!empty($_POST)){
         ]);
 
         setMessage('createCategorie', ['Votre nouvelle catégorie a bien été créée'], 'success');
-        header('Location: forum.php');
+        header('Location: ../vues/forum.php');
         exit;
     }
     else{

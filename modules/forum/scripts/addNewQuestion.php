@@ -58,7 +58,7 @@ if(!empty($_POST)){
         ]);
 
         setMessage('createQuestion', ['Votre question a bien été enregistrée'], 'success');
-        header('Location: categorie.php?idTopic='.$idTopic);
+        header('Location: ../vues/categorie.php?idTopic='.$idTopic);
         exit;
     }
     else{
