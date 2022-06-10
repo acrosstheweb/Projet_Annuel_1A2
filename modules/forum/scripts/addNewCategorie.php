@@ -14,11 +14,11 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['createCategorie'])){
-        $categorie = $_POST['categorieName'];
-        $description = $_POST['categorieDescription'];
-        $order = $_POST['categorieOrder'];
-        $tempNameImage = $_FILES['categorieImage']['tmp_name'];
-        $nameImage = $_FILES['categorieImage']['name'];
+        $categorie = trim($_POST['categorieName']);
+        $description = trim($_POST['categorieDescription']);
+        $order = trim($_POST['categorieOrder']);
+        $tempNameImage = trim($_FILES['categorieImage']['tmp_name']);
+        $nameImage = trim($_FILES['categorieImage']['name']);
         
         if(empty($categorie)){
             $valid = false;
@@ -44,7 +44,7 @@ if(!empty($_POST)){
     //insertion base de données si valide à faire
     if ($valid) {
 
-        move_uploaded_file($tempNameImage, './sources/img/'.$nameImage);
+        move_uploaded_file($tempNameImage, DOMAIN . '/sources/img/' . $nameImage);
 
         $insertQuestionQuery = $pdo->prepare("INSERT INTO RkU_TOPIC (title, description, topicOrder, path)
                 VALUES 
