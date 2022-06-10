@@ -1,5 +1,8 @@
 <?php
     require_once 'functions.php';
+    if(isConnected()){
+        atw_log($_SESSION['userId'], "Visit");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,10 +15,10 @@
                                         } else {
                                             echo "Bienvenue sur Fitness Essential";
                                         } ?>>
-    <link rel="icon" type="image/x-icon" href="sources/img/logo.png">
+    <link rel="icon" type="image/x-icon" href="<?= DOMAIN . 'sources/img/icon.png'?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href=<?= DOMAIN . 'css/style.css'?>>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://kit.fontawesome.com/17a81231c9.js" crossorigin="anonymous"></script>
     <title><?php if (isset($title)) {
@@ -36,109 +39,165 @@
     }
     ?>
 
-    <header class="sticky-top px-3">
+    <header class="sticky-top px-1">
 
-        <!-- Nativement, avec la classe 'navbar', les éléments enfants de la nav utilisent
-flex, par défaut -> 'justify-content: space-between'  -->
+        <!-- Nativement, avec la classe 'navbar', les éléments enfants de la nav utilisent flex, par défaut -> 'justify-content: space-between'  -->
 
         <!-- Création de la navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-                <a href="index.php" class="navbar-brand">
-                    <img src="sources/img/logo.png" alt="logo">
-                </a>
+            <div class="container-fluid d-flex flex-column">
+                <div class="container-fluid row">
+                    <!-- LIENS NAVBAR -->
+                    <div class="col-5 p-0 d-flex align-items-center">
+                        <ul class="navbar-nav __navbarIcons justify-content-start">
+                            <li class="navbar-toggler border-0 px-0" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-bars"></i></a>
+                            </li>
+                        </ul>
+                        <div class="d-none d-lg-inline">
+                            <ul class="navbar-nav ms-3 align-items-center">
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "gyms");
+                                                        } ?>" href="<?= DOMAIN . 'gyms.php'?>">Salles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "subscriptions");
+                                                        } ?>" href="<?= DOMAIN . 'modules/subscription/vues/subscriptions.php'?>">Abonnements</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "reservations");
+                                                        } ?>" href="<?= DOMAIN . 'modules/calendar/vues/reservations.php'?>">Réservations</a>
+                                </li>
 
-                <!-- Création du burger menu  -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "programs");
+                                                        } ?>" href="<?= DOMAIN . 'modules/program/vues/programs.php'?>">Programmes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "forum");
+                                                        } ?>" href="<?= DOMAIN . 'modules/forum/vues/forum.php'?>">Forum</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "about");
+                                                        } ?>" href="<?= DOMAIN . 'about.php'?>">Informations</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- LOGO -->
+                    <div class="col-2 text-center">
+                        <a href="<?= DOMAIN . 'index.php'?>" class="navbar-brand mx-auto">
+                            <img src="<?= DOMAIN . 'sources/img/icon.png'?>" alt="logo" class="img-fluid __logoIcon">
+                        </a>
+                    </div>
 
-                <!-- Contenu de la navbar -->
-                <!-- NE PAS METTRE D'ESPACE DANS LES NOMS DES DIFFÉRENTES PAGES -->
+                    <!-- ICONES -->
+                    <div class="col-5 p-0">
+                        <ul class="navbar-nav __navbarIcons justify-content-end align-items-center">
+                            <div id="__searchbar">
+                            <li class="input-group rounded">
+                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                <!--<span class="input-group-text border-0 __navIcon nav-link" id="search-addon"> A quoi sert cet élémént ? et pourquoi quand on le commente, la barre de recherche est surélevée
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </span>-->
+                            </li>
+                            </div>
+                            <li class="nav-item" id="__search-trigger">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link __navIcon" href="#" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu __userDropdown" aria-labelledby="dropdownMenuButton1">
+                                    <?php if(isConnected()){ ?>
+                                        <?php if(isAdmin()){ ?>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="<?= DOMAIN ?>modules/user/vues/admin/users.php" role="button">Back-Office</a>
+                                            </li>
+                                        <?php } ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?= DOMAIN ?>modules/user/vues/profilePage.php" role="button">Mon profil</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?= DOMAIN ?>modules/user/scripts/logout.php" role="button">Déconnexion</a>
+                                        </li>
+                                    <?php } else{ ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-bag-shopping"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-moon"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- MENU BURGER CACHÉ EN DESKTOP -->
+                <div class="container-fluid row d-lg-none">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-3">
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "gyms");
+                                                    } ?>" href="gyms.php">Salles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "subscriptions");
+                                                    } ?>" href="subscriptions.php">Abonnements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "reservations");
+                                                    } ?>" href="reservations.php">Réservations</a>
+                            </li>
 
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "gyms");
-                                                } ?>" href="gyms.php">Salles</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "subscriptions");
-                                                } ?>" href="subscriptions.php">Abonnements</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "reservations");
-                                                } ?>" href="reservations.php">Réservations</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "programs");
-                                                } ?>" href="programs.php">Programmes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "forum");
-                                                } ?>" href="forum.php">Forum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if (isset($currentPage)) {
-                                                    isActive($currentPage, "about");
-                                                } ?>" href="about.php">Informations</a>
-                        </li>
-                    </ul>
-
-                    <!-- Barre de recherche et bouton recherche -->
-                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="align-items: center">
-                        <li class="nav-item __research-bar">
-                            <form action="#" class="d-flex">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Rechercher" aria-label="Search" aria-describedby="Search">
-                                    <button class="input-group-text" id="Search"><span class="material-icons">search</span></button>
-                                </div>
-                            </form>
-                        </li>
-                    <?php if(isConnected()){
-                        if(isAdmin()){?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="users.php" role="button">Back-Office</a>
-                        </li>
-                        <?php } ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php" role="button">Déconnexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="__userProfileButton" role="button"><img src="sources/img/avatar.jpg" alt="mon profil" style="width: 55px;border-radius: 50%;"></a>
-                        </li>
-                    <?php }
-                    else{
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="modal" href="#register-modal" role="button">Inscription</a>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                    </ul>
-
-                    <!-- </div> -->
-
-                    <!-- Il faudra penser à rajouter le petit panier ici -->
-
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "programs");
+                                                    } ?>" href="programs.php">Programmes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "forum");
+                                                    } ?>" href="modules/forum/vues/forum.php">Forum</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "about");
+                                                    } ?>" href="about.php">Informations</a>
+                            </li>
+                            <li class="input-group rounded nav-item d-lg-none">
+                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
+                                <span class="d-flex align-items-center border-0 nav-item" id="search-addon">
+                                    <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
         </nav>
 
     </header>
-
-    <!-- Modales INSCRIPTION / CONNEXION -->
 
     <div class="modal" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -149,7 +208,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
                 </div>
                 <div class="modal-body row">
                     <div class="col-3"></div>
-                    <form id="login-form" action="login.php" method="POST" class="col-6">
+                    <form id="login-form" action="modules/user/scripts/login.php" method="POST" class="col-6">
                         <label for="login-email">Adresse mail : </label>
                         <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail" required="required"><br>
 
@@ -167,6 +226,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
             </div>
         </div>
     </div>
+
     <div class="modal" id="register-modal" aria-hidden="true" aria-labelledby="register-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -175,7 +235,7 @@ flex, par défaut -> 'justify-content: space-between'  -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="register-form" action="register.php" method="POST">
+                    <form id="register-form" action="modules/user/scripts/register.php" method="POST">
                         <div class="row">
                             <div class="col">
                                 <label for="register-civility">Civilité :</label>
@@ -238,18 +298,9 @@ flex, par défaut -> 'justify-content: space-between'  -->
                                 <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required"><br>
                             </div>
                         </div>
-
                         <div class="row">
-                            <div class="col">
-                                <img class="col-12 mb-3" src="captcha.php" alt="captcha">
-                            </div>
-
-                            <div class="col">
-                                <label for="register-password">Captcha : </label>
-                                <input class="form-control" type="text" name="register-captcha" id="register-captcha" placeholder="Captcha" required="required">
-                            </div>
+                            <?php require 'captcha_v2.php'; ?>
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -264,14 +315,21 @@ flex, par défaut -> 'justify-content: space-between'  -->
     <section id="__userSlide">
         <nav class="navbar" id="__userVerticalNav">
             <ul>
+                <?php 
+                if(isAdmin()){?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="modules/user/scripts/admin/users.php" role="button">Back-Office</a>
+                    </li>
+                <?php } ?>
                 <li class="nav-item">
-                    <a class="nav-link " href="profilePage.php">Mon profil</a>
+                    <a class="nav-link " href="modules/user/vues/profilePage.php">Mon profil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="logout.php">Déconnexion</a>
+                    <a class="nav-link " href="modules/user/scripts/logout.php">Déconnexion</a>
                 </li>
             </ul>
         </nav>
     </section>
 
-<script src="js/user-slide.js"></script>
+<!-- <script src="js/user-slide.js"></script> -->
+<script src="<?= DOMAIN . 'js/searchbar.js'?>"></script>

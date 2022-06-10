@@ -9,8 +9,6 @@
         $tmpName = $_FILES['file']['tmp_name'];
         $error = $_FILES['file']['error'];
 
-        var_dump($_FILES);
-
     $extensionsAllowed = ['png', 'jpg', 'jpeg'];
 
     $typeImage = ['image/png', 'image/jpg', 'image/jpeg'];
@@ -23,21 +21,20 @@
     $imgId = uniqid();
 
     $tempFile = 'temp'.$imgId.'.'.$extension;
-    move_uploaded_file($tmpName, './tmpUpload/'.$tempFile);
+    move_uploaded_file($tmpName, './tmpUpload/'.$tempFile); // On déplace le fichier dans le dossier tmpUpload
 
-    $logo = imagecreatefrompng('sources/img/logo.png');
+    $logo = imagecreatefrompng('sources/img/logo.png'); // import du logo
 
-    $sizeLogo = filesize('sources/img/logo.png');
+    $sizeLogo = filesize('sources/img/logo.png'); // on récupère la taille du logo
 
-    if(in_array($type, $typeImage)){
-        if(count($explodedFile) <=2 && in_array($extension, $extensionsAllowed)){
-            if($size + $sizeLogo <= $maxSize){
+    if(in_array($type, $typeImage)){ // on vérifie que le type est bon
+        if(count($explodedFile) <=2 && in_array($extension, $extensionsAllowed)){ // on vérifie que l'extension est bonne
+            if($size + $sizeLogo <= $maxSize){ // on vérifie que la taille mémoire n'est pas dépassée
 
                 // Traitement ajoute du filigrane
 
-                // var_dump($extension);
 
-                if($extension == 'jpeg' || $extension == 'jpg'){
+                if($extension == 'jpeg' || $extension == 'jpg'){ // on créé une image jpg ou jpeg ou png selon l'extension
                     $image = imagecreatefromjpeg('./tmpUpload/'.$tempFile);
                 }
                 else if($extension == 'png'){ // seul le format png peut passer dans le else
@@ -97,6 +94,9 @@
     }
 
     
+
+
+
 // // Création des instances d'image
 // $src = imagecreatefromjpeg('./tmpUpload/'.$tempFile);
 // $dest = imagecreatetruecolor(80, 40);

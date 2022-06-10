@@ -4,15 +4,16 @@
     $currentPage = 'error404';
     require 'header.php';
     Message('RegisterHack');
+    Message('ConfirmRegistration');
+    Message('UpdateHack');
+    Message('UpdateSecHack');
 ?>
 
 <h2 class="aligned-title mt-5"> Page introuvable </h2>
 
 <div class="container">
-    <div class="row __404 align-items-baseline justify-content-center">
-        <p class="col-2 text-end"> 4 </p>
-        <img src="sources/img/weight-plate.png" alt="" class="__404plate col-2">
-        <p class="col-2"> 4 </p>
+    <div class="row justify-content-center">
+        <img src="<?= DOMAIN . 'sources/img/404.png'?>" alt="" class="col-6">
     </div>
 
     <div class="row">
@@ -20,7 +21,7 @@
     </div>
 
     <div class="row">
-        <a href="index.php" type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</a>
+        <a href="<?= DOMAIN . 'index.php'?>" type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</a>
     </div>
 </div>
 
