@@ -44,7 +44,7 @@ if(!empty($_POST)){
     //insertion base de données si valide à faire
     if ($valid) {
 
-        move_uploaded_file($tempNameImage, DOMAIN . '/sources/img/' . $nameImage);
+        move_uploaded_file($tempNameImage, ABSOLUTE_PATH . 'sources/img/' . $nameImage);
 
         $insertQuestionQuery = $pdo->prepare("INSERT INTO RkU_TOPIC (title, description, topicOrder, path)
                 VALUES 
