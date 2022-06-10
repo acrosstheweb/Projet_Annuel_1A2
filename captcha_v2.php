@@ -1,7 +1,7 @@
 <?php
 require_once 'functions.php';
 
-$filename = DOMAIN . "sources/captcha/1.jpg";
+$filename = ABSOLUTE_PATH . "sources/captcha/1.jpg";
 
 $captchaImage = imagecreatefromjpeg($filename);
 list($width, $height) = getimagesize($filename);
@@ -20,7 +20,7 @@ for ($i = 0; $i < 3; $i++){
         $dst_image = imagecreatetruecolor($width / 3, $height / 3);
         imagecopy($dst_image, $captchaImage, 0, 0, $width / 3 * $j, $height / 3 * $i, $width / 3, $height / 3);
 
-        imagejpeg($dst_image, "sources/captcha/1-".$i."_".$j.".jpeg");
+        imagejpeg($dst_image, ABSOLUTE_PATH . "sources/captcha/1-".$i."_".$j.".jpeg");
 
         // array_push($pathArray, [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"]);
         $pathArray[$combinaison[$tileId]] = [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"];
