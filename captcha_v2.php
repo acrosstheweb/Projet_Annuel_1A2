@@ -1,7 +1,7 @@
 <?php
 require_once 'functions.php';
 
-$filename = "sources/captcha/1.jpg";
+$filename = DOMAIN . "sources/captcha/1.jpg";
 
 $captchaImage = imagecreatefromjpeg($filename);
 list($width, $height) = getimagesize($filename);

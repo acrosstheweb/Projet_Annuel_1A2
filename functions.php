@@ -49,7 +49,7 @@ function checkPassword($password): bool{
 }
 
 function genToken(){
-    $chars = ['$','^','@','&','(','-','_',')'];
+    $chars = ['$','^','@','(','-','_',')'];
     $n1 = rand(0,9); $n2 = rand(0,9);
     $c1 = $chars[array_rand($chars)]; $c2 = $chars[array_rand($chars)];
     $prefix = "{$n1}{$c1}{$c2}{$n2}";
