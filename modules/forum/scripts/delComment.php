@@ -18,7 +18,7 @@ $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $userPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
-    header('Location: question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion);
+    header('Location: ../vues/question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion);
     die();
 }
 
@@ -26,8 +26,8 @@ $commentToDeleteId = $_GET['id'];
 
 $userDelQuery = $db->prepare("DELETE FROM RkU_MESSAGE WHERE id=:id");
 $userDelQuery->execute(["id"=>$commentToDeleteId]);
-setMessage('Delete', ["Le commentaire" . $commentToDeleteId . " a bien été supprimé."], 'success');
-header('Location: question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion);
+setMessage('Delete', ["Le commentaire a bien été supprimé."], 'success');
+header('Location: ../vues/question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion);
 die();
 
 ?>

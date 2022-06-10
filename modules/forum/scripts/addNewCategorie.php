@@ -63,7 +63,7 @@ if(!empty($_POST)){
     }
     else{
         setMessage('createCategorie', [$errors], 'warning');
-        header('Location: forum.php');
+        header('Location: ../vues/forum.php');
         exit;
     }
         

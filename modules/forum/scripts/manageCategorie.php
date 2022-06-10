@@ -40,5 +40,5 @@ $userModifyQuery->execute([
     "topicOrder"=> $order
 ]);
 setMessage('Modify', ["La catégorie a bien été modifiée."], 'success');
-header('Location: forum.php');
+header('Location: ../vues/forum.php');
 die();

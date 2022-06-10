@@ -17,14 +17,14 @@ $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $userPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
-    header('Location: forum.php');
+    header('Location: ../vues/forum.php');
     die();
 }
 
 $userDelQuery = $db->prepare("DELETE FROM RkU_TOPIC WHERE id=:id");
 $userDelQuery->execute(["id"=>$idTopic]);
 setMessage('Delete', ["La catégorie a bien été supprimée."], 'success');
-header('Location: forum.php');
+header('Location: ../vues/forum.php');
 die();
 
 ?>
