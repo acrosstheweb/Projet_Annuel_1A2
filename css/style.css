@@ -510,3 +510,8 @@ table {
 .__avatarChoice{
     width: 100px;
 }
+
+/* profilePageSecurity */
+#__profileSecMailInput{
+    display:none;
+}

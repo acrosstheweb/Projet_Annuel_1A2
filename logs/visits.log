@@ -780,3 +780,12 @@ UserID : 1 - 08/06/2022 23:17:43 - Visit about.php - REMOTE_ADDR : ::1
 UserID : 1 - 08/06/2022 23:17:45 - Visit index.php - REMOTE_ADDR : ::1
 UserID : 1 - 08/06/2022 23:17:47 - Visit profilePage.php - REMOTE_ADDR : ::1
 UserID : 1 - 08/06/2022 23:18:25 - Logout logout.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:11:45 - Connexion login.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:11:45 - Visit index.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:11:47 - Visit profilePage.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:12:02 - Visit profilePageSecurity.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:12:05 - Visit profilePageSecurity.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:12:14 - Visit profilePageSecurity.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:13:31 - Visit profilePageSecurity.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:14:41 - Visit profilePageSecurity.php - REMOTE_ADDR : ::1
+UserID : 1 - 10/06/2022 12:14:46 - Visit profilePageSecurity.php - REMOTE_ADDR : ::1
