@@ -10,7 +10,7 @@ require 'header.php';
         <div class="row d-flex justify-content-center">
 
             <div class="col-10 col-lg-3" style="position: relative;">
-                <form id="__avatar" method="POST" action="">
+                <form id="__avatar" method="POST" action="addAvatar.php">
                     <div class="__avatarPreviewContainer">
                         <img id="__avatarPreview" src="<?= DOMAIN .'sources/avatar/__empty.png'?>" class="img-fluid __avatarPreview" alt="">
                         <img id="__avatarBackgroundPreview" src="" class="img-fluid __avatarPreview" alt="">
