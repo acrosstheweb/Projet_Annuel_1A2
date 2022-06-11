@@ -1,5 +1,5 @@
 <?php
-    require 'functions.php';
+    require '../../../functions.php';
 
     if(
         count($_POST) != 5 ||

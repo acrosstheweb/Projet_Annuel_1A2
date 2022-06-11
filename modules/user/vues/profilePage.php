@@ -42,7 +42,7 @@
                     <div class="card-img-overlay text-center d-flex align-items-end">
                         <div class="__profilePicOverlay">
                             <div class="__profilePicChange">
-                                <a href="#" class="text-white">Modifier</a>
+                                <a href="<?= DOMAIN . 'modules/user/vues/avatar_v2.php' ?>" class="text-white">Modifier</a>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <?php
 $title = "Fitness Essential - Avatar";
 $content = "Création avatar";
-require 'header.php';
+require '../../../header.php';
 ?>
 
     <h1 class="aligned-title"> Création avatar </h1>
@@ -9,9 +9,10 @@ require 'header.php';
     <div class="container-fluid">
         <div class="row d-flex justify-content-center">
 
-            <div class="col-10 col-lg-3" style="position: relative;">
-                <form id="__avatar" method="POST" action="addAvatar.php">
-                    <div class="__avatarPreviewContainer">
+            <div class="col-10 col-lg-3">
+                <div class="cont">
+                <form id="__avatar" method="POST" action="<?= DOMAIN . 'modules/user/scripts/addAvatar.php' ?>">
+                    <div class="__avatarPreviewContainer d-flex justify-content-center">
                         <img id="__avatarPreview" src="<?= DOMAIN .'sources/avatar/__empty.png'?>" class="img-fluid __avatarPreview" alt="">
                         <img id="__avatarBackgroundPreview" src="" class="img-fluid __avatarPreview" alt="">
                         <input type="hidden" 
@@ -44,6 +45,7 @@ require 'header.php';
                             name="__avatarGlasses">
                     </div>
                 </form>
+                </div>
             </div>
 
             <div class="col-1"></div>
@@ -52,18 +54,20 @@ require 'header.php';
                 <div class="row __avatarChoiceRow">
                     <h2>Choix de la couleur de fond</h2>
                     <?php
-                        $avatarBackground_files = glob("sources/avatar/__background-*.png");
+                        $avatarBackground_files = glob("../../../sources/avatar/__background-*.png");
                         foreach($avatarBackground_files as $backgroundImage){
-                            echo "<img src=". DOMAIN . $backgroundImage. " class='img-fluid __avatarChoice' alt='' onclick='displayBackground(this.src)'>";
+                            $backgroundImage = explode('/', $backgroundImage);
+                            echo "<img src=" . DOMAIN . "sources/avatar/" . end($backgroundImage). " class='img-fluid __avatarChoice' alt='' onclick='displayBackground(this.src)'>";
                         }
                     ?>
                 </div>
                 <div class="row __avatarChoiceRow">
                     <h2>Choix de la forme du visage</h2>
                     <?php
-                        $avatarFace_files = glob("sources/avatar/__visage-??.png");
+                        $avatarFace_files = glob("../../../sources/avatar/__visage-??.png");
                         foreach($avatarFace_files as $faceImage){
-                            echo "<img src=". DOMAIN . $faceImage. " class='img-fluid __avatarChoice' alt='' onclick='displayFace(this.src)'>";
+                            $faceImage = explode('/', $faceImage);
+                            echo "<img src=". DOMAIN . "sources/avatar/" . end($faceImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayFace(this.src)'>";
                         }
                     ?>
                 </div>
@@ -71,25 +75,28 @@ require 'header.php';
                     <h2 id="__avatarFacesTitle" class="d-none">Choix de la couleur de peau</h2>
                     <div class="row px-0 d-none" id="__avatarRoundFaces">
                         <?php
-                            $avatarRound_files = glob("sources/avatar/__visage-01-*.png");
+                            $avatarRound_files = glob("../../../sources/avatar/__visage-01-*.png");
                             foreach($avatarRound_files as $roundImage){
-                                echo "<img src=". DOMAIN . $roundImage. " class='img-fluid __avatarChoice' alt='' onclick='displayColor(this.src)'>";
+                                $roundImage = explode('/', $roundImage);
+                                echo "<img src=". DOMAIN . "sources/avatar/" . end($roundImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayColor(this.src)'>";
                             }
                         ?>
                     </div>
                     <div class="row px-0 d-none" id="__avatarDiamondFaces">
                         <?php
-                            $avatarDiamond_files = glob("sources/avatar/__visage-02-*.png");
+                            $avatarDiamond_files = glob("../../../sources/avatar/__visage-02-*.png");
                             foreach($avatarDiamond_files as $diamondImage){
-                                echo "<img src=". DOMAIN . $diamondImage. " class='img-fluid __avatarChoice' alt='' onclick='displayColor(this.src)'>";
+                                $diamondImage = explode('/', $diamondImage);
+                                echo "<img src=". DOMAIN . "sources/avatar/" . end($diamondImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayColor(this.src)'>";
                             }
                         ?>
                     </div>
                     <div class="row px-0 d-none" id="__avatarSquareFaces">
                         <?php
-                            $avatarSquare_files = glob("sources/avatar/__visage-03-*.png");
+                            $avatarSquare_files = glob("../../../sources/avatar/__visage-03-*.png");
                             foreach($avatarSquare_files as $squareImage){
-                                echo "<img src=". DOMAIN . $squareImage. " class='img-fluid __avatarChoice' alt='' onclick='displayColor(this.src)'>";
+                                $squareImage = explode('/', $squareImage);
+                                echo "<img src=". DOMAIN . "sources/avatar/" . end($squareImage). " class='img-fluid __avatarChoice' alt='' onclick='displayColor(this.src)'>";
                             }
                         ?>
                     </div>
@@ -98,17 +105,19 @@ require 'header.php';
                     <h2>Choix des yeux</h2>
                     <div id="__avatarEyesChoices" class="row px-0">
                         <?php
-                            $avatarEyes_files = glob("sources/avatar/__yeux-01-*.png");
+                            $avatarEyes_files = glob("../../../sources/avatar/__yeux-01-*.png");
                             foreach($avatarEyes_files as $eyesImage){
-                                echo "<img src=". DOMAIN . $eyesImage. " class='img-fluid __avatarChoice' alt='' onclick='displayEyes(this.src); showGlasses()'>";
+                                $eyesImage = explode('/', $eyesImage);
+                                echo "<img src=". DOMAIN . "sources/avatar/" . end($eyesImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayEyes(this.src); showGlasses()'>";
                             }
                         ?>
                     </div>
-                    <div id="__avatarEyeChoices" class="row px-0 mt-2">
+                    <div id="__avatarEyeChoices" class="row px-0">
                         <?php
-                            $avatarEye_files = glob("sources/avatar/__yeux-02*.png");
+                            $avatarEye_files = glob("../../../sources/avatar/__yeux-02*.png");
                             foreach($avatarEye_files as $eyeImage){
-                                echo "<img src=". DOMAIN . $eyeImage. " class='img-fluid __avatarChoice' alt='' onclick='displayEyes(this.src); showMonocles()'>";
+                                $eyeImage = explode('/', $eyeImage);
+                                echo "<img src=". DOMAIN . "sources/avatar/" . end($eyeImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayEyes(this.src); showMonocles()'>";
                             }
                         ?>
                     </div>
@@ -116,29 +125,32 @@ require 'header.php';
                 <div class="row __avatarChoiceRow">
                     <h2>Choix du nez</h2>
                     <?php
-                        $avatarNose_files = glob("sources/avatar/__nez-*.png");
+                        $avatarNose_files = glob("../../../sources/avatar/__nez-*.png");
                         foreach($avatarNose_files as $noseImage){
-                            echo "<img src=". DOMAIN . $noseImage. " class='img-fluid __avatarChoice' alt='' onclick='displayNose(this.src)'>";
+                            $noseImage = explode('/', $noseImage);
+                            echo "<img src=". DOMAIN . "sources/avatar/" . end($noseImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayNose(this.src)'>";
                         }
                     ?>
                 </div>
                 <div class="row __avatarChoiceRow">
                     <h2>Choix des lunettes</h2>
                     <div id="__avatarGlassesChoices" class="row px-0">
-                        <img src="<?= DOMAIN . 'sources/avatar/__empty.png'?>" class='img-fluid __avatarChoice' alt='' onclick='displayEyes(this.src)'>
+                        <img src="<?= DOMAIN . 'sources/avatar/__delete.png'?>" class='img-fluid __avatarChoice' alt='' onclick='emptyGlasses()'>
                         <?php
-                            $avatarGlasses_files = glob("sources/avatar/__lunettes-01-*.png");
+                            $avatarGlasses_files = glob("../../../sources/avatar/__lunettes-01-*.png");
                             foreach($avatarGlasses_files as $glassesImage){
-                                echo "<img src=". DOMAIN . $glassesImage. " class='img-fluid __avatarChoice' alt='' onclick='displayGlasses(this.src)'>";
+                                $glassesImage = explode('/', $glassesImage);
+                                echo "<img src=". DOMAIN . "sources/avatar/" . end($glassesImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayGlasses(this.src)'>";
                             }
                         ?>
                     </div>
-                    <div id="__avatarMonoclesChoices" class="row px-0 mt-2">
-                        <img src="<?= DOMAIN . 'sources/avatar/__empty.png'?>" class='img-fluid __avatarChoice' alt='' onclick='displayEyes(this.src)'>
+                    <div id="__avatarMonoclesChoices" class="row px-0">
+                        <img src="<?= DOMAIN . 'sources/avatar/__delete.png'?>" class='img-fluid __avatarChoice' alt='' onclick='emptyGlasses()'>
                         <?php
-                            $avatarGlasses_files = glob("sources/avatar/__lunettes-02-*.png");
+                            $avatarGlasses_files = glob("../../../sources/avatar/__lunettes-02-*.png");
                             foreach($avatarGlasses_files as $glassesImage){
-                                echo "<img src=". DOMAIN . $glassesImage. " class='img-fluid __avatarChoice' alt='' onclick='displayGlasses(this.src)'>";
+                                $glassesImage = explode('/', $glassesImage);
+                                echo "<img src=". DOMAIN . "sources/avatar/" . end($glassesImage) . " class='img-fluid __avatarChoice' alt='' onclick='displayGlasses(this.src)'>";
                             }
                         ?>
                     </div>
@@ -156,4 +168,4 @@ require 'header.php';
 <script src="<?= DOMAIN . 'js/avatar.js'?>" crossorigin="anonymous"></script>
 
 <?php
-include 'footer.php';
+include '../../../footer.php';

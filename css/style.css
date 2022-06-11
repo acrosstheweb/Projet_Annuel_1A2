@@ -469,7 +469,7 @@ table {
 .__avatarPreviewContainer{
     padding-top: 1rem;
     position: relative;
-    width: 100%
+    width: 100%;
 }
 
 .__avatarPreview{
@@ -479,6 +479,7 @@ table {
 #__avatarPreview{
     z-index: 1;
 }
+
 #__avatarBackgroundPreview{
     z-index: 2;
 }
@@ -509,6 +510,18 @@ table {
 
 .__avatarChoice{
     width: 100px;
+    margin: 5px;
+}
+
+@media (max-width: 992px){
+    .__avatarPreviewContainer{
+        height: 45vh;
+    }
+}
+
+.cont{
+    position: sticky;
+    top: 15vh;
 }
 
 /* profilePageSecurity */
