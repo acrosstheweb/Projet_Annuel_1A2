@@ -390,6 +390,10 @@ table {
     display: none;
 }
 
+.__programIcon{
+    max-width: 120px;
+}
+
 
 /* Abonnements */
 
