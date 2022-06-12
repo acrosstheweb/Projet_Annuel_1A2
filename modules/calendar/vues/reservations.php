@@ -5,7 +5,8 @@
     require '../../../header.php';
     require '../scripts/Date/Month.php';
     $month = new App\Date\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
-    $startDay = $month->getStartingDay()->modify('last monday');
+    $startDay = $month->getStartingDay();
+    $startDay = $startDay->format('N') === '1' ? $startDay : $month->getStartingDay()->modify('last monday');
 ?>
 
 <h1 class="aligned-title"> Réserver une séance </h1>
@@ -18,8 +19,7 @@
     </div>
 </div>
 
-
-<table class = "__calendarTable __calendarTable--<?php $month->getWeeks(); ?>weeks">
+<table class = "__calendarTable __calendarTable--<?= $month->getWeeks(); ?>weeks">
     <?php for($i = 0; $i < $month->getWeeks(); $i++){ ?>
     <tr>
         <?php 
@@ -36,26 +36,6 @@
     </tr>
     <?php } ?>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
     include '../../../footer.php';
