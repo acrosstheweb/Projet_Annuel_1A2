@@ -23,14 +23,19 @@ Message('CreateUser');
             <div class="text-end my-3">
                 <a href="<?= DOMAIN . 'modules/user/scripts/admin/userCreateAdmin.php'?>" class="btn btn-primary">Créer un utilisateur</a>
             </div>
-            <table class="table" id="usersTable">
+            <div class="col-4">
+                <li class="input-group rounded">
+                    <input id="__search-user" type="search" class="form-control rounded" placeholder="Chercher l'adresse mail d'un utilisateur" aria-label="Search" aria-describedby="search-addon" oninput="searchUser()">
+                </li>
+            </div>
+            <table class="table" id="__usersTable">
                 <thead>
                     <tr>
-                        <th onclick="sortColumn(0, 'usersTable')" id="tableHeaderSortable">Id</th>
-                        <th onclick="sortColumn(1, 'usersTable')" id="tableHeaderSortable">Email</th>
-                        <th onclick="sortColumn(2, 'usersTable')" id="tableHeaderSortable">Nom</th>
-                        <th onclick="sortColumn(3, 'usersTable')" id="tableHeaderSortable">Prénom</th>
-                        <th onclick="sortColumn(4, 'usersTable')" id="tableHeaderSortable">Date de naissance</th>
+                        <th onclick="sortColumn(0, '__usersTable')" id="tableHeaderSortable">Id</th>
+                        <th onclick="sortColumn(1, '__usersTable')" id="tableHeaderSortable">Email</th>
+                        <th onclick="sortColumn(2, '__usersTable')" id="tableHeaderSortable">Nom</th>
+                        <th onclick="sortColumn(3, '__usersTable')" id="tableHeaderSortable">Prénom</th>
+                        <th onclick="sortColumn(4, '__usersTable')" id="tableHeaderSortable">Date de naissance</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -53,7 +58,7 @@ Message('CreateUser');
                             $userCity = $user["city"];
                             ?>
 
-                                <tr>
+                                <tr class="__userRow">
                                     <td><?php echo $userId;?></td>
                                     <td><?php echo $userMail;?></td>
                                     <td><?php echo $userLastName;?></td>

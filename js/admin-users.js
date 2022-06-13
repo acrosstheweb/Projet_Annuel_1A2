@@ -129,3 +129,21 @@ function resetDeleteModalState() {
 for(let j = 0; j < deleteModalTrigger.length; j++){
     deleteModalTrigger[j].addEventListener("click", resetDeleteModalState);
 }
+
+function searchUser(){
+    let searchUserText = document.getElementById('__search-user').value;
+    let userTable = document.getElementById('__usersTable');
+    let users = document.getElementsByClassName('__userRow')
+
+    for (let i = 0; i < users.length; i++) {
+        let td = users[i].getElementsByTagName("td")[1]; // Index 1 pour l'adresse mail
+        if (td) {
+            let txtValue = td.textContent || td.innerText;
+            if (txtValue.indexOf(searchUserText) > -1) {
+                users[i].style.display = "";
+            } else {
+                users[i].style.display = "none";
+            }
+        }
+    }
+}
