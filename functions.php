@@ -225,7 +225,7 @@ function checkFields(array $fields, bool $checkMailExists = true): array
                 }
                 break;
             default:
-                $problems[] = "Le champ '". $field ."' n'est pas géré";
+                $problems[] = "Le champ '". htmlspecialchars($field) ."' n'est pas géré";
                 break;
         }
     }

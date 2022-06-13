@@ -102,3 +102,8 @@ function displayGlasses(src){
     glassesPreview.setAttribute('src', src);
     glasses.setAttribute('value', src.split('__')[1]);
 };
+
+function emptyGlasses(){
+    glassesPreview.setAttribute('src', '');
+    glasses.setAttribute('value', '');
+}

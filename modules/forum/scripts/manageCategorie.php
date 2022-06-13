@@ -1,9 +1,9 @@
 <?php
 require '../../../functions.php';
 
-$title = $_POST['modify-title'];
-$description = $_POST['modify-description'];
-$order = $_POST['modify-order'];
+$title = trim($_POST['modify-title']);
+$description = trim($_POST['modify-description']);
+$order = trim($_POST['modify-order']);
 $image = $_POST['modify-image'];
 $id = $_GET['idTopic'];
 $InputPwd = $_POST['modify-adminPasswordInput'];

@@ -390,6 +390,10 @@ table {
     display: none;
 }
 
+.__programIcon {
+    max-width: 120px;
+}
+
 
 /* Abonnements */
 
@@ -433,18 +437,19 @@ table {
 
 .__calendarTable {
     width: 100%;
-    height: 59.9vh;
+    height: calc(100vh - 159px);
 }
 
 .__calendarTable td {
     padding: 10px;
     border: 1px solid #CCC;
     vertical-align: top;
-    width: 14%;
+    width: 14.29%;
+    height: 20%;
 }
 
 .__calendarTable--6weeks td {
-    height: 59.9/6vh;
+    height: 16.66%;
 }
 
 .__calendarWeekDay {
@@ -466,52 +471,67 @@ table {
     padding-left: 0;
 }
 
-.__avatarPreviewContainer{
+.__avatarPreviewContainer {
     padding-top: 1rem;
     position: relative;
-    width: 100%
+    width: 100%;
 }
 
-.__avatarPreview{
+.__avatarPreview {
     position: absolute;
 }
 
-#__avatarPreview{
+#__avatarPreview {
     z-index: 1;
 }
-#__avatarBackgroundPreview{
+
+#__avatarBackgroundPreview {
     z-index: 2;
 }
 
-#__avatarFacePreview{
+#__avatarFacePreview {
     z-index: 3;
 }
 
-#__avatarColorPreview{
+#__avatarColorPreview {
     z-index: 3;
 }
 
-#__avatarEyesPreview{
+#__avatarEyesPreview {
     z-index: 4;
 }
 
-#__avatarNosePreview{
+#__avatarNosePreview {
     z-index: 5;
 }
 
-#__avatarGlassesPreview{
+#__avatarGlassesPreview {
     z-index: 6;
 }
 
-.__avatarChoiceRow{
+.__avatarChoiceRow {
     padding-top: 1rem;
 }
 
-.__avatarChoice{
+.__avatarChoice {
     width: 100px;
+    margin: 5px;
 }
 
+@media (max-width: 992px) {
+    .__avatarPreviewContainer {
+        height: 60vh;
+    }
+}
+
+.cont {
+    position: sticky;
+    top: 15vh;
+}
+
+
 /* profilePageSecurity */
-#__profileSecMailInput{
-    display:none;
+
+#__profileSecMailInput {
+    display: none;
 }

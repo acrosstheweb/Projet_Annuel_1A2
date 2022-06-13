@@ -2,7 +2,7 @@
 $title = "Fitness Essential - Créer un programme";
 $content = "Création d'un programme";
 $currentPage = 'message';
-require 'header.php';
+require '../../../header.php';
 
 $pdo = database();
 
@@ -112,7 +112,7 @@ $counter = 1;
 </div>
 
 <?php
-    include "footer.php";
+    include "../../../footer.php";
 ?>
 
 <script src="<?= DOMAIN . 'js/formulaire.js'?>" crossorigin="anonymous"></script>

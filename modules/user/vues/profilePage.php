@@ -10,7 +10,7 @@
     require '../../../header.php';
     Message('Update');
     $db = database();
-    $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, address, city, zipCode, birthday, registrationDate FROM RkU_USER WHERE id=:id");
+    $getUserInfoQuery = $db->prepare("SELECT firstName, lastName, email, civility, avatar, address, city, zipCode, birthday, registrationDate FROM RkU_USER WHERE id=:id");
     $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
     $user = $getUserInfoQuery->fetch();
 ?>
@@ -31,11 +31,18 @@
             <div class="row border-bottom py-3 mb-3">
                 <!-- <img src="sources/img/avatar.jpg" alt="" class="img-fluid "> -->
                 <div class="card col-4 col-md-3 col-lg-2 __profilePic">
-                    <img src="<?= DOMAIN . 'sources/img/avatar.jpg'?>" class="card-img" alt="...">
+                    <?php 
+                    if ($user['avatar'] == 0){
+                        echo '<img src="' . DOMAIN . 'sources/img/avatar.jpg" class="card-img" alt="avatar">';
+                    } else {
+                        echo '<img src="' . DOMAIN . 'sources/avatar/finished/' . $user['avatar'] . '" class="card-img" alt="avatar">';
+                    }
+                    ?>
+                    
                     <div class="card-img-overlay text-center d-flex align-items-end">
                         <div class="__profilePicOverlay">
                             <div class="__profilePicChange">
-                                <a href="#" class="text-white">Modifier</a>
+                                <a href="<?= DOMAIN . 'modules/user/vues/avatar_v2.php' ?>" class="text-white">Modifier</a>
                             </div>
                         </div>
                     </div>
