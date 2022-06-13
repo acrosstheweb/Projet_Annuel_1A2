@@ -57,7 +57,7 @@
             imagecopy($background, $glasses, 0, 0, 0, 0, $imageWidth, $imageHeight);
         }
 
-        imagepng($background, 'sources/avatar/finished/' . $fileName);
+        imagepng($background, ABSOLUTE_PATH . 'sources/avatar/finished/' . $fileName);
     }
 
     $db = database();
