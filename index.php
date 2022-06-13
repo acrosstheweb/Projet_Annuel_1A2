@@ -10,6 +10,7 @@
     Message('DeleteUser');
     Message('updateMail');
     Message('updatePassword');
+    Message('newPassword');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>

@@ -532,6 +532,6 @@ table {
 
 /* profilePageSecurity */
 
-#__profileSecMailInput {
+#__profileSecMailInput,#__profileSecCancel,#__modifyEmailButton {
     display: none;
 }

@@ -166,6 +166,7 @@ function checkFields(array $fields, bool $checkMailExists = true): array
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                     $problems[] = 'Format de l\'adresse mail incorrecte';
                 }else{
+                    $results['email'] = strtolower(trim(htmlspecialchars($email)));
                     if($checkMailExists){
                         // Gére si l'adresse mail existe déjà
                         $db = database();
@@ -176,8 +177,6 @@ function checkFields(array $fields, bool $checkMailExists = true): array
 
                         if(!empty($checkUserExist)){
                             $problems[] = "Ce mail est déjà utilisé";
-                        }else{
-                            $results['email'] = strtolower(trim(htmlspecialchars($email)));
                         }
                     }
                 }

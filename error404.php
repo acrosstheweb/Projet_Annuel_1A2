@@ -7,6 +7,7 @@
     Message('ConfirmRegistration');
     Message('UpdateHack');
     Message('UpdateSecHack');
+    Message('DeleteUser');
 ?>
 
 <h2 class="aligned-title mt-5"> Page introuvable </h2>

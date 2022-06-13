@@ -1,11 +1,12 @@
 <?php
-require '../../../../functions.php';
-if(empty($_POST['userPassword'])){
+require '../../../functions.php';
+if(empty($_POST['userdel-password'])){
+    SetMessage('DeleteUser',['bypass form suppression utilisateur'], 'danger');
     header('Location: ../../../error404.php');
     die();
 }
 
-$pwd = $_POST['userPassword'];
+$pwd = $_POST['userdel-password'];
 $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'admin)
 $db = database();
 
@@ -21,8 +22,7 @@ if(!password_verify($pwd, $pwdInDb)){
 
 $userDelQuery = $db->prepare("DELETE FROM RkU_USER WHERE id=:id");
 $userDelQuery->execute(["id"=>$userId]);
-unset($_SESSION['userToken']);
-unset($_SESSION['userId']);
+logout();
 setMessage('DeleteUser', ["Votre compte a bien été supprimé."], 'success');
 header('Location: ../../../index.php');
 die();

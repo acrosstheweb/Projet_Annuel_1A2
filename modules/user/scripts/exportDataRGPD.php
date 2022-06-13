@@ -1,8 +1,8 @@
 <?php
-require('sources/pdf/fpdf.php');
-require 'functions.php';
+require '../../../functions.php';
+require(ABSOLUTE_PATH . 'sources/pdf/fpdf.php');
 if(!isConnected()){
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 }
 $userId = $_SESSION['userId'];
@@ -20,7 +20,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',16);
 
 // Header
-$pdf->Image('sources/img/logo.png',105-10,6,20); // 105(A4.width/2) - 10(taille du logo/2) => Placement du logo au milieu horizontal
+$pdf->Image(ABSOLUTE_PATH . 'sources/img/logo.png',105-10,6,20); // 105(A4.width/2) - 10(taille du logo/2) => Placement du logo au milieu horizontal
 $pdf->Cell(15,10,"$lastname $firstname");
 $pdf->SetX(-35);
 $pdf->Cell(0,10,"RGPD");

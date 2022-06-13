@@ -63,10 +63,9 @@ Message('updatePassword');
                         </div>
                     </div>
                     <span id="__buttonGroup">
-                        <a href="<?= DOMAIN . 'modules/user/scripts/userDel.php'?>" id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#delModal">Supprimer mon compte</a>
+                        <button id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#deleteUserModal">Supprimer mon compte</button>
                         <a href="<?= DOMAIN . 'modules/user/scripts/exportDataRGPD.php'?>" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
                         <a href="" class="btn btn-secondary mt-5" id="__profileSecCancel"">Annuler</a>
-
                         <button class="btn btn-primary mt-5" id="__modifyEmailButton" data-bs-toggle="modal" data-bs-target="#modifyEmailModal">Modifier adresse e-mail</button>
                     </span>
             </div>
@@ -144,6 +143,37 @@ Message('updatePassword');
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Supprimer mon compte</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="deleteFormInfo">
+                    <h5>Vous êtes sur le point de supprimer votre compte :</h5>
+                    <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer !?</p>
+                </div>
+                <form id="deluserForm" method="POST" action="../scripts/userDel.php">
+                    <div class="row deletePassword">
+                        <div class="col">
+                            <label for="userdel-password" class="fw-bold">Mot de passe </label>
+                            <input form="deluserForm" id="userdel-password" class="form-control" type="password" name="userdel-password" required="required">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <!--<button class="btn btn-primary delete-passwordConfirm">Supprimer</button>-->
+                <button class="btn btn-primary <!--delete-confirm-->" form="deluserForm" type="submit">Au revoir 😥</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
