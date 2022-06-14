@@ -33,7 +33,7 @@ if($verifMail[0] === true){
         if($changePwdStatus == 0){
             $pwdclear = uniqidReal(16) . '$' . time()%13;
 
-            $src = /*DOMAIN .*/'https://pa-atw.fr/sources/img/logo.png';
+            $src = 'https://pa-atw.fr/sources/img/logo.png';
             $to = $mail;
             $subject = 'Nouveau mot de passe Fitness Essential 💪';
             $message = "<html><section><h1>Identifiants Fitness Essential</h1><img src=' . $src . ' alt='logo'><ul><li>Email : $mail</li><li>Mot de passe : $pwdclear</li></ul></section></html>";
