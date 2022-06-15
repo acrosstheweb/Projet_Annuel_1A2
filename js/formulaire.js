@@ -5,7 +5,7 @@ let values = [];
 let ex = [];
 
 
-let counter = 1;
+let counter = document.getElementsByClassName('__programExercice').length;
 
 function trash(){
     if (counter == 1){
@@ -49,6 +49,9 @@ function displayProgramTitle(){
     programNamePreview.innerText = programTitle.value;
 };
 
+
+
+// Options d'exercice possibles
 const options = document.getElementById('__programExerciceDropdown1').innerHTML;
 
 
@@ -130,6 +133,8 @@ function addExercice(){
         document.getElementById(`__programSeries${i}`).value = values[i][1];
         document.getElementById(`__programReps${i}`).value = values[i][2];
     };
+    
+    document.getElementById(`__programExerciceDropdown${counter}`).value = 0;
 
 };
 
@@ -155,18 +160,18 @@ addExercice_trigger.addEventListener('click', function(){
         counter ++;
         addExercice();
         trash();
-    } else {
+    }
+    if (counter == 7){
         addExercice_trigger.classList.add("disabled");
     }
 });
 
 
 
-let toDelete;
-let toModify;
 
 //Suppression d'un exercice
 function deleteExercice(n){
+let toModify;
 
     const programExercices = document.getElementsByClassName('__programExercice');
     const programExercicesPreviews = document.getElementsByClassName('__programExercicePreview');
@@ -181,62 +186,62 @@ function deleteExercice(n){
         document.getElementById(`__programExercice${n}`).remove();
         document.getElementById(`__programExercicePreview${n}`).remove();
 
+        console.log(n);
+
         for (let i = n; i < counter; i++){
+            toModify = document.getElementById(`__programExerciceDelete${i+1}`);
+            toModify.setAttribute("onclick", `deleteExercice(${i})`);
+            toModify.setAttribute('id', `__programExerciceDelete${i}`);
 
+            toModify = document.getElementById(`__programExerciceRepsPreview${i+1}`);
+            toModify.id = `__programExerciceRepsPreview${i}`;
+
+            toModify = document.getElementById(`__programExerciceNamePreview${i+1}`);
+            toModify.id = `__programExerciceNamePreview${i}`;
+
+            toModify = document.getElementById(`__programExercicePreview${i+1}`);
+            toModify.id = `__programExercicePreview${i}`;
+
+            toModify = document.getElementById(`__programReps${i+1}`);
+            toModify.setAttribute("oninput", `displayReps(${i})`);
+            toModify.id = `__programReps${i}`;
+
+            toModify = document.getElementById(`__programReps${i+1}-label`);
+            toModify.setAttribute("for", `__programReps${i}`);
+            toModify.id = `__programReps${i}-label`;
+
+            toModify = document.getElementById(`__programSeries${i+1}`);
+            toModify.setAttribute("oninput", `displayReps(${i})`);
+            toModify.id = `__programSeries${i}`;
             
-            toModify = document.getElementById(`__programExerciceDelete${n+1}`);
-            toModify.setAttribute("onclick", `deleteExercice(${n})`);
-            toModify.setAttribute('id', `__programExerciceDelete${n}`);
+            toModify = document.getElementById(`__programSeries${i+1}-label`);
+            toModify.setAttribute("for", `__programSeries${i}`);
+            toModify.id = `__programSeries${i}-label`;
 
-            toModify = document.getElementById(`__programExerciceRepsPreview${n+1}`);
-            toModify.id = `__programExerciceRepsPreview${n}`;
+            toModify = document.getElementById(`__programExerciceDropdown${i+1}`);
+            toModify.setAttribute("onchange", `displayExercice(${i})`);
+            toModify.id = `__programExerciceDropdown${i}`;
 
-            toModify = document.getElementById(`__programExerciceNamePreview${n+1}`);
-            toModify.id = `__programExerciceNamePreview${n}`;
+            toModify = document.getElementById(`__programExerciceCollapse${i+1}`);
+            toModify.id = `__programExerciceCollapse${i}`;
 
-            toModify = document.getElementById(`__programExercicePreview${n+1}`);
-            toModify.id = `__programExercicePreview${n}`;
-
-            toModify = document.getElementById(`__programReps${n+1}`);
-            toModify.setAttribute("oninput", `displayReps(${n})`);
-            toModify.id = `__programReps${n}`;
-
-            toModify = document.getElementById(`__programReps${n+1}-label`);
-            toModify.setAttribute("for", `__programReps${n}`);
-            toModify.id = `__programReps${n}-label`;
-
-            toModify = document.getElementById(`__programSeries${n+1}`);
-            toModify.setAttribute("oninput", `displayReps(${n})`);
-            toModify.id = `__programSeries${n}`;
+            toModify = document.getElementById(`__programExerciceDeleteHeader${i+1}`);
+            toModify.setAttribute("onclick", `deleteExercice(${i})`);
+            toModify.id = `__programExerciceDeleteHeader${i}`;
             
-            toModify = document.getElementById(`__programSeries${n+1}-label`);
-            toModify.setAttribute("for", `__programSeries${n}`);
-            toModify.id = `__programSeries${n}`;
+            toModify = document.getElementById(`__programExerciceDropdown${i+1}-button`);
+            toModify.setAttribute("data-bs-target",`#__programExerciceCollapse${i}`);
+            toModify.innerText = `Exercice #${i}`;
+            toModify.id = `__programExerciceDropdown${i}-button`;
 
-            toModify = document.getElementById(`__programExerciceDropdown${n+1}`);
-            toModify.setAttribute("onchange", `displayExercice(${n})`);
-            toModify.id = `__programExerciceDropdown${n}`;
-
-            toModify = document.getElementById(`__programExerciceCollapse${n+1}`);
-            toModify.id = `__programExerciceCollapse${n}`;
-
-            toModify = document.getElementById(`__programExerciceDeleteHeader${n+1}`);
-            toModify.setAttribute("onclick", `deleteExercice(${n})`);
-            toModify.id = `__programExerciceDeleteHeader${n}`;
-            
-            toModify = document.getElementById(`__programExerciceDropdown${n+1}-button`);
-            toModify.setAttribute("data-bs-target",`#__programExerciceCollapse${n}`);
-            toModify.innerText = `Exercice #${n}`;
-            toModify.id = `__programExerciceDropdown${n}-button`;
-
-            toModify = document.getElementById(`__programExerciceDropdown${n+1}-label`);
-            toModify.setAttribute("for",`__programExerciceDropdown${n}`);
-            toModify.setAttribute('id',  `__programExerciceDropdown${n}-label`);
+            toModify = document.getElementById(`__programExerciceDropdown${i+1}-label`);
+            toModify.setAttribute("for",`__programExerciceDropdown${i}`);
+            toModify.setAttribute('id',  `__programExerciceDropdown${i}-label`);
         
-            toModify = document.getElementById(`__programExercice${n+1}`);
-            toModify.setAttribute('id', `__programExercice${n}`);
+            toModify = document.getElementById(`__programExercice${i+1}`);
+            toModify.setAttribute('id', `__programExercice${i}`);
 
-            displayExercice(n);
+            displayExercice(i);
 
         };
 

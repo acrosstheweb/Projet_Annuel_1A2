@@ -18,6 +18,7 @@ $req = $pdo->query("SELECT C.*, P.*, E.*
                     FROM RkU_CONTAINS C
                     LEFT JOIN RkU_PROGRAM P ON C.programId = P.id
                     LEFT JOIN RkU_EXERCICE E ON C.exerciceId = E.id
+                    ORDER BY P.creationDate DESC
                         ");
 
 $results = $req->fetchAll();
@@ -26,8 +27,9 @@ $results = $req->fetchAll();
 
 <h1 class="aligned-title">Modification des programmes</h1>
 <div class="container-fluid">
-    <div class="row d-flex justify-content-center">
-        <div class="d-none col-3 d-md-flex justify-content-center">
+    <div class="row">
+
+        <div class="d-none col-2 mx-md-3 d-md-flex justify-content-center">
             <?php include "adminNavbar.php"; ?>
         </div>
 
@@ -65,7 +67,7 @@ $results = $req->fetchAll();
                                 </ul>
                             </td>
                             <td class="align-middle">
-                                <a href="#" class="btn btn-outline-primary m-1" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
+                                <a href="<?= DOMAIN . 'modules/user/vues/admin/modifyProgram.php?id=' . $program['programId'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                 <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
@@ -84,7 +86,7 @@ $results = $req->fetchAll();
                                 </ul>
                             </td>
                             <td class="align-middle">
-                                <a href="#" class="btn btn-outline-primary m-1" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
+                                <a href="<?= DOMAIN . 'modules/user/vues/admin/modifyProgram.php?id=' . $program['programId'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                 <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
@@ -92,6 +94,7 @@ $results = $req->fetchAll();
                 </table>
             </div>
         </div>
+
     </div>
 </div>
 

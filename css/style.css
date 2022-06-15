@@ -30,6 +30,12 @@
     border-color: var(--green3);
 }
 
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: var(--green1);
+    border-color: var(--green1);
+}
+
 
 /* Header */
 
@@ -394,6 +400,14 @@ table {
     max-width: 120px;
 }
 
+.__programExerciceDelete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--bs-light);
+    background-color: var(--bs-danger);
+}
+
 
 /* Abonnements */
 
@@ -428,7 +442,7 @@ table {
     margin-bottom: 1rem;
 }
 
-.__programCardPreview {
+.CardPreview {
     max-height: 600px;
 }
 

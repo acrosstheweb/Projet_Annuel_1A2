@@ -20,7 +20,7 @@
                     <a class="nav-link" href="#">Abonnements</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="modifyPrograms.php">Programmes</a>
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminPrograms.php'?>">Programmes</a>
                 </li>
             </ul>
         </li>
