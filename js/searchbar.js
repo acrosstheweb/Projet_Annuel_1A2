@@ -13,3 +13,21 @@ search_trigger.addEventListener("click", function(){
         searchbar.style.display = "block";
     }
 });
+
+// prototypage ajax
+function search(text){
+    let searchBarResult = document.getElementById("__searchbar-results");
+    if(text.length != 0){
+        let XML = new XMLHttpRequest();
+        XML.onreadystatechange = function(){
+            if(XML.readyState == 4 && XML.status == 200){
+                searchBarResult.innerHTML = XML.responseText;
+            }
+        };
+
+        XML.open('GET', `searchBar.php?q=${text}`, true);
+        XML.send();
+    }else{
+        searchBarResult.innerHTML = '';
+    }
+}

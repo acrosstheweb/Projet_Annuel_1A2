@@ -69,6 +69,15 @@
     display: none;
 }
 
+#__searchbar-results{
+    position: absolute;
+    top: 3.9em;
+    width: 20%;
+    right: 5%;
+    background-color: var(--green1);
+    border: 1px solid;
+}
+
 @media all {
     #__searchbar {
         display: none;

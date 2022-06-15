@@ -97,17 +97,14 @@
                             <img src="<?= DOMAIN . 'sources/img/icon.png'?>" alt="logo" class="img-fluid __logoIcon">
                         </a>
                     </div>
-
+                    <div id="__searchbar-results"></div>
                     <!-- ICONES -->
                     <div class="col-5 p-0">
                         <ul class="navbar-nav __navbarIcons justify-content-end align-items-center">
                             <div id="__searchbar">
-                            <li class="input-group rounded">
-                                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                <!--<span class="input-group-text border-0 __navIcon nav-link" id="search-addon"> A quoi sert cet élémént ? et pourquoi quand on le commente, la barre de recherche est surélevée
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </span>-->
-                            </li>
+                                <li class="input-group rounded">
+                                    <input type="search" onkeyup="search(this.value)" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                </li>
                             </div>
                             <li class="nav-item" id="__search-trigger">
                                 <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
