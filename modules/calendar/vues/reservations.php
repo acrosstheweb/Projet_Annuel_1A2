@@ -3,9 +3,12 @@
     $content = "Réserver une séance de coaching";
     $currentPage = 'reservations';
     require '../../../header.php';
+    Message("createEvent");
+    Message("modifyEvent");
 
     require '../scripts/Calendar/Month.php';
     require '../scripts/Calendar/Events.php';
+
 
     $pdo = database();
 
@@ -22,38 +25,47 @@
 ?>
 
 <h1 class="aligned-title"> Réserver une séance </h1>
-<div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
-    <h2><?= $month->toString(); ?></h2>
 
-    <div>
-        <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?month=' . $month->previousMonth()->month . '&year=' . $month->previousMonth()->year ?>" class = "btn btn-primary">&lt</a>
-        <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?month=' . $month->nextMonth()->month . '&year=' . $month->nextMonth()->year ?>" class = "btn btn-primary">&gt</a>
+<div class="calendar">
+    <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
+        <h2><?= $month->toString(); ?></h2>
+
+        <div>
+            <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?month=' . $month->previousMonth()->month . '&year=' . $month->previousMonth()->year ?>" class = "btn btn-primary">&lt</a>
+            <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?month=' . $month->nextMonth()->month . '&year=' . $month->nextMonth()->year ?>" class = "btn btn-primary">&gt</a>
+        </div>
+    </div>
+
+    <table class = "__calendarTable __calendarTable--<?= $weeks; ?>weeks">
+        <?php for($i = 0; $i < $weeks; $i++){ ?>
+        <tr>
+            <?php 
+            foreach($month->days as $k => $day){ 
+                $date = (clone $startDay)->modify("+" . ($k + $i * 7) . "days");
+                $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
+            ?>
+            <td class = "<?= $month->withinMonth($date) ? '' : '__calendarOtherMonth'; ?>">
+                <?php if($i == 0){ ?> 
+                <div class="__calendarWeekDay"> <?= $day ?> </div>
+                <?php } ?>
+                <div class="__calendarDay"> <?= $date->format('d'); ?> </div>
+                <?php foreach($eventsForDay as $event){ ?>
+                <div class="__calendarEvent"> 
+                    <?= (new Datetime($event['startDate']))->format('H:i') ?> - <a href=" <?= DOMAIN ?>modules/calendar/vues/eventUser.php?id=<?= $event['id'] ?>"> <?= $event['name'] ?> </a> <!-- Je met le lien vers la modif, ce sera migré vers le BO, il faudra remettre un lien vers eventUser.php -->
+                </div>
+                <?php } ?>
+            </td>
+            <?php } ?>
+        </tr>
+        <?php } ?>
+    </table>
+ 
+    <!-- ce lien sera prochainement migré sur la page de back office. Il n'existe pour 
+    l'instant que pour faciliter le développement du formulaire d'ajout -->
+    <div class="list-group">
+        <a href="add.php" class="list-group-item list-group-item-action">A second link item</a>
     </div>
 </div>
-
-<table class = "__calendarTable __calendarTable--<?= $weeks; ?>weeks">
-    <?php for($i = 0; $i < $weeks; $i++){ ?>
-    <tr>
-        <?php 
-        foreach($month->days as $k => $day){ 
-            $date = (clone $startDay)->modify("+" . ($k + $i * 7) . "days");
-            $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
-        ?>
-        <td class = "<?= $month->withinMonth($date) ? '' : '__calendarOtherMonth'; ?>">
-            <?php if($i == 0){ ?> 
-            <div class="__calendarWeekDay"> <?= $day ?> </div>
-            <?php } ?>
-            <div class="__calendarDay"> <?= $date->format('d'); ?> </div>
-            <?php foreach($eventsForDay as $event){ ?>
-            <div class="__calendarEvent"> 
-                <?= (new Datetime($event['startDate']))->format('H:i') ?> - <a href=" <?= DOMAIN ?>modules/calendar/vues/event.php?id=<?= $event['id'] ?>"> <?= $event['name'] ?> </a>
-            </div>
-            <?php } ?>
-        </td>
-        <?php } ?>
-    </tr>
-    <?php } ?>
-</table>
 
 <?php
     include '../../../footer.php';

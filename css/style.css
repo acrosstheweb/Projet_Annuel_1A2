@@ -489,6 +489,10 @@ table {
     opacity: 0.3;
 }
 
+.calendar {
+    position: relative;
+}
+
 .__listeVerticale {
     list-style-type: none;
     padding-left: 0;
@@ -555,6 +559,8 @@ table {
 
 /* profilePageSecurity */
 
-#__profileSecMailInput,#__profileSecCancel,#__modifyEmailButton {
+#__profileSecMailInput,
+#__profileSecCancel,
+#__modifyEmailButton {
     display: none;
 }

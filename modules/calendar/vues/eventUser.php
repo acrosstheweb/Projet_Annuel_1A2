@@ -32,4 +32,7 @@
     <li>Description : <br>
     <?= $event['description']; ?>
     </li>
+    <li>Prix : <?= $event['price'] ?> fitcoins</li>
+    <li>Sport sélectionné : <?= $event['sport']; ?></li>
+    <li>Salle de sport : <?= $event['gym']; ?></li>
 </ul>

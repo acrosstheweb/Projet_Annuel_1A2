@@ -5,7 +5,6 @@ namespace Calendar;
 require_once '../../../functions.php';
 
 
-
 class Events{
 
     private $pdo;
@@ -26,7 +25,7 @@ class Events{
         $this->pdo = database();
 
         $req = $this->pdo->query("SELECT * FROM RkU_BOOKING WHERE startDate 
-                            BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'");
+                            BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}' ORDER BY startDate ASC");
 
         $results = $req->fetchAll();
 
