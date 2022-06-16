@@ -28,6 +28,17 @@
     require '../../../header.php';
     Message("modifyEvent");
 
+    $pdo = database();
+                        
+    $req = $pdo->prepare("SELECT name FROM RkU_SPORT WHERE id=:id");
+    $req->execute([
+        'id'=>$event['sport']
+    ]);
+    $sportName = $req->fetch();
+
+    $query = $pdo->query("SELECT id, name FROM RkU_SPORT");
+    $sports = $query->fetchAll();
+
     ?>
 
 
@@ -58,7 +69,16 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="eventSport">Sport</label>
-                <input type="number" name="eventSport" id="eventSport" class="form-control" value="<?= $event['sport']; ?>">
+                <select class="form-select" name="eventSport" id="eventSport"><br>
+                    <option default value="<?= $event['sport'] ?>"><?= $sportName['name'] ?></option>
+                    <?php 
+                        foreach($sports as $sport){
+                    ?>
+                        <option value="<?= $sport['id'] ?>"> <?= $sport['name'] ?> </option>
+                    <?php
+                        }
+                    ?>
+                </select>
             </div>
         </div>
         <div class="row my-3">

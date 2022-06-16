@@ -21,6 +21,14 @@
 
     require '../../../header.php';
 
+    $pdo = database();
+
+    $req = $pdo->prepare("SELECT name FROM RkU_SPORT WHERE id=:id");
+    $req->execute([
+        'id'=>$event['sport']
+    ]);
+    $sportName = $req->fetch();
+
     ?>
 
 <h1><?= $event['name']; ?></h1>
@@ -33,6 +41,6 @@
     <?= $event['description']; ?>
     </li>
     <li>Prix : <?= $event['price'] ?> fitcoins</li>
-    <li>Sport sélectionné : <?= $event['sport']; ?></li>
+    <li>Sport sélectionné : <?= $sportName['name']; ?></li>
     <li>Salle de sport : <?= $event['gym']; ?></li>
 </ul>

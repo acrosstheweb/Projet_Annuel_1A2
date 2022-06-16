@@ -10,6 +10,11 @@
     require '../../../header.php';
     Message("createEvent");
 
+    $pdo = database();
+                        
+    $query = $pdo->query("SELECT id, name FROM RkU_SPORT");
+    $results = $query->fetchAll();
+
 ?>
 
 <div class="row d-flex justify-content-center">
@@ -39,7 +44,16 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventSport">Sport</label>
-                    <input type="number" name="eventSport" id="eventSport" class="form-control" required>
+                    <select class="form-select" name="eventSport" id="eventSport"><br>
+                        <option default value="0">CHOISIR</option>
+                        <?php 
+                            foreach($results as $sport){
+                        ?>
+                            <option value="<?= $sport['id'] ?>"> <?= $sport['name'] ?> </option>
+                        <?php
+                            }
+                        ?>
+                </select>
                 </div>
             </div>
             <div class="row my-3">

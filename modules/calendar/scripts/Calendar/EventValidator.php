@@ -14,7 +14,7 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['createEvent'])){
-        $date = $_POST;
+        $date = $_POST['eventDate'];
         $name = trim($_POST['eventName']);
         $description = trim($_POST['eventDescription']);
         $date = $_POST['eventDate'];
@@ -73,12 +73,12 @@ if(!empty($_POST)){
 
         if(empty($sport)){
             $valid = false;
-            $errors = ("Il faut ajouter un prix");
+            $errors = ("Il faut ajouter un sport");
         }
 
         if(empty($gym)){
             $valid = false;
-            $errors = ("Il faut ajouter un prix");
+            $errors = ("Il faut ajouter une salle");
         }
 
         if( strtotime($end) - strtotime($start) < 0){
