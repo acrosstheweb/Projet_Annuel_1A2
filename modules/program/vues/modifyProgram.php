@@ -2,7 +2,7 @@
 $title = "Fitness Essential - Modifier un programme";
 $content = "Modification d'un programme";
 $currentPage = 'message';
-require '../../../../header.php';
+require '../../../header.php';
 
 $pdo = database();
 
@@ -21,7 +21,6 @@ $valuesReq = $db->query("SELECT C.*, P.*, E.*
                             WHERE C.programId = " . $_GET['id']);
 
 $valuesResults = $valuesReq->fetchAll();
-
 $counter = count($valuesResults);
 ?>
 
@@ -30,7 +29,7 @@ $counter = count($valuesResults);
 <div class="row d-flex justify-content-center flex-row">
     <div class="col-10 col-lg-7 d-flex justify-content-center flex-column">
         <div class="row">
-            <form id="__programUpdateForm" action="../../../program/scripts/updateProgram.php" method="POST" class="my-3">
+            <form id="__programUpdateForm" action="../scripts/updateProgram.php?id=<?= $_GET['id'] ?>" enctype ="multipart/form-data" method="POST" class="my-3">
                 <div class="row my-3">
                     <label for="__programTitle">Nom du rogramme : </label>
                     <input class="form-control" type="text" name="programTitle" id="__programTitle" value="<?= $valuesResults[0]['nameProgram'] ?>" oninput="displayProgramTitle()"><br>
@@ -38,7 +37,7 @@ $counter = count($valuesResults);
 
                 <div class="row my-3">
                     <label for="__programFile">Illustration : </label>
-                    <input type="file" name="programFile" id="__programFile" value="<?= $valuesResults[0]['illustration'] ?>">
+                    <input type="file" name="programFile" id="__programFile" value="<?= $valuesResults['illustration'] ?>">
                 </div>
 
                 <div id="__programExerciceList" class="accordion" >
@@ -137,7 +136,7 @@ $counter = count($valuesResults);
 </div>
 
 <?php
-    include "../../../../footer.php";
+    include "../../../footer.php";
 ?>
 
 <script src="<?= DOMAIN . 'js/formulaire.js'?>" crossorigin="anonymous"></script>

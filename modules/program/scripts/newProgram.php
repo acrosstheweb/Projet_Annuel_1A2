@@ -22,6 +22,10 @@
     
         if(in_array($type, $typeImage)){
             move_uploaded_file($tempNameImage, ABSOLUTE_PATH . 'sources/img/' . $nameImage);
+        } else{
+            // setMessage('Image non valide');
+            header('Location: ' . DOMAIN . 'modules/user/vues/admin/adminPrograms.php');
+            die();
         }
     }
 
@@ -33,7 +37,7 @@
         $insertProgramQuery = $db->prepare("INSERT INTO RkU_PROGRAM (nameProgram, illustration) VALUES (:nameProgram, :illustration)");
         $insertProgramQuery->execute([
             'nameProgram' => $programTitle,
-            'illustration' => 'sources/programs/' . $nameImage
+            'illustration' => 'sources/img/' . $nameImage
         ]);
         
         $getProgramId = $db->prepare('SELECT id FROM RkU_PROGRAM WHERE nameProgram = :nameProgram LIMIT 1');

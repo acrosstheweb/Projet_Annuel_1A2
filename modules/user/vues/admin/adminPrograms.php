@@ -61,13 +61,12 @@ $results = $req->fetchAll();
                                 <ul>
 
                 <?php
-                    $lastProgramId = $program['programId'];
                 } elseif (($program['programId'] != $lastProgramId)) {
                 ?>
                                 </ul>
                             </td>
                             <td class="align-middle">
-                                <a href="<?= DOMAIN . 'modules/user/vues/admin/modifyProgram.php?id=' . $program['programId'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
+                                <a href="<?= DOMAIN . 'modules/program/vues/modifyProgram.php?id=' . $lastProgramId ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                 <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
@@ -78,20 +77,27 @@ $results = $req->fetchAll();
                             <td class="d-none d-lg-table-cell">
                                 <ul>
             <?php
-                $lastProgramId = $program['programId'];
                 }
-            echo '<li>' . $program['nameExercice'] . '</li>';
-            }
-            ?>
-                                </ul>
+                echo '<li>' . $program['nameExercice'] . '</li>';
+
+                if ($program == end($results)){
+                ?>
+                    </ul>
                             </td>
                             <td class="align-middle">
-                                <a href="<?= DOMAIN . 'modules/user/vues/admin/modifyProgram.php?id=' . $program['programId'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
+                                <a href="<?= DOMAIN . 'modules/program/vues/modifyProgram.php?id=' . $program['programId'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                 <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <?php
+                }
+            
+                $lastProgramId = $program['programId'];
+            }
+            ?>
+                                
             </div>
         </div>
 
