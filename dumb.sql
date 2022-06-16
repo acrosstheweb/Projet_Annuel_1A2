@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 16, 2022 at 02:21 PM
+-- Generation Time: Jun 16, 2022 at 10:12 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -45,10 +45,7 @@ CREATE TABLE `RkU_BOOKING` (
 --
 
 INSERT INTO `RkU_BOOKING` (`id`, `status`, `price`, `discount`, `sport`, `gym`, `name`, `description`, `startDate`, `endDate`) VALUES
-(1, 1, 50, NULL, 2, 1, 'Test 1', 'dazdd', '2022-06-16 17:26:00', '2022-06-16 18:26:00'),
-(2, 1, 10, NULL, 2, 1, 'Test2', NULL, '2022-06-14 19:46:02', '2022-06-14 20:46:02'),
-(8, 1, 14, NULL, 1, 1, 'Demo', 'Test', '2022-06-24 18:00:00', '2022-06-24 19:00:00'),
-(9, 1, 14, NULL, 1, 1, 'Demo', 'Test', '2022-06-17 18:00:00', '2022-06-17 19:00:00');
+(9, 1, 14, NULL, 1, 1, 'Test2', 'Test', '2022-06-17 18:00:00', '2022-06-17 19:00:00');
 
 -- --------------------------------------------------------
 
@@ -325,8 +322,22 @@ CREATE TABLE `RkU_RESERVES` (
 CREATE TABLE `RkU_SPORT` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `description` varchar(255) DEFAULT NULL
+  `description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `RkU_SPORT`
+--
+
+INSERT INTO `RkU_SPORT` (`id`, `name`, `description`) VALUES
+(11, 'Zumba', 'Méthode de fitness inspirée de différentes danses latino-américaines'),
+(12, 'Hiit', 'L\' entraînement fractionné de haute intensité est un mode d\'entraînement fractionné qui vise un renforcement de la condition physique par de brèves séances d\'exercices en anaérobie'),
+(13, 'Pilates', 'Ensemble d\'exercices physiques visant au renforcement des muscles centraux et au bon équilibre du corps.'),
+(14, 'Crossfit', 'Activité sportive associant gymnastique, haltérophilie et endurance'),
+(15, 'Yoga', 'Doctrine et exercices traditionnels hindous, cherchant à réunir l\'individu avec le principe de toute existence'),
+(16, 'Cycling', 'Faire du vélo :)'),
+(17, 'Musculation', 'Développement d\'un muscle, d\'une partie du corps grâce à des exercices physiques'),
+(18, 'Abdos fessiers', 'Relatif à des exercices physiques permettant de renforcer les muscles de la ceinture abdominale et des fesses');
 
 -- --------------------------------------------------------
 
@@ -422,7 +433,7 @@ CREATE TABLE `RkU_USER` (
 --
 
 INSERT INTO `RkU_USER` (`id`, `firstName`, `lastName`, `email`, `civility`, `avatar`, `password`, `address`, `city`, `zipCode`, `birthday`, `fitcoin`, `role`, `registrationDate`, `lastUpdate`, `lastPasswordUpdate`, `changePassword`, `token`, `subscription`, `startDateSub`, `endDateSub`, `renewalDate`, `nextPaymentDate`, `token_confirm_inscription`) VALUES
-(2, 'Tom', 'BOURLARD', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', 'Je Sais Pas', 'Paris', 75012, '2003-06-07', 0, 2, '2022-06-16 13:40:31', '2022-06-16 14:00:02', '2022-06-16 14:00:02', 0, '265152673ba265@^1', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6');
+(2, 'Tom', 'BOURLARD', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 0, 2, '2022-06-16 13:40:31', '2022-06-16 20:31:26', '2022-06-16 20:31:26', 0, '01bbae139ba269($1', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6');
 
 --
 -- Indexes for dumped tables
@@ -514,7 +525,7 @@ ALTER TABLE `RkU_USER`
 -- AUTO_INCREMENT for table `RkU_BOOKING`
 --
 ALTER TABLE `RkU_BOOKING`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `RkU_CITY`
@@ -568,7 +579,7 @@ ALTER TABLE `RkU_QUESTION`
 -- AUTO_INCREMENT for table `RkU_SPORT`
 --
 ALTER TABLE `RkU_SPORT`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `RkU_SUBSCRIPTION`
@@ -580,7 +591,7 @@ ALTER TABLE `RkU_SUBSCRIPTION`
 -- AUTO_INCREMENT for table `RkU_TOPIC`
 --
 ALTER TABLE `RkU_TOPIC`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `RkU_USER`
