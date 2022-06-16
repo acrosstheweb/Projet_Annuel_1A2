@@ -21,7 +21,7 @@
         $typeImage = ['image/png', 'image/jpg', 'image/jpeg'];
     
         if(in_array($type, $typeImage)){
-            move_uploaded_file($tempNameImage, ABSOLUTE_PATH . 'sources/programs/' . $nameImage);
+            move_uploaded_file($tempNameImage, ABSOLUTE_PATH . 'sources/img/' . $nameImage);
         }
     }
 
