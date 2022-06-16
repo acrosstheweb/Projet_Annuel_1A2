@@ -13,7 +13,7 @@ if(!empty($_POST)){
     $valid = true;
     $errors = [];
 
-    if(isset($_POST['createEvent'])){
+    if(isset($_POST['modifyEvent'])){
         $date = $_POST;
         $name = trim($_POST['eventName']);
         $description = trim($_POST['eventDescription']);
@@ -88,10 +88,25 @@ if(!empty($_POST)){
         }
     }
 
+    $InputPwd = $_POST['delete-userPasswordInput'];
+    $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'user)
+    $db = database();
+
+    $userPwdInDbQuery = $db->prepare("SELECT password FROM RkU_USER WHERE id=:id");
+    $userPwdInDbQuery->execute(["id"=>$userId]);
+    $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
+
+    if(!password_verify($InputPwd, $userPwdInDb)){
+        setMessage('modifyEvent', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
+        header('Location: ../../vues/reservations.php');
+        die();
+    }
+
     //insertion base de données si valide à faire
     if ($valid) {
     
-        $modifyEventQuery = $pdo->prepare("UPDATE RkU_BOOKING set name=:name, description=:description, startDate=:startDate, endDate=:endDate, status=:status, price=:price, sport=:sport, gym=:gym
+        $modifyEventQuery = $pdo->prepare("UPDATE RkU_BOOKING SET name=:name, description=:description, startDate=:startDate,
+                                        endDate=:endDate, status=:status, price=:price, sport=:sport, gym=:gym
                                         WHERE id=:id");
 
         $modifyEventQuery->execute([
@@ -112,7 +127,7 @@ if(!empty($_POST)){
     }
     else{
         setMessage('modifyEvent', [$errors], 'warning');
-        header('Location: ../../vues/addNewEvent.php');
+        header('Location: ../../vues/eventBO.php?id=' . $id);
         exit;
     }
         

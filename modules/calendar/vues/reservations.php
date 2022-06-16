@@ -5,7 +5,8 @@
     require '../../../header.php';
     Message("createEvent");
     Message("modifyEvent");
-
+    Message("Delete");
+    
     require '../scripts/Calendar/Month.php';
     require '../scripts/Calendar/Events.php';
 

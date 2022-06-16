@@ -19,6 +19,9 @@ if(!empty($_POST)){
         $order = trim($_POST['categorieOrder']);
         $tempNameImage = trim($_FILES['categorieImage']['tmp_name']);
         $nameImage = trim($_FILES['categorieImage']['name']);
+        $typeImage = $_FILES['categorieImage']['type'];
+        $type = ['image/png', 'image/jpg', 'image/jpeg'];
+
         
         if(empty($categorie)){
             $valid = false;
@@ -39,6 +42,12 @@ if(!empty($_POST)){
             $valid = false;
             $errors = "Il faut ajouter une image à la catégorie";
         }
+
+        if(!in_array($typeImage, $type)){
+            $valid = false;
+            $errors = "Le fichier n'est pas bon";
+        }
+
     }
 
     //insertion base de données si valide à faire
