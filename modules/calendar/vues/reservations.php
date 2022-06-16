@@ -60,12 +60,7 @@
         </tr>
         <?php } ?>
     </table>
- 
-    <!-- ce lien sera prochainement migré sur la page de back office. Il n'existe pour 
-    l'instant que pour faciliter le développement du formulaire d'ajout -->
-    <div class="list-group">
-        <a href="add.php" class="list-group-item list-group-item-action">A second link item</a>
-    </div>
+
 </div>
 
 <?php

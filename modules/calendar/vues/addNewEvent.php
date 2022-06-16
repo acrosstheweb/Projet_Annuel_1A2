@@ -2,6 +2,11 @@
     $title = "Fitness Essential - Réservations";
     $content = "Réserver une séance de coaching";
     $currentPage = 'reservations';
+    require_once '../../../functions.php';
+    if(!isAdmin()){
+        header('Location: ../../../error404.php');
+        die();
+    }
     require '../../../header.php';
     Message("createEvent");
 

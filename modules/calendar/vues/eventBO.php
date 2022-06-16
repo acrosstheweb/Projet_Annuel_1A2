@@ -6,6 +6,7 @@
     require_once '../../../functions.php';
     if(!isAdmin()){
         header('Location: ../../../error404.php');
+        die();
     }
     
     require_once '../scripts/Calendar/Events.php';
