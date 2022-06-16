@@ -71,8 +71,14 @@ $results = $req->fetchAll();
                                     <div class="modal-body">
                                         <form id="deleteEvent<?= $event['id'];?>" action="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventSuppression.php?eventId=' . $event['id'];?>" method="POST" >
                                             <div class="deleteFormInfo">
-                                                <h5>Vous êtes sur le point de supprimer cet évènement</h5>
-                                                <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer?</p>
+                                                <h5>Vous êtes sur le point de supprimer cet évènement :</h5>
+                                                <ul>
+                                                    <li>Nom : <?= $event['name'];?></li>
+                                                    <li>Date de début : Le <?= (new \DateTime($event['startDate']))->format('d/m/Y'); ?> à <?= (new \DateTime($event['startDate']))->format('H:i'); ?></li>
+                                                    <li>Date de début : Le <?= (new \DateTime($event['endDate']))->format('d/m/Y'); ?> à <?= (new \DateTime($event['endDate']))->format('H:i'); ?></li>
+                                                    <li>Prix : <?= $event['price'];?> fitcoins</li>
+                                                    
+                                                </ul>
                                             </div>
                                                 <div class="row delete-userPassword">
                                                 <div class="col">
