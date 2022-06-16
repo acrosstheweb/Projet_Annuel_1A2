@@ -271,7 +271,7 @@ INSERT INTO `rku_program` (`id`, `nameProgram`, `creationDate`, `illustration`) 
 (3, 'Legs #1', '2022-05-29 01:01:39', 'sources/img/legs1.jpg'),
 (4, 'Pull #2', '2022-05-30 01:01:39', 'sources/img/pull2.jpg'),
 (5, 'Push #2', '2022-05-31 01:01:39', 'sources/img/push2.jpg'),
-(6, 'Legs #1', '2022-06-01 01:01:39', 'sources/img/legs2.jpg');
+(6, 'Legs #2', '2022-06-01 01:01:39', 'sources/img/legs2.jpg');
 
 -- --------------------------------------------------------
 
