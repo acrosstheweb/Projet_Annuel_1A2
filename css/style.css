@@ -417,6 +417,12 @@ table {
     background-color: var(--bs-danger);
 }
 
+.__programCardPreview{
+    max-width: 420px;
+    min-width: 320px;
+    max-height: 600px;
+}
+
 
 /* Abonnements */
 

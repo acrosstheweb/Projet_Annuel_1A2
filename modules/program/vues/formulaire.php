@@ -6,21 +6,19 @@ require '../../../header.php';
 
 $pdo = database();
 
-    $req = $pdo->query("SELECT nameExercice
+    $req = $pdo->query("SELECT id, nameExercice
                         FROM RkU_EXERCICE
                         ORDER BY nameExercice ASC
                         ");
 
     $results = $req->fetchAll();
-
-$counter = 1;
 ?>
 
 <h1 class="aligned-title">Création d'un programme d'entraînement</h1>
 
 <div class="row d-flex justify-content-center">
     <div class="col-10 col-lg-7 d-flex justify-content-center">
-        <form id="__programAddForm" action="" method="POST" class="col-10 my-3">
+        <form id="__programAddForm" action="../scripts/newProgram.php" method="POST" enctype ="multipart/form-data" class="col-10 my-3">
             <div class="row my-3">
                 <label for="__programTitle">Nom du rogramme : </label>
                 <input class="form-control" type="text" name="programTitle" id="__programTitle" placeholder="Pull #2" oninput="displayProgramTitle()"><br>
@@ -46,14 +44,13 @@ $counter = 1;
                     </div>
                     <div id="__programExerciceCollapse1" class="__programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
                         <div class="accordion-body">
-                            <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown1" required="required" onchange="displayExercice(1)"><br>
+                            <select class="form-select" name="programExerciceDropdown1" id="__programExerciceDropdown1" required="required" onchange="displayExercice(1)"><br>
                                 <option selected disabled>Exercice</option>
 
                                 <?php
 
                                     foreach ($results as $exercice){
-                                        echo '<option value="'.$counter.'">'.$exercice['nameExercice'].'</option>';
-                                        $counter++;
+                                        echo '<option value="'.$exercice['id'].'">'.$exercice['nameExercice'].'</option>';
                                     }
 
                                 ?>
@@ -66,11 +63,11 @@ $counter = 1;
                             <div class="row my-3">
                                 <div class="col-12 col-md-6">
                                     <label for="__programSeries1" id="__programSeries1-label">Série(s) : </label><br>
-                                    <input type="number" name="programSeries" id="__programSeries1" maxlength="3" min="1" max="999" oninput="displayReps(1)">
+                                    <input type="number" name="programSeries1" id="__programSeries1" required="required" maxlength="3" min="1" max="999" oninput="displayReps(1)">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="__programReps1" id="__programReps1-label">Répétitions : </label><br>
-                                    <input type="number" name="programReps" id="__programReps1" min="1" max="999" oninput="displayReps(1)">
+                                    <input type="number" name="programReps1" id="__programReps1" required="required" min="1" max="999" oninput="displayReps(1)">
                                 </div>
                             </div>
                         </div>

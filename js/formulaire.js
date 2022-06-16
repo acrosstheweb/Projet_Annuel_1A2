@@ -83,7 +83,7 @@ function addExercice(){
         </div>
         <div id="__programExerciceCollapse${counter}" class="__programExerciceCollapse accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#__programExerciceList">
             <div class="accordion-body">
-                <select class="form-select" name="programExerciceDropdown" id="__programExerciceDropdown${counter}" required="required" onchange="displayExercice(${counter})"><br>
+                <select class="form-select" name="programExerciceDropdown${counter}" id="__programExerciceDropdown${counter}" required="required" onchange="displayExercice(${counter})"><br>
                     ${options}
                 </select>
                 <p>L'exercice n'est pas dans la liste? Créez-le</p>
@@ -93,11 +93,11 @@ function addExercice(){
                 <div class="row my-3">
                     <div class="col-12 col-md-6">
                         <label for="__programSeries${counter}" id="__programSeries${counter}-label">Série(s) : </label><br>
-                        <input type="number" name="programSeries" id="__programSeries${counter}" oninput="displayReps(${counter})">
+                        <input type="number" name="programSeries${counter}" id="__programSeries${counter}" oninput="displayReps(${counter})">
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="__programReps${counter}" id="__programReps${counter}-label">Répétitions : </label><br>
-                        <input type="number" name="programReps" id="__programReps${counter}" oninput="displayReps(${counter})">
+                        <input type="number" name="programReps${counter}" id="__programReps${counter}" oninput="displayReps(${counter})">
                     </div>
                 </div>
             </div>
@@ -105,6 +105,7 @@ function addExercice(){
     </div>
     `;
     programExerciceList.innerHTML += newExercice;
+    document.getElementById(`__programExerciceDropdown${counter}`)
 
 
     
@@ -142,15 +143,22 @@ function displayExercice(n){
     //Nom exercice
     let exercice = document.getElementById(`__programExerciceDropdown${n}`);
     let exercicePreview = document.getElementById(`__programExerciceNamePreview${n}`);
-    if (!(exercice.options[exercice.selectedIndex].text == "Exercice")){
-        exercicePreview.innerText = exercice.options[exercice.selectedIndex].text;
+    
+    if (!(exercice.options.selectedIndex == -1)){
+        exercicePreview.innerText = exercice.options[exercice.options.selectedIndex].text;
     };
 };
 
 function displayReps(n){
     //Series
-    let series = document.getElementById(`__programSeries${n}`).value;
-    let reps = document.getElementById(`__programReps${n}`).value;
+    let series;
+    let reps;
+    if (typeof(document.getElementById(`__programSeries${n}`).value) !== 'undefined') {
+        series = document.getElementById(`__programSeries${n}`).value;
+    }
+    if (typeof(document.getElementById(`__programReps${n}`).value) !== 'undefined') {
+        reps = document.getElementById(`__programReps${n}`).value;
+    }
     let repsPreview = document.getElementById(`__programExerciceRepsPreview${n}`);
     repsPreview.innerText = `${series}X${reps}`;
 };
@@ -203,6 +211,7 @@ let toModify;
             toModify.id = `__programExercicePreview${i}`;
 
             toModify = document.getElementById(`__programReps${i+1}`);
+            toModify.setAttribute("name", `programReps${i}`);
             toModify.setAttribute("oninput", `displayReps(${i})`);
             toModify.id = `__programReps${i}`;
 
@@ -211,6 +220,7 @@ let toModify;
             toModify.id = `__programReps${i}-label`;
 
             toModify = document.getElementById(`__programSeries${i+1}`);
+            toModify.setAttribute("name", `programSeries${i}`);
             toModify.setAttribute("oninput", `displayReps(${i})`);
             toModify.id = `__programSeries${i}`;
             
@@ -219,6 +229,7 @@ let toModify;
             toModify.id = `__programSeries${i}-label`;
 
             toModify = document.getElementById(`__programExerciceDropdown${i+1}`);
+            toModify.setAttribute("name", `programExerciceDropdown${i}`);
             toModify.setAttribute("onchange", `displayExercice(${i})`);
             toModify.id = `__programExerciceDropdown${i}`;
 
