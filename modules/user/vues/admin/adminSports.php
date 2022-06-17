@@ -7,16 +7,19 @@ require '../../../../functions.php';
     }
 
 require '../../../../header.php';
+Message("Delete");
+Message("modifySport");
+Message("createSport");
 
 $pdo = database();
 
-$req = $pdo->query("SELECT * FROM RkU_BOOKING");
+$req = $pdo->query("SELECT * FROM RkU_SPORT");
 
 $results = $req->fetchAll();
 
 ?>
 
-<h1 class="aligned-title">Gestion des évènements</h1>
+<h1 class="aligned-title">Gestion des sports disponibles</h1>
 
 <div class="container-fluid">
     <div class="row">
@@ -27,41 +30,33 @@ $results = $req->fetchAll();
 
         <div class="col-12 col-md-8">
             <div class="text-end my-3">
-                <a href="<?= DOMAIN . 'modules/calendar/vues/addNewEvent.php'?>" class="btn btn-primary">Créer un évènement</a>
+                <a href="../../../sport/vues/newSport.php" class="btn btn-primary">Créer un Sport</a>
             </div>
 
             <div class="table-responsive">
                 <table class="table" id="programsTable">
                     <thead>
                         <tr>
-                            <th>Nom de l'évènement</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th class="d-none d-lg-table-cell">Description de l'évènement</th>
-                            <th>Prix</th>
-                            <th>Sport</th>
-                            <th>Gym</th>
+                            <th>Id</th>
+                            <th>Nom du sport</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
             <?php
-            foreach($results as $event){
+            foreach($results as $sport){
             ?>
                         <tr>
-                            <td class="align-middle"><?php echo $event['name'];?></td>
-                            <td class="align-middle"><?php echo $event['startDate'];?></td>
-                            <td class="align-middle"><?php echo $event['endDate'];?></td>
-                            <td class="align-middle"><?php echo $event['description'];?></td>
-                            <td class="align-middle"><?php echo $event['price'];?></td>
-                            <td class="align-middle"><?php echo $event['sport'];?></td>
-                            <td class="align-middle"><?php echo $event['gym'];?></td>
+                            <td class="align-middle"><?php echo $sport['id'];?></td>
+                            <td class="align-middle"><?php echo $sport['name'];?></td>
+                            <td class="align-middle"><?php echo $sport['description'];?></td>
                             <td class="align-middle">
-                                <a href="<?= DOMAIN . 'modules/calendar/vues/eventBO.php?id=' . $event['id'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
-                                <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteEvent<?= $event['id'];?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
+                                <a href="<?= DOMAIN . 'modules/sport/vues/manageSport.php?sportId=' . $sport['id'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
+                                <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteSport<?= $sport['id'];?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
 
-                        <div class="modal fade" id="deleteEvent<?= $event['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteSport<?= $sport['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -69,14 +64,12 @@ $results = $req->fetchAll();
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="deleteEvent<?= $event['id'];?>" action="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventSuppression.php?eventId=' . $event['id'];?>" method="POST" >
+                                        <form id="deleteSport<?= $sport['id'];?>" action="<?= DOMAIN . 'modules/sport/scripts/deleteSport.php?sportId=' . $sport['id']?>" method="POST" >
                                             <div class="deleteFormInfo">
                                                 <h5>Vous êtes sur le point de supprimer cet évènement :</h5>
                                                 <ul>
-                                                    <li>Nom : <?= $event['name'];?></li>
-                                                    <li>Date de début : Le <?= (new \DateTime($event['startDate']))->format('d/m/Y'); ?> à <?= (new \DateTime($event['startDate']))->format('H:i'); ?></li>
-                                                    <li>Date de début : Le <?= (new \DateTime($event['endDate']))->format('d/m/Y'); ?> à <?= (new \DateTime($event['endDate']))->format('H:i'); ?></li>
-                                                    <li>Prix : <?= $event['price'];?> fitcoins</li>
+                                                    <li>Nom : <?= $sport['name'];?></li>
+                                                    <li>Description : <?= $sport['description'];?> fitcoins</li>
                                                     
                                                 </ul>
                                             </div>
@@ -90,7 +83,7 @@ $results = $req->fetchAll();
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                        <button class="btn btn-primary delete-passwordConfirm" form="deleteEvent<?= $event['id'];?>" type="submit">Supprimer</button>
+                                        <button class="btn btn-primary delete-passwordConfirm" form="deleteSport<?= $sport['id'];?>" type="submit">Supprimer</button>
                                     </div>
                                 </div>
                             </div>

@@ -44,7 +44,7 @@
 
 <div class="row d-flex justify-content-center">
         <div class="col">
-            <a class="btn btn-primary" href="<?= DOMAIN . 'modules/user/vues/admin/adminEvent.php'?>" role="button">Revenir à la page précedente</a>
+            <a class="btn btn-primary" href="<?= DOMAIN . 'modules/user/vues/admin/adminEvents.php'?>" role="button">Revenir à la page précedente</a>
         </div>
     <h1 class="aligned-title">Modification d'un évènement</h1>
     <form action="../scripts/Calendar/EventModification.php?eventId=<?= $event['id'] ?>" method="POST" class="col-10 col-md-8 col-lg-6 my-3">

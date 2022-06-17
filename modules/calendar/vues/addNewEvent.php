@@ -19,14 +19,14 @@
 
 <div class="row d-flex justify-content-center">
     <div class="col">
-        <a class="btn btn-primary" href="<?= DOMAIN . 'modules/user/vues/admin/adminEvent.php'?>" role="button">Revenir à la page précedente</a>
+        <a class="btn btn-primary" href="<?= DOMAIN . 'modules/user/vues/admin/adminEvents.php'?>" role="button">Revenir à la page précedente</a>
     </div>
     <h1 class="aligned-title">Création d'un nouvel évènement</h1>
         <form action="../scripts/Calendar/EventValidator.php" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventName">Titre</label>
-                    <input type="text" name="eventName" id="eventName" class="form-control" required">
+                    <input type="text" name="eventName" id="eventName" class="form-control" required>
                 </div>
             </div>
             <div class="row my-3">

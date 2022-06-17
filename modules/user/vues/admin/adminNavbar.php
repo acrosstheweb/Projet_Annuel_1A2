@@ -23,7 +23,10 @@
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminPrograms.php'?>">Programmes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminEvent.php'?>">Évènements</a>
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminEvents.php'?>">Évènements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminSports.php'?>">Sports</a>
                 </li>
             </ul>
         </li>

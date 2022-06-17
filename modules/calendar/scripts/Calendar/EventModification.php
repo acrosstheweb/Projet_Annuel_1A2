@@ -14,7 +14,7 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['modifyEvent'])){
-        $date = $_POST;
+        $date = $_POST['eventDate'];
         $name = trim($_POST['eventName']);
         $description = trim($_POST['eventDescription']);
         $date = $_POST['eventDate'];
