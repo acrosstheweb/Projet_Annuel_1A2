@@ -8,7 +8,8 @@ if(!isAdmin()){
 
 if(
     count($_POST) != 1 ||
-    empty($_POST['delProgram-password'])
+    empty($_POST['delProgram-password']) ||
+    empty($_GET['pId'])
 ){
     setMessage('delProgram', ['Formulaire de suppression de programme invalide'], 'danger');
     header('Location: ../../user/vues/admin/adminPrograms.php');
@@ -30,7 +31,7 @@ if(!password_verify($pwd,$pwdInDb)){
     die();
 }
 
-$programId = $_GET['pId'];
+$programId = htmlspecialchars($_GET['pId']);
 
 $delProgramQuery = $db->prepare("DELETE FROM RkU_PROGRAM WHERE id=:id");
 $delContainQuery = $db->prepare("DELETE FROM RkU_CONTAINS WHERE programId=:id");

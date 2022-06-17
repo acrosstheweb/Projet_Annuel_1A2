@@ -103,7 +103,7 @@
                         <ul class="navbar-nav __navbarIcons justify-content-end align-items-center">
                             <div id="__searchbar">
                                 <li class="input-group rounded">
-                                    <input type="search" onkeyup="search(this.value)" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <input type="search" oninput="search(this.value)" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                 </li>
                             </div>
                             <li class="nav-item" id="__search-trigger">
