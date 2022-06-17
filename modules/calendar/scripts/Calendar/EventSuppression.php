@@ -17,14 +17,14 @@ $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $userPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
-    header('Location: ../../vues/reservations.php');
+    header('Location: ../../../user/vues/admin/adminEvents.php');
     die();
 }
 
 $userDelQuery = $db->prepare("DELETE FROM RkU_BOOKING WHERE id=:id");
 $userDelQuery->execute(["id"=>$eventId]);
 setMessage('Delete', ["L'évènement a bien été supprimée."], 'success');
-header('Location: ../../vues/reservations.php');
+header('Location: ../../../user/vues/admin/adminEvents.php');
 die();
 
 ?>
