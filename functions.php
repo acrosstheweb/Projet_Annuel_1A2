@@ -316,9 +316,10 @@ function dd($var){
 function logout(){
     /*unset($_SESSION['userToken']);
     unset($_SESSION['userId']);*/
+    setcookie('FitEssMail', '', -1);
+    setcookie('FitEssPass', '', -1);
     atw_log($_SESSION['userId'], "Logout");
     session_destroy();
-    session_start();
 }
 /**
  * @throws Exception

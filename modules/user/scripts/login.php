@@ -1,9 +1,10 @@
 <?php
 require '../../../functions.php';
 
+$post_variables = (isset($_POST['login-remember'])) ? 3 : 2;
 if(
 
-    count($_POST) != 2 ||
+    count($_POST) != $post_variables ||
     empty($_POST['login-email']) ||
     empty($_POST['login-password'])
 
@@ -39,6 +40,10 @@ if($user === false){
         if($user['role'] < 1){
             setMessage('Connection', ['Vous n\'avez pas confirmé votre compte via le mail envoyé :)'], 'info');
         }else{
+            if(isset($_POST['login-remember'])){ // Se souvenir de moi pendant 7 jours
+                setcookie('FitEssMail', $email, time()+3600*24*30, '/', null, false, false);
+                setcookie('FitEssPass', $pwdInDb, time()+3600*24*30, '/', null, false, false);
+            }
             $changePwdQuery = $db->prepare('UPDATE RkU_USER SET changePassword = 0 WHERE id=:id');
             $changePwdQuery->execute(['id'=>$user['id']]);
             $_SESSION['userToken'] = setToken($user['id']);

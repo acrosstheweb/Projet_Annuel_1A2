@@ -211,6 +211,9 @@
 
                         <label for="login-password">Mot de passe : </label>
                         <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe" required="required">
+                        
+                        <label for="login-remember">Se souvenir de moi</label>
+                        <input type="checkbox" name="login-remember" id="login-remember">
 
                         <small class="form-text text-muted"><a href=<?=DOMAIN . "modules/user/vues/passwordForgotten.php" ?> style="float:right;">Mot de passe oublié ?</a></small>
                     </form>

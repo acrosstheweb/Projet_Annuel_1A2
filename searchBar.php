@@ -10,11 +10,16 @@ if (isset($_GET['q'])) {
 
 $db = database();
 
-$searchQuery = $db->query("SELECT title FROM RkU_QUESTION WHERE title like '%$data%'");
+$searchQuery = $db->query("SELECT title, description FROM RkU_TOPIC WHERE title like '%$data%' OR description like '%$data%'");
 
 if($searchQuery){
     $results = $searchQuery->fetchAll();
-    foreach ($results as $key => $result){
-        echo $result['title'];
+    if(!empty($results)){
+        foreach ($results as $key => $result){
+            echo $result['title'] . " - " . $result['description'] . "<br>";
+        }
+    }
+    else{
+        echo 'Aucun résultat';
     }
 }
