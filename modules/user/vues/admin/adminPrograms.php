@@ -7,9 +7,7 @@ require '../../../../functions.php';
     }
 
 require '../../../../header.php';
-Message('Delete');
-Message('Modify');
-Message('CreateUser');
+Message('delProgram');
 
 
 $pdo = database();
@@ -48,7 +46,7 @@ $results = $req->fetchAll();
                     <thead>
                         <tr>
                             <th>Illustration</th>
-                            <th>Nom du programme</th>
+                            <th onclick="sortColumn(0, 'programsTable')">Nom du programme</th>
                             <th class="d-none d-lg-table-cell">Contenu du programme</th>
                             <th>Action</th>
                         </tr>
@@ -67,37 +65,29 @@ $results = $req->fetchAll();
                             </td>
                             <td class="align-middle">
                                 <a href="<?= DOMAIN . 'modules/program/vues/modifyProgram.php?id=' . $lastProgramId ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
-                                <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#delProgramModal<?= $lastProgramId ?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
+                                <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#delProgramModal<?=$lastProgramId?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
                         
-                        <div class="modal" id="delProgramModal<?= $lastProgramId ?>" aria-hidden="true" aria-labelledby="delProgramModal-label" tabindex="-1">
+                        <div class="modal" id="delProgramModal<?=$lastProgramId?>" aria-hidden="true" aria-labelledby="delProgramModal-label" tabindex="-1">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="delProgramModal-label">Suppression du programme <?= $lastProgramId ?></h5>
+                                        <h5 class="modal-title" id="delProgramModal-label">Suppression du programme <?=$lastProgramId?></h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body row">
+                                        <h6>Voulez-vous vraiment supprimer le programme <?= $program['nameProgram'] ?> ?</h6>
                                         <div class="col-3"></div>
-                                        <form id="login-form" action=<?= DOMAIN . "modules/user/scripts/login.php"?> method="POST" class="col-6">
-                                            <label for="login-email">Adresse mail : </label>
-                                            <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail" required="required"><br>
-
-                                            <label for="login-password">Mot de passe : </label>
-                                            <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe" required="required">
-                                            
-                                            <label for="login-remember">Se souvenir de moi</label>
-                                            <input type="checkbox" name="login-remember" id="login-remember">
-
-                                            <small class="form-text text-muted"><a href=<?=DOMAIN . "modules/user/vues/passwordForgotten.php" ?> style="float:right;">Mot de passe oublié ?</a></small>
+                                        <form id="delProgram-form<?=$lastProgramId?>" action=<?= DOMAIN . "modules/program/scripts/delProgram.php?pId=$lastProgramId"?> method="POST" class="col-6">
+                                            <label for="delProgram-password<?=$lastProgramId?>">Mot de passe : </label>
+                                            <input class="form-control" type="password" name="delProgram-password" id="delProgram-password<?=$lastProgramId?>" placeholder="Mot de passe" required="required">
                                         </form>
                                         <div class="col-3"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
-                                        <button class="btn btn-secondary" data-bs-target="#register-modal" data-bs-toggle="modal">Inscription</button>
-                                        <button class="btn btn-primary" form="login-form">Connexion</button>
+                                        <button class="btn btn-primary" type='submit' form="delProgram-form<?=$lastProgramId?>">Supprimer le programme</button>
                                     </div>
                                 </div>
                             </div>
@@ -118,9 +108,33 @@ $results = $req->fetchAll();
                             </td>
                             <td class="align-middle">
                                 <a href="<?= DOMAIN . 'modules/program/vues/modifyProgram.php?id=' . $program['programId'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
-                                <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#delProgramModal"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
+                                <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#delProgramModal<?=$program['programId']?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
+
+                        <div class="modal" id="delProgramModal<?=$program['programId']?>" aria-hidden="true" aria-labelledby="delProgramModal-label" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="delProgramModal-label">Suppression du programme <?=$program['programId']?></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <h6>Voulez-vous vraiment supprimer le programme <?= $program['nameProgram'] ?> ?</h6>
+                                        <div class="col-3"></div>
+                                        <form id="delProgram-form<?=$program['programId']?>" action=<?= DOMAIN . "modules/program/scripts/delProgram.php?pId=" . $program['programId'] ?> method="POST" class="col-6">
+                                            <label for="delProgram-password<?=$program['programId']?>">Mot de passe : </label>
+                                            <input class="form-control" type="password" name="delProgram-password" id="delProgram-password<?=$program['programId']?>" placeholder="Mot de passe" required="required">
+                                        </form>
+                                        <div class="col-3"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
+                                        <button class="btn btn-primary" type='submit' form="delProgram-form<?=$program['programId']?>">Supprimer le programme</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </tbody>
                 </table>
                     
@@ -142,3 +156,5 @@ $results = $req->fetchAll();
 <?php
 include "../../../../footer.php";
 ?>
+
+<script src="<?= DOMAIN . 'js/admin-users.js'?>" crossorigin="anonymous"></script>

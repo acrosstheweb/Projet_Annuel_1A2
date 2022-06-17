@@ -14,6 +14,17 @@ search_trigger.addEventListener("click", function(){
     }
 });
 
+function getRootWebSitePath() // https://www.codeproject.com/Tips/591352/Get-WebSite-Root-Relative-Path-by-JavaScript
+{
+    var _location = document.location.toString();
+    var applicationNameIndex = _location.indexOf('/', _location.indexOf('://') + 3);
+    var applicationName = _location.substring(0, applicationNameIndex) + '/';
+    var webFolderIndex = _location.indexOf('/', _location.indexOf(applicationName) + applicationName.length);
+    var webFolderFullPath = _location.substring(0, webFolderIndex);
+
+    return webFolderFullPath;
+}
+
 // prototypage ajax
 function search(text){
     let searchBarResult = document.getElementById("__searchbar-results");
@@ -25,7 +36,7 @@ function search(text){
             }
         };
 
-        XML.open('GET', `searchBar.php?q=${text}`, true);
+        XML.open('GET', getRootWebSitePath()+`/searchBar.php?q=${text}`, true);
         XML.send();
     }else{
         searchBarResult.innerHTML = '';
