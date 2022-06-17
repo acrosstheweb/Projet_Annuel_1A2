@@ -42,13 +42,17 @@ if($user === false){
         }else{
             if(isset($_POST['login-remember'])){ // Se souvenir de moi pendant 7 jours
                 setcookie('FitEssMail', $email, time()+3600*24*30, '/', null, false, false);
-                setcookie('FitEssPass', $pwdInDb, time()+3600*24*30, '/', null, false, false);
+                $protectedPwdForCookie = openssl_encrypt($pwdInDb, "AES-256-CTR", '$pa-cle-encryption-atw$');
+                setcookie('FitEssPass', $protectedPwdForCookie, time()+3600*24*30, '/', null, false, false);
             }
-            $changePwdQuery = $db->prepare('UPDATE RkU_USER SET changePassword = 0 WHERE id=:id');
-            $changePwdQuery->execute(['id'=>$user['id']]);
+            $msg = 'Connexion réussie';
+            if($user['changePassword'] == 1){
+                $changePwdQuery = $db->prepare('UPDATE RkU_USER SET changePassword = 0 WHERE id=:id');
+                $changePwdQuery->execute(['id'=>$user['id']]);
+                $msg = 'Connexion réussie, nous vous conseillons de modifier le mot de passe par défaut que nous avons crée.';
+            }
             $_SESSION['userToken'] = setToken($user['id']);
             $_SESSION['userId'] = $user['id'];
-            $msg = ($user['changePassword'] == 0) ? 'Connexion réussie' : 'Connexion réussie, nous vous conseillons de modifier le mot de passe par défaut que nous avons crée.';
             setMessage('Connection', [$msg], 'success');
             atw_log($user['id'], "Connexion");
         }

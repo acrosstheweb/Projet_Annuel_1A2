@@ -313,11 +313,30 @@ function dd($var){
     die();
 }
 
+function connectCookie(){
+    if(!empty($_COOKIE['FitEssMail']) && !empty($_COOKIE['FitEssPass'])){
+        $db = database();
+        $userExistQuery = $db->prepare('SELECT id, password, role FROM RkU_USER WHERE email=:email');
+        $userExistQuery->execute([':email'=>$_COOKIE['FitEssMail']]);
+        $user = $userExistQuery->fetch();
+        if($user){
+            $pwdInDb = $user['password'];
+            $pwdDecryptFromCookie = openssl_decrypt($_COOKIE['FitEssPass'], "AES-256-CTR", '$pa-cle-encryption-atw$');
+            if($pwdDecryptFromCookie == $pwdInDb){
+                $_SESSION['userToken'] = setToken($user['id']);
+                $_SESSION['userId'] = $user['id'];
+                setMessage('Connection', ['Connecté grâce aux cookies'], 'success');
+                atw_log($user['id'], "Connexion");
+            }
+        }
+    }
+}
+
 function logout(){
     /*unset($_SESSION['userToken']);
     unset($_SESSION['userId']);*/
-    setcookie('FitEssMail', '', -1);
-    setcookie('FitEssPass', '', -1);
+    setcookie('FitEssMail', null, time()-3600, '/');unset($_COOKIE['FitEssMail']);
+    setcookie('FitEssPass', null, time()-3600, '/');unset($_COOKIE['FitEssPass']);
     atw_log($_SESSION['userId'], "Logout");
     session_destroy();
 }

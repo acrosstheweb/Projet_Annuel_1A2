@@ -2,6 +2,8 @@
     require_once 'functions.php';
     if(isConnected()){
         atw_log($_SESSION['userId'], "Visit");
+    }else{
+        connectCookie();
     }
 ?>
 <!DOCTYPE html>
