@@ -53,7 +53,12 @@ class Month {
     public function getWeeks(): int{
         $start = $this->getStartingDay();
         $end = (clone $start)->modify('+1 month -1 day');
-        $weeks = intval($end->format('W')) - intval($start->format('W')) + 1 ; // +1 car la numérotation des semaines ne commencent pas à 0
+        $startWeek = intval($start->format('W'));
+        $endWeek = intval($end->format('W'));
+        if($endWeek === 1){
+            $endWeek = intval((clone $end)->modify('- 7 days')->format('W')) + 1;
+        }
+        $weeks = $endWeek - $startWeek + 1 ; // +1 car la numérotation des semaines ne commencent pas à 0
 
         /* Pour le mois de janvier, si la semaine ne commence pas un lundi,
         la semaine de début est la dernière semaine de l'année précédente,
