@@ -122,7 +122,7 @@ if(!empty($_POST)){
         ]);
 
         setMessage('modifyEvent', ['Votre évènement à bien été mis à jour'], 'success');
-        header('Location: ../../vues/reservations.php');
+        header('Location: ../../../user/vues/admin/adminEvents.php');
         exit;
     }
     else{

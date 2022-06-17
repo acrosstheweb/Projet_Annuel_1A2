@@ -7,11 +7,13 @@ require '../../../../functions.php';
     }
 
 require '../../../../header.php';
+Message('modifyEvent');
+Message("Delete");
+Message("createEvent");
 
 $pdo = database();
 
 $req = $pdo->query("SELECT * FROM RkU_BOOKING");
-
 $results = $req->fetchAll();
 
 ?>
@@ -46,6 +48,11 @@ $results = $req->fetchAll();
                     <tbody>
             <?php
             foreach($results as $event){
+                $reqSport = $pdo->prepare("SELECT name FROM RkU_SPORT WHERE id=:id");
+                $reqSport->execute([
+                    'id'=>$event['sport']
+                ]);
+                $sportName = $reqSport->fetch();
             ?>
                         <tr>
                             <td class="align-middle"><?php echo $event['name'];?></td>
@@ -53,7 +60,7 @@ $results = $req->fetchAll();
                             <td class="align-middle"><?php echo $event['endDate'];?></td>
                             <td class="align-middle"><?php echo $event['description'];?></td>
                             <td class="align-middle"><?php echo $event['price'];?></td>
-                            <td class="align-middle"><?php echo $event['sport'];?></td>
+                            <td class="align-middle"><?php echo $sportName['name'];?></td>
                             <td class="align-middle"><?php echo $event['gym'];?></td>
                             <td class="align-middle">
                                 <a href="<?= DOMAIN . 'modules/calendar/vues/eventBO.php?id=' . $event['id'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>

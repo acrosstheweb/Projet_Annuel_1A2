@@ -106,7 +106,7 @@ if(!empty($_POST)){
         ]);
 
         setMessage('createEvent', ['Votre nouvel évènement a bien été créée'], 'success');
-        header('Location: ../../vues/reservations.php');
+        header('Location: ../../../user/vues/admin/adminEvents.php');
         exit;
     }
     else{
