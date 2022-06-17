@@ -425,7 +425,8 @@ CREATE TABLE `RkU_USER` (
   `endDateSub` date DEFAULT NULL,
   `renewalDate` date DEFAULT NULL,
   `nextPaymentDate` date DEFAULT NULL,
-  `token_confirm_inscription` char(17) DEFAULT NULL
+  `token_confirm_inscription` char(17) DEFAULT NULL,
+  `newsletter` int(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
