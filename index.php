@@ -11,6 +11,7 @@
     Message('updateMail');
     Message('updatePassword');
     Message('newPassword');
+    Message('newsletter');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>

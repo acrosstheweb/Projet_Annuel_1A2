@@ -47,3 +47,54 @@ function search(text){
         searchBarResult.style.display = 'none';
     }
 }
+
+
+// var modal = document.getElementById('register-modal');
+// var body = document.getElementsByTagName('body')[0];
+// var header = document.getElementsByTagName('header')[0];
+
+
+// let shown = 1;
+
+// function closeModal(){
+//     modal.style.display = 'none';
+//     modal.style.paddingLeft = "0px";
+//     modal.classList.add('show');
+//     modal.attributes.removeNamedItem('aria-hidden');
+//     modal.setAttribute('aria-modal', "true");
+//     modal.setAttribute('role', 'dialog');
+
+//     body.classList.add('modal-open');
+//     body.style.overflow = 'hidden';
+//     body.style.paddingRight = "17px";
+//     body.innerHTML += '<div class="modal-backdrop fade show"></div>';
+
+//     header.style.paddingRight = '4px';
+//     header.style.marginRight = 0;
+// }
+
+// function showModal(){
+//     if (window.location.href.indexOf("register-modal") > -1) {
+//         if (shown == 1){
+//             modal.style.display = 'block';
+//             modal.style.paddingLeft = "0px";
+//             modal.classList.add('show');
+//             modal.attributes.removeNamedItem('aria-hidden');
+//             modal.setAttribute('aria-modal', "true");
+//             modal.setAttribute('role', 'dialog');
+
+//             body.classList.add('modal-open');
+//             body.style.overflow = 'hidden';
+//             body.style.paddingRight = "17px";
+//             body.innerHTML += '<div class="modal-backdrop fade show"></div>';
+
+//             header.style.paddingRight = '4px';
+//             header.style.marginRight = 0;
+//         }
+//     }
+
+//     shown = 0;
+
+// }
+
+// showModal();

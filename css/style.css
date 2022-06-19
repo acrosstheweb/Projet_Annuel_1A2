@@ -572,3 +572,11 @@ table {
 #__modifyEmailButton {
     display: none;
 }
+
+/* NEWSLETTER */
+#__newsletterButton{
+    border-radius: 0;
+    position: fixed;
+    right: 0;
+    bottom: 5vh;
+}

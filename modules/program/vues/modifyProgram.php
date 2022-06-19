@@ -96,7 +96,7 @@ $counter = count($valuesResults);
         </div>
 
         <div class="row">
-            <div class="text-left my-4">
+            <div class="text-start my-4">
                 <a href="#" class="btn btn-primary" id="__addExercice">+ Ajouter un exercice</a>
             </div>
         </div>

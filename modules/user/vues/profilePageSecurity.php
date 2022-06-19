@@ -20,14 +20,11 @@ Message('updatePassword');
 <h2 class="aligned-title"> Mon profil </h2>
 <div class="container-fluid">
     <div class="row">
-        <div class="d-none col-2 d-md-flex justify-content-center">
-            <nav class="nav flex-column py-3">
-                <a class="nav-link active" href="profilePage.php">Mon Profil</a>
-                <a class="nav-link" aria-current="page" href="profilePageSecurity.php">Sécurité</a>
-                <a class="nav-link" href="#">jaaj 1</a>
-                <a class="nav-link disabled">jaaj 2</a>
-            </nav>
+
+        <div class="d-none col-2 mx-md-3 d-md-flex justify-content-center">
+            <?php include 'profilePageNavbar.php'; ?>
         </div>
+        
         <div class="col-12 col-md-8">
 
             <div class="row border-bottom py-3 mb-3">

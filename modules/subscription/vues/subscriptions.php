@@ -103,6 +103,7 @@ foreach($results as $subscription){
 }
 ?>
 
+</div>
 
 
 
