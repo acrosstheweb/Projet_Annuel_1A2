@@ -135,7 +135,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-9">
                             <div class="card __cardTablet">
-                                <img src="<?= DOMAIN . 'sources/img/ZUMBA.jpg'?>" class="card-img __classImage" alt="...">
+                                <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img __classImage" alt="...">
                                 <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                     <div class="__cardDescription">
                                         <div class="__cardDescriptionText">

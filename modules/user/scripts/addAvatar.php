@@ -27,12 +27,12 @@
 
 
     if (!(in_array($fileName, glob("sources/avatar/*.png")))){
-        $background = imagecreatefrompng(ABSOLUTE_PATH . 'sources\avatar\__' . $_POST['__avatarBackground']);
-        $face = imagecreatefrompng(ABSOLUTE_PATH . 'sources\avatar\__' . $_POST['__avatarColor']);
-        $eyes = imagecreatefrompng(ABSOLUTE_PATH . 'sources\avatar\__' . $_POST['__avatarEyes']);
-        $nose = imagecreatefrompng(ABSOLUTE_PATH . 'sources\avatar\__' . $_POST['__avatarNose']);
+        $background = imagecreatefrompng(ABSOLUTE_PATH . 'sources/avatar/__' . $_POST['__avatarBackground']);
+        $face = imagecreatefrompng(ABSOLUTE_PATH . 'sources/avatar/__' . $_POST['__avatarColor']);
+        $eyes = imagecreatefrompng(ABSOLUTE_PATH . 'sources/avatar/__' . $_POST['__avatarEyes']);
+        $nose = imagecreatefrompng(ABSOLUTE_PATH . 'sources/avatar/__' . $_POST['__avatarNose']);
         if (isset($_POST['__avatarGlasses'])){
-            $glasses = imagecreatefrompng(ABSOLUTE_PATH . 'sources\avatar\__' . $_POST['__avatarGlasses']);
+            $glasses = imagecreatefrompng(ABSOLUTE_PATH . 'sources/avatar/__' . $_POST['__avatarGlasses']);
         }
 
         $imageWidth = imagesx($background);

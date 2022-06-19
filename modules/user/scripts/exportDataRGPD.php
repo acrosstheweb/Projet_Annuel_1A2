@@ -39,11 +39,11 @@ $pdf->Cell(85,8,"$email", 1,1, 'C');
 
 $pdf->SetX(45);
 $pdf->Cell(50,8,'Adresse', 1,0, 'C');
-$pdf->Cell(85,8,"$address", 1,1, 'C');
+$pdf->Cell(85,8,utf8_decode($address), 1,1, 'C');
 
 $pdf->SetX(45);
 $pdf->Cell(50,8,'Ville', 1,0, 'C');
-$pdf->Cell(85,8,"$city", 1,1, 'C');
+$pdf->Cell(85,8,utf8_decode($city), 1,1, 'C');
 
 $pdf->SetX(45);
 $pdf->Cell(50,8,'Code postal', 1,0, 'C');

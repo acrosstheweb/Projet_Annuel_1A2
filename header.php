@@ -198,7 +198,7 @@
 
     </header>
 
-    <div class="modal" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
+    <div class="modal fade" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -230,7 +230,7 @@
         </div>
     </div>
 
-    <div class="modal" id="register-modal" aria-hidden="true" aria-labelledby="register-modal-label" tabindex="-1">
+    <div class="modal fade" id="register-modal" aria-hidden="true" aria-labelledby="register-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -334,5 +334,12 @@
         </nav>
     </section>
 
+<!-- <script>
+    if(window.location.href.indexOf("#register-modal")){
+        var registermodal = document.querySelector('#register-modal');
+        registermodal.style.display = "block";
+        console.log('modal ouverte');
+    }
+</script> -->
 <!-- <script src="js/user-slide.js"></script> -->
 <script src="<?= DOMAIN . 'js/searchbar.js'?>"></script>

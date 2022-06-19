@@ -116,7 +116,7 @@
                             </label>
                             <input type="text" class="form-control __profileInfoInput" name="profileEmail" id="profileEmail" value="<?php echo $user['email'] ?? '' ?>" required="required" disabled="disabled">
                             <br>
-                            <small class="form-text text-muted __profileInfoInput">La modification de l'adresse e-mail s'effectue dans l'onglet Sécurité</small>
+                            <small class="form-text text-muted ">La modification de l'adresse e-mail s'effectue dans l'onglet Sécurité</small>
                         </div>
 
                         <div class="col-6 mb-3">

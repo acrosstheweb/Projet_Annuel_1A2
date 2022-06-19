@@ -11,6 +11,7 @@ function jaaj() {
     for(let i = 0; i < profileInfoValue.length; i++){
         profileInfoValue[i].style.display = "none";
         profileInfoInput[i].style.display = "inline-block";
+        console.log(profileInfoInput[i]);
     }
     profileInfoModify_trigger.style.display = "none";
     profileInfoSubmit.style.display = "inline-block";

@@ -251,10 +251,10 @@ CREATE TABLE `RkU_PAYMENT` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rku_program`
+-- Table structure for table `RkU_PROGRAM`
 --
 
-CREATE TABLE `rku_program` (
+CREATE TABLE `RkU_PROGRAM` (
   `id` int(11) NOT NULL,
   `nameProgram` varchar(25) NOT NULL,
   `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -262,10 +262,10 @@ CREATE TABLE `rku_program` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `rku_program`
+-- Dumping data for table `RkU_PROGRAM`
 --
 
-INSERT INTO `rku_program` (`id`, `nameProgram`, `creationDate`, `illustration`) VALUES
+INSERT INTO `RkU_PROGRAM` (`id`, `nameProgram`, `creationDate`, `illustration`) VALUES
 (1, 'Pull #1', '2022-05-27 01:01:39', 'sources/img/pull1.jpg'),
 (2, 'Push #1', '2022-05-28 01:01:39', 'sources/img/push1.jpg'),
 (3, 'Legs #1', '2022-05-29 01:01:39', 'sources/img/legs1.jpg'),
@@ -434,7 +434,7 @@ CREATE TABLE `RkU_USER` (
 --
 
 INSERT INTO `RkU_USER` (`id`, `firstName`, `lastName`, `email`, `civility`, `avatar`, `password`, `address`, `city`, `zipCode`, `birthday`, `fitcoin`, `role`, `registrationDate`, `lastUpdate`, `lastPasswordUpdate`, `changePassword`, `token`, `subscription`, `startDateSub`, `endDateSub`, `renewalDate`, `nextPaymentDate`, `token_confirm_inscription`) VALUES
-(2, 'Tom', 'BOURLARD', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 0, 2, '2022-06-16 13:40:31', '2022-06-16 20:31:26', '2022-06-16 20:31:26', 0, '01bbae139ba269($1', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6');
+(2, 'Jean', 'BOMBEUR', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 0, 2, '2022-06-16 13:40:31', '2022-06-16 20:31:26', '2022-06-16 20:31:26', 0, '01bbae139ba269($1', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6');
 
 --
 -- Indexes for dumped tables
@@ -483,9 +483,9 @@ ALTER TABLE `RkU_PAYMENT`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rku_program`
+-- Indexes for table `RkU_PROGRAM`
 --
-ALTER TABLE `rku_program`
+ALTER TABLE `RkU_PROGRAM`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -565,9 +565,9 @@ ALTER TABLE `RkU_PAYMENT`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `rku_program`
+-- AUTO_INCREMENT for table `RkU_PROGRAM`
 --
-ALTER TABLE `rku_program`
+ALTER TABLE `RkU_PROGRAM`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
