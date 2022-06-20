@@ -2198,3 +2198,7 @@ UserID : 2 - 19/06/2022 19:06:42 - Logout logout.php - REMOTE_ADDR : ::1
 UserID : 2 - 19/06/2022 19:47:27 - Connexion login.php - REMOTE_ADDR : ::1
 UserID : 2 - 19/06/2022 19:47:27 - Visit index.php - REMOTE_ADDR : ::1
 UserID : 2 - 19/06/2022 19:47:45 - Visit index.php - REMOTE_ADDR : ::1
+UserID : 4 - 20/06/2022 09:56:58 - Visit index.php - REMOTE_ADDR : ::1
+UserID : 4 - 20/06/2022 10:00:15 - Visit index.php - REMOTE_ADDR : ::1
+UserID : 4 - 20/06/2022 10:09:14 - Visit index.php - REMOTE_ADDR : ::1
+UserID : 4 - 20/06/2022 10:09:18 - Logout logout.php - REMOTE_ADDR : ::1

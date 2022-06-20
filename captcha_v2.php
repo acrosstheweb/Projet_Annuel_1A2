@@ -37,7 +37,7 @@ shuffle($combinaison);
 // var_dump($pathArray);
 ?>
 
-<div class="container-fluid" style="max-width: 660px">
+<div class="container-fluid" style="max-width: 660px;justify-content: center;display: grid;">
     <!--<form id="verifyCaptcha" method="POST" action="<?/*= DOMAIN . 'verifyCaptcha.php'*/?>">-->
         <?php 
             for ($i = 0; $i < 9; $i++){ 
