@@ -23,7 +23,7 @@ if(!empty($_POST)){
         $price = htmlspecialchars(trim($_POST['eventPrice']));
         $sport = htmlspecialchars(trim($_POST['eventSport']));
         $gym = htmlspecialchars(trim($_POST['eventGym']));
-        $id = $_GET['eventId'];
+        $id = htmlspecialchars($_GET['eventId']);
         
         if(empty($name)){
             $valid = false;

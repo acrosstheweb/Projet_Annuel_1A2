@@ -1,9 +1,9 @@
 <?php
 require '../../../functions.php';
 
-$idTopic = $_GET['idTopic'];
-$idQuestion = $_GET['idQuestion'];
-$status = $_GET['status'];
+$idTopic = htmlspecialchars($_GET['idTopic']);
+$idQuestion = htmlspecialchars($_GET['idQuestion']);
+$status = htmlspecialchars($_GET['status']);
 
 if(!empty($_POST)){
     extract($_POST);

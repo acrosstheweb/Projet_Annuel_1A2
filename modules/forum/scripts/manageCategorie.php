@@ -5,7 +5,7 @@ $title = htmlspecialchars(trim($_POST['modify-title']));
 $description = htmlspecialchars(trim($_POST['modify-description']));
 $order = htmlspecialchars(trim($_POST['modify-order']));
 $image = $_POST['modify-image'];
-$id = $_GET['idTopic'];
+$id = htmlspecialchars($_GET['idTopic']);
 $InputPwd = $_POST['modify-adminPasswordInput'];
 
 if(

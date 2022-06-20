@@ -1,7 +1,7 @@
 <?php
 require '../../../functions.php';
 
-$idTopic = $_GET['idTopic'];
+$idTopic = htmlspecialchars($_GET['idTopic']);
 
 if(empty($_POST['delete-userPasswordInput'])){
     header('Location: error404.php');

@@ -33,8 +33,6 @@
 
 <h1><?= $event['name']; ?></h1>
 
-<a href="../scripts/Calendar/EventInscription.php?eventId=<?= $event['id'] ?>">Inscris toi</a>
-
 <ul>
     <li>Date : <?= (new \DateTime($event['startDate']))->format('d/m/Y'); ?></li>
     <li>Heure de démarrage : <?=  (new \DateTime($event['startDate']))->format('H:i'); ?></li>
@@ -46,4 +44,3 @@
     <li>Sport sélectionné : <?= $sportName['name']; ?></li>
     <li>Salle de sport : <?= $event['gym']; ?></li>
 </ul>
-
