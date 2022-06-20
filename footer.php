@@ -1,3 +1,8 @@
+<?php
+    include_once 'functions.php';
+    $isConnected = isConnected();
+?>
+
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-muted">© 2022 Fitness Essential, Inc</p>
@@ -16,7 +21,7 @@
 </div>
 
 <?php
-    if (isConnected()){
+    if ($isConnected){
         $db = database();
         $getUserInfoQuery = $db->prepare("SELECT newsletter FROM RkU_USER WHERE id=:id");
         $getUserInfoQuery->execute(['id'=>$_SESSION['userId']]);
@@ -29,7 +34,7 @@
         }
     }
     
-    if (!isConnected() || $show == 1){
+    if (!$isConnected || $show == 1){
 ?>
 <button type="button" id="__newsletterButton" class="btn btn-secondary m-1" data-bs-toggle="modal" data-bs-target="#newsletterModal"><i class="fa-solid fa-envelope"></i></button>
 
@@ -50,10 +55,16 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer justify-content-between">
-                <div>
-                    <button class="btn btn-danger">Ne plus afficher</button>
-                </div>
+            <div class="modal-footer <?php echo ($isConnected) ? 'justify-content-between' : '' ?>">
+                <?php
+                    if ($isConnected){
+                ?>
+                        <div>
+                            <button class="btn btn-danger">Ne plus afficher</button>
+                        </div>
+                <?php
+                    }
+                ?>
                 <div>
                     <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal">Annuler</button>
                     <button class="btn btn-primary" form="__newsletterForm" type="submit">S'inscrire</button>
