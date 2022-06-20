@@ -15,14 +15,14 @@ if(!empty($_POST)){
 
     if(isset($_POST['modifyEvent'])){
         $date = $_POST['eventDate'];
-        $name = trim($_POST['eventName']);
-        $description = trim($_POST['eventDescription']);
+        $name = htmlspecialchars(trim($_POST['eventName']));
+        $description = htmlspecialchars(trim($_POST['eventDescription']));
         $date = $_POST['eventDate'];
         $start = DateTime::createFromFormat('Y-m-d H:i', $date . ' ' . $_POST['eventStart'])->format('Y-m-d H:i:s');
         $end = DateTime::createFromFormat('Y-m-d H:i', $date . ' ' . $_POST['eventEnd'])->format('Y-m-d H:i:s');
-        $price = $_POST['eventPrice'];
-        $sport = $_POST['eventSport'];
-        $gym = $_POST['eventGym'];
+        $price = htmlspecialchars(trim($_POST['eventPrice']));
+        $sport = htmlspecialchars(trim($_POST['eventSport']));
+        $gym = htmlspecialchars(trim($_POST['eventGym']));
         $id = $_GET['eventId'];
         
         if(empty($name)){

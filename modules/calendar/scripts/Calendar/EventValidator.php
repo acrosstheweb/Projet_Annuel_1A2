@@ -15,13 +15,13 @@ if(!empty($_POST)){
 
     if(isset($_POST['createEvent'])){
         $date = $_POST['eventDate'];
-        $name = trim($_POST['eventName']);
-        $description = trim($_POST['eventDescription']);
+        $name = htmlspecialchars(trim($_POST['eventName']));
+        $description = htmlspecialchars(trim($_POST['eventDescription']));
         $date = $_POST['eventDate'];
         $start = DateTime::createFromFormat('Y-m-d H:i', $date . ' ' . $_POST['eventStart'])->format('Y-m-d H:i:s');
         $end = DateTime::createFromFormat('Y-m-d H:i', $date . ' ' . $_POST['eventEnd'])->format('Y-m-d H:i:s');
-        $price = $_POST['eventPrice'];
-        $sport = $_POST['eventSport'];
+        $price = htmlspecialchars(trim($_POST['eventPrice']));
+        $sport = htmlspecialchars(trim($_POST['eventSport']));
         $gym = $_POST['eventGym'];
         
         if(empty($name)){
@@ -106,7 +106,7 @@ if(!empty($_POST)){
         ]);
 
         setMessage('createEvent', ['Votre nouvel évènement a bien été créée'], 'success');
-        header('Location: ../../../user/vues/admin/adminEvents.php');
+        header('Location: ../../../user/vues/admin/adminEvents.php');)(
         exit;
     }
     else{

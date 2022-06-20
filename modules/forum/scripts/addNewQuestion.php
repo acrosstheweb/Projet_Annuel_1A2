@@ -10,9 +10,9 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['createQuestion'])){
-        $question = $_POST['question'];
-        $content = $_POST['content'];
-        $idTopic = $_GET['idTopic'];
+        $question = htmlspecialchars(trim($_POST['question']));
+        $content = htmlspecialchars(trim($_POST['content']));
+        $idTopic = htmlspecialchars(trim($_GET['idTopic']));
         
         if(empty($question)){
             $valid = false;

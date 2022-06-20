@@ -7,12 +7,12 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['manageSubscription'])){
-        $name = trim($_POST['modify-name']);
-        $content = trim($_POST['modify-content']);
+        $name = htmlspecialchars(trim($_POST['modify-name']));
+        $content = htmlspecialchars(trim($_POST['modify-content']));
         $price = $_POST['modify-price'];
-        $firstAttribut = trim($_POST['modify-firstAttribut']);
-        $secondAttribut = trim($_POST['modify-secondAttribut']);
-        $thirdAttribut = trim($_POST['modify-thirdAttribut']);
+        $firstAttribut = htmlspecialchars(trim($_POST['modify-firstAttribut']));
+        $secondAttribut = htmlspecialchars(trim($_POST['modify-secondAttribut']));
+        $thirdAttribut = htmlspecialchars(trim($_POST['modify-thirdAttribut']));
         $idSubscription = $_GET['idSubscription'];
         $InputPwd = $_POST['modify-adminPasswordInput'];
 

@@ -2,9 +2,9 @@
 require '../../../functions.php';
 
 
-$idTopic = $_GET['idTopic'];
-$idQuestion = $_GET['idQuestion'];
-$status = $_GET['status'];
+$idTopic = htmlspecialchars(trim($_GET['idTopic']));
+$idQuestion = htmlspecialchars(trim($_GET['idQuestion']));
+$status = htmlspecialchars(trim($_GET['status']));
 
 if(empty($_POST['delete-userPasswordInput'])){
     header('Location: error404.php');

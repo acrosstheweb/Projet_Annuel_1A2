@@ -14,11 +14,11 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['createCategorie'])){
-        $categorie = trim($_POST['categorieName']);
-        $description = trim($_POST['categorieDescription']);
-        $order = trim($_POST['categorieOrder']);
-        $tempNameImage = trim($_FILES['categorieImage']['tmp_name']);
-        $nameImage = trim($_FILES['categorieImage']['name']);
+        $categorie = htmlspecialchars(trim($_POST['categorieName']));
+        $description = htmlspecialchars(trim($_POST['categorieDescription']));
+        $order = htmlspecialchars(trim($_POST['categorieOrder']));
+        $tempNameImage = htmlspecialchars(trim($_FILES['categorieImage']['tmp_name']));
+        $nameImage = htmlspecialchars(trim($_FILES['categorieImage']['name']));
         $typeImage = $_FILES['categorieImage']['type'];
         $type = ['image/png', 'image/jpg', 'image/jpeg'];
 

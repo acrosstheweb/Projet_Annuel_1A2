@@ -11,7 +11,7 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['addComment']))
-        $content = trim($_POST['content']);
+        $content = htmlspecialchars(trim($_POST['content']));
 
     if(empty($content)){
         $valid = false;

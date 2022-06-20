@@ -10,8 +10,8 @@ if(!empty($_POST)){
     $errors = [];
 
     if(isset($_POST['modifySport'])){
-        $name = trim($_POST['sportName']);
-        $description = trim($_POST['sportDescription']);
+        $name = htmlspecialchars(trim($_POST['sportName']));
+        $description = htmlspecialchars(trim($_POST['sportDescription']));
         $id = $_GET['sportId'];
         
         if(empty($name)){
