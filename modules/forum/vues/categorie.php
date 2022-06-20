@@ -11,11 +11,11 @@
     
     $pdo = database();
 
-    $req = $pdo->query("SELECT q.*, DATE_FORMAT(q.creationDate, ' le %d/%m/%Y à %Hh%i') as creationDate, U.firstname, U.lastname
+    $req = $pdo->query("SELECT Q.*, DATE_FORMAT(Q.creationDate, ' le %d/%m/%Y à %Hh%i') as creationDate, U.firstname, U.lastname
                             FROM RkU_QUESTION Q
                             LEFT JOIN RkU_USER U ON Q.userID = U.id
-                            WHERE q.topic = $idTopic
-                            ORDER BY q.creationDate DESC",
+                            WHERE Q.topic = $idTopic
+                            ORDER BY Q.creationDate DESC",
                             );
 
     $results = $req->fetchAll();

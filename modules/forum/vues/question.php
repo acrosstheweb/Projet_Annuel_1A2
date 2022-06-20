@@ -21,11 +21,11 @@
 
     $pdo = database();
 
-    $req = $pdo->query("SELECT q.*, DATE_FORMAT(q.creationDate, ' le %d/%m/%Y à %Hh%i') as creationDate, U.firstname
+    $req = $pdo->query("SELECT Q.*, DATE_FORMAT(Q.creationDate, ' le %d/%m/%Y à %Hh%i') as creationDate, U.firstname
                             FROM RkU_QUESTION Q
                             LEFT JOIN RkU_USER U ON Q.userID = U.id
-                            WHERE q.topic = $idTopic AND q.id = $idQuestion
-                            ORDER BY q.creationDate DESC"
+                            WHERE Q.topic = $idTopic AND Q.id = $idQuestion
+                            ORDER BY Q.creationDate DESC"
                         );
 
     $results = $req->fetch();
@@ -37,11 +37,11 @@
       }  
 
     
-    $reqComments = $pdo->query("SELECT m.*, DATE_FORMAT(m.dateSend, ' le %d/%m/%Y à %Hh%i') as dateSend, U.firstname, U.lastname
+    $reqComments = $pdo->query("SELECT M.*, DATE_FORMAT(M.dateSend, ' le %d/%m/%Y à %Hh%i') as dateSend, U.firstname, U.lastname
                 FROM RkU_MESSAGE M
                 LEFT JOIN RkU_USER U ON M.userId = U.id
                 WHERE M.question = $idQuestion
-                ORDER BY m.dateSend"
+                ORDER BY M.dateSend"
                                         );
     
     $resultsComments = $reqComments->fetchAll();
