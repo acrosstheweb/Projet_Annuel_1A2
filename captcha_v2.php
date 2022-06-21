@@ -22,22 +22,16 @@ for ($i = 0; $i < 3; $i++){
 
         imagejpeg($dst_image, ABSOLUTE_PATH . "sources/captcha/1-".$i."_".$j.".jpeg");
 
-        // array_push($pathArray, [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"]);
         $pathArray[$combinaison[$tileId]] = [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"];
         $tileId++;
     }
 }
-// echo '<pre>';
-// var_dump($combinaison);
-// echo '<Br>';
-// var_dump($pathArray);
+
 $_SESSION['captcha'] = $combinaison;
 shuffle($combinaison);
-// echo '<pre>';
-// var_dump($pathArray);
 ?>
 
-<div class="container-fluid" style="max-width: 660px">
+<div class="container-fluid" id="__captcha">
     <!--<form id="verifyCaptcha" method="POST" action="<?/*= DOMAIN . 'verifyCaptcha.php'*/?>">-->
         <?php 
             for ($i = 0; $i < 9; $i++){ 

@@ -379,7 +379,9 @@ table {
 }
 
 .__captcha {
-    width: 600px;
+    max-width: 660px;
+    display: grid;
+    justify-content: center;
 }
 
 
