@@ -87,6 +87,12 @@
                 <input type="number" name="eventGym" id="eventGym" class="form-control" value="<?= $event['gym']; ?>">
             </div>
         </div>
+        <div class="row my-3">
+            <div class="form-group">
+                <label for="eventPlaces">Nombre de places</label>
+                <input type="number" name="eventPlaces" id="eventPlaces" class="form-control" value="<?= $event['places']; ?>">
+            </div>
+        </div>
         
         <div class="row my-3">
             <div class="form-group">

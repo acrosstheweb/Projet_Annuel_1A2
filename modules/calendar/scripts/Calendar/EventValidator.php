@@ -23,6 +23,8 @@ if(!empty($_POST)){
         $price = htmlspecialchars(trim($_POST['eventPrice']));
         $sport = htmlspecialchars(trim($_POST['eventSport']));
         $gym = $_POST['eventGym'];
+        $places = htmlspecialchars(trim($_POST['eventPlaces']));
+
         
         if(empty($name)){
             $valid = false;
@@ -71,6 +73,11 @@ if(!empty($_POST)){
             $errors = ("Il faut ajouter un prix");
         }
 
+        if(empty($places)){
+            $valid = false;
+            $errors = ("Il faut ajouter un nombre de places");
+        }
+
         if(empty($sport)){
             $valid = false;
             $errors = ("Il faut ajouter un sport");
@@ -90,9 +97,9 @@ if(!empty($_POST)){
     //insertion base de données si valide à faire
     if ($valid) {
     
-        $insertEventQuery = $pdo->prepare("INSERT INTO RkU_BOOKING (name, description, startDate, endDate, status, price, sport, gym)
+        $insertEventQuery = $pdo->prepare("INSERT INTO RkU_BOOKING (name, description, startDate, endDate, status, price, sport, gym, places)
                 VALUES 
-                (:name, :description, :startDate, :endDate, :status, :price, :sport, :gym)");
+                (:name, :description, :startDate, :endDate, :status, :price, :sport, :gym, :places)");
 
         $insertEventQuery->execute([
             'name'=>$name,
@@ -102,11 +109,12 @@ if(!empty($_POST)){
             'status'=>1,
             'price'=>$price,
             'sport'=>$sport,
-            'gym'=>$gym
+            'gym'=>$gym,
+            'places'=>$places
         ]);
 
         setMessage('createEvent', ['Votre nouvel évènement a bien été créée'], 'success');
-        header('Location: ../../../user/vues/admin/adminEvents.php');)(
+        header('Location: ../../../user/vues/admin/adminEvents.php');
         exit;
     }
     else{

@@ -76,9 +76,17 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="eventDescription">Description</label>
-                <textarea name="eventDescription" id="eventDescription" class="form-control" required"></textarea>
+            <div class="row my-3">
+                <div class="form-group">
+                    <label for="eventDescription">Description</label>
+                    <textarea name="eventDescription" id="eventDescription" class="form-control" required"></textarea>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="form-group">
+                    <label for="eventPlaces">Nombre de places</label>
+                    <input type="number" name="eventPlaces" id="eventPlaces" class="form-control" value="<?= $event['places']; ?>">
+                </div>
             </div>
 
             <div class="text-center mt-4">

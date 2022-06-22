@@ -20,6 +20,8 @@
      }
 
     require '../../../header.php';
+    Message("inscriptionEvent");
+    Message("eventDesinscription");
 
     $pdo = database();
 
@@ -28,19 +30,23 @@
         'id'=>$event['sport']
     ]);
     $sportName = $req->fetch();
-
     ?>
 
-<h1><?= $event['name']; ?></h1>
+<h1 align="center"><?= $event['name']; ?></h1>
 
-<ul>
-    <li>Date : <?= (new \DateTime($event['startDate']))->format('d/m/Y'); ?></li>
-    <li>Heure de démarrage : <?=  (new \DateTime($event['startDate']))->format('H:i'); ?></li>
-    <li>Heure de fin : <?=  (new \DateTime($event['endDate']))->format('H:i'); ?></li>
-    <li>Description : <br>
-    <?= $event['description']; ?>
-    </li>
-    <li>Prix : <?= $event['price'] ?> fitcoins</li>
-    <li>Sport sélectionné : <?= $sportName['name']; ?></li>
-    <li>Salle de sport : <?= $event['gym']; ?></li>
-</ul>
+<div class="container">
+    <ul>
+        <li>Date : <?= (new \DateTime($event['startDate']))->format('d/m/Y'); ?></li>
+        <li>Heure de démarrage : <?=  (new \DateTime($event['startDate']))->format('H:i'); ?></li>
+        <li>Heure de fin : <?=  (new \DateTime($event['endDate']))->format('H:i'); ?></li>
+        <li>Description : <br>
+        <?= $event['description']; ?>
+        </li>
+        <li>Prix : <?= $event['price'] ?> fitcoins</li>
+        <li>Sport sélectionné : <?= $sportName['name']; ?></li>
+        <li>Salle de sport : <?= $event['gym']; ?></li>
+        <li>Nombre de places : <?= $event['places'] ?></li>
+    </ul>
+    <a href="../scripts/Calendar/EventInscription.php?eventId=<?= $event['id'] ?>"><button type = "button" >S'inscrire</button></a>
+    <a href="../scripts/Calendar/EventDesinscription.php?eventId=<?= $event['id'] ?>"><button type = "button" >Se désinscrire</button></a>
+</div>

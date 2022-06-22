@@ -24,6 +24,8 @@ if(!empty($_POST)){
         $sport = htmlspecialchars(trim($_POST['eventSport']));
         $gym = htmlspecialchars(trim($_POST['eventGym']));
         $id = htmlspecialchars($_GET['eventId']);
+        $places = htmlspecialchars(trim($_POST['eventPlaces']));
+
         
         if(empty($name)){
             $valid = false;
@@ -72,6 +74,11 @@ if(!empty($_POST)){
             $errors = ("Il faut ajouter un prix");
         }
 
+        if(empty(places)){
+            $valid = false;
+            $errors = ("Il faut ajouter un nombre de places");
+        }
+
         if(empty($sport)){
             $valid = false;
             $errors = ("Il faut ajouter un prix");
@@ -106,7 +113,7 @@ if(!empty($_POST)){
     if ($valid) {
     
         $modifyEventQuery = $pdo->prepare("UPDATE RkU_BOOKING SET name=:name, description=:description, startDate=:startDate,
-                                        endDate=:endDate, status=:status, price=:price, sport=:sport, gym=:gym
+                                        endDate=:endDate, status=:status, price=:price, sport=:sport, gym=:gym, places=:places
                                         WHERE id=:id");
 
         $modifyEventQuery->execute([
@@ -118,6 +125,7 @@ if(!empty($_POST)){
             'price'=>$price,
             'sport'=>$sport,
             'gym'=>$gym,
+            'places'=>$places,
             'id'=>$id
         ]);
 
