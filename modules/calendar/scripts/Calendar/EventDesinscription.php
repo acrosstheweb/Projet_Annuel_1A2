@@ -26,7 +26,7 @@ $participateReq->execute([
 $isParticipated = $participateReq->fetch()['userId'];
 
 if(!isConnected()){
-    setMessage('inscriptionEvent', ['Vous n\'êtes pas connecté, merci de vous connecter pour vous désinscrire (si vous vous êtes inscrit)'],'danger');
+    setMessage('eventDesinscription', ['Vous n\'êtes pas connecté, merci de vous connecter pour vous désinscrire (si vous vous êtes inscrit)'],'danger');
     header('Location: ../../vues/eventUser.php?id=' . $event['id']);
     die();
 }
