@@ -50,7 +50,7 @@ else{
             'userId'=>$userId
         ]);
 
-        setMessage('eventDesinscription', ['Vous êtes bien désinscrit'],'danger');
+        setMessage('eventDesinscription', ['Vous êtes bien désinscrit'],'success');
         header('Location: ../../vues/eventUser.php?id=' . $event['id']);
         die();
     }
