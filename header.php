@@ -61,7 +61,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "gyms");
-                                                        } ?>" href="<?= DOMAIN . 'gyms.php'?>">Salles</a>
+                                                        } ?>" href="<?= DOMAIN . 'modules/gym/vues/gyms.php'?>">Salles</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
