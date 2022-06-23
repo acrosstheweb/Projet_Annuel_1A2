@@ -5,7 +5,7 @@ if(!isConnected()){
     die();
 }
 $title = "Fitness Essential - Page profil Sécurité";
-$content = "Profil utilisateur";
+$content = "Sécurité";
 
 require '../../../header.php';
 $db = database();
@@ -16,8 +16,20 @@ Message('DeleteUser');
 Message('updateMail');
 Message('updatePassword');
 ?>
+<div class="container-fluid d-md-none">
+    <div class="row __profileDropdown">
+        <div class="dropdown d-grid gap-2">
+            <button class="btn dropdown-toggle text-light" type="button" id="__profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $content ?>
+            </button>
+            <ul class="dropdown-menu justify-content-center __profileDropdownMenu text-light" aria-labelledby="dropdownMenuButton1">
+                <?php include 'profilePageNavbar.php'; ?>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<h2 class="aligned-title"> Mon profil </h2>
+<h2 class="aligned-title d-none d-md-block"> Sécurité </h2>
 <div class="container-fluid">
     <div class="row">
 
@@ -27,44 +39,34 @@ Message('updatePassword');
         
         <div class="col-12 col-md-8">
 
-            <div class="row border-bottom py-3 mb-3">
-                <div class="col-8">
-                    <p class="d-flex align-items-start fw-bold fs-3">
-                        <?php
-                        echo isset($user['firstName']) && isset($user['lastName']) ? $user['firstName'] . ' ' . $user['lastName'] : ''
-                        ?>
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                    <div class="row">
-                        <div class="col-6 mb-3" id="__profileSecEmailGroup">
-                            <form id="updateEmail" method="POST" action="../scripts/updateMail.php">
-                                <label for="__profileSecMailInput" class="form-label">
-                                    <p class="fw-bold my-0 __profileInfoLabel">Adresse e-mail</p>
-                                    <p id="__profileSecMailValue" class="my-0"> <?= $user['email'] ?? '' ?> </p>
-                                    <a href="#" class="link-primary" id="__profileSecModifyEmail">Modifier mon adresse e-mail</a>
-                                </label>
-                                <input type="text" class="form-control" id="__profileSecMailInput" name="profileEmail" value="<?= $user['email'] ?? '' ?>" required="required">
-                                <br><small class="form-text text-muted">/!\ Une fois l'adresse changée vous serez déconnecté et devrez obligatoirement confirmer par mail pour pouvoir vous reconnecter</small>
-                            </form>
-                        </div>
-
-                        <div class="col-6 mb-3" id="__profileSecPasswordGroup">
-                            <label for="__profileSecPasswordInput" class="form-label">
-                                <p class="fw-bold my-0 __profileInfoLabel">Mot de passe</p>
-                                <p id="__profileSecPasswordValue" class="my-0"> ************** </p>
-                                <a href="#" class="link-primary" id="__profileSecModifyPassword" data-bs-toggle="modal" data-bs-target="#modifyPasswordModal">Modifier mon mot de passe</a>
+            <div class="row mt-3">
+                <div class="row">
+                    <div class="col-12 col-md-5 m-3" id="__profileSecEmailGroup">
+                        <form id="updateEmail" method="POST" action="../scripts/updateMail.php">
+                            <label for="__profileSecMailInput" class="form-label">
+                                <p class="fw-bold my-0 __profileInfoLabel text-uppercase">Adresse e-mail</p>
+                                <p id="__profileSecMailValue" class="my-0"> <?= $user['email'] ?? '' ?> </p>
+                                <a href="#" class="link-primary" id="__profileSecModifyEmail">Modifier mon adresse e-mail</a>
                             </label>
-                        </div>
+                            <input type="text" class="form-control" id="__profileSecMailInput" name="profileEmail" value="<?= $user['email'] ?? '' ?>" required="required">
+                            <br><small class="form-text text-muted">/!\ Une fois l'adresse changée vous serez déconnecté et devrez obligatoirement confirmer par mail pour pouvoir vous reconnecter</small>
+                        </form>
                     </div>
-                    <span id="__buttonGroup">
-                        <button id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#deleteUserModal">Supprimer mon compte</button>
-                        <a href="<?= DOMAIN . 'modules/user/scripts/exportDataRGPD.php'?>" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
-                        <a href="" class="btn btn-secondary mt-5" id="__profileSecCancel"">Annuler</a>
-                        <button class="btn btn-primary mt-5" id="__modifyEmailButton" data-bs-toggle="modal" data-bs-target="#modifyEmailModal">Modifier adresse e-mail</button>
-                    </span>
+
+                    <div class="col-12 col-md-5 m-3" id="__profileSecPasswordGroup">
+                        <label for="__profileSecPasswordInput" class="form-label">
+                            <p class="fw-bold my-0 __profileInfoLabel text-uppercase">Mot de passe</p>
+                            <p id="__profileSecPasswordValue" class="my-0"> ************** </p>
+                            <a href="#" class="link-primary" id="__profileSecModifyPassword" data-bs-toggle="modal" data-bs-target="#modifyPasswordModal">Modifier mon mot de passe</a>
+                        </label>
+                    </div>
+                </div>
+                <span id="__buttonGroup" class="text-end">
+                    <a href="<?= DOMAIN . 'modules/user/scripts/exportDataRGPD.php'?>" id="__profileExportDataRGPD" target="_blank" class="btn btn-secondary mt-5">Export données RGPD</a>
+                    <button id="__profileDeleteAccount" class="btn btn-danger mt-5" data-bs-toggle="modal" data-bs-target="#deleteUserModal">Supprimer mon compte</button>
+                    <a href="" class="btn btn-secondary mt-5" id="__profileSecCancel">Annuler</a>
+                    <button class="btn btn-primary mt-5" id="__modifyEmailButton" data-bs-toggle="modal" data-bs-target="#modifyEmailModal">Modifier adresse e-mail</button>
+                </span>
             </div>
 
         </div>
@@ -151,7 +153,7 @@ Message('updatePassword');
             <div class="modal-body">
                 <div class="deleteFormInfo">
                     <h5>Vous êtes sur le point de supprimer votre compte :</h5>
-                    <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer !?</p>
+                    <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir le supprimer ?!</p>
                 </div>
                 <form id="deluserForm" method="POST" action="../scripts/userDel.php">
                     <div class="row deletePassword">
@@ -170,9 +172,6 @@ Message('updatePassword');
         </div>
     </div>
 </div>
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <?php
 include '../../../footer.php';

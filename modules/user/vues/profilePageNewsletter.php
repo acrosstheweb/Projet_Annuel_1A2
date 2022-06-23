@@ -18,6 +18,18 @@
     $getNewsletterStatusQuery->execute(['id'=>$_SESSION['userId']]);
     $newsletterStatus = $getNewsletterStatusQuery->fetch();
 ?>
+<div class="container-fluid d-md-none">
+    <div class="row __profileDropdown">
+        <div class="dropdown d-grid gap-2">
+            <button class="btn dropdown-toggle text-light" type="button" id="__profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $content ?>
+            </button>
+            <ul class="dropdown-menu justify-content-center __profileDropdownMenu text-light" aria-labelledby="dropdownMenuButton1">
+                <?php include 'profilePageNavbar.php'; ?>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <h2 class="aligned-title my-3"> Mes préférences newsletter </h2>
 <div class="container-fluid">
