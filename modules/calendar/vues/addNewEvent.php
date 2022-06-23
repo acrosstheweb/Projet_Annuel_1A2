@@ -12,8 +12,11 @@
 
     $pdo = database();
                         
-    $query = $pdo->query("SELECT id, name FROM RkU_SPORT");
-    $results = $query->fetchAll();
+    $querySport = $pdo->query("SELECT id, name FROM RkU_SPORT");
+    $resultsSport = $querySport->fetchAll();
+    
+    $queryGym = $pdo->query("SELECT id, name FROM RkU_GYMS");
+    $resultsGym = $queryGym->fetchAll();
 
 ?>
 
@@ -47,7 +50,7 @@
                     <select class="form-select" name="eventSport" id="eventSport"><br>
                         <option default value="0">CHOISIR</option>
                         <?php 
-                            foreach($results as $sport){
+                            foreach($resultsSport as $sport){
                         ?>
                             <option value="<?= $sport['id'] ?>"> <?= $sport['name'] ?> </option>
                         <?php
@@ -59,7 +62,16 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventGym">Salle</label>
-                    <input type="number" name="eventGym" id="eventGym" class="form-control" required>
+                    <select class="form-select" name="eventGym" id="eventGym"><br>
+                        <option default value="0">CHOISIR</option>
+                        <?php 
+                            foreach($resultsGym as $gym){
+                        ?>
+                            <option value="<?= $gym['id'] ?>"> <?= $gym['name'] ?> </option>
+                        <?php
+                            }
+                        ?>
+                </select>
                 </div>
             </div>
             

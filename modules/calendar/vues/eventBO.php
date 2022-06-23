@@ -30,14 +30,26 @@
 
     $pdo = database();
                         
-    $req = $pdo->prepare("SELECT name FROM RkU_SPORT WHERE id=:id");
-    $req->execute([
+    $reqSport = $pdo->prepare("SELECT name FROM RkU_SPORT WHERE id=:id");
+    $reqSport->execute([
         'id'=>$event['sport']
     ]);
-    $sportName = $req->fetch();
+    $sportName = $reqSport->fetch()['name'];
 
-    $query = $pdo->query("SELECT id, name FROM RkU_SPORT");
-    $sports = $query->fetchAll();
+    $querySports = $pdo->query("SELECT id, name FROM RkU_SPORT");
+    $sports = $querySports->fetchAll();
+
+
+
+    $reqGym = $pdo->prepare("SELECT name FROM RkU_GYMS WHERE id=:id");
+    $reqGym->execute([
+        'id'=>$event['gym']
+    ]);
+    $gymName = $reqGym->fetch()['name'];
+
+    
+    $queryGyms = $pdo->query("SELECT id, name FROM RkU_GYMS");
+    $gyms = $queryGyms->fetchAll();
 
     ?>
 
@@ -70,7 +82,7 @@
             <div class="form-group">
                 <label for="eventSport">Sport</label>
                 <select class="form-select" name="eventSport" id="eventSport"><br>
-                    <option default value="<?= $event['sport'] ?>"><?= $sportName['name'] ?></option>
+                    <option default value="<?= $event['sport'] ?>"><?= $sportName ?></option>
                     <?php 
                         foreach($sports as $sport){
                     ?>
@@ -84,7 +96,16 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="eventGym">Salle</label>
-                <input type="number" name="eventGym" id="eventGym" class="form-control" value="<?= $event['gym']; ?>">
+                <select class="form-select" name="eventGym" id="eventGym"><br>
+                    <option default value="<?= $event['gym'] ?>"><?= $gymName ?></option>
+                    <?php 
+                        foreach($gyms as $gym){
+                    ?>
+                        <option value="<?= $gym['id'] ?>"> <?= $gym['name'] ?> </option>
+                    <?php
+                        }
+                    ?>
+                </select>
             </div>
         </div>
         <div class="row my-3">

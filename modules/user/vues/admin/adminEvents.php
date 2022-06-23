@@ -52,7 +52,13 @@ $results = $req->fetchAll();
                 $reqSport->execute([
                     'id'=>$event['sport']
                 ]);
-                $sportName = $reqSport->fetch();
+                $sportName = $reqSport->fetch()['name'];
+
+                $reqGym = $pdo->prepare("SELECT name FROM RkU_GYMS WHERE id=:id");
+                $reqGym->execute([
+                    'id'=>$event['gym']
+                ]);
+                $GymName = $reqGym->fetch()['name'];
             ?>
                         <tr>
                             <td class="align-middle"><?php echo $event['name'];?></td>
@@ -60,8 +66,8 @@ $results = $req->fetchAll();
                             <td class="align-middle"><?php echo $event['endDate'];?></td>
                             <td class="align-middle"><?php echo $event['description'];?></td>
                             <td class="align-middle"><?php echo $event['price'];?></td>
-                            <td class="align-middle"><?php echo $sportName['name'];?></td>
-                            <td class="align-middle"><?php echo $event['gym'];?></td>
+                            <td class="align-middle"><?php echo $sportName;?></td>
+                            <td class="align-middle"><?php echo $GymName;?></td>
                             <td class="align-middle">
                                 <a href="<?= DOMAIN . 'modules/calendar/vues/eventBO.php?id=' . $event['id'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                 <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteEvent<?= $event['id'];?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>

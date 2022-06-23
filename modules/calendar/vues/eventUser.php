@@ -25,11 +25,18 @@
 
     $pdo = database();
 
-    $req = $pdo->prepare("SELECT name FROM RkU_SPORT WHERE id=:id");
-    $req->execute([
+    $reqSport = $pdo->prepare("SELECT name FROM RkU_SPORT WHERE id=:id");
+    $reqSport->execute([
         'id'=>$event['sport']
     ]);
-    $sportName = $req->fetch();
+    $sportName = $reqSport->fetch()['name'];
+
+
+    $reqGym = $pdo->prepare("SELECT name, address FROM RkU_GYMS WHERE id=:id");
+    $reqGym->execute([
+        'id'=>$event['gym']
+    ]);
+    $gym = $reqGym->fetch();
     ?>
 
 <h1 align="center"><?= $event['name']; ?></h1>
@@ -43,8 +50,9 @@
         <?= $event['description']; ?>
         </li>
         <li>Prix : <?= $event['price'] ?> fitcoins</li>
-        <li>Sport sélectionné : <?= $sportName['name']; ?></li>
-        <li>Salle de sport : <?= $event['gym']; ?></li>
+        <li>Sport sélectionné : <?= $sportName; ?></li>
+        <li>Salle de sport : <?= $gym['name']; ?></li>
+        <li>Salle de sport : <?= $gym['address']; ?></li>
         <li>Nombre de places : <?= $event['places'] ?></li>
     </ul>
     <a href="../scripts/Calendar/EventInscription.php?eventId=<?= $event['id'] ?>"><button type = "button" >S'inscrire</button></a>

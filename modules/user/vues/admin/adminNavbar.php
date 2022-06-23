@@ -28,6 +28,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminSports.php'?>">Sports</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminGyms.php'?>">Salles</a>
+                </li>
             </ul>
         </li>
 

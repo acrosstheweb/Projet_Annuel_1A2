@@ -22,7 +22,7 @@ if(!empty($_POST)){
         $end = DateTime::createFromFormat('Y-m-d H:i', $date . ' ' . $_POST['eventEnd'])->format('Y-m-d H:i:s');
         $price = htmlspecialchars(trim($_POST['eventPrice']));
         $sport = htmlspecialchars(trim($_POST['eventSport']));
-        $gym = $_POST['eventGym'];
+        $gym = htmlspecialchars(trim($_POST['eventGym']));
         $places = htmlspecialchars(trim($_POST['eventPlaces']));
 
         
