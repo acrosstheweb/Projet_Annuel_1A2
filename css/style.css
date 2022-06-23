@@ -251,6 +251,8 @@ h1 {
 
 .__profilePic {
     object-fit: cover;
+    width: 200px;
+    height: 200px;
     padding: 0;
 }
 
@@ -314,15 +316,23 @@ table {
 
 /* Forum */
 
+.__forumLink{
+    color: rgba(0,0,0,.55);
+}
+
+.__forumLink:hover{
+    color: rgba(0,0,0,.70);
+}
+
 .__topic {
     text-align: center;
     margin: 1rem;
 }
 
-.__topic:hover {
+/* .__topic:hover {
     background-color: rgba(0, 0, 0, 0.1);
     margin: 0;
-}
+} */
 
 .__topicImg {
     height: 10rem;
@@ -508,6 +518,8 @@ table {
     padding-left: 0;
 }
 
+
+/* AVATAR */
 .__avatarPreviewContainer {
     padding-top: 1rem;
     position: relative;

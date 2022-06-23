@@ -115,7 +115,7 @@
                                 <a class="nav-link __navIcon" href="#" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-user"></i>
                                 </a>
-                                <ul class="dropdown-menu __userDropdown" aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <?php if(isConnected()){ ?>
                                         <?php if(isAdmin()){ ?>
                                             <li class="nav-item">

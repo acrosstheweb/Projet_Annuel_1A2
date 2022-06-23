@@ -24,7 +24,7 @@
 <h2 class="aligned-title"> Les réponses à vos questions </h2>
 
 <div class="container-fluid">
-    <div class="col d-flex justify-content-center">
+    <div class="col d-flex justify-content-end me-5">
         <?php if(isAdmin()){ ?>
             <a class="btn btn-primary" href="<?= DOMAIN . 'modules/forum/vues/newCategorie.php'?>" role="button">Nouvelle catégorie</a>
         <?php }?>
@@ -42,15 +42,23 @@
                     <div class="card __topic">
                         <img src="<?= DOMAIN . 'sources/img/' . $categorie['path'] ?>" class="card-img-top __topicImg" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
-                            <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
-                            <a href="<?= DOMAIN ?>modules/forum/vues/categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
                             <?php
                                 if(isAdmin()){
                             ?>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#modifyCategorie<?= $categorie['id'];?>" class="btn btn-primary">Modifier</a>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#deleteCategorie<?= $categorie['id'];?>" class="btn btn-primary">Supprimer</a>
+                                <div class="dropdown text-end">
+                                    <a class="__forumLink" href="#" id="forumDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="forumDropdown">
+                                        <li><a class="nav-link __forumLink" href="#" data-bs-toggle="modal" data-bs-target="#modifyCategorie<?= $categorie['id'];?>">Modifier</a></li>
+                                        <li><a class="nav-link __forumLink" href="#" data-bs-toggle="modal" data-bs-target="#deleteCategorie<?= $categorie['id'];?>">Supprimer</a></li>
+                                    </ul>
+                                </div>
                             <?php } ?>
+                            <h5 class="card-title __topicTitle"><?php echo $categorie['title'] ?></h5>
+                            <p class="card-text __topicDescription"><?php echo $categorie['description'] ?></p>
+                            <a href="<?= DOMAIN ?>modules/forum/vues/categorie.php?idTopic=<?= $categorie['id'] ?>" class="btn btn-primary">Explorer</a>
                         </div>
                     </div>
 
