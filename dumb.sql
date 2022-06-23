@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 16, 2022 at 10:12 PM
+-- Generation Time: Jun 23, 2022 at 09:50 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -37,15 +37,17 @@ CREATE TABLE `RkU_BOOKING` (
   `name` varchar(50) NOT NULL,
   `description` text,
   `startDate` datetime NOT NULL,
-  `endDate` datetime NOT NULL
+  `endDate` datetime NOT NULL,
+  `places` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `RkU_BOOKING`
 --
 
-INSERT INTO `RkU_BOOKING` (`id`, `status`, `price`, `discount`, `sport`, `gym`, `name`, `description`, `startDate`, `endDate`) VALUES
-(9, 1, 14, NULL, 1, 1, 'Test2', 'Test', '2022-06-17 18:00:00', '2022-06-17 19:00:00');
+INSERT INTO `RkU_BOOKING` (`id`, `status`, `price`, `discount`, `sport`, `gym`, `name`, `description`, `startDate`, `endDate`, `places`) VALUES
+(14, 1, 30, NULL, 11, 1, 'Séance découverte Zomba', 'Séance de découverte de la zomba', '2022-06-23 15:00:00', '2022-06-23 16:00:00', 9),
+(15, 1, 10, NULL, 11, 1, 'Test affichage salle', 'Test', '2022-06-24 17:53:00', '2022-06-24 21:53:00', 10);
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,13 @@ CREATE TABLE `RkU_CITY` (
   `name` varchar(255) NOT NULL,
   `ZIPCode` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `RkU_CITY`
+--
+
+INSERT INTO `RkU_CITY` (`id`, `name`, `ZIPCode`) VALUES
+(1, 'Paris', 75000);
 
 -- --------------------------------------------------------
 
@@ -178,8 +187,17 @@ CREATE TABLE `RkU_GYMS` (
   `surfaceArea` int(11) NOT NULL,
   `address` varchar(255) NOT NULL,
   `user` int(11) NOT NULL,
-  `city` int(11) DEFAULT NULL
+  `city` int(11) DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `phoneNumber` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `RkU_GYMS`
+--
+
+INSERT INTO `RkU_GYMS` (`id`, `surfaceArea`, `address`, `user`, `city`, `name`, `phoneNumber`) VALUES
+(1, 15, '55 rue des près', 2, 1, 'Jaaj Gym', '0695069629');
 
 -- --------------------------------------------------------
 
@@ -232,7 +250,20 @@ INSERT INTO `RkU_MESSAGE` (`id`, `dateSend`, `content`, `userId`, `question`) VA
 (47, '2022-05-24 12:30:01', 'fqfqez', 1, 34),
 (48, '2022-05-24 12:30:03', 'fzqfqzef', 1, 34),
 (49, '2022-05-28 19:35:22', 'On peut rajouter des commentaires', 1, 34),
-(55, '2022-06-10 13:56:42', 'test', 1, 36);
+(55, '2022-06-10 13:56:42', 'test', 1, 36),
+(57, '2022-06-20 08:14:59', 'nfviuse hfqzijfouse h\r\nj\'espère que ça t\'aide', 2, 33),
+(58, '2022-06-20 08:16:23', 'C\'est vraiment trop génial (un peu comme le poney)', 2, 38);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `RkU_PARTICIPATE`
+--
+
+CREATE TABLE `RkU_PARTICIPATE` (
+  `userId` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -251,10 +282,10 @@ CREATE TABLE `RkU_PAYMENT` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RkU_PROGRAM`
+-- Table structure for table `rku_program`
 --
 
-CREATE TABLE `RkU_PROGRAM` (
+CREATE TABLE `rku_program` (
   `id` int(11) NOT NULL,
   `nameProgram` varchar(25) NOT NULL,
   `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -262,16 +293,16 @@ CREATE TABLE `RkU_PROGRAM` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `RkU_PROGRAM`
+-- Dumping data for table `rku_program`
 --
 
-INSERT INTO `RkU_PROGRAM` (`id`, `nameProgram`, `creationDate`, `illustration`) VALUES
+INSERT INTO `rku_program` (`id`, `nameProgram`, `creationDate`, `illustration`) VALUES
 (1, 'Pull #1', '2022-05-27 01:01:39', 'sources/img/pull1.jpg'),
 (2, 'Push #1', '2022-05-28 01:01:39', 'sources/img/push1.jpg'),
 (3, 'Legs #1', '2022-05-29 01:01:39', 'sources/img/legs1.jpg'),
 (4, 'Pull #2', '2022-05-30 01:01:39', 'sources/img/pull2.jpg'),
 (5, 'Push #2', '2022-05-31 01:01:39', 'sources/img/push2.jpg'),
-(6, 'Legs #2', '2022-06-01 01:01:39', 'sources/img/legs2.jpg');
+(6, 'Legs #1', '2022-06-01 01:01:39', 'sources/img/legs2.jpg');
 
 -- --------------------------------------------------------
 
@@ -300,7 +331,8 @@ INSERT INTO `RkU_QUESTION` (`id`, `creationDate`, `title`, `content`, `userId`, 
 (34, '2022-05-24 12:01:01', 'ferskfnk', 'fsejklfnmerz', 1, 5, '0'),
 (35, '2022-05-26 20:48:36', 'viqerjv', 'fqnjlrn', 1, 5, '0'),
 (36, '2022-05-28 19:35:48', 'Test', 'Test', 1, 5, '1'),
-(37, '2022-05-28 19:39:50', 'Test1', 'Test1', 1, 5, '0');
+(37, '2022-05-28 19:39:50', 'Test1', 'Test1', 1, 5, '0'),
+(38, '2022-06-20 08:15:54', 'Eh c\'est bien la zumba ou pas ?', 'Je sais pas si c\'est bien \r\nHELP', 2, 5, '0');
 
 -- --------------------------------------------------------
 
@@ -337,7 +369,8 @@ INSERT INTO `RkU_SPORT` (`id`, `name`, `description`) VALUES
 (15, 'Yoga', 'Doctrine et exercices traditionnels hindous, cherchant à réunir l\'individu avec le principe de toute existence'),
 (16, 'Cycling', 'Faire du vélo :)'),
 (17, 'Musculation', 'Développement d\'un muscle, d\'une partie du corps grâce à des exercices physiques'),
-(18, 'Abdos fessiers', 'Relatif à des exercices physiques permettant de renforcer les muscles de la ceinture abdominale et des fesses');
+(18, 'Abdos fessiers', 'Relatif à des exercices physiques permettant de renforcer les muscles de la ceinture abdominale et des fesses'),
+(20, 'Karaté', 'C\'est du karaté');
 
 -- --------------------------------------------------------
 
@@ -393,7 +426,8 @@ INSERT INTO `RkU_TOPIC` (`id`, `creationDate`, `title`, `description`, `topicOrd
 (9, '2022-05-17 21:26:15', 'Yoga', 'Toutes les questions et sujets Yoga', 5, 'yoga.jpg'),
 (10, '2022-05-17 21:27:00', 'Cycling', 'Toutes les questions et sujets Cycling', 6, 'cycling.jpg'),
 (11, '2022-05-17 21:27:00', 'Crossfit', 'Toutes les questions et sujets Crossfit', 4, 'crossfit.jpg'),
-(12, '2022-05-17 21:27:34', 'Musculation', 'Toutes les questions et sujets Musculation', 7, 'musculation.jpg');
+(12, '2022-05-17 21:27:34', 'Musculation', 'Toutes les questions et sujets Musculation', 7, 'musculation.jpg'),
+(13, '2022-06-20 09:07:34', 'test', '&lt;h1&gt;ceci est un test&lt;/h1&gt;', 10, 'C.png');
 
 -- --------------------------------------------------------
 
@@ -433,8 +467,8 @@ CREATE TABLE `RkU_USER` (
 -- Dumping data for table `RkU_USER`
 --
 
-INSERT INTO `RkU_USER` (`id`, `firstName`, `lastName`, `email`, `civility`, `avatar`, `password`, `address`, `city`, `zipCode`, `birthday`, `fitcoin`, `role`, `registrationDate`, `lastUpdate`, `lastPasswordUpdate`, `changePassword`, `token`, `subscription`, `startDateSub`, `endDateSub`, `renewalDate`, `nextPaymentDate`, `token_confirm_inscription`) VALUES
-(2, 'Jean', 'BOMBEUR', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 0, 2, '2022-06-16 13:40:31', '2022-06-16 20:31:26', '2022-06-16 20:31:26', 0, '01bbae139ba269($1', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6');
+INSERT INTO `RkU_USER` (`id`, `firstName`, `lastName`, `email`, `civility`, `avatar`, `password`, `address`, `city`, `zipCode`, `birthday`, `fitcoin`, `role`, `registrationDate`, `lastUpdate`, `lastPasswordUpdate`, `changePassword`, `token`, `subscription`, `startDateSub`, `endDateSub`, `renewalDate`, `nextPaymentDate`, `token_confirm_inscription`, `newsletter`) VALUES
+(2, 'Tom', 'BOURLARD', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 70, 2, '2022-06-16 13:40:31', '2022-06-23 13:40:55', '2022-06-23 13:40:55', 0, 'f19fc76d64b261$@8', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6', 0);
 
 --
 -- Indexes for dumped tables
@@ -483,9 +517,9 @@ ALTER TABLE `RkU_PAYMENT`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `RkU_PROGRAM`
+-- Indexes for table `rku_program`
 --
-ALTER TABLE `RkU_PROGRAM`
+ALTER TABLE `rku_program`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -526,13 +560,13 @@ ALTER TABLE `RkU_USER`
 -- AUTO_INCREMENT for table `RkU_BOOKING`
 --
 ALTER TABLE `RkU_BOOKING`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `RkU_CITY`
 --
 ALTER TABLE `RkU_CITY`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `RkU_EXERCICE`
@@ -544,7 +578,7 @@ ALTER TABLE `RkU_EXERCICE`
 -- AUTO_INCREMENT for table `RkU_GYMS`
 --
 ALTER TABLE `RkU_GYMS`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `RkU_MACHINE`
@@ -556,7 +590,7 @@ ALTER TABLE `RkU_MACHINE`
 -- AUTO_INCREMENT for table `RkU_MESSAGE`
 --
 ALTER TABLE `RkU_MESSAGE`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `RkU_PAYMENT`
@@ -565,22 +599,22 @@ ALTER TABLE `RkU_PAYMENT`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `RkU_PROGRAM`
+-- AUTO_INCREMENT for table `rku_program`
 --
-ALTER TABLE `RkU_PROGRAM`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+ALTER TABLE `rku_program`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `RkU_QUESTION`
 --
 ALTER TABLE `RkU_QUESTION`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `RkU_SPORT`
 --
 ALTER TABLE `RkU_SPORT`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `RkU_SUBSCRIPTION`
@@ -592,7 +626,7 @@ ALTER TABLE `RkU_SUBSCRIPTION`
 -- AUTO_INCREMENT for table `RkU_TOPIC`
 --
 ALTER TABLE `RkU_TOPIC`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `RkU_USER`
