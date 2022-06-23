@@ -17,6 +17,9 @@
             <span class="text-uppercase">Gestion de contenu</span>
             <ul class="__listeVerticale">
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/newsletter.php'?>">Newsletter</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Abonnements</a>
                 </li>
                 <li class="nav-item">
@@ -34,5 +37,13 @@
             </ul>
         </li>
 
+        <li class="nav-item ms-md-3 mt-3">
+            <span class="text-uppercase">Statistiques</span>
+            <ul class="__listeVerticale">
+                <li class="nav-item">
+                    <a class="nav-link active" href="<?= DOMAIN . 'modules/user/vues/admin/stats.php'?>">Statistiques</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>
