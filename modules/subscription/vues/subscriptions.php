@@ -35,7 +35,7 @@ foreach($results as $subscription){
             <li class="list-group-item"><?= $subscription['thirdAttribut'] ?></li>
         </ul>
         <div class="card-body">
-            <a href="#" class="card-link btn btn-primary">Achète ici</a>
+            <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?subId=' . $subscription['id'] ?>" class="card-link btn btn-primary">Achète ici</a>
             <!-- <a href="#" class="card-link">Ici aussi en fait</a> -->
             <?php
                 if(isAdmin()){

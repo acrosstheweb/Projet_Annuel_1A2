@@ -7,9 +7,9 @@ require '../../../../functions.php';
     }
 
 require '../../../../header.php';
-Message('modifyEvent');
+Message('modifyGym');
 Message("Delete");
-Message("createEvent");
+Message("createGym");
 
 $pdo = database();
 
@@ -29,7 +29,7 @@ $results = $req->fetchAll();
 
         <div class="col-12 col-md-8">
             <div class="text-end my-3">
-                <a href="<?= DOMAIN . 'modules/calendar/vues/addNewEvent.php'?>" class="btn btn-primary">Ajouter une nouvelle salle</a>
+                <a href="<?= DOMAIN . 'modules/gym/vues/addNewGym.php'?>" class="btn btn-primary">Ajouter une nouvelle salle</a>
             </div>
 
             <div class="table-responsive">
@@ -69,7 +69,7 @@ $results = $req->fetchAll();
                             <td class="align-middle"><?php echo $cityName;?></td>
                             <td class="align-middle"><?php echo $gym['phoneNumber'];?></td>
                             <td class="align-middle">
-                                <a href="<?= DOMAIN . 'modules/vues/gymBO.php?id=' . $gym['id'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
+                                <a href="<?= DOMAIN . 'modules/gym/vues/gymBO.php?gymId=' . $gym['id'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                 <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteGym<?= $gym['id'];?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
                             </td>
                         </tr>
@@ -82,7 +82,7 @@ $results = $req->fetchAll();
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="deleteGym<?= $gym['id'];?>" action="<?= DOMAIN . 'modules/gym/scripts/gymSuppression.php?gylId=' . $gym['id'];?>" method="POST" >
+                                        <form id="deleteGym<?= $gym['id'];?>" action="<?= DOMAIN . 'modules/gym/scripts/gymSuppression.php?gymId=' . $gym['id'];?>" method="POST" >
                                             <div class="deleteFormInfo">
                                                 <h5>Vous êtes sur le point de supprimer cette salle :</h5>
                                                 <ul>
