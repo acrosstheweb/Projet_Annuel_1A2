@@ -205,21 +205,20 @@
                     <h5 class="modal-title" id="login-modal-label">Connexion</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body row">
-                    <div class="col-3"></div>
-                    <form id="login-form" action=<?= DOMAIN . "modules/user/scripts/login.php"?> method="POST" class="col-6">
+                <div class="modal-body row d-flex justify-content-center">
+                    <form id="login-form" action=<?= DOMAIN . "modules/user/scripts/login.php"?> method="POST" class="col-10">
                         <label for="login-email">Adresse mail : </label>
                         <input class="form-control" type="email" name="login-email" id="login-email" placeholder="Adresse mail" required="required"><br>
 
                         <label for="login-password">Mot de passe : </label>
                         <input class="form-control" type="password" name="login-password" id="login-password" placeholder="Mot de passe" required="required">
                         
-                        <label for="login-remember">Se souvenir de moi</label>
                         <input type="checkbox" name="login-remember" id="login-remember">
-
-                        <small class="form-text text-muted"><a href=<?=DOMAIN . "modules/user/vues/passwordForgotten.php" ?> style="float:right;">Mot de passe oublié ?</a></small>
+                        <label class="mt-3" for="login-remember">Se souvenir de moi</label>
                     </form>
-                    <div class="col-3"></div>
+
+                        
+                    <small class="form-text text-muted"><a href=<?=DOMAIN . "modules/user/vues/passwordForgotten.php" ?> style="float:right;">Mot de passe oublié ?</a></small>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Annuler</button>
