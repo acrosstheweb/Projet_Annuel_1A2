@@ -146,7 +146,7 @@
         </div>
 
 <!-- <div class="row">
-    <form action="uploadImage.php" method = "POST" enctype ="multipart/form-data"> // Le enctype permet de spécifier que les données envoyées lors de l'envoie sont encodées lors de la soumission au serveur.
+    <form action="uploadImage.php" method = "POST" enctype ="multipart/form-data"> // Le enctype permet de spécifier que les données envoyées lors de l'envoi sont encodées lors de la soumission au serveur.
         <div class="col-4 mb-2">
             <label for="file" class="form-label">Veuillez insérer votre image</label>
             <input class="form-control" type="file" id="formFile" name="file">

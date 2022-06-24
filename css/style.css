@@ -614,6 +614,12 @@ table {
 #__newsletterButton{
     border-radius: 0;
     position: fixed;
-    right: 0;
+    left: 0;
     bottom: 5vh;
+}
+
+#__messageAlert{
+    position: fixed;
+    right: 0;
+    bottom: 0;
 }

@@ -14,7 +14,7 @@ function Message($title){
         $type = $_SESSION['MESSAGE'][$title]['type'];
         foreach($_SESSION['MESSAGE'][$title]['content'] as $msg){
             if($msg != NULL){
-            echo "<div class='alert alert-{$type}' alert-dismissible fade show role='alert'>
+            echo "<div id='__messageAlert' class='alert alert-{$type}' alert-dismissible fade show role='alert'>
                       {$msg}
                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";

@@ -1,13 +1,13 @@
 <?php
 
-    require 'functions.php';
+require 'functions.php';
 
-    if(!empty($_FILES['file'])){
-        $name = $_FILES['file']['name'];
-        $type = $_FILES['file']['type'];
-        $size = $_FILES['file']['size'];
-        $tmpName = $_FILES['file']['tmp_name'];
-        $error = $_FILES['file']['error'];
+if(!empty($_FILES['file'])){
+    $name = $_FILES['file']['name'];
+    $type = $_FILES['file']['type'];
+    $size = $_FILES['file']['size'];
+    $tmpName = $_FILES['file']['tmp_name'];
+    $error = $_FILES['file']['error'];
 
     $extensionsAllowed = ['png', 'jpg', 'jpeg'];
 
@@ -56,7 +56,7 @@
                 $centerY=round(($imageHeight/2) - $logoHeight/2);
 
                 // header('Content-type: image/jpeg');
-                
+
                 // imagedestroy($image);
 
                 if(imagecopy($image, $logo, $centerX, $centerY, 0, 0, $logoWidth, $logoHeight)){ //On garde une trace des fichiers temporaires dans un dossier pour de la journalisation ou en cas d'injection de code malveillant à travers un fichier qui pourrait passer
@@ -64,36 +64,29 @@
                     imagepng($image, './uploadFiles/fili'.$imgId.'.'.strtolower($extension));
                     unlink('./tmpUpload/'.$tempFile);
                     setMessage('UploadImage', ['Le fichier a bien été uploadé'], 'success');
-                }
-                else{
+                }else{
                     unlink('./tmpUpload/'.$tempFile);
                     setMessage('UploadImage', ['Le fichier n\'a pas pu être uploadé'], 'warning');
                 }
-                header('Location: forum.php');
-                die();
-            }
-            else
+            }else{
                 setMessage('UploadImage', ['Fichier trop lourd'], 'warning');
-                header('Location: forum.php');
-                die();
-        }
-        else
+            }
+        }else{
             setMessage('UploadImage', ['Extension Incorrecte'], 'warning');
-            header('Location: forum.php');
-            die();
-    }
-    else
+        }
+        header('Location: forum.php');
+        die();
+    }else{
         setMessage('UploadImage', ['Type non autorisé'], 'warning');
-        header('Location: forum.php');
-        die();
     }
-    else{
-        setMessage('UploadImage', ['Impossible'], 'warning');
-        header('Location: forum.php');
-        die();
-    }
+}else{
+    setMessage('UploadImage', ['Impossible'], 'warning');
+}
 
-    
+header('Location: forum.php');
+die();
+
+
 
 
 
@@ -111,5 +104,3 @@
 // imagedestroy($dest);
 // imagedestroy($src);
 
-
-?>

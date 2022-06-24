@@ -18,7 +18,7 @@ Message('FormNewsletter');
         </div>
 
         <div class="col-2"></div>
-        <form method="POST" class="col-4" action="../../scripts/admin/sendNewsletter.php" id="__newsletterForm">
+        <form method="POST" class="col-4" action="../../scripts/admin/sendNewsletter.php" id="__newsletterForm" enctype ="multipart/form-data"> <!-- Le enctype permet de spécifier que les données envoyées lors de l'envoi sont encodées lors de la soumission au serveur. -->
             <div>
                 <label for="__titre-mail">Titre</label>
                 <input class="form-control" type="text" id="__titre-mail" name="titre-mail" placeholder="Titre du mail" required="required">
@@ -43,8 +43,8 @@ Message('FormNewsletter');
             </div><br><br>
 
             <div>
-                <label for="__content-mail">Contenu</label>
-                <textarea class="form-control" rows="10" cols="75" id="__content-mail" name="content-mail" required="required"></textarea>
+                <p>Contenu du mail</p>
+                <input class="form-control" type="file" name="content-mail" id="__content-mail" required="required">
             </div><br><br>
 
             <input type="submit" required="required" value="Envoyer">
