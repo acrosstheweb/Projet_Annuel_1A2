@@ -61,19 +61,19 @@ $db = database();
 
 switch ($destination){
     case 'everyone':
-        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE role >= 1");
+        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE (role >= 1 AND newsletter = 1)");
         break;
     case 'customers':
-        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE role == 1");
+        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE (role = 1 AND newsletter = 1)");
         break;
     case 'coachs':
-        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE role == 2");
+        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE (role = 2 AND newsletter = 1)");
         break;
     case 'owners':
-        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE role == 3");
+        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE (role = 3 AND newsletter = 1)");
         break;
     case 'admins':
-        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE role >= 4");
+        $destinationsQuery = $db->query("SELECT email FROM RkU_USER WHERE (role >= 4 AND newsletter = 1)");
         break;
     default:
         // Comment c'est possible d'arriver ici ???
