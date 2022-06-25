@@ -11,12 +11,17 @@ $db = database();
 $ages = []; $subscriptions = []; $civilities = [];
 $numberOfUsersQ = $db->query("SELECT COUNT(*) FROM RkU_USER WHERE role > 0");
 $userPerAgeQ = $db->query("SELECT birthday FROM RkU_USER WHERE role > 0"); // On ne prend en compte que les comptes confirmés
-$userPerSubQ = $db->query("SELECT subscription FROM RkU_USER WHERE role > 0");
+$userPerSubQ = $db->query("SELECT subscription FROM RkU_USER WHERE role > 0 AND subscription IS NOT NULL");
 $newsletterSubsQ = $db->query("SELECT COUNT(*) FROM RkU_USER WHERE newsletter = 1 AND ROLE > 0");
 $userPerCivilityQ = $db->query("SELECT civility FROM RkU_USER WHERE role > 0");
+$questionsForumQ = $db->query("SELECT COUNT(*) FROM RkU_QUESTION");
+$messagesForumQ = $db->query("SELECT COUNT(*) FROM RkU_MESSAGE");
+
 $newsletterSubs = $newsletterSubsQ->fetch()[0];
 $numberOfUsers = $numberOfUsersQ->fetch()[0];
 $newsletterNotSubs = $numberOfUsers - $newsletterSubs;
+$questionsForum = $questionsForumQ->fetch()[0];
+$messagesForum = $messagesForumQ->fetch()[0];
 
 foreach($userPerAgeQ->fetchAll() as $b) {
     $birthday = $b[0];
@@ -121,6 +126,21 @@ foreach($userPerCivilityQ->fetchAll() as $c){
                         </div>
                     </div>
 
+                    <div class="col-4">
+                        <h5>Interactions Forum</h5>
+                        <h6>Questions posées</h6>
+                        <div clas="col-2">
+                            <div class="__rectangleStat" id="__questions"></div>
+                        </div>
+
+                        <h6>Réponses</h6>
+                        <div clas="col-2">
+                            <div class="__rectangleStat" id="__reponses"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5"><hr>
                     <div class="col-4">
                         <h5>Utilisateurs par Régions</h5>
                         COMING SOON
@@ -272,6 +292,20 @@ foreach($userPerCivilityQ->fetchAll() as $c){
                     div.innerHTML = F;
                 }
             }
+        }
+
+        let questions = <?php echo json_encode($questionsForum, JSON_NUMERIC_CHECK); ?>;
+        if(questions != null){
+            let div = document.getElementById('__questions');
+            div.style.cssText = `border: 1px solid black;`;
+            div.innerHTML = questions;
+        }
+
+        let reponses = <?php echo json_encode($messagesForum, JSON_NUMERIC_CHECK); ?>;
+        if(reponses != null){
+            let div = document.getElementById('__reponses');
+            div.style.cssText = `border: 1px solid black;`;
+            div.innerHTML = reponses;
         }
 
     </script>
