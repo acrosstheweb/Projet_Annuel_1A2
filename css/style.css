@@ -616,6 +616,7 @@ table {
     position: fixed;
     left: 0;
     bottom: 5vh;
+    background-color: var(--green3);
 }
 
 #__messageAlert{
@@ -624,8 +625,48 @@ table {
     bottom: 0;
 }
 
+
+/* STATS */
+
 .__rectangleStat{
     height: 30px;
     text-align: center;
     font-weight: bold;
+}
+
+
+/* ABOUT */
+
+.__gym:nth-child(even){
+    background: var(--green1);
+}
+
+.__gymDescription{
+    height: 100%;
+}
+
+@media (min-width: 768px){
+    .__gymMapContainer{
+        height: 35vh;
+    }
+}
+
+@media (min-width: 996px){
+    .__gymMapContainer{
+        height: 45vh;
+    }
+}
+
+.__gymMap{
+    width: 80%;
+    height: 90%;
+    margin: 2.5% auto;
+    display: block;
+}
+
+.__gymInfo{
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
