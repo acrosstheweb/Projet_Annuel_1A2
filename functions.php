@@ -335,6 +335,9 @@ function connectCookie(){
 function logout(){
     /*unset($_SESSION['userToken']);
     unset($_SESSION['userId']);*/
+    $db = database();
+    $setTokenNullQuery = $db->prepare("UPDATE RkU_USER SET token=NULL WHERE id=:id");
+    $setTokenNullQuery->execute(['id'=>$_SESSION['userId']]);
     setcookie('FitEssMail', null, time()-3600, '/');unset($_COOKIE['FitEssMail']);
     setcookie('FitEssPass', null, time()-3600, '/');unset($_COOKIE['FitEssPass']);
     atw_log($_SESSION['userId'], "Logout");
