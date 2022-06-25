@@ -357,3 +357,15 @@ function uniqidReal($len) { // FONCTION RECUPEREE DEPUIS https://www.php.net/man
     }
     return substr(bin2hex($bytes), 0, $len);
 }
+
+function subscribe(int $id){
+    $db = database();
+    $updateNewsletterQuery = $db->prepare("UPDATE RkU_USER SET newsletter=1 WHERE id=:id");
+    $updateNewsletterQuery->execute(['id' => $id]);
+}
+
+function unsubscribe(int $id){
+    $db = database();
+    $updateNewsletterQuery = $db->prepare("UPDATE RkU_USER SET newsletter=2 WHERE id=:id");
+    $updateNewsletterQuery->execute(['id' => $id]);
+}
