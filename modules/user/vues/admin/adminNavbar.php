@@ -34,6 +34,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminGyms.php'?>">Salles</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminFitcoins.php'?>">Fitcoins</a>
+                </li>
             </ul>
         </li>
 

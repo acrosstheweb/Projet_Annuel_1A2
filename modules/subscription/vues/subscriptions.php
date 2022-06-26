@@ -71,7 +71,7 @@ foreach($resultsSubscription as $subscription){
                             </div>
                             <div class="col-12">
                                 <label for="modify-price<?php echo $subscription['price'];?>" class="fw-bold">Prix</label>
-                                <input id="modify-price<?php echo $subscription['price'];?>" class="form-control" type="number" name="modify-price" value="<?php echo $subscription['price'];?>">
+                                <input id="modify-price<?php echo $subscription['price'];?>" class="form-control" type="float" name="modify-price" value="<?php echo $subscription['price'];?>">
                             </div>
                             <div class="col-12">
                                 <label for="modify-firstAttribut<?php echo $subscription['firstAttribut'];?>" class="fw-bold">Attribut 1</label>
@@ -214,8 +214,8 @@ foreach($resultsFitcoins as $packFitcoins){
             <img src="<?= DOMAIN . 'sources/img/' . $packFitcoins['path']?>" alt="" class="img-fluid __subscriptionIcon">
         </h4>
         <div class="card-body">
-            <h5 class="card-title"><?= $packFitcoins['price'] ?></h5>
-            <p class="card-text"><?= $packFitcoins['content'] ?></p>
+            <h5 class="card-title"><?= $packFitcoins['price'] ?>€</h5>
+            <p class="card-text"><?= $packFitcoins['description'] ?></p>
         </div>
         <div class="card-body">
             <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?fitcoinsId=' . $packFitcoins['id'] ?>" class="card-link btn btn-primary">Ajouter au panier</a>
