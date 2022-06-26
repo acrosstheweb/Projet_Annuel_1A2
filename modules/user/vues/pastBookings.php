@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<h2 class="aligned-title"> Mes prochaines séances </h2>
+<h2 class="aligned-title"> Historique de mes séances </h2>
 <div class="container-fluid">
     <div class="row">
 
