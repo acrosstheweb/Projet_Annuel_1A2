@@ -13,12 +13,11 @@ if(!empty($_POST)){
     $valid = true;
     $errors = [];
 
-    if(isset($_POST['modifyPack'])){
+    if(isset($_POST['createPack'])){
         $name = htmlspecialchars(trim($_POST['packName']));
         $description = htmlspecialchars(trim($_POST['packDescription']));
         $price = htmlspecialchars(trim($_POST['packPrice']));
         $fitcoinsNumber = htmlspecialchars(trim($_POST['packFitcoins']));
-        $id = htmlspecialchars($_GET['packId']);
         
         if(empty($name)){
             $valid = false;
@@ -60,46 +59,29 @@ if(!empty($_POST)){
             $errors = ("Il faut que le prix soit une chaine numérique");
         }
 
-        if(!is_numeric($id)){
-            $valid = false;
-            $errors = ("Problème lors de l'envoi du formulaire");
-        }
-    }
-
-    $InputPwd = $_POST['delete-userPasswordInput'];
-    $userId = $_SESSION['userId']; // l'id de l'user connecté (logiquement, l'user)
-    $db = database();
-
-    $userPwdInDbQuery = $db->prepare("SELECT password FROM RkU_USER WHERE id=:id");
-    $userPwdInDbQuery->execute(["id"=>$userId]);
-    $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
-
-    if(!password_verify($InputPwd, $userPwdInDb)){
-        setMessage('modifyPack', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
-        header('Location: ../vues/packBO.php');
-        die();
     }
 
     //insertion base de données si valide à faire
     if ($valid) {
     
-        $insertPackQuery = $pdo->prepare("UPDATE RkU_FITCOINS SET name=:name, description=:description, price=:price, numberOfFitcoins=:numberOfFitcoins WHERE id=:id");
+        $insertPackQuery = $pdo->prepare("INSERT INTO RkU_FITCOINS (name, description, price, numberOfFitcoins)
+                VALUES 
+                (:name, :description, :price, :numberOfFitcoins)");
 
         $insertPackQuery->execute([
             'name'=>$name,
             'description'=>$description,
             'price'=>$price,
-            'numberOfFitcoins'=>$fitcoinsNumber,
-            'id'=>$id
+            'numberOfFitcoins'=>$fitcoinsNumber
         ]);
 
-        setMessage('modifyPack', ['Le pack a bien été modifié'], 'success');
+        setMessage('createPack', ['Votre nouvel évènement a bien été créée'], 'success');
         header('Location: ../../user/vues/admin/adminFitcoins.php');
         exit;
     }
     else{
-        setMessage('modifyPack', [$errors], 'warning');
-        header('Location: ../vues/packBO.php?packId='.$id);
+        setMessage('createPack', [$errors], 'warning');
+        header('Location: ../vues/addNewPack.php');
         exit;
     }
         
