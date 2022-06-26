@@ -135,7 +135,7 @@
                             <li class="nav-item">
                                 <a class="nav-link __navIcon" href="<?= DOMAIN . 'modules/cart/vues/cart.php'?>"><i class="fa-solid fa-bag-shopping"></i></a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" id="__darkMode-trigger" data-darkMode="0">
                                 <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-moon"></i></a>
                             </li>
                         </ul>
@@ -344,3 +344,4 @@
 </script> -->
 <!-- <script src="js/user-slide.js"></script> -->
 <script src="<?= DOMAIN . 'js/searchbar.js'?>"></script>
+<script src="<?= DOMAIN . 'js/dark-mode.js'?>"></script>
