@@ -5,19 +5,23 @@
     require '../../../header.php';
     Message('RegisterSuccess');
     Message('Modify');
+    Message('addSubscription');
+    Message('addFitcoins');
 
     $pdo = database();
 
-    $request = $pdo->query("SELECT * FROM RkU_SUBSCRIPTION");
-    $results = $request->fetchAll();
-
+    $requestSubscription = $pdo->query("SELECT * FROM RkU_SUBSCRIPTION");
+    $resultsSubscription = $requestSubscription->fetchAll();
+    
+    $requestFitcoins = $pdo->query("SELECT * FROM RkU_FITCOINS");
+    $resultsFitcoins = $requestFitcoins->fetchAll();
 ?>
 
 <h1 class="aligned-title"> Choisissez votre abonnement </h1>
 
 <div class="row justify-content-center">
 <?php
-foreach($results as $subscription){
+foreach($resultsSubscription as $subscription){
 ?>
 
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
@@ -35,7 +39,7 @@ foreach($results as $subscription){
             <li class="list-group-item"><?= $subscription['thirdAttribut'] ?></li>
         </ul>
         <div class="card-body">
-            <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?subId=' . $subscription['id'] ?>" class="card-link btn btn-primary">Achète ici</a>
+            <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?subscriptionId=' . $subscription['id'] ?>" class="card-link btn btn-primary">Ajouter au panier</a>
             <!-- <a href="#" class="card-link">Ici aussi en fait</a> -->
             <?php
                 if(isAdmin()){
@@ -105,52 +109,6 @@ foreach($results as $subscription){
 
 </div>
 
-
-
-
-
-
-<!-- 
-    <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
-        <h4 class="aligned-title text-uppercase">
-            Classic
-            <img src="<?= DOMAIN . 'sources/img/classic.png'?>" alt="" class="img-fluid __subscriptionIcon">
-        </h4>
-        <div class="card-body">
-            <h5 class="card-title">23,99€/Mois</h5>
-            <p class="card-text">Accès classique à la salle de sport. Catégorie socioprofessionnelle moyenne, tu ne mérites pas que je t'embête</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Fonctionnaire</li>
-            <li class="list-group-item">Abonnement rentabilisé</li>
-            <li class="list-group-item">+ Regard des autres</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Achète ici</a>
-            <a href="#" class="card-link">Ici aussi en fait</a>
-        </div>
-    </div>
-
-    <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
-        <h4 class="aligned-title text-uppercase">
-            Premium
-            <img src="<?= DOMAIN . 'sources/img/premium.png'?>" alt="" class="img-fluid __subscriptionIcon">
-        </h4>
-        <div class="card-body">
-            <h5 class="card-title">49,99€/Mois</h5>
-            <p class="card-text">Wow, tu possèdes un maximum de valeur financière, ce qui te permet donc de profiter sur système capitaliste comme bon te semble.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Pesos Mexicanos</li>
-            <li class="list-group-item">Livres Sterling</li>
-            <li class="list-group-item">Dinar Algérien</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Achète ici</a>
-            <a href="#" class="card-link">Ici aussi en fait</a>
-        </div>
-    </div>
-</div> -->
 
 <div class="row d-flex justify-content-center">
     <div class="col-10 col-lg-8 __subscriptionTableScroll">
@@ -243,6 +201,33 @@ foreach($results as $subscription){
     </div>
     
 </div>
+
+
+<div class="row justify-content-center">
+<?php
+foreach($resultsFitcoins as $packFitcoins){
+?>
+
+    <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
+        <h4 class="aligned-title text-uppercase">
+            <?= $packFitcoins['name'] ?>
+            <img src="<?= DOMAIN . 'sources/img/' . $packFitcoins['path']?>" alt="" class="img-fluid __subscriptionIcon">
+        </h4>
+        <div class="card-body">
+            <h5 class="card-title"><?= $packFitcoins['price'] ?></h5>
+            <p class="card-text"><?= $packFitcoins['content'] ?></p>
+        </div>
+        <div class="card-body">
+            <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?fitcoinsId=' . $packFitcoins['id'] ?>" class="card-link btn btn-primary">Ajouter au panier</a>
+        </div>
+    </div>
+
+<?php
+}
+?>
+
+</div>
+
 
 
 <?php
