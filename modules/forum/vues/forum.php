@@ -39,7 +39,7 @@
 ?>
 
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card __topic">
+                    <div class="card __topic shadow">
                         <img src="<?= DOMAIN . 'sources/img/' . $categorie['path'] ?>" class="card-img-top __topicImg" alt="...">
                         <div class="card-body">
                             <?php
