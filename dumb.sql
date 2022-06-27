@@ -47,7 +47,7 @@ CREATE TABLE `RkU_BOOKING` (
 
 INSERT INTO `RkU_BOOKING` (`id`, `status`, `price`, `discount`, `sport`, `gym`, `name`, `description`, `startDate`, `endDate`, `places`) VALUES
 (14, 1, 30, NULL, 11, 1, 'Séance découverte Zomba', 'Séance de découverte de la zomba', '2022-06-23 15:00:00', '2022-06-23 16:00:00', 9),
-(15, 1, 10, NULL, 11, 1, 'Test affichage salle', 'Test', '2022-06-24 17:53:00', '2022-06-24 21:53:00', 10);
+(15, 1, 10, NULL, 11, 1, 'Test affichage salle', 'Test', '2022-06-24 17:53:00', '2022-06-24 21:53:00', 10),
 (16, 1, 10, NULL, 11, 1, 'Jaaj', 'jaaaaaaj', '2022-07-01 17:00:00', '2022-06-24 18:00:00', 10);
 
 -- --------------------------------------------------------
