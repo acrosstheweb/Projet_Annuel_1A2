@@ -48,6 +48,7 @@ CREATE TABLE `RkU_BOOKING` (
 INSERT INTO `RkU_BOOKING` (`id`, `status`, `price`, `discount`, `sport`, `gym`, `name`, `description`, `startDate`, `endDate`, `places`) VALUES
 (14, 1, 30, NULL, 11, 1, 'Séance découverte Zomba', 'Séance de découverte de la zomba', '2022-06-23 15:00:00', '2022-06-23 16:00:00', 9),
 (15, 1, 10, NULL, 11, 1, 'Test affichage salle', 'Test', '2022-06-24 17:53:00', '2022-06-24 21:53:00', 10);
+(16, 1, 10, NULL, 11, 1, 'Jaaj', 'jaaaaaaj', '2022-07-01 17:00:00', '2022-06-24 18:00:00', 10);
 
 -- --------------------------------------------------------
 
@@ -189,15 +190,16 @@ CREATE TABLE `RkU_GYMS` (
   `user` int(11) NOT NULL,
   `city` int(11) DEFAULT NULL,
   `name` varchar(50) NOT NULL,
-  `phoneNumber` varchar(16) DEFAULT NULL
+  `phoneNumber` varchar(16) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `RkU_GYMS`
 --
 
-INSERT INTO `RkU_GYMS` (`id`, `surfaceArea`, `address`, `user`, `city`, `name`, `phoneNumber`) VALUES
-(1, 15, '55 rue des près', 2, 1, 'Jaaj Gym', '0695069629');
+INSERT INTO `RkU_GYMS` (`id`, `surfaceArea`, `address`, `user`, `city`, `name`, `phoneNumber`, `link`) VALUES
+(1, 15, '55 rue des près', 2, 1, 'Jaaj Gym', '0695069629', 'https://maps.google.com/maps?q=oto%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed');
 
 -- --------------------------------------------------------
 
@@ -264,6 +266,16 @@ CREATE TABLE `RkU_PARTICIPATE` (
   `userId` int(11) NOT NULL,
   `eventId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `RkU_PARTICIPATE`
+--
+
+INSERT INTO `RkU_PARTICIPATE` (`userId`, `eventId`) VALUES
+(2, 14),
+(2, 15),
+(2, 16);
+
 
 -- --------------------------------------------------------
 
@@ -468,7 +480,7 @@ CREATE TABLE `RkU_USER` (
 --
 
 INSERT INTO `RkU_USER` (`id`, `firstName`, `lastName`, `email`, `civility`, `avatar`, `password`, `address`, `city`, `zipCode`, `birthday`, `fitcoin`, `role`, `registrationDate`, `lastUpdate`, `lastPasswordUpdate`, `changePassword`, `token`, `subscription`, `startDateSub`, `endDateSub`, `renewalDate`, `nextPaymentDate`, `token_confirm_inscription`, `newsletter`) VALUES
-(2, 'Tom', 'BOURLARD', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 70, 2, '2022-06-16 13:40:31', '2022-06-23 13:40:55', '2022-06-23 13:40:55', 0, 'f19fc76d64b261$@8', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6', 0);
+(2, 'Jean', 'BBOMBEUR', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 70, 2, '2022-06-16 13:40:31', '2022-06-23 13:40:55', '2022-06-23 13:40:55', 0, 'f19fc76d64b261$@8', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6', 0);
 
 --
 -- Indexes for dumped tables
