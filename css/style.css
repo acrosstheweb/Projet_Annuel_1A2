@@ -16,10 +16,11 @@
     border-radius: 50%;
 }
 
-a, .nav-link, .link-primary{
+a,
+.nav-link,
+.link-primary {
     color: var(--green5);
 }
-
 
 
 /* Boutons */
@@ -35,7 +36,8 @@ a, .nav-link, .link-primary{
     border-color: var(--green3);
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-primary.disabled,
+.btn-primary:disabled {
     color: #fff;
     background-color: var(--green1);
     border-color: var(--green1);
@@ -74,14 +76,14 @@ a, .nav-link, .link-primary{
     display: none;
 }
 
-#__searchbar-results{
+#__searchbar-results {
     position: absolute;
     top: 3.9em;
     width: 20%;
     right: 13%;
     background-color: var(--green1);
     border: 1px solid;
-    max-height: 60vh; 
+    max-height: 60vh;
     overflow: auto;
 }
 
@@ -251,8 +253,9 @@ h1 {
 
 
 /* Page Informations Profil */
-@media (max-width: 768px){
-    .__profilePicRow{
+
+@media (max-width: 768px) {
+    .__profilePicRow {
         display: flex;
         justify-content: center;
         text-align: center;
@@ -293,14 +296,14 @@ h1 {
     display: none;
 }
 
-.__profileDropdownMenu{
+.__profileDropdownMenu {
     text-align: center;
     width: 94%;
     border: none;
     background-color: var(--green3);
 }
 
-.__profileDropdown{
+.__profileDropdown {
     background-color: var(--green3);
 }
 
@@ -337,18 +340,19 @@ table {
 
 /* Forum */
 
-.__forumLink{
-    color: rgba(0,0,0,.55);
+.__forumLink {
+    color: rgba(0, 0, 0, .55);
 }
 
-.__forumLink:hover{
-    color: rgba(0,0,0,.70);
+.__forumLink:hover {
+    color: rgba(0, 0, 0, .70);
 }
 
 .__topic {
     text-align: center;
     margin: 1rem;
 }
+
 
 /* .__topic:hover {
     background-color: rgba(0, 0, 0, 0.1);
@@ -444,7 +448,7 @@ table {
     max-width: 120px;
 }
 
-.__programExerciceDelete{
+.__programExerciceDelete {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -452,7 +456,7 @@ table {
     background-color: var(--bs-danger);
 }
 
-.__programCardPreview{
+.__programCardPreview {
     max-width: 420px;
     min-width: 320px;
     max-height: 600px;
@@ -512,10 +516,6 @@ table {
     height: 20%;
 }
 
-.__calendarTable--6weeks td {
-    height: 16.66%;
-}
-
 .__calendarWeekDay {
     font-weight: bold;
     color: #000;
@@ -541,6 +541,7 @@ table {
 
 
 /* AVATAR */
+
 .__avatarPreviewContainer {
     padding-top: 1rem;
     position: relative;
@@ -608,8 +609,10 @@ table {
     display: none;
 }
 
+
 /* NEWSLETTER */
-#__newsletterButton{
+
+#__newsletterButton {
     border-radius: 0;
     position: fixed;
     left: 0;
@@ -617,7 +620,7 @@ table {
     background-color: var(--green3);
 }
 
-#__messageAlert{
+#__messageAlert {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -626,7 +629,7 @@ table {
 
 /* STATS */
 
-.__rectangleStat{
+.__rectangleStat {
     height: 30px;
     text-align: center;
     font-weight: bold;
@@ -635,34 +638,34 @@ table {
 
 /* ABOUT */
 
-.__gym:nth-child(even){
+.__gym:nth-child(even) {
     background: var(--green1);
 }
 
-.__gymDescription{
+.__gymDescription {
     height: 100%;
 }
 
-@media (min-width: 768px){
-    .__gymMapContainer{
+@media (min-width: 768px) {
+    .__gymMapContainer {
         height: 35vh;
     }
 }
 
-@media (min-width: 996px){
-    .__gymMapContainer{
+@media (min-width: 996px) {
+    .__gymMapContainer {
         height: 45vh;
     }
 }
 
-.__gymMap{
+.__gymMap {
     width: 80%;
     height: 90%;
     margin: 2.5% auto;
     display: block;
 }
 
-.__gymInfo{
+.__gymInfo {
     list-style-type: none;
     text-align: center;
     padding: 0;
