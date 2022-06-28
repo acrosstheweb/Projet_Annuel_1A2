@@ -20,10 +20,39 @@
     $end = (clone $startDay)->modify('+' . 7 . 'days');
     $events = $events->getEventsBetweenByDay($startDay, $end);
 
+    $req = $pdo->query("SELECT id, name FROM RkU_GYMS");
+    $gyms = $req->fetchAll();
+    
+    $req = $pdo->query("SELECT id, name FROM RkU_SPORT");
+    $sports = $req->fetchAll();
 
 ?>
 
 <h1 class="aligned-title"> Réserver une séance </h1>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonGym" data-bs-toggle="dropdown" aria-expanded="false">
+    Choisir la salle
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonGym">
+    <li><a class="dropdown-item __gym-filter" id="allGyms" data-gym="all" href="#">Toutes les salles</a></li>
+    <?php foreach($gyms as $gym){ ?>
+    <li><a class="dropdown-item __gym-filter" id="__gym-<?= $gym['id'] ?>" data-gym="<?= $gym['id'] ?>" href="#"><?= $gym['name'] ?></a></li>
+    <?php } ?>
+  </ul>
+</div>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonSport" data-bs-toggle="dropdown" aria-expanded="false">
+    Choisir le sport
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSport">
+    <li><a class="dropdown-item __sport-filter" id="allSports" data-sport="all" href="#">Tous les sports</a></li>
+    <?php foreach($sports as $sport){ ?>
+    <li><a class="dropdown-item __sport-filter" id="__sport-<?= $sport['id'] ?>" data-sport="<?= $sport['id'] ?>" href="#"><?= $sport['name'] ?></a></li>
+    <?php } ?>
+  </ul>
+</div>
 
 <div class="calendar">
     <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
@@ -49,8 +78,8 @@
                 <div class="__calendarWeekDay"> <?= $month->days[($date->format('w')+6)%7] ?> </div>
                 <div class="__calendarDay"> <?= $date->format('d'); ?> </div>
                 <?php foreach($eventsForDay as $event){ ?>
-                <div class="__calendarEvent __event-<?= $event['gym'] ?>"> 
-                    <?= (new Datetime($event['startDate']))->format('H:i') ?> - <a href=" <?= DOMAIN ?>modules/calendar/vues/eventUser.php?id=<?= $event['id'] ?>"> <?= $event['name'] ?> </a> <!-- Je met le lien vers la modif, ce sera migré vers le BO, il faudra remettre un lien vers eventUser.php -->
+                <div class="__calendarEvent __event-<?= $event['gym'] ?> __event-<?= $event['sport'] ?>"> 
+                    <?= (new Datetime($event['startDate']))->format('H:i') ?> - <a href=" <?= DOMAIN ?>modules/calendar/vues/eventUser.php?id=<?= $event['id'] ?>"> <?= $event['name'] ?></a> <!-- Je met le lien vers la modif, ce sera migré vers le BO, il faudra remettre un lien vers eventUser.php -->
                 </div>
                 <?php } ?>
             </td>
@@ -61,6 +90,8 @@
     </table>
 
 </div>
+
+<script src="<?= DOMAIN . 'js/reservations.js'?>"></script>
 
 <?php
     include '../../../footer.php';
