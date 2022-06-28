@@ -33,8 +33,8 @@ if($verifmail[0] === true){
     $mailContent.= '</section>';
     $mailContent.= '</html>';
 
-    $subject = 'Changement adresse mail Fitness Essential 💪';
-    $headers = 'From: "Fitness Essential" fitness3ssential@gmail.com' . PHP_EOL;
+    $subject = 'Changement adresse mail Fitness Essential';
+    $headers = 'From: Fitness Essential <fitness-essential@pa-atw.fr>' . PHP_EOL;
     $headers .= "MIME-Version: 1.0" . PHP_EOL;
     $headers .= 'Content-type: text/html; charset=iso-8859-1';
 
