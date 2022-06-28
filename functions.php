@@ -263,8 +263,8 @@ function register_mail($firstname, $tk): string
             <section align="center">
                 <h1>Vérification inscription Fitness Essential</h1>
                 <img src=' . $src . ' alt="logo">
-                <h3>Bonjour ' . $firstname . ', merci de nous faire confiance pour être la salle de vos nombreux futurs entrainements intensifs 💪</h3>
-                <p>Pour confirmer votre inscription nous vons prions de bien vouloir cliquer sur le lien afin de vérifier que vous n\'êtes pas un robot 🔌</p>
+                <h3>Bonjour ' . $firstname . ', merci de nous faire confiance pour être la salle de vos nombreux futurs entrainements intensifs</h3>
+                <p>Pour confirmer votre inscription nous vons prions de bien vouloir cliquer sur le lien afin de vérifier que vous n\'êtes pas un robot</p>
                 <a href='. $href .'>Vérifier votre adresse mail</a>
             </section>
         </html>';

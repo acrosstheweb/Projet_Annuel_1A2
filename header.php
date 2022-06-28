@@ -21,7 +21,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href=<?= DOMAIN . 'css/style.css'?>>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://kit.fontawesome.com/17a81231c9.js" crossorigin="anonymous"></script>
     <title><?php if (isset($title)) {
                 echo $title;
@@ -30,7 +29,7 @@
             } ?></title>
 </head>
 
-<body>
+<body onload="init();">
 
     <?php
     function isActive($active_page, $link)
@@ -60,16 +59,6 @@
                             <ul class="navbar-nav ms-3 align-items-center">
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
-                                                            isActive($currentPage, "gyms");
-                                                        } ?>" href="<?= DOMAIN . 'modules/gym/vues/gyms.php'?>">Salles</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link <?php if (isset($currentPage)) {
-                                                            isActive($currentPage, "subscriptions");
-                                                        } ?>" href="<?= DOMAIN . 'modules/subscription/vues/subscriptions.php'?>">Abonnements</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "reservations");
                                                         } ?>" href="<?= DOMAIN . 'modules/calendar/vues/reservations.php'?>">Réservations</a>
                                 </li>
@@ -83,6 +72,11 @@
                                     <a class="nav-link <?php if (isset($currentPage)) {
                                                             isActive($currentPage, "forum");
                                                         } ?>" href="<?= DOMAIN . 'modules/forum/vues/forum.php'?>">Forum</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?php if (isset($currentPage)) {
+                                                            isActive($currentPage, "subscriptions");
+                                                        } ?>" href="<?= DOMAIN . 'modules/subscription/vues/subscriptions.php'?>">Tarifs</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link <?php if (isset($currentPage)) {
@@ -147,7 +141,7 @@
                             <li class="nav-item">
                                 <a class="nav-link __navIcon" href="<?= DOMAIN . 'modules/cart/vues/cart.php'?>"><i class="fa-solid fa-bag-shopping"></i></a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" id="__darkMode-trigger">
                                 <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-moon"></i></a>
                             </li>
                         </ul>
@@ -160,34 +154,28 @@
                         <ul class="navbar-nav ms-3">
                             <li class="nav-item">
                                 <a class="nav-link <?php if (isset($currentPage)) {
-                                                        isActive($currentPage, "gyms");
-                                                    } ?>" href="gyms.php">Salles</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link <?php if (isset($currentPage)) {
-                                                        isActive($currentPage, "subscriptions");
-                                                    } ?>" href="subscriptions.php">Abonnements</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link <?php if (isset($currentPage)) {
                                                         isActive($currentPage, "reservations");
-                                                    } ?>" href="reservations.php">Réservations</a>
+                                                    } ?>" href="<?= DOMAIN . 'modules/calendar/vues/reservations.php'?>">Réservations</a>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link <?php if (isset($currentPage)) {
                                                         isActive($currentPage, "programs");
-                                                    } ?>" href="programs.php">Programmes</a>
+                                                    } ?>" href="<?= DOMAIN . 'modules/program/vues/programs.php'?>">Programmes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?php if (isset($currentPage)) {
                                                         isActive($currentPage, "forum");
-                                                    } ?>" href="modules/forum/vues/forum.php">Forum</a>
+                                                    } ?>" href="<?= DOMAIN . 'modules/forum/vues/forum.php'?>">Forum</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if (isset($currentPage)) {
+                                                        isActive($currentPage, "subscriptions");
+                                                    } ?>" href="<?= DOMAIN . 'modules/subscription/vues/subscriptions.php'?>">Tarifs</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?php if (isset($currentPage)) {
                                                         isActive($currentPage, "about");
-                                                    } ?>" href="about.php">Informations</a>
+                                                    } ?>" href="<?= DOMAIN . 'about.php'?>">Informations</a>
                             </li>
                             <li class="input-group rounded nav-item d-lg-none">
                                 <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
@@ -253,10 +241,6 @@
                                     <option value="M">Monsieur</option>
                                 </select>
                             </div>
-                            <div class="col">
-                                <label for="register-birthday">Date de naissance : </label>
-                                <input class="form-control" type="date" name="register-birthday" required="required"><br>
-                            </div>
                         </div>
 
                         <div class="row">
@@ -267,19 +251,28 @@
 
                             <div class="col">
                                 <label for="register-firstname">Prénom : </label>
-                                <input id="register-firstname" class="form-control" type="text" name="register-firstname" placeholder="Prénom" required="required"><br>
+                                <input id="register-firstname" class="form-control" type="text" name="register-firstname" placeholder="Prénom" required="required">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
+                                <label for="register-birthday">Date de naissance : </label>
+                                <input class="form-control" type="date" name="register-birthday" required="required">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col">
                                 <label for="register-email">Email : </label>
                                 <input id="register-email" class="form-control" type="email" name="register-email" placeholder="Adresse mail" required="required">
                             </div>
+                        </div>
 
+                        <div class="row mt-3">
                             <div class="col">
                                 <label for="register-address">Adresse : </label>
-                                <input id="register-address" class="form-control" type="text" name="register-address" placeholder="Adresse" required="required"><br>
+                                <input id="register-address" class="form-control" type="text" name="register-address" placeholder="Adresse" required="required">
                             </div>
                         </div>
 
@@ -291,24 +284,33 @@
 
                             <div class="col">
                                 <label for="register-zip-code">Code postal : </label>
-                                <input id="register-zip-code" class="form-control" type="number" name="register-zip-code" placeholder="Code postal" required="required"><br>
+                                <input id="register-zip-code" class="form-control" type="number" name="register-zip-code" placeholder="Code postal" required="required">
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mt-3">
                             <div class="col">
                                 <label for="register-password">Mot de passe : </label>
                                 <input id="register-password" class="form-control" type="password" name="register-password" placeholder="Mot de passe" required="required">
                             </div>
+                        </div>
 
+                        <div class="row">
                             <div class="col">
                                 <label for="register-confirmed-password">Confirmation mot de passe : </label>
-                                <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required"><br>
+                                <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required">
                             </div>
                         </div>
-                        <div class="row">
+
+                        <div class="row my-3">
                             <?php require 'captcha_v2.php'; ?>
                         </div>
+
+                        <input type="checkbox" name="register-newsletter" id="register-newsletter" checked="checked">
+                        <label for="register-newsletter">Je m'abonne à la newsletter</label><br>
+
+                        <input type="checkbox" name="register-cgu" id="register-cgu" required="required">
+                        <label for="register-cgu">J'accepte les Conditions Générales d'Utilisation</label>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -348,3 +350,4 @@
 </script> -->
 <!-- <script src="js/user-slide.js"></script> -->
 <script src="<?= DOMAIN . 'js/searchbar.js'?>"></script>
+<script src="<?= DOMAIN . 'js/dark-mode.js'?>"></script>

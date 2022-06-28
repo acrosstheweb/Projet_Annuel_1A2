@@ -1,7 +1,7 @@
 <?php
 require '../../../functions.php';
 if(
-    count($_POST) != 10+9 ||
+    count($_POST) != 12+9 ||
     empty($_POST['register-civility']) ||
     empty($_POST['register-birthday']) ||
     empty($_POST['register-lastname']) ||
@@ -11,7 +11,9 @@ if(
     empty($_POST['register-city']) ||
     empty($_POST['register-zip-code']) ||
     empty($_POST['register-password']) ||
-    empty($_POST['register-confirmed-password'])
+    empty($_POST['register-confirmed-password']) ||
+    empty($_POST['register-cgu']) ||
+    !isset($_POST['register-newsletter'])
 ){
     setMessage('RegisterHack', ['Non respect des règles du formulaire d\'inscription'],'danger');
     header('Location: ../../../error404.php');
@@ -67,9 +69,9 @@ if($verifChamps[0] === true){
     $tk = genToken(); // Génération du token pour vérifier l'inscription par mail
 
     $to = $email;
-    $subject = 'Inscription Fitness Essential 💪';
+    $subject = 'Inscription Fitness Essential';
     $message = register_mail($firstname, $tk);
-    $headers = 'From: "Fitness Essential" fitness3ssential@gmail.com' . PHP_EOL;
+    $headers = 'From: Fitness Essential <fitness-essential@pa-atw.fr>' . PHP_EOL;
     $headers .= "MIME-Version: 1.0" . PHP_EOL;
     $headers .= 'Content-type: text/html; charset=iso-8859-1';
 

@@ -59,9 +59,9 @@ if($verifChamps[0] === true){
     $tk = genToken(); // Génération du token pour vérifier l'inscription par mail
 
     $to = $email;
-    $subject = 'Inscription Fitness Essential 💪';
+    $subject = 'Inscription Fitness Essential';
     $message = register_mail($firstname, $tk, 'http://localhost/Projet_Annuel_1A2_github');
-    $headers = 'From: "Fitness Essential" fitness3ssential@gmail.com' . PHP_EOL;
+    $headers = 'From: Fitness Essential <fitness-essential@pa-atw.fr>' . PHP_EOL;
     $headers .= "MIME-Version: 1.0" . PHP_EOL;
     $headers .= 'Content-type: text/html; charset=iso-8859-1';
 

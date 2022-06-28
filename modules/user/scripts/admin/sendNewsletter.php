@@ -87,7 +87,7 @@ foreach($destinationsQuery->fetchAll() as $d){
 
 $destinations = implode(',', $destinations);
 
-$headers = "From: \"Fitness Essential\" fitness3ssential@gmail.com" . PHP_EOL;
+$headers = 'From: Fitness Essential <fitness-essential@pa-atw.fr>' . PHP_EOL;
 $headers .= "Bcc: $destinations" . PHP_EOL;
 $headers .= "MIME-Version: 1.0" . PHP_EOL;
 $headers .= "Content-type: text/html; charset=ISO-8859-1\r\n";

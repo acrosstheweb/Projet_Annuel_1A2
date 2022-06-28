@@ -10,6 +10,9 @@
                 <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/security.php'?>">Sécurité</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/captchaAdmin.php'?>">Captcha</a>
+                </li>
             </ul>
         </li>
         
@@ -33,6 +36,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminGyms.php'?>">Salles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminFitcoins.php'?>">Fitcoins</a>
                 </li>
             </ul>
         </li>
