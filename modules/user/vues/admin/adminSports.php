@@ -64,7 +64,7 @@ $results = $req->fetchAll();
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="deleteSport<?= $sport['id'];?>" action="<?= DOMAIN . 'modules/sport/scripts/deleteSport.php?sportId=' . $sport['id']?>" method="POST" >
+                                        <form id="formDeleteSport<?= $sport['id'];?>" action="<?= DOMAIN . 'modules/sport/scripts/deleteSport.php?sportId=' . $sport['id']?>" method="POST" >
                                             <div class="deleteFormInfo">
                                                 <h5>Vous êtes sur le point de supprimer cet évènement :</h5>
                                                 <ul>
@@ -83,7 +83,7 @@ $results = $req->fetchAll();
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                        <button class="btn btn-primary delete-passwordConfirm" form="deleteSport<?= $sport['id'];?>" type="submit">Supprimer</button>
+                                        <button class="btn btn-primary delete-passwordConfirm" form="formDeleteSport<?= $sport['id'];?>" type="submit">Supprimer</button>
                                     </div>
                                 </div>
                             </div>
