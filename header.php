@@ -29,7 +29,7 @@
             } ?></title>
 </head>
 
-<body>
+<body onload="init();">
 
     <?php
     function isActive($active_page, $link)
@@ -135,7 +135,7 @@
                             <li class="nav-item">
                                 <a class="nav-link __navIcon" href="<?= DOMAIN . 'modules/cart/vues/cart.php'?>"><i class="fa-solid fa-bag-shopping"></i></a>
                             </li>
-                            <li class="nav-item" id="__darkMode-trigger" data-darkMode="0">
+                            <li class="nav-item" id="__darkMode-trigger">
                                 <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-moon"></i></a>
                             </li>
                         </ul>
