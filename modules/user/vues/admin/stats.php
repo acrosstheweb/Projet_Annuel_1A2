@@ -1,149 +1,207 @@
 <?php
-require '../../../../functions.php';
+    require '../../../../functions.php';
 
-if(!isAdmin()) {
-    header('Location: ../../../../error404.php');
-    die();
-}
+    if(!isAdmin()) {
+        header('Location: ../../../../error404.php');
+        die();
+    }
+    $title = "Fitness Essential - Statistiques";
+    $content = "Statistiques";
+    $currentPage = 'stats';
 
-require '../../../../header.php';
-$db = database();
-$ages = []; $subscriptions = []; $civilities = [];
-$numberOfUsersQ = $db->query("SELECT COUNT(*) FROM RkU_USER WHERE role > 0");
-$userPerAgeQ = $db->query("SELECT birthday FROM RkU_USER WHERE role > 0"); // On ne prend en compte que les comptes confirmés
-$userPerSubQ = $db->query("SELECT subscription FROM RkU_USER WHERE role > 0 AND subscription IS NOT NULL");
-$newsletterSubsQ = $db->query("SELECT COUNT(*) FROM RkU_USER WHERE newsletter = 1 AND ROLE > 0");
-$userPerCivilityQ = $db->query("SELECT civility FROM RkU_USER WHERE role > 0");
-$questionsForumQ = $db->query("SELECT COUNT(*) FROM RkU_QUESTION");
-$messagesForumQ = $db->query("SELECT COUNT(*) FROM RkU_MESSAGE");
+    require '../../../../header.php';
+    $db = database();
+    $ages = []; $subscriptions = []; $civilities = [];
+    $numberOfUsersQ = $db->query("SELECT COUNT(*) FROM RkU_USER WHERE role > 0");
+    $userPerAgeQ = $db->query("SELECT birthday FROM RkU_USER WHERE role > 0"); // On ne prend en compte que les comptes confirmés
+    $userPerSubQ = $db->query("SELECT subscription FROM RkU_USER WHERE role > 0 AND subscription IS NOT NULL");
+    $newsletterSubsQ = $db->query("SELECT COUNT(*) FROM RkU_USER WHERE newsletter = 1 AND ROLE > 0");
+    $userPerCivilityQ = $db->query("SELECT civility FROM RkU_USER WHERE role > 0");
+    $questionsForumQ = $db->query("SELECT COUNT(*) FROM RkU_QUESTION");
+    $messagesForumQ = $db->query("SELECT COUNT(*) FROM RkU_MESSAGE");
 
-$newsletterSubs = $newsletterSubsQ->fetch()[0];
-$numberOfUsers = $numberOfUsersQ->fetch()[0];
-$newsletterNotSubs = $numberOfUsers - $newsletterSubs;
-$questionsForum = $questionsForumQ->fetch()[0];
-$messagesForum = $messagesForumQ->fetch()[0];
+    $newsletterSubs = $newsletterSubsQ->fetch()[0];
+    $numberOfUsers = $numberOfUsersQ->fetch()[0];
+    $newsletterNotSubs = $numberOfUsers - $newsletterSubs;
+    $questionsForum = $questionsForumQ->fetch()[0];
+    $messagesForum = $messagesForumQ->fetch()[0];
 
-foreach($userPerAgeQ->fetchAll() as $b) {
-    $birthday = $b[0];
-    $age = (time() - strtotime($birthday))/60/60/24/365.25;
-    $ages[] = $age;
-}
-foreach($userPerSubQ->fetchAll() as $s) {
-    $subscription = $s[0];
-    $subscriptions[] = $subscription;
-}
-foreach($userPerCivilityQ->fetchAll() as $c){
-    $civility = $c[0];
-    $civilities[] = $civility;
-}
+    foreach($userPerAgeQ->fetchAll() as $b) {
+        $birthday = $b[0];
+        $age = (time() - strtotime($birthday))/60/60/24/365.25;
+        $ages[] = $age;
+    }
+    foreach($userPerSubQ->fetchAll() as $s) {
+        $subscription = $s[0];
+        $subscriptions[] = $subscription;
+    }
+    foreach($userPerCivilityQ->fetchAll() as $c){
+        $civility = $c[0];
+        $civilities[] = $civility;
+    }
 ?>
 
+<div class="container-fluid d-lg-none">
+    <div class="row __profileDropdown">
+        <div class="dropdown d-grid gap-2">
+            <button class="btn dropdown-toggle text-light" type="button" id="__profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $content ?>
+            </button>
+            <ul class="dropdown-menu justify-content-center __profileDropdownMenu text-light" aria-labelledby="dropdownMenuButton1">
+                <?php include 'adminNavbar.php'; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
     <h1 class="aligned-title">Statistiques générales</h1>
+    <div class="fs-2 text-uppercase text-center my-2">
+        Nombre total d'utilisateurs vérifiés: <?= $numberOfUsers ?> 
+    </div>
     <div class="container-fluid">
-        <div class="row">
-            <div class="d-none col-2 d-md-flex justify-content-center">
+        <div class="row d-flex justify-content-center justify-content-lg-start">
+            <div class="d-none col-2 d-lg-flex justify-content-center">
                 <?php include "adminNavbar.php"; ?>
             </div>
 
-            <div class="col-8">
-                <div class="row">
-                    <div class="col-6">
-                        <h5>Nombre d'utilisateurs par année de naissance</h5>
-                        <div class="row">
-                            <h6>18 - 24 Ans</h6>
-                            <div clas="col-2" id="18-24">
-                                <div class="__rectangleStat"></div>
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="row justify-content-evenly">
+                    
+                    <div class="col-12 col-md-4 my-2">
+                        <div class="card shadow __chartCard p-3">
+                            <h5 class="text-center">Utilisateurs par civilité</h5>
+                            <div class="progress p-0 m-2">
+                                <div id="__M" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__F" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-
-                            <h6>25 - 34 Ans</h6>
-                            <div clas="col-2" id="25-34">
-                                <div class="__rectangleStat"></div>
+                            <hr>
+                            <div class="__stats-description">
+                                Hommes
+                                <span class="float-end" id="__M-value">0</span>
                             </div>
-
-                            <h6>35 - 44 Ans</h6>
-                            <div clas="col-2" id="35-44">
-                                <div class="__rectangleStat"></div>
+                            <hr>
+                            <div class="__stats-description">
+                                Femmes
+                                <span class="float-end" id="__F-value">0</span>
                             </div>
-
-                            <h6>45 - 54 Ans</h6>
-                            <div clas="col-2" id="45-54">
-                                <div class="__rectangleStat"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-4 my-2">
+                        <div class="card shadow __chartCard p-3">
+                            <h5 class="text-center">Nombre d'utilisateurs par abonnement</h5>
+                            <div class="progress p-0 m-2">
+                                <div id="__essential" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__classic" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__premium" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-
-                            <h6>+ 55 Ans</h6>
-                            <div clas="col-2" id="55">
-                                <div class="__rectangleStat"></div>
+                            <hr>
+                            <div class="__stats-description">
+                                Essential
+                                <span class="float-end" id="__essential-value">0</span>
                             </div>
-
+                            <hr>
+                            <div class="__stats-description">
+                                Classic
+                                <span class="float-end" id="__classic-value">0</span>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                Premium
+                                <span class="float-end" id="__premium-value">0</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-6">
-                        <h5>Nombre d'abonnés par types d'abonnements</h5>
-                        <div class="row">
-                            <h6>ESSENTIAL</h6>
-                            <div clas="col-2" id="__essential">
-                                <div class="__rectangleStat"></div>
+                    <div class="col-12 col-md-4 my-2">
+                        <div class="card shadow __chartCard p-3">
+                            <h5 class="text-center">Nombre d'utilisateurs par âge</h5>
+                            <div class="progress p-0 m-2">
+                                <div id="__18-24" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__25-34" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__35-44" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__45-54" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__55" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-
-                            <h6>CLASSIC</h6>
-                            <div clas="col-2" id="__classic">
-                                <div class="__rectangleStat"></div>
+                            <hr>
+                            <div class="__stats-description">
+                                18 à 24 ans
+                                <span class="float-end" id="__18-24-value">0</span>
                             </div>
+                            <hr>
+                            <div class="__stats-description">
+                                25 à 34 ans
+                                <span class="float-end" id="__18-24-value">0</span>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                35 à 44 ans
+                                <span class="float-end" id="__18-24-value">0</span>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                45 à 54 ans
+                                <span class="float-end" id="__18-24-value">0</span>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                Plus de 55 ans
+                                <span class="float-end" id="__18-24-value">0</span>
+                            </div>
+                        </div>
+                    </div>
 
-                            <h6>PREMIUM</h6>
-                            <div clas="col-2" id="__premium">
-                                <div class="__rectangleStat"></div>
-                            </div
+                </div>
+
+                <div class="row justify-content-evenly"><hr class="mt-3">
+                    <div class="col-12 col-md-6 my-2">
+                        <div class="card shadow __chartCard p-3">
+                            <h5 class="text-center">Abonnements à la newsletter</h5>
+                            <div class="progress p-0 m-2">
+                                <div id="__subscribed" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__notSubscribed" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                Abonnés
+                                <span class="float-end" id="__subscribed-value">0</span>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                Non abonnés
+                                <span class="float-end" id="__notSubscribed-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-6 my-2">
+                        <div class="card shadow __chartCard p-3">
+                            <h5 class="text-center">Interactions sur le forum</h5>
+                            <div class="progress p-0 m-2">
+                                <div id="__questions" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div id="__answers" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                Questions
+                                <span class="float-end" id="__questions-value">0</span>
+                            </div>
+                            <hr>
+                            <div class="__stats-description">
+                                Réponses
+                                <span class="float-end" id="__answers-value">0</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row mt-5"><hr>
-                    <div class="col-4">
-                        <h5>Nombre d'abonnés à la newsletter</h5>
-                        <h6>Abonnés</h6>
-                        <div clas="col-2">
-                            <div class="__rectangleStat" id="__newsletterSub"></div>
+                <div class="row justify-content-evenly"><hr class="mt-3">
+                    <div class="col-12 col-md-4 my-2">
+                        <div class="card shadow __chartCard p-3">
+                            <h5 class="text-center">Utilisateurs par région</h5>
+                            <div class="text-center">Bientôt disponible</div>
                         </div>
-
-                        <h6>Non Abonnés</h6>
-                        <div clas="col-2">
-                            <div class="__rectangleStat" id="__newsletterNotSub"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <h5>Utilisateurs par civilité</h5>
-                        <h6>M</h6>
-                        <div clas="col-2">
-                            <div class="__rectangleStat" id="__M"></div>
-                        </div>
-
-                        <h6>F</h6>
-                        <div clas="col-2">
-                            <div class="__rectangleStat" id="__F"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <h5>Interactions Forum</h5>
-                        <h6>Questions posées</h6>
-                        <div clas="col-2">
-                            <div class="__rectangleStat" id="__questions"></div>
-                        </div>
-
-                        <h6>Réponses</h6>
-                        <div clas="col-2">
-                            <div class="__rectangleStat" id="__reponses"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-5"><hr>
-                    <div class="col-4">
-                        <h5>Utilisateurs par Régions</h5>
-                        COMING SOON
                     </div>
                 </div>
             </div>
@@ -151,6 +209,8 @@ foreach($userPerCivilityQ->fetchAll() as $c){
     </div>
 
     <script type="text/javascript">
+
+        // DONNÉES ÂGE
         let ages = <?php echo json_encode($ages, JSON_NUMERIC_CHECK); ?>;
         if (ages != null){
             let a = 0; // 18 - 24
@@ -161,53 +221,44 @@ foreach($userPerCivilityQ->fetchAll() as $c){
             for (let age of ages){
                 if(age >= 18 && age < 25){
                     a++;
-                    let width = a/ages.length;
-                    let div = document.getElementById('18-24');
-                    div.lastElementChild.style.cssText = `
-                    border: 2px solid black;
-                    background-color:green;
-                    width:`+50*width+`%;`;
-                    div.children[0].innerHTML = a;
+                    let width = (a/ages.length)*100;
+                    let div = document.getElementById('__18-24');
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__18-24-value').innerText = a;
                 }else if(age >= 25 && age < 35){
                     b++;
-                    let width = b/ages.length;
-                    let div = document.getElementById('25-34');
-                    div.lastElementChild.style.cssText = `
-                    border: 2px solid black;
-                    background-color:darkcyan;
-                    width:`+50*width+`%;`;
-                    div.children[0].innerHTML = b;
+                    let width = (b/ages.length)*100;
+                    let div = document.getElementById('__25-34');
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__18-24-value').innerText = b;
                 }else if(age >= 35 && age < 45) {
                     c++;
                     let width = c/ages.length;
-                    let div = document.getElementById('35-44');
-                    div.lastElementChild.style.cssText = `
-                    border: 2px solid black;
-                    background-color:chocolate;
-                    width:`+50*width+`%;`;
-                    div.children[0].innerHTML = c;
+                    let div = document.getElementById('__35-44');
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__18-24-value').innerText = c;
                 }else if(age >= 45 && age < 55){
                     d++;
                     let width = d/ages.length;
-                    let div = document.getElementById('45-54');
-                    div.lastElementChild.style.cssText = `
-                    border: 2px solid black;
-                    background-color:darkorange;
-                    width:`+50*width+`%;`;
-                    div.children[0].innerHTML = d;
+                    let div = document.getElementById('__45-54');
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__18-24-value').innerText = d;
                 }else if(age >= 55){
                     e++;
                     let width = e/ages.length;
-                    let div = document.getElementById('55');
-                    div.lastElementChild.style.cssText = `
-                    border: 2px solid black;
-                    background-color:grey;
-                    width:`+50*width+`%;`;
-                    div.lastElementChild.innerHTML = e;
+                    let div = document.getElementById('__55');
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__18-24-value').innerText = e;
                 }
             }
         }
 
+        // DONNÉES ABONNEMENT
         let subscriptions = <?php echo json_encode($subscriptions, JSON_NUMERIC_CHECK); ?>;
         if (subscriptions != null){
             let essential = 0;
@@ -216,55 +267,45 @@ foreach($userPerCivilityQ->fetchAll() as $c){
             for (let subs of subscriptions){
                 if(subs == 1){
                     essential++;
-                    let width = essential/subscriptions.length;
+                    let width = (essential/subscriptions.length)*100;
                     let div = document.getElementById('__essential');
-                    div.lastElementChild.style.cssText = `
-                    border:2px solid black;
-                    background-color:green;
-                    width:`+50*width+`%;`;
-                    div.lastElementChild.innerHTML = essential;
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__essential-value').innerText = essential;
                 }else if(subs == 2){
                     classic++;
                     let width = classic/subscriptions.length;
                     let div = document.getElementById('__classic');
-                    div.lastElementChild.style.cssText = `
-                    border:2px solid black;
-                    background-color:darkcyan;
-                    width:`+50*width+`%;`;
-                    div.lastElementChild.innerHTML = classic;
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__classic-value').innerText = classic;
                 }else if(subs == 3){
                     premium++;
                     let width = premium/subscriptions.length;
                     let div = document.getElementById('__premium');
-                    div.lastElementChild.style.cssText = `
-                    border:2px solid black;
-                    background-color:gold;
-                    width:`+50*width+`%;`;
-                    div.lastElementChild.innerHTML = premium;
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__premium-value').innerText = premium;
                 }
             }
         }
 
-
+        // DONNÉES NEWSLETTER
         let newsletter = <?php echo json_encode($newsletterSubs, JSON_NUMERIC_CHECK); ?>;
         let users = <?php echo json_encode($numberOfUsers, JSON_NUMERIC_CHECK); ?>;
         if(newsletter != null && users != null){
             // Abonnés Newsletter
-            let width = newsletter/users;
-            let div = document.getElementById("__newsletterSub");
-            div.style.cssText = `
-            background-color:darkcyan;
-            border: 2px solid black;
-            width:`+100*width+`%;`;
-            div.innerHTML = newsletter;
+            let width = (newsletter/users)*100;
+            let div = document.getElementById("__subscribed");
+            div.setAttribute('aria-valuenow', width);
+            div.setAttribute('style', `width: ${width}%;`);
+            document.getElementById('__subscribed-value').innerText = newsletter;
             // Non abonnés
-            width = (users - newsletter)/users;
-            div = document.getElementById("__newsletterNotSub");
-            div.style.cssText = `
-            background-color:grey;
-            border: 2px solid black;
-            width:`+100*width+`%;`;
-            div.innerHTML = users - newsletter;
+            width = ((users - newsletter)/users)*100;
+            div = document.getElementById("__notSubscribed");
+            div.setAttribute('aria-valuenow', width);
+            div.setAttribute('style', `width: ${width}%;`);
+            document.getElementById('__notSubscribed-value').innerText = users-newsletter;
         }
 
         let civilities = <?php echo json_encode($civilities, JSON_NUMERIC_CHECK); ?>;
@@ -274,22 +315,18 @@ foreach($userPerCivilityQ->fetchAll() as $c){
             for (let civility of civilities){
                 if(civility == 'M'){
                     M++;
-                    let width = M/civilities.length;
+                    let width = (M/civilities.length)*100;
                     let div = document.getElementById('__M');
-                    div.style.cssText = `
-                    border:2px solid black;
-                    background-color:turquoise;
-                    width:`+50*width+`%;`;
-                    div.innerHTML = M;
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__M-value').innerText = M;
                 }else if(civility == 'F'){
                     F++;
-                    let width = F/civilities.length;
+                    let width = (F/civilities.length)*100;
                     let div = document.getElementById('__F');
-                    div.style.cssText = `
-                    border:2px solid black;
-                    background-color:salmon;
-                    width:`+50*width+`%;`;
-                    div.innerHTML = F;
+                    div.setAttribute('aria-valuenow', width);
+                    div.setAttribute('style', `width: ${width}%;`);
+                    document.getElementById('__F-value').innerText = F;
                 }
             }
         }
@@ -297,15 +334,17 @@ foreach($userPerCivilityQ->fetchAll() as $c){
         let questions = <?php echo json_encode($questionsForum, JSON_NUMERIC_CHECK); ?>;
         if(questions != null){
             let div = document.getElementById('__questions');
-            div.style.cssText = `border: 1px solid black;`;
-            div.innerHTML = questions;
+            div.setAttribute('aria-valuenow', width);
+            div.setAttribute('style', `width: ${width}%;`);
+            document.getElementById('__questions-value').innerText = questions;
         }
 
         let reponses = <?php echo json_encode($messagesForum, JSON_NUMERIC_CHECK); ?>;
         if(reponses != null){
-            let div = document.getElementById('__reponses');
-            div.style.cssText = `border: 1px solid black;`;
-            div.innerHTML = reponses;
+            let div = document.getElementById('__answers');
+            div.setAttribute('aria-valuenow', width);
+            div.setAttribute('style', `width: ${width}%;`);
+            document.getElementById('__answers-value').innerText = reponses;
         }
 
     </script>
