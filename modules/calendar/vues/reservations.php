@@ -30,8 +30,8 @@
         <h2><?= $month->toString(); ?></h2>
 
         <div>
-            <a href="<?= DOMAIN . 'modules/calendar/vues/resa.php?day=' . $month->previousWeek()->day . '&month=' . $month->previousWeek()->month . '&year=' . $month->previousWeek()->year ?>" class = "btn btn-primary">&lt</a>
-            <a href="<?= DOMAIN . 'modules/calendar/vues/resa.php?day=' . $month->nextWeek()->day . '&month=' . $month->nextWeek()->month . '&year=' . $month->nextWeek()->year ?>" class = "btn btn-primary">&gt</a>
+            <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?day=' . $month->previousWeek()->day . '&month=' . $month->previousWeek()->month . '&year=' . $month->previousWeek()->year ?>" class = "btn btn-primary">&lt</a>
+            <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?day=' . $month->nextWeek()->day . '&month=' . $month->nextWeek()->month . '&year=' . $month->nextWeek()->year ?>" class = "btn btn-primary">&gt</a>
         </div>
     </div>
 
