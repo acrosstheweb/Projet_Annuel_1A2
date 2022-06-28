@@ -11,7 +11,7 @@
                 <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/security.php'?>">Sécurité</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/security.php'?>">Captcha</a>
+                    <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/captchaAdmin.php'?>">Captcha</a>
                 </li>
             </ul>
         </li>
