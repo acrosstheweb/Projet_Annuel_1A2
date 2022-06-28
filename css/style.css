@@ -628,4 +628,5 @@ table {
     height: 30px;
     text-align: center;
     font-weight: bold;
+    max-width: 100%;
 }

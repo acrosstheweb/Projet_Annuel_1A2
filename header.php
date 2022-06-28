@@ -116,7 +116,12 @@
                                     <i class="fa-solid fa-user"></i>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <?php if(isConnected()){ ?>
+                                    <?php if(isConnected()){
+                                        $db = database();
+                                        $soldeFCQuery = $db->prepare("SELECT fitcoin FROM RkU_USER WHERE id=:id");
+                                        $soldeFCQuery->execute(['id'=>$_SESSION['userId']]);
+                                        $soldeFC = $soldeFCQuery->fetch()[0];
+                                        ?>
                                         <?php if(isAdmin()){ ?>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="<?= DOMAIN ?>modules/user/vues/admin/users.php" role="button">Back-Office</a>
@@ -128,6 +133,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?= DOMAIN ?>modules/user/scripts/logout.php" role="button">Déconnexion</a>
                                         </li>
+                                        <p>FC : <?= $soldeFC ?></p>
                                     <?php } else{ ?>
                                         <li class="nav-item">
                                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
