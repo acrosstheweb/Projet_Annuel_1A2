@@ -1,47 +1,78 @@
-<?php 
+<?php
+require_once 'functions.php';
 
-require "header.php";
+$filePath = ABSOLUTE_PATH . "sources/captcha/tileNumber.txt";
+$fileTileNumber = fopen($filePath, 'r');
+$tileLength = (int)fread($fileTileNumber, filesize($filePath));
+fclose($fileTileNumber);
 
-$filename = "sources/captcha/1.jpg";
+$captchas = glob(ABSOLUTE_PATH . 'sources/captcha/captcha?????????.{jpg,jpeg,png}', GLOB_BRACE);
+$filename = $captchas[array_rand($captchas)];
 
-$captchaImage = imagecreatefromjpeg($filename);
+$explodedFile = explode('.', $filename);
+$extension = strtolower($explodedFile[1]);
+
+$imageName = explode('captcha/captcha', $filename)[1];
+$imageId = explode('.', $imageName)[0];
+
+if($extension == 'jpeg' || $extension == 'jpg'){
+    $captchaImage = imagecreatefromjpeg($filename);
+}
+else if($extension == 'png'){
+    $captchaImage = imagecreatefrompng($filename);
+}
+
 list($width, $height) = getimagesize($filename);
 
 $pathArray = [];
 $tileId = 0;
+$combinaison = []; // Tableau qui contient le bon ordre de résolution du captcha
+for ($i=0;$i<$tileLength**2;$i++){
+    $combinaison[] = uniqidreal(4);
+}
 
-for ($i = 0; $i < 3; $i++){
-    for ($j = 0; $j < 3; $j++){
-        $dst_image = imagecreatetruecolor($width / 3, $height / 3);
-        imagecopy($dst_image, $captchaImage, 0, 0, $width / 3 * $j, $height / 3 * $i, $width / 3, $height / 3);
+shuffle($combinaison);
 
-        imagejpeg($dst_image, "sources/captcha/1-".$i."_".$j.".jpeg");
+for ($i = 0; $i < $tileLength; $i++){
+    for ($j = 0; $j < $tileLength; $j++){
+        $dst_image = imagecreatetruecolor($width / $tileLength, $height / $tileLength);
+        imagecopy($dst_image, $captchaImage, 0, 0, $width / $tileLength * $j, $height / $tileLength * $i, $width / $tileLength, $height / $tileLength);
 
-        array_push($pathArray, [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"]);
+        if($extension == 'jpeg' || $extension == 'jpg') {
+            imagejpeg($dst_image, ABSOLUTE_PATH . "sources/captcha/" . $imageId . "-" . $i . "_" . $j . ".jpeg");
+        }else if($extension == 'png'){
+            imagepng($dst_image, ABSOLUTE_PATH . "sources/captcha/" . $imageId . "-" . $i . "_" . $j . ".jpeg");
+        }
+        $pathArray[$combinaison[$tileId]] = [$tileId, "sources/captcha/" . $imageId . "-".$i."_".$j.".jpeg"];
         $tileId++;
     }
 }
 
-shuffle($pathArray);
-
+$_SESSION['captcha'] = $combinaison;
+shuffle($combinaison);
 ?>
 
-<div class="container-fluid" style="width: 600px;">
-    <?php 
-        for ($i = 0; $i < 9; $i++){ 
-            if ($i % 3 == 0){
-                echo '<div class="row">';
-            }
-    ?>
-        <div id="__captchaTile<?php  echo $i ?>" class="col-4 p-1">
-            <img class="img-fluid" id="__tile<?php echo $pathArray[$i][0] ?>" src="<?php echo $pathArray[$i][1] ?>">
-        </div> 
+<div class="container-fluid" id="__captcha">
     <?php
-            if ($i % 3 == 2){
-                echo '</div>';
-            }
+    $cpt = 0;
+    for ($i = 0; $i < $tileLength; $i++){
+        echo '<div class="row">';
+        for ($j = 0; $j < $tileLength; $j++){
+
+
+            ?>
+            <div id="__captchaTile<?php  echo $i ?>" class="col p-1">
+                <img class="img-fluid float-start" src="<?php echo DOMAIN . $pathArray[$combinaison[$cpt]][1] ?>" alt="">
+                <input type="hidden"
+                       id="__tile<?php echo $i ?>"
+                       name="__tile<?php echo $i ?>"
+                       value="<?php echo $combinaison[$cpt] ?>">
+            </div>
+            <?php
+            $cpt++;
         }
+    }
     ?>
 </div>
 
-<script src="js/captcha.js" crossorigin="anonymous"></script>
+<script src="<?= DOMAIN . 'js/captcha.js'?>" crossorigin="anonymous"></script>
