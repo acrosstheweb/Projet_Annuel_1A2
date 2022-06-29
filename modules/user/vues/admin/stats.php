@@ -132,22 +132,22 @@
                             <hr>
                             <div class="__stats-description">
                                 25 à 34 ans
-                                <span class="float-end" id="__18-24-value">0</span>
+                                <span class="float-end" id="__25-34-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
                                 35 à 44 ans
-                                <span class="float-end" id="__18-24-value">0</span>
+                                <span class="float-end" id="__35-44-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
                                 45 à 54 ans
-                                <span class="float-end" id="__18-24-value">0</span>
+                                <span class="float-end" id="__45-54-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
                                 Plus de 55 ans
-                                <span class="float-end" id="__18-24-value">0</span>
+                                <span class="float-end" id="__55-value">0</span>
                             </div>
                         </div>
                     </div>
@@ -232,28 +232,28 @@
                     let div = document.getElementById('__25-34');
                     div.setAttribute('aria-valuenow', width);
                     div.setAttribute('style', `width: ${width}%;`);
-                    document.getElementById('__18-24-value').innerText = b;
+                    document.getElementById('__25-34-value').innerText = b;
                 }else if(age >= 35 && age < 45) {
                     c++;
-                    let width = c/ages.length;
+                    let width = (c/ages.length)*100;
                     let div = document.getElementById('__35-44');
                     div.setAttribute('aria-valuenow', width);
                     div.setAttribute('style', `width: ${width}%;`);
-                    document.getElementById('__18-24-value').innerText = c;
+                    document.getElementById('__35-44-value').innerText = c;
                 }else if(age >= 45 && age < 55){
                     d++;
-                    let width = d/ages.length;
+                    let width = (d/ages.length)*100;
                     let div = document.getElementById('__45-54');
                     div.setAttribute('aria-valuenow', width);
                     div.setAttribute('style', `width: ${width}%;`);
-                    document.getElementById('__18-24-value').innerText = d;
+                    document.getElementById('__45-54-value').innerText = d;
                 }else if(age >= 55){
                     e++;
-                    let width = e/ages.length;
+                    let width = (e/ages.length)*100;
                     let div = document.getElementById('__55');
                     div.setAttribute('aria-valuenow', width);
                     div.setAttribute('style', `width: ${width}%;`);
-                    document.getElementById('__18-24-value').innerText = e;
+                    document.getElementById('__55-value').innerText = e;
                 }
             }
         }
@@ -274,14 +274,14 @@
                     document.getElementById('__essential-value').innerText = essential;
                 }else if(subs == 2){
                     classic++;
-                    let width = classic/subscriptions.length;
+                    let width = (classic/subscriptions.length)*100;
                     let div = document.getElementById('__classic');
                     div.setAttribute('aria-valuenow', width);
                     div.setAttribute('style', `width: ${width}%;`);
                     document.getElementById('__classic-value').innerText = classic;
                 }else if(subs == 3){
                     premium++;
-                    let width = premium/subscriptions.length;
+                    let width = (premium/subscriptions.length)*100;
                     let div = document.getElementById('__premium');
                     div.setAttribute('aria-valuenow', width);
                     div.setAttribute('style', `width: ${width}%;`);
