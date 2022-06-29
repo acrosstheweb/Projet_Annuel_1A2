@@ -20,7 +20,7 @@
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/newsletter.php'?>">Newsletter</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Abonnements</a>
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminSubscriptions.php'?>">Abonnements</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminPrograms.php'?>">Programmes</a>

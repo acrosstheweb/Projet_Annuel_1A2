@@ -40,66 +40,6 @@ foreach($resultsSubscription as $subscription){
         </ul>
         <div class="card-body">
             <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?subscriptionId=' . $subscription['id'] ?>" class="card-link btn btn-primary">Ajouter au panier</a>
-            <!-- <a href="#" class="card-link">Ici aussi en fait</a> -->
-            <?php
-                if(isAdmin()){
-            ?>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#modifySubscription<?= $subscription['id'];?>" class="btn btn-primary">Modifier</a>
-            <?php } ?>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modifySubscription<?= $subscription['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modification de l'abonnement</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="manageSubscription<?= $subscription['id'];?>" action="../scripts/manageSubscription.php?idSubscription=<?= $subscription['id'] ?>" enctype ="multipart/form-data" method="POST" >
-                        <div class="row deleteFormInfo">
-                            <h5>Vous modifiez l'abonnement <?= $subscription['name'];?> </h5>
-
-                            <div class="col-12">
-                                <label for="modify-name<?php echo $subscription['name'];?>" class="fw-bold">Titre</label>
-                                <input id="modify-name<?php echo $subscription['name'];?>" class="form-control" type="text" name="modify-name" value="<?php echo $subscription['name'];?>">
-                            </div>
-                            <div class="col-12">
-                                <label for="modify-content<?php echo $subscription['content'];?>" class="fw-bold">Contenu</label>
-                                <input id="modify-content<?php echo $subscription['content'];?>" class="form-control" type="text" name="modify-content" value="<?php echo $subscription['content'];?>">
-                            </div>
-                            <div class="col-12">
-                                <label for="modify-price<?php echo $subscription['price'];?>" class="fw-bold">Prix</label>
-                                <input id="modify-price<?php echo $subscription['price'];?>" class="form-control" type="float" name="modify-price" value="<?php echo $subscription['price'];?>">
-                            </div>
-                            <div class="col-12">
-                                <label for="modify-firstAttribut<?php echo $subscription['firstAttribut'];?>" class="fw-bold">Attribut 1</label>
-                                <input id="modify-firstAttribut<?php echo $subscription['firstAttribut'];?>" class="form-control" type="text" name="modify-firstAttribut" value="<?php echo $subscription['firstAttribut'];?>">
-                            </div>
-                            <div class="col-12">
-                                <label for="modify-secondAttribut<?php echo $subscription['secondAttribut'];?>" class="fw-bold">Attribut 2</label>
-                                <input id="modify-secondAttribut<?php echo $subscription['secondAttribut'];?>" class="form-control" type="text" name="modify-secondAttribut" value="<?php echo $subscription['secondAttribut'];?>">
-                            </div>
-                            <div class="col-12">
-                                <label for="modify-thirdAttribut<?php echo $subscription['thirdAttribut'];?>" class="fw-bold">Attribut 3</label>
-                                <input id="modify-thirdAttribut<?php echo $subscription['thirdAttribut'];?>" class="form-control" type="text" name="modify-thirdAttribut" value="<?php echo $subscription['thirdAttribut'];?>">
-                            </div>
-                            
-                        </div>
-                        <div class="row modify-userPassword">
-                            <div class="col-12">
-                                <label for="modify-adminPasswordInput" class="fw-bold">Votre mot de passe</label>
-                                <input id="modify-adminPasswordInput" class="form-control" type="password" name="modify-adminPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button class="btn btn-primary modify-passwordConfirm" form="manageSubscription<?= $subscription['id'];?>" name = "manageSubscription" type="submit">Modifier</button>
-                </div>
-            </div>
         </div>
     </div>
 

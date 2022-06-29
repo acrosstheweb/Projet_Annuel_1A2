@@ -6,14 +6,14 @@ if(!empty($_POST)){
     $valid = true;
     $errors = [];
 
-    if(isset($_POST['manageSubscription'])){
-        $name = htmlspecialchars(trim($_POST['modify-name']));
-        $content = htmlspecialchars(trim($_POST['modify-content']));
-        $price = $_POST['modify-price'];
-        $firstAttribut = htmlspecialchars(trim($_POST['modify-firstAttribut']));
-        $secondAttribut = htmlspecialchars(trim($_POST['modify-secondAttribut']));
-        $thirdAttribut = htmlspecialchars(trim($_POST['modify-thirdAttribut']));
-        $idSubscription = $_GET['idSubscription'];
+    if(isset($_POST['modifySubscription'])){
+        $name = htmlspecialchars(trim($_POST['subscriptionName']));
+        $content = htmlspecialchars(trim($_POST['subscriptionContent']));
+        $price = $_POST['subscriptionPrice'];
+        $firstAttribut = htmlspecialchars(trim($_POST['subscriptionFirstAttribut']));
+        $secondAttribut = htmlspecialchars(trim($_POST['subscriptionSecondAttribut']));
+        $thirdAttribut = htmlspecialchars(trim($_POST['subscriptionThirdAttribut']));
+        $idSubscription = $_GET['subscriptionId'];
         $InputPwd = $_POST['modify-adminPasswordInput'];
 
         if(
@@ -26,7 +26,7 @@ if(!empty($_POST)){
             // empty($InputPwd) ||
             count($_POST) != 8
         ){
-            header('Location: error404.php');
+            header('Location: ../../../error404.php');
             die();
         }
 
@@ -44,6 +44,16 @@ if(!empty($_POST)){
         if(empty($price)){
             $valid = false;
             $errors = ("Il faut ajouter un prix");
+        }
+
+        if(!is_numeric($price)){
+            $valid = false;
+            $errors = ("Le prix doit être une chaine numérique");
+        }
+
+        if(!is_numeric($idSubscription)){
+            $valid = false;
+            $errors = ("Erreur lors de l'envoi du formulaire");
         }
 
         if(empty($firstAttribut)){
@@ -71,8 +81,8 @@ if(!empty($_POST)){
     // var_dump($adminPwdInDb); var_dump($InputPwd); die();
     
     if(!password_verify($InputPwd, $adminPwdInDb)){
-        setMessage('Modify', ["Mot de passe incorrect, attention \"l'admin\", plus que x essais !"], 'warning');
-        header('Location: ../vues/subscriptions.php');
+        setMessage('modifySubscription', ["Mot de passe incorrect, attention \"l'admin\", plus que x essais !"], 'warning');
+        header('Location: ../vues/subscriptionBO.php?subscriptionId=' . $idSubscription);
         die();
     }
     
@@ -89,13 +99,13 @@ if(!empty($_POST)){
             "idSubscription" => $idSubscription
         ]);
         
-        setMessage('Modify', ["L'abonnement a bien été modifié."], 'success');
-        header('Location: ../vues/subscriptions.php');
+        setMessage('modifySubscription', ["L'abonnement a bien été modifié."], 'success');
+        header('Location: ../../user/vues/admin/adminSubscriptions.php');
         die();
     }
     else{
-        setMessage('Modify', [$errors], 'warning');
-        header('Location: ../vues/subscriptions.php');
+        setMessage('modifySubscription', [$errors], 'warning');
+        header('Location: ../vues/subscriptionBO.php?subscriptionId=' . $idSubscription);
         die();
     }
     
