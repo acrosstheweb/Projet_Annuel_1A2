@@ -5,6 +5,8 @@ require '../../../../functions.php';
         header('Location: ../../../../error404.php');
         die();
     }
+    $title = "Fitness Essential - Liste des pack FitCoins";
+    $content = "Liste des pack FitCoins";
 
 require '../../../../header.php';
 Message('modifyPack');
@@ -18,16 +20,28 @@ $results = $req->fetchAll();
 
 ?>
 
-<h1 class="aligned-title">Gestion des packs de fitcoins</h1>
+<div class="container-fluid d-lg-none">
+    <div class="row __profileDropdown">
+        <div class="dropdown d-grid gap-2">
+            <button class="btn dropdown-toggle text-light" type="button" id="__profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $content ?>
+            </button>
+            <ul class="dropdown-menu justify-content-center __profileDropdownMenu text-light" aria-labelledby="dropdownMenuButton1">
+                <?php include 'adminNavbar.php'; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h1 class="aligned-title">Gestion des packs de FitCoins</h1>
 
 <div class="container-fluid">
-    <div class="row">
-
-        <div class="d-none col-2 mx-md-3 d-md-flex justify-content-center">
+    <div class="row d-flex justify-content-center justify-content-lg-start">
+        <div class="d-none col-2 d-lg-flex justify-content-center">
             <?php include "adminNavbar.php"; ?>
         </div>
 
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-10 col-lg-8">
             <div class="text-end my-3">
                 <a href="<?= DOMAIN . 'modules/subscription/vues/addNewPack.php'?>" class="btn btn-primary">Ajouter un nouveau pack</a>
             </div>
@@ -36,11 +50,11 @@ $results = $req->fetchAll();
                 <table class="table" id="packsTable">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Nom du pack</th>
                             <th>Description</th>
                             <th>Prix</th>
-                            <th>Nombre de fitcoins</th>
+                            <th>Nombre de FitCoins</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +62,6 @@ $results = $req->fetchAll();
             foreach($results as $pack){
             ?>
                         <tr>
-                            <td class="align-middle"><?php echo $pack['id'];?></td>
                             <td class="align-middle"><?php echo $pack['name'];?></td>
                             <td class="align-middle"><?php echo $pack['description'];?></td>
                             <td class="align-middle"><?php echo $pack['price'];?></td>
@@ -100,3 +113,7 @@ $results = $req->fetchAll();
 
     </div>
 </div>
+
+<?php
+include "../../../../footer.php";
+?>

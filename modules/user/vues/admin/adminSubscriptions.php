@@ -5,6 +5,8 @@ require '../../../../functions.php';
         header('Location: ../../../../error404.php');
         die();
     }
+    $title = "Fitness Essential - Liste des abonnements";
+    $content = "Liste des abonnements";
 
 require '../../../../header.php';
 Message("Delete");
@@ -19,16 +21,28 @@ $results = $req->fetchAll();
 
 ?>
 
+<div class="container-fluid d-lg-none">
+    <div class="row __profileDropdown">
+        <div class="dropdown d-grid gap-2">
+            <button class="btn dropdown-toggle text-light" type="button" id="__profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $content ?>
+            </button>
+            <ul class="dropdown-menu justify-content-center __profileDropdownMenu text-light" aria-labelledby="dropdownMenuButton1">
+                <?php include 'adminNavbar.php'; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <h1 class="aligned-title">Gestion des abonnements</h1>
 
 <div class="container-fluid">
-    <div class="row">
-
-        <div class="d-none col-2 mx-md-3 d-md-flex justify-content-center">
+    <div class="row d-flex justify-content-center justify-content-lg-start">
+        <div class="d-none col-2 d-lg-flex justify-content-center">
             <?php include "adminNavbar.php"; ?>
         </div>
 
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-10 col-lg-8">
 
             <div class="table-responsive">
                 <table class="table" id="subscriptionTable">
@@ -60,3 +74,7 @@ $results = $req->fetchAll();
 
     </div>
 </div>
+
+<?php
+include "../../../../footer.php";
+?>

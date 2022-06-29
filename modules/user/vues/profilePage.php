@@ -6,7 +6,7 @@
     }
     $title = "Fitness Essential - Page profil";
     $content = "Profil utilisateur";
-    $currentPage = 'profile';
+
     require '../../../header.php';
     Message('Update');
     $db = database();
@@ -15,7 +15,7 @@
     $user = $getUserInfoQuery->fetch();
 ?>
 
-<div class="container-fluid d-md-none">
+<div class="container-fluid d-lg-none">
     <div class="row __profileDropdown">
         <div class="dropdown d-grid gap-2">
             <button class="btn dropdown-toggle text-light" type="button" id="__profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,13 +30,12 @@
 
 <h2 class="aligned-title"> Mon profil </h2>
 <div class="container-fluid">
-    <div class="row">
-
-        <div class="d-none col-2 mx-md-3 d-md-flex justify-content-center">
-            <?php include 'profilePageNavbar.php'; ?>
+    <div class="row d-flex justify-content-center justify-content-lg-start">
+        <div class="d-none col-2 d-lg-flex justify-content-center">
+            <?php include "profilePageNavbar.php"; ?>
         </div>
-        
-        <div class="col-12 col-md-8">
+
+        <div class="col-12 col-md-10 col-lg-8">
 
             <div class="row border-bottom py-3 mb-3 __profilePicRow">
                 <!-- <img src="sources/img/avatar.jpg" alt="" class="img-fluid "> -->

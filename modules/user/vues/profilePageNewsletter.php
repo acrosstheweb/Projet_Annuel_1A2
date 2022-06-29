@@ -6,7 +6,7 @@
     }
     $title = "Fitness Essential - Préférences newsletter";
     $content = "Préférences newsletter";
-    $currentPage = 'newsletter';
+
     require '../../../header.php';
     Message('newsletter');
     $db = database();
@@ -33,13 +33,12 @@
 
 <h2 class="aligned-title my-3"> Mes préférences newsletter </h2>
 <div class="container-fluid">
-    <div class="row">
-
-        <div class="d-none col-2 mx-md-3 d-md-flex justify-content-center">
-            <?php include 'profilePageNavbar.php'; ?>
+    <div class="row d-flex justify-content-center justify-content-lg-start">
+        <div class="d-none col-2 d-lg-flex justify-content-center">
+            <?php include "profilePageNavbar.php"; ?>
         </div>
-        
-        <div class="col-12 col-md-8 mt-3">
+
+        <div class="col-12 col-md-10 col-lg-8">
             <div class="row">
                 Votre statut d'abonnement à la newsletter est le suivant:
                 <form id="__updateNewsletterForm" action="../scripts/updateNewsletter.php?id=<?= $_SESSION['userId'] ?>" method="POST" class="col-10 col-md-8 col-lg-10 my-3">
