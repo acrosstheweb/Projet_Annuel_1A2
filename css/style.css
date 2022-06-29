@@ -16,25 +16,108 @@
     border-radius: 50%;
 }
 
-#user-slide {
+
+/* Boutons */
+.btn-primary,
+.button-close-modal {
+    background-color: var(--green2);
+    border-color: var(--green2);
+}
+
+.btn-primary:hover{
+    background-color: var(--green3);
+    border-color: var(--green3);
+}
+
+.btn-primary.disabled{
+    color: #fff;
+    background-color: var(--green1);
+    border-color: var(--green1);
+}
+
+
+/* Header */
+.navbar-brand,.footer-logo,.__logoIcon{
+    width: 2.5rem;
+}
+
+.__navIcon{
+    font-size: 20px;
+    margin: 0 .75rem;
+}
+
+.__navbarIcons{
+    flex-direction: row;
+}
+
+.navbar-nav .dropdown-menu{
+    padding: 0 1rem;
     position: absolute;
+    min-width: 7rem;
+}
+
+#search-addon{
+    background-color: unset;
+    margin-left: .75rem;
+}
+
+#__search-trigger {
+    display: none;
+}
+
+@media all {
+    #__searchbar{
+        display: none;
+    }
+}
+
+@media (min-width: 992px){
+    #__search-trigger {
+        display: inline;
+    }
+}
+
+
+
+#__userSlide {
+    position: fixed;
     right: 0;
     display: none;
-    height: 90vh;
-    background-color: rgba(82, 121, 111, 0.7);
+    height: 91vh;
+    width: 15vw;
+    background-color: rgb(202 210 197 / 85%);
     border: 2px solid rgb(80, 107, 100);
     z-index: 1;
+
+
+    -webkit-animation: all;
+    -webkit-animation-name: slide-in;
+    -webkit-animation-duration: 0.3s;
+}
+
+@-webkit-keyframes slide-in {
+    0% {
+        right: 0;
+    }
+    50% {
+        right: 1%;
+    }
+    100% {
+        right: 0;
+    }
+}
+
+#__userVerticalNav ul{
+    list-style-type: none;
+}
+
+#__userVerticalNav a{
+    color: rgba(0,0,0,.55);
 }
 
 .modal-header,
 .modal-footer {
     background-color: var(--green1);
-}
-
-.btn-primary,
-.button-close-modal {
-    background-color: var(--green2);
-    border-color: var(--green2);
 }
 
 .span-close-modal {
@@ -111,7 +194,7 @@ h1{
 
 .__cardDescription{
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 70%);
-    color: white;
+    color: whitesmoke;
     height: 100%;
     width: 100%;
     position:relative;
@@ -122,15 +205,17 @@ h1{
 }
 
 .__cardDescriptionText{
+    width: 100%;
     position:absolute;
     bottom:0;
     left:50%;
     transform:translateX(-50%);
     margin-bottom: 1rem;
+    color: whitesmoke;
 }
 
 #carouselDesktop.carousel-caption{
-width: 100rem;
+    width: 100rem;
 }
 
 .__carouselControl{
@@ -138,17 +223,6 @@ width: 100rem;
 }
 
 /* Erreur 404 */
-.__404 {
-    font-size: 220pt;
-    margin: auto auto;
-}
-
-.__404plate {
-    height: 210px;
-    object-fit: scale-down;
-    padding: 0;
-}
-
 .__404btn {
     width: fit-content;
     color: var(--green3);
@@ -164,12 +238,192 @@ width: 100rem;
 /* Page Informations Profil */
 .__profilePic{
     object-fit: cover;
+    padding: 0;
+}
+
+.__profilePicOverlay{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    height: 15%;
+    width: 100%;
+    position: relative;
+}
+
+.__profilePicChange{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .__profileInfoInput{
     display: none;
 }
 
+#__profileInfoCancel{
+    display: none;
+}
+
 #__profileInfoSubmit{
     display: none;
+}
+
+/* Modale modif user Admin */
+.modify-adminPassword{
+    display: none;
+}
+
+.modify-confirm{
+    display: none;
+}
+
+/* Modale suppression user Admin */
+.delete-adminPassword{
+    display: none;
+}
+
+.delete-confirm{
+    display: none;
+}
+
+#tableHeaderSortable{
+    cursor: pointer;
+}
+
+table{
+    color: unset;
+}
+
+/* Forum */
+.__topic{
+    text-align: center;
+    margin: 1rem;
+}
+
+.__topic:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+.__topicImg{
+    height: 10rem;
+    object-fit: cover;
+}
+
+.__topicDescription{
+    height: 3rem;
+}
+
+@media (min-width: 992px){
+    .__topicDescription{
+        height: 1.5rem;
+    }
+
+    .__topicImg{
+        height: 15rem;
+    }
+}
+
+/* Catégorie */
+.__categoryCardClosed{
+    background-color: var(--green1);
+    border: 1px solid var(--green3);
+}
+
+.__questionStatusBg{
+    background-color: var(--green3);
+}
+
+/* Question */
+/* .__questionTitle{
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+    padding: 5px 10px;
+    border-radius: 10px;
+} */
+
+.__questionContent{
+    border-top: 2px solid var(--green1);
+    padding: 10px 0
+}
+
+.__questionComments{
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+.__captcha{
+    width: 600px;
+}
+
+/* Programmes */
+.__programCard{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.__programImage{
+    height: 100%;
+}
+
+.__programOverlay{
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.__programContent{
+    width: 100%;
+    text-align: start;
+}
+
+.__programControl{
+    display: none;
+}
+
+/* Abonnements */
+.__subscriptionTable{
+    overflow: hidden;
+}
+.__subscriptionTable .fa-check{
+    color: var(--bs-success);
+}
+
+.__subscriptionTable .fa-xmark{
+    color: var(--bs-danger);
+}
+
+.__subscriptionTableBorder{
+    background-color: white;
+}
+
+.__subscriptionHead{
+    position: sticky;
+}
+
+.__subscriptionIcon{
+    width: 2rem;
+    height: auto;
+    vertical-align: baseline;
+}
+
+.__subscriptionCard{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+.__programCardPreview{
+    width: 340px;
+    height: 510px;
+}
+
+.__programExerciceDelete{
+    background-color: var(--bs-danger);
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #dee2e6;
 }
