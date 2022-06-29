@@ -24,12 +24,9 @@ function darkMode(){
 
     document.body.style.setProperty('background-color', 'var(--bs-dark)');
     document.body.style.setProperty('color', 'var(--bs-light)');
-    console.log('jaaj0');
 
     const cards = document.getElementsByClassName('card');
-    console.log(cards);
     for(let card of cards){
-        console.log('jaaj');
         card.style.setProperty('background-color', 'var(--bs-dark)');
     }
 
@@ -55,6 +52,22 @@ function darkMode(){
     for(let modal of modals){
         modal.style.setProperty('background-color', 'var(--bs-dark)');
         modal.style.setProperty('color', 'var(--bs-light)');
+    }
+    
+    const listgroups = document.getElementsByClassName('list-group-item');
+    for(let listgroup of listgroups){
+        listgroup.style.setProperty('background-color', 'var(--bs-dark)');
+        listgroup.style.setProperty('color', 'var(--bs-light)');
+    }
+
+    const accordions = document.getElementsByClassName('accordion-item');
+    for(let accordion of accordions){
+        accordion.style.setProperty('border', '1px solid rgba(0, 0, 0, .75)');
+    }
+
+    const accordionBodies = document.getElementsByClassName('accordion-body');
+    for(let accordionBody of accordionBodies){
+        accordionBody.style.setProperty('background-color', 'var(--bs-dark)');
     }
 };
 
@@ -99,6 +112,16 @@ function lightMode(){
         modal.style.setProperty('background-color', 'var(--bs-body-bg)');
         modal.style.setProperty('color', 'var(--bs-body-color)');
     }
+
+    const accordions = document.getElementsByClassName('accordion-item');
+    for(let accordion of accordions){
+        accordion.style.setProperty('border', '1px solid rgba(0, 0, 0,.125)');
+    }
+
+    const accordionBodies = document.getElementsByClassName('accordion-body');
+    for(let accordionBody of accordionBodies){
+        accordionBody.style.setProperty('background-color', 'var(--bs-body-bg)');
+    }
 };
 
 
@@ -109,10 +132,12 @@ function init(){
 
     if (value == 1){
         darkMode();
-    } else if (value == 0){
-        lightMode();
     } else {
-        document.cookie = `darkMode=0; expires=Thu, ${date} UTC; path=/`;
+        if (value == 0){
+            lightMode();
+        } else {
+            document.cookie = `darkMode=0; expires=Thu, ${date} UTC; path=/`;
+        }
     }
 }
 

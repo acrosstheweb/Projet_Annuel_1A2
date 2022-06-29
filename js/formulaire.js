@@ -73,7 +73,7 @@ function addExercice(){
     <div id="__programExercice${counter}" class="__programExercice accordion-item">
         <div class="row">
             <label for="__programExerciceDropdown${counter}" id="__programExerciceDropdown${counter}-label" class="accordion-header form-label fw-bold p-0 col-10 col-md-11">
-                <button id="__programExerciceDropdown${counter}-button" class="__programExerciceButton accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse${counter}" aria-expanded="true" aria-controls="collapseOne">
+                <button id="__programExerciceDropdown${counter}-button" class="__programExerciceButton accordion-button text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse${counter}" aria-expanded="true" aria-controls="collapseOne">
                     Exercice #${counter}
                 </button>
             </label>
@@ -86,9 +86,6 @@ function addExercice(){
                 <select class="form-select" name="programExerciceDropdown${counter}" id="__programExerciceDropdown${counter}" required="required" onchange="displayExercice(${counter})"><br>
                     ${options}
                 </select>
-                <p>L'exercice n'est pas dans la liste? Créez-le</p>
-                <button class="btn btn-primary">+ Créer un exercice</button>
-            
 
                 <div class="row my-3">
                     <div class="col-12 col-md-6">
@@ -168,6 +165,7 @@ addExercice_trigger.addEventListener('click', function(){
         counter ++;
         addExercice();
         trash();
+        init();
     }
     if (counter == 7){
         addExercice_trigger.classList.add("disabled");

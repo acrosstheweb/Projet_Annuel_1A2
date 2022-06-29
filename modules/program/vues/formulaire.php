@@ -25,8 +25,8 @@ $pdo = database();
             </div>
 
             <div class="row my-3">
-                <label for="__programFile">Illustration : </label>
-                <input type="file" name="programFile" id="__programFile" required="required">
+                <label for="__programFile">Illustration :</label>
+                <input class="form-control" type="file" name="programFile" id="__programFile" required="required">
             </div>
 
             <div id="__programExerciceList" class="accordion" >
@@ -34,7 +34,7 @@ $pdo = database();
                 <div id="__programExercice1" class="__programExercice accordion-item">
                     <div class="row">
                         <label for="__programExerciceDropdown1" id="__programExerciceDropdown1-label" class="accordion-header form-label fw-bold p-0 col-10 col-md-11">
-                            <button id="__programExerciceDropdown1-button" class="__programExerciceButton accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse1" aria-expanded="true" aria-controls="collapseOne">
+                            <button id="__programExerciceDropdown1-button" class="__programExerciceButton accordion-button text-uppercase" type="button" data-bs-toggle="collapse" data-bs-target="#__programExerciceCollapse1" aria-expanded="true" aria-controls="collapseOne">
                                 Exercice #1
                             </button>
                         </label>
@@ -56,8 +56,6 @@ $pdo = database();
                                 ?>
 
                             </select>
-                            <p>L'exercice n'est pas dans la liste? Créez-le</p>
-                            <button class="btn btn-primary">+ Créer un exercice</button>
                         
 
                             <div class="row my-3">

@@ -315,7 +315,7 @@
 
 <div class="container-fluid">
     <div class="row __frontRow justify-content-evenly align-items-center px-md-3 mt-5">
-        <div class="col-12 col-md-6 col-lg-8">
+        <div class="col-12 col-md-6 col-lg-7">
             <img src="<?= DOMAIN . 'sources/img/musculation.jpg'?>" alt="La musculation"  class="img-fluid">
         </div>
         <div class="__frontIamge-description col-12 col-md-6 col-lg-4">

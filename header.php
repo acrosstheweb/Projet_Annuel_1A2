@@ -127,7 +127,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?= DOMAIN ?>modules/user/scripts/logout.php" role="button">Déconnexion</a>
                                         </li>
-                                        <p>FC : <?= $soldeFC ?></p>
+                                        <li class="nav-item">
+                                            <p class="nav-link disabled">FitCoins : <?= $soldeFC ?></p>
+                                        </li>
                                     <?php } else{ ?>
                                         <li class="nav-item">
                                             <a class="nav-link" data-bs-toggle="modal" href="#login-modal" role="button">Connexion</a>
