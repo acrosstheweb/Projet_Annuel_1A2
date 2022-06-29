@@ -7,7 +7,6 @@ require '../../../../functions.php';
     }
     $title = "Fitness Essential - Liste des programmes";
     $content = "Liste des programmes";
-    $currentPage = 'adminPrograms';
 
 require '../../../../header.php';
 Message('delProgram');
