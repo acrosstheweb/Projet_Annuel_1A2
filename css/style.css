@@ -632,23 +632,29 @@ table {
     width: 100%;
 }
 
-#__18-24, #__essential, #__subscribed, #__M, #__questions{
+.__stats-caption{
+    width: 2rem;
+}
+
+#__18-24, #__essential, #__subscribed, #__M, #__questions, 
+#__18-24-caption, #__essential-caption, #__subscribed-caption, #__M-caption, #__questions-caption{
     background-color: var(--green1);
 }
 
-#__25-34{
+#__25-34, #__25-34-caption{
     background-color: var(--green2);
 }
 
-#__35-44, #__classic, #__notSubscribed, #__F, #__answers{
+#__35-44, #__classic, #__notSubscribed, #__F, #__answers,
+#__35-44-caption, #__classic-caption, #__notSubscribed-caption, #__F-caption, #__answers-caption{
     background-color: var(--green3);
 }
 
-#__45-54{
+#__45-54, #__45-54-caption{
     background-color: var(--green4);
 }
 
-#__55, #__premium{
+#__55, #__premium, #__55-caption, #__premium-caption{
     background-color: var(--green5);
 }
 

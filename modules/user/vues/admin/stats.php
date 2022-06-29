@@ -77,11 +77,17 @@
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__M-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Hommes
                                 <span class="float-end" id="__M-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__F-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Femmes
                                 <span class="float-end" id="__F-value">0</span>
                             </div>
@@ -98,16 +104,25 @@
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__essential-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Essential
                                 <span class="float-end" id="__essential-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__classic-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Classic
                                 <span class="float-end" id="__classic-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__premium-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Premium
                                 <span class="float-end" id="__premium-value">0</span>
                             </div>
@@ -126,26 +141,41 @@
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__18-24-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 18 à 24 ans
                                 <span class="float-end" id="__18-24-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__25-34-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 25 à 34 ans
                                 <span class="float-end" id="__25-34-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__35-44-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 35 à 44 ans
                                 <span class="float-end" id="__35-44-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__45-54-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 45 à 54 ans
                                 <span class="float-end" id="__45-54-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__55-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Plus de 55 ans
                                 <span class="float-end" id="__55-value">0</span>
                             </div>
@@ -164,11 +194,17 @@
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__subscribed-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Abonnés
                                 <span class="float-end" id="__subscribed-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__notSubscribed-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Non abonnés
                                 <span class="float-end" id="__notSubscribed-value">0</span>
                             </div>
@@ -184,11 +220,17 @@
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__questions-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Questions
                                 <span class="float-end" id="__questions-value">0</span>
                             </div>
                             <hr>
                             <div class="__stats-description">
+                                <div class="progress p-0 m-1 float-start __stats-caption">
+                                    <div id="__answers-caption" class="progress-bar __stats-caption" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                                 Réponses
                                 <span class="float-end" id="__answers-value">0</span>
                             </div>
