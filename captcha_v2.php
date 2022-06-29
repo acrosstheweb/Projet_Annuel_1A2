@@ -1,9 +1,23 @@
 <?php
 require_once 'functions.php';
 
-$filename = ABSOLUTE_PATH . "sources/captcha/1.jpg";
 
-$captchaImage = imagecreatefromjpeg($filename);
+$captchas = glob(ABSOLUTE_PATH . 'sources/captcha/captcha?????????.{jpg,jpeg,png}', GLOB_BRACE);
+$filename = $captchas[array_rand($captchas)];
+
+$explodedFile = explode('.', $filename);
+$extension = strtolower($explodedFile[1]);
+
+$imageName = explode('captcha/captcha', $filename)[1];
+$imageId = explode('.', $imageName)[0];
+
+if($extension == 'jpeg' || $extension == 'jpg'){
+    $captchaImage = imagecreatefromjpeg($filename);
+}
+else if($extension == 'png'){
+    $captchaImage = imagecreatefrompng($filename);
+}
+
 list($width, $height) = getimagesize($filename);
 
 $pathArray = [];
@@ -20,9 +34,12 @@ for ($i = 0; $i < 3; $i++){
         $dst_image = imagecreatetruecolor($width / 3, $height / 3);
         imagecopy($dst_image, $captchaImage, 0, 0, $width / 3 * $j, $height / 3 * $i, $width / 3, $height / 3);
 
-        imagejpeg($dst_image, ABSOLUTE_PATH . "sources/captcha/1-".$i."_".$j.".jpeg");
-
-        $pathArray[$combinaison[$tileId]] = [$tileId, "sources/captcha/1-".$i."_".$j.".jpeg"];
+        if($extension == 'jpeg' || $extension == 'jpg') {
+            imagejpeg($dst_image, ABSOLUTE_PATH . "sources/captcha/" . $imageId . "-" . $i . "_" . $j . ".jpeg");
+        }else if($extension == 'png'){
+            imagepng($dst_image, ABSOLUTE_PATH . "sources/captcha/" . $imageId . "-" . $i . "_" . $j . ".jpeg");
+        }
+        $pathArray[$combinaison[$tileId]] = [$tileId, "sources/captcha/" . $imageId . "-".$i."_".$j.".jpeg"];
         $tileId++;
     }
 }
@@ -32,9 +49,8 @@ shuffle($combinaison);
 ?>
 
 <div class="container-fluid" id="__captcha">
-    <!--<form id="verifyCaptcha" method="POST" action="<?/*= DOMAIN . 'verifyCaptcha.php'*/?>">-->
-        <?php 
-            for ($i = 0; $i < 9; $i++){ 
+        <?php
+            for ($i = 0; $i < 9; $i++){
                 if ($i % 3 == 0){
                     echo '<div class="row">';
                 }
@@ -52,8 +68,6 @@ shuffle($combinaison);
                 }
             }
         ?>
-    <!--</form>-->
-    <!--<button type="submit" form="verifyCaptcha" class="btn btn-primary mt-5" id="__captchaSubmit">Valider</button>-->
 </div>
 
 <script src="<?= DOMAIN . 'js/captcha.js'?>" crossorigin="anonymous"></script>

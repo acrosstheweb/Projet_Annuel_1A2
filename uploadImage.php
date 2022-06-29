@@ -17,8 +17,7 @@ if(!empty($_FILES['file'])){
     $extension = strtolower($explodedFile[1]);
     $maxSize = 900000;
 
-
-    $imgId = uniqid();
+    $imgId = uniqidReal(9);
 
     $tempFile = 'temp'.$imgId.'.'.$extension;
     move_uploaded_file($tmpName, './tmpUpload/'.$tempFile); // On déplace le fichier dans le dossier tmpUpload

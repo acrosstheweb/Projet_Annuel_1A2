@@ -7,7 +7,7 @@ if(!isAdmin()) {
 }
 
 require '../../../../header.php';
-
+Message('captchaModify');
 ?>
 
 <h1 class="aligned-title">Modifications captcha</h1>
@@ -22,13 +22,13 @@ require '../../../../header.php';
                 <div class="col-6">
                     <h5>Changer l'image de captcha</h5>
                     <div class="row">
-                        <form method="POST" class="col-10" action="../../scripts/admin/sendNewsletter.php" id="__newsletterForm" enctype ="multipart/form-data"> <!-- Le enctype permet de spécifier que les données envoyées lors de l'envoi sont encodées lors de la soumission au serveur. -->
+                        <form method="POST" class="col-10" action="../../scripts/admin/captchaModify.php" enctype="multipart/form-data"> <!-- Le enctype permet de spécifier que les données envoyées lors de l'envoi sont encodées lors de la soumission au serveur. -->
                             <div>
                                 <p>Uploader une image</p>
-                                <input class="form-control" type="file" name="content-mail" id="__content-mail" required="required">
+                                <input class="form-control" type="file" name="captcha-image" id="__captcha-image" required="required">
                             </div><br><br>
 
-                            <input type="submit" required="required" value="Envoyer">
+                            <input type="submit" class="btn btn-primary" required="required" name="captcha-images-form" value="Upload">
                         </form>
                     </div>
                 </div>
@@ -36,7 +36,13 @@ require '../../../../header.php';
                 <div class="col-6">
                     <h5>Difficulté du captcha</h5>
                     <div clas="col-2">
-                        <div class="__rectangleStat" id="__newsletterSub"></div>
+                        <form method="POST" class="col-10" action="../../scripts/admin/captchaModify.php">
+                            <div clas="col-4">
+                                <p>Nombre de pièces du puzzle</p>
+                                <input class="form-control" type="number" name="captcha-pieces" id="__captcha-pieces" required="required">
+                            </div><br><br>
+                            <input type="submit" class="btn btn-primary" required="required" name="captcha-pieces-form" value="Envoyer">
+                        </form>
                     </div>
                 </div>
             </div>
