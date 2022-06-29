@@ -5,3 +5,9 @@
 22/05/24 11:54:22 : Message is missing sender's address
 22/05/24 11:54:52 : Message is missing sender's address
 22/05/24 16:32:46 : Socket Error # 11001<EOL>Host not found.
+22/06/05 00:22:53 : The recipient address <Jean@> is not a valid RFC-5321 address. Learn<EOL>more at<EOL> https://support.google.com/mail/answer/6596 n13-20020a5d400d000000b0020ff7246934sm11219419wrp.95 - gsmtp<EOL>
+22/06/05 00:25:07 : The recipient address <Jean@> is not a valid RFC-5321 address. Learn<EOL>more at<EOL> https://support.google.com/mail/answer/6596 20-20020a05600c231400b0039c15ff3200sm15354313wmo.41 - gsmtp<EOL>
+22/06/05 00:26:28 : The recipient address <Jean@> is not a valid RFC-5321 address. Learn<EOL>more at<EOL> https://support.google.com/mail/answer/6596 j5-20020a05600c1c0500b0039c3056c3dfsm13010027wms.27 - gsmtp<EOL>
+22/06/05 00:27:07 : The recipient address <Jean@> is not a valid RFC-5321 address. Learn<EOL>more at<EOL> https://support.google.com/mail/answer/6596 m14-20020adff38e000000b0021030c9d5c5sm11109659wro.91 - gsmtp<EOL>
+22/06/05 00:30:22 : The recipient address <Jean@> is not a valid RFC-5321 address. Learn<EOL>more at<EOL> https://support.google.com/mail/answer/6596 l9-20020a7bc349000000b0039746638d6esm12669015wmj.33 - gsmtp<EOL>
+22/06/24 00:43:29 : Message is missing recipient's address

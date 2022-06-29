@@ -8,28 +8,15 @@
     Message('Logout');
     Message('ConfirmRegistration');
     Message('DeleteUser');
+    Message('updateMail');
+    Message('updatePassword');
+    Message('newPassword');
+    Message('newsletter');
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>
 
-<div class="container-fluid">
-    <div class="row __frontRow justify-content-evenly align-items-center px-md-3" style="position:relative;">
-    <div class="__frontBgImage"></div>
-        <img src="sources/img/musculation.jpg" alt="La musculation"  class="__frontImage col-12 col-md-6 col-lg-8">
-        <div class="__frontIamge-description col-12 col-md-6 col-lg-4">
-            <h2 class="aligned-title">NOTRE MÉTHODE</h2>
-            <p class="text-justify text-center my-lg-5">
-                <span class="d-none d-lg-block">Notre approche globale de l’entraînement, issue de la préparation physique d’athlètes, va permettre un développement réel de vos capacités physiques de manière durable.<br><br></span>
-                Nos entraîneurs vous accompagnent sur le meilleur assortiment sportif pour vous permettre d’atteindre rapidement vos objectifs, quelque soit votre niveau.<br><br>
-                <!-- Chacun de nos 7 sports a été choisi pour être efficace et complémentaire.<br><br>
-                À vous de créer un programme qui vous ressemble...<br><br>  -->
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </p>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
+<div class="container-fluid mb-5">
 
     <p class="text-center">
 
@@ -40,15 +27,17 @@
 
                 <div class="carousel-item active">
                     <div class="d-flex justify-content-center">
-                        <div class="card col-9">
-                            <img src="sources/img/cycling.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">CYCLING</h5>
-                                <p class="card-text">
-                                    Lundi 11 juillet<br>
-                                    10H00 - 60 minutes
-                                </p>
-                                <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card">
+                                <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">CYCLING</h5>
+                                    <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        10H00 - 60 minutes
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,15 +45,17 @@
 
                 <div class="carousel-item">
                     <div class="d-flex justify-content-center">
-                        <div class="card col-9">
-                            <img src="sources/img/zumba.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">ZUMBA</h5>
-                                <p class="card-text">
-                                    Lundi 11 juillet<br>
-                                    11H00 - 30 minutes
-                                </p>
-                                <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card">
+                                <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">ZUMBA</h5>
+                                    <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        11H00 - 30 minutes
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,15 +63,17 @@
 
                 <div class="carousel-item justify-content-evenly">
                     <div class="d-flex justify-content-center">
-                        <div class="card col-9">
-                            <img src="sources/img/abs.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">ABDOS - FESSIERS</h5>
-                                <p class="card-text">
-                                    Lundi 11 juillet<br>
-                                    11H30 - 30 minutes
-                                </p>
-                                <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card">
+                                <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">ABDOS - FESSIERS</h5>
+                                    <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        11H30 - 30 minutes
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,15 +81,17 @@
 
                 <div class="carousel-item justify-content-evenly">
                     <div class="d-flex justify-content-center">
-                        <div class="card col-9">
-                            <img src="sources/img/yoga.jpg" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                                <h5 class="card-title">YOGA</h5>
-                                <p class="card-text">
-                                    Lundi 11 juillet<br>
-                                    12H00 - 60 minutes
-                                </p>
-                                <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card">
+                                <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">YOGA</h5>
+                                    <p class="card-text">
+                                        Lundi 11 juillet<br>
+                                        12H00 - 60 minutes
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,17 +112,19 @@
 
                 <div class="carousel-item active">
                     <div class="row d-flex justify-content-center">
-                        <div class="card __cardTablet col-9">
-                            <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">CYCLING</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            10H00 - 60 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card __cardTablet">
+                                <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">CYCLING</h5>
+                                            <p class="card-text">
+                                                Lundi 11 juillet<br>
+                                                10H00 - 60 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,17 +134,19 @@
 
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
-                        <div class="card __cardTablet col-9">
-                            <img src="sources/img/ZUMBA.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">ZUMBA</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            11H00 - 30 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card __cardTablet">
+                                <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">ZUMBA</h5>
+                                            <p class="card-text">
+                                                Lundi 11 juillet<br>
+                                                11H00 - 30 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -157,17 +156,19 @@
 
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
-                        <div class="card __cardTablet col-9">
-                            <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">ABDOS-FESSIERS</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            11H30 - 30 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card __cardTablet">
+                                <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">ABDOS-FESSIERS</h5>
+                                            <p class="card-text">
+                                                Lundi 11 juillet<br>
+                                                11H30 - 30 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -177,17 +178,19 @@
 
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
-                        <div class="card __cardTablet col-9">
-                            <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">YOGA</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            12H00 - 60 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-9">
+                            <div class="card __cardTablet">
+                                <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">YOGA</h5>
+                                            <p class="card-text">
+                                                Lundi 11 juillet<br>
+                                                12H00 - 60 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -212,33 +215,37 @@
                 <div class="carousel-item active">
                     <div class="row d-flex justify-content-center">
 
-                        <div class="card __cardDesktop col-4">
-                            <img src="sources/img/cycling.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">CYCLING</h5>
-                                        <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        10H00 - 60 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-4">
+                            <div class="card __cardDesktop">
+                                <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">CYCLING</h5>
+                                            <p class="card-text">
+                                            Lundi 11 juillet<br>
+                                            10H00 - 60 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card __cardDesktop col-4">
-                            <img src="sources/img/zumba.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">ZUMBA</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            11H00 - 30 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-4">
+                            <div class="card __cardDesktop">
+                                <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">ZUMBA</h5>
+                                            <p class="card-text">
+                                                Lundi 11 juillet<br>
+                                                11H00 - 30 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -250,33 +257,37 @@
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
 
-                        <div class="card __cardDesktop col-4">
-                            <img src="sources/img/abs.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">ABDOS-FESSIERS</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            11H30 - 30 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-4">
+                            <div class="card __cardDesktop">
+                                <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">ABDOS-FESSIERS</h5>
+                                            <p class="card-text">
+                                                Lundi 11 juillet<br>
+                                                11H30 - 30 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card __cardDesktop col-4">
-                            <img src="sources/img/yoga.jpg" class="card-img __classImage" alt="...">
-                            <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                <div class="__cardDescription">
-                                    <div class="__cardDescriptionText">
-                                        <h5 class="card-title">YOGA</h5>
-                                        <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            12H00 - 60 minutes
-                                        </p>
-                                        <a href="#" class="btn btn-primary">Réserver</a>
+                        <div class="col-4">
+                            <div class="card __cardDesktop">
+                                <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img __classImage" alt="...">
+                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
+                                    <div class="__cardDescription">
+                                        <div class="__cardDescriptionText">
+                                            <h5 class="card-title">YOGA</h5>
+                                            <p class="card-text">
+                                                Lundi 11 juillet<br>
+                                                12H00 - 60 minutes
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -300,6 +311,24 @@
 
 
 
+</div>
+
+<div class="container-fluid">
+    <div class="row __frontRow justify-content-evenly align-items-center px-md-3 mt-5">
+        <div class="col-12 col-md-6 col-lg-8">
+            <img src="<?= DOMAIN . 'sources/img/musculation.jpg'?>" alt="La musculation"  class="img-fluid">
+        </div>
+        <div class="__frontIamge-description col-12 col-md-6 col-lg-4">
+            <h2 class="aligned-title">NOTRE MÉTHODE</h2>
+            <p class="text-justify text-center my-lg-5">
+                <span class="d-none d-lg-block">Notre approche globale de l’entraînement, issue de la préparation physique d’athlètes, va permettre un développement réel de vos capacités physiques de manière durable.<br><br></span>
+                Nos entraîneurs vous accompagnent sur le meilleur assortiment sportif pour vous permettre d’atteindre rapidement vos objectifs, quelque soit votre niveau.<br><br>
+                <!-- Chacun de nos 7 sports a été choisi pour être efficace et complémentaire.<br><br>
+                À vous de créer un programme qui vous ressemble...<br><br>  -->
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </p>
+        </div>
+    </div>
 </div>
 
 

@@ -5,7 +5,7 @@ const modifyPasswordConfirm = document.getElementsByClassName("modify-passwordCo
     modifyAdminPassword = document.getElementsByClassName("modify-adminPassword");
 
 function openModifyConfirm() {
-    for(let i = 0; i < modifyPasswordConfirm.length; i++){
+    for (let i = 0; i < modifyPasswordConfirm.length; i++) {
         modifyPasswordConfirm[i].style.display = "none";
         modifyConfirm[i].style.display = "inline-block";
         modifyFormInfo[i].style.display = "none";
@@ -13,7 +13,7 @@ function openModifyConfirm() {
     }
 }
 
-for(let i = 0; i < modifyPasswordConfirm.length; i++){
+for (let i = 0; i < modifyPasswordConfirm.length; i++) {
     modifyPasswordConfirm[i].addEventListener("click", openModifyConfirm);
 }
 
@@ -27,7 +27,7 @@ const deletePasswordConfirm = document.getElementsByClassName("delete-passwordCo
     deleteFormInfo = document.getElementsByClassName("deleteFormInfo");
 
 function openDeleteConfirm() {
-    for(let i = 0; i < deletePasswordConfirm.length; i++) {
+    for (let i = 0; i < deletePasswordConfirm.length; i++) {
         deletePasswordConfirmDescription[i].innerHTML = "Afin d'enregistrer ces modifications, veuillez saisir votre mot de passe :"
         deletePasswordConfirm[i].style.display = "none";
         deleteAdminPassword[i].style.display = "block";
@@ -35,14 +35,14 @@ function openDeleteConfirm() {
     }
 }
 
-for(let i = 0; i < deletePasswordConfirm.length; i++){
+for (let i = 0; i < deletePasswordConfirm.length; i++) {
     deletePasswordConfirm[i].addEventListener("click", openDeleteConfirm);
 }
 
 // ---- FIN de la partie deleteUserAdmin ----
 
 
-function sortColumn(n,tableId) {
+function sortColumn(n, tableId) {
     let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById(tableId);
     switching = true;
@@ -85,7 +85,7 @@ function sortColumn(n,tableId) {
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
             // Each time a switch is done, increase this count by 1:
-            switchcount ++;
+            switchcount++;
         } else {
             /* If no switching has been done AND the direction is "asc",
             set the direction to "desc" and run the while loop again. */
@@ -102,7 +102,7 @@ function sortColumn(n,tableId) {
 const modifyModalTrigger = document.getElementsByClassName("modifyModal--trigger");
 
 function resetModifyModalState() {
-    for(let i = 0; i < modifyModalTrigger.length; i++){
+    for (let i = 0; i < modifyModalTrigger.length; i++) {
         modifyPasswordConfirm[i].style.display = "inline-block";
         modifyConfirm[i].style.display = "none";
         modifyFormInfo[i].style.display = "inline-block";
@@ -110,14 +110,14 @@ function resetModifyModalState() {
     }
 }
 
-for(let j = 0; j < modifyModalTrigger.length; j++){
+for (let j = 0; j < modifyModalTrigger.length; j++) {
     modifyModalTrigger[j].addEventListener("click", resetModifyModalState);
 }
 
 const deleteModalTrigger = document.getElementsByClassName("deleteModal--trigger");
 
 function resetDeleteModalState() {
-    for(let i = 0; i < modifyModalTrigger.length; i++){
+    for (let i = 0; i < modifyModalTrigger.length; i++) {
         deletePasswordConfirmDescription[i].innerHTML = "Êtes-vous sûr de vouloir le supprimer?"
         deletePasswordConfirm[i].style.display = "inline-block";
         deleteConfirm[i].style.display = "none";
@@ -126,6 +126,24 @@ function resetDeleteModalState() {
     }
 }
 
-for(let j = 0; j < deleteModalTrigger.length; j++){
+for (let j = 0; j < deleteModalTrigger.length; j++) {
     deleteModalTrigger[j].addEventListener("click", resetDeleteModalState);
+}
+
+function searchUser() {
+    let searchUserText = document.getElementById('__search-user').value;
+    let userTable = document.getElementById('__usersTable');
+    let users = document.getElementsByClassName('__userRow')
+
+    for (let i = 0; i < users.length; i++) {
+        let td = users[i].getElementsByTagName("td")[1]; // Index 1 pour l'adresse mail
+        if (td) {
+            let txtValue = td.textContent || td.innerText;
+            if (txtValue.indexOf(searchUserText) > -1) {
+                users[i].style.display = "";
+            } else {
+                users[i].style.display = "none";
+            }
+        }
+    }
 }

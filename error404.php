@@ -5,13 +5,16 @@
     require 'header.php';
     Message('RegisterHack');
     Message('ConfirmRegistration');
+    Message('UpdateHack');
+    Message('UpdateSecHack');
+    Message('DeleteUser');
 ?>
 
 <h2 class="aligned-title mt-5"> Page introuvable </h2>
 
 <div class="container">
     <div class="row justify-content-center">
-        <img src="sources/img/404.png" alt="" class="col-6">
+        <img src="<?= DOMAIN . 'sources/img/404.png'?>" alt="" class="col-6">
     </div>
 
     <div class="row">
@@ -19,7 +22,7 @@
     </div>
 
     <div class="row">
-        <a href="index.php" type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</a>
+        <a href="<?= DOMAIN . 'index.php'?>" type="button" class="btn __404btn mx-auto btn-outline-primary">Page d'accueil</a>
     </div>
 </div>
 

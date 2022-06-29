@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'conf.inc.php';
 
 function setMessage($title, $msgArray, $type){
     $_SESSION['MESSAGE'][$title] = [
@@ -13,7 +14,7 @@ function Message($title){
         $type = $_SESSION['MESSAGE'][$title]['type'];
         foreach($_SESSION['MESSAGE'][$title]['content'] as $msg){
             if($msg != NULL){
-            echo "<div class='alert alert-{$type}' alert-dismissible fade show role='alert'>
+            echo "<div id='__messageAlert' class='alert alert-{$type}' alert-dismissible fade show role='alert'>
                       {$msg}
                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
@@ -48,10 +49,10 @@ function checkPassword($password): bool{
 }
 
 function genToken(){
-    $chars = ['$','^','@','&','(','-','_',')','='];
+    $chars = ['$','^','@','(','-','_',')'];
     $n1 = rand(0,9); $n2 = rand(0,9);
     $c1 = $chars[array_rand($chars)]; $c2 = $chars[array_rand($chars)];
-    $prefix = "{$c1}{$n1}{$c2}{$n2}";
+    $prefix = "{$n1}{$c1}{$c2}{$n2}";
     $tk = uniqid($prefix);
     return strrev($tk);
 }
@@ -72,8 +73,8 @@ function isConnected(){
         $db = database();
         $getTokenDbQuery = $db->prepare("SELECT token from RkU_USER WHERE id=:id");
         $getTokenDbQuery->execute(['id' => $_SESSION['userId']]);
-        
-        $tokenDb = $getTokenDbQuery->fetch()['token'];
+
+        $tokenDb = $getTokenDbQuery->fetch()['token'] ?? "";
         $tokenSession = $_SESSION['userToken'];
         if($tokenDb == $tokenSession){
             return true;
@@ -106,8 +107,9 @@ function isAdmin(){
 /*
  * checkFields retourne un tableau de 2 éléments un booléen et un tableau. Dans le cas où la vérification se passe bien le booléen vaut true et le tableau contient les champs, prêts à être insérés en BDD; Sinon le booléen vaut false et le tableau contient les problemes de la vérification.
  * checkFields gère un tableau de champ, les champs gérés sont : 'civility', 'lastname', 'firstname', 'birthday', 'email', 'address', 'city', 'zipcode'
+ * ajout d'un paramètre $checkMailExists, la vérification de l'unicité de l'adresse mail n'étant pas obligatoirement requises lors de la vérification de l'adresse
  */
-function checkFields($fields): array
+function checkFields(array $fields, bool $checkMailExists = true): array
 {
     $results = [];
     $problems = [];
@@ -129,7 +131,7 @@ function checkFields($fields): array
                 if(strlen($lastname) < 2 || strlen($lastname) > 180 || !ctype_alpha(str_replace($exceptions, '', $lastname))){
                     $problems[] = 'Le nom de famille doit être entre 2 et 180 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
                 }else{
-                    $results['lastname'] = strtoupper($lastname);
+                    $results['lastname'] = strtoupper(htmlspecialchars($lastname));
                 }
                 break;
             case 'firstname':
@@ -137,7 +139,7 @@ function checkFields($fields): array
                 if(strlen($firstname) < 2 || strlen($firstname) > 100 || !ctype_alpha(str_replace($exceptions, '', $firstname))){
                     $problems[] = 'Le prénom doit être entre 2 et 100 caractères alphabétiques'; // Alphabétique + $exceptions autorisés
                 }else{
-                    $results['firstname'] = ucwords(strtolower($firstname));
+                    $results['firstname'] = ucwords(strtolower(htmlspecialchars($firstname)));
                 }
                 break;
             case 'birthday':
@@ -164,17 +166,18 @@ function checkFields($fields): array
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                     $problems[] = 'Format de l\'adresse mail incorrecte';
                 }else{
-                    // Gére si l'adresse mail existe déjà
-                    $db = database();
+                    $results['email'] = strtolower(trim(htmlspecialchars($email)));
+                    if($checkMailExists){
+                        // Gére si l'adresse mail existe déjà
+                        $db = database();
 
-                    $checkUserExistQuery = $db->prepare("SELECT id FROM RkU_USER WHERE email=:email LIMIT 1");
-                    $checkUserExistQuery->execute(["email"=>$email]);
-                    $checkUserExist = $checkUserExistQuery->fetch();
+                        $checkUserExistQuery = $db->prepare("SELECT id FROM RkU_USER WHERE email=:email LIMIT 1");
+                        $checkUserExistQuery->execute(["email"=>$email]);
+                        $checkUserExist = $checkUserExistQuery->fetch();
 
-                    if(!empty($checkUserExist)){
-                        $problems[] = "Ce mail est déjà utilisé";
-                    }else{
-                        $results['email'] = strtolower(trim($email));
+                        if(!empty($checkUserExist)){
+                            $problems[] = "Ce mail est déjà utilisé";
+                        }
                     }
                 }
                 break;
@@ -183,7 +186,7 @@ function checkFields($fields): array
                 if(strlen($address) < 2 || strlen($address) > 200 || !ctype_alnum(str_replace($exceptions, '', $address))){
                     $problems[] = 'L\'adresse doit comprendre entre 2 et 200 caractères alphanumériques'; // Alphnumériques + $exceptions autorisés
                 }else{
-                    $results['address'] = ucwords(strtolower($address));
+                    $results['address'] = ucwords(strtolower(htmlspecialchars($address)));
                 }
                 break;
             case 'city':
@@ -191,7 +194,7 @@ function checkFields($fields): array
                 if(strlen($city) < 2 || strlen($city) > 180 || !ctype_alpha(str_replace($exceptions, '', $city))){
                     $problems[] = 'La ville doit contenir entre 2 et 180 caractères alphabétiques'; // Alphabétiques + $exceptions autorisés
                 }else{
-                    $results['city'] = ucwords(strtolower($city));
+                    $results['city'] = ucwords(strtolower(htmlspecialchars($city)));
                 }
                 break;
             case 'zipcode':
@@ -221,7 +224,7 @@ function checkFields($fields): array
                 }
                 break;
             default:
-                $problems[] = "Le champ '". $field ."' n'est pas géré";
+                $problems[] = "Le champ '". htmlspecialchars($field) ."' n'est pas géré";
                 break;
         }
     }
@@ -251,21 +254,118 @@ echo "<pre>";
  * $domain correspond au serveur sur lequel le script est executé, si local alors mettre http://localhost/Projet_Annuel_1A2_github, si prod mettre = pat-atw.fr
  * $tk correspond au token qui est utilisé pour identifier l'inscription d'un nouvel utilisateur, il est envoyé dans le mail et est inséré en BDD
  */
-function register_mail($firstname, $tk, $domain): string
+function register_mail($firstname, $tk): string
 {
-    return "<!DOCTYPE html>
+    $src = /*DOMAIN .*/'https://pa-atw.fr/sources/img/logo.png';
+    $href = DOMAIN . "modules/user/scripts/confirmRegister.php?fn=$firstname&tk=$tk";
+    return '<!DOCTYPE html>
         <html>
-            <section align='center'>
+            <section align="center">
                 <h1>Vérification inscription Fitness Essential</h1>
-                <img src='https://pa-atw.fr/sources/img/logo.png' alt='logo'>
-                <h3>Bonjour " . $firstname . ", merci de nous faire confiance pour être la salle de vos nombreux futurs entrainements intensifs 💪</h3>
-                <p>Pour confirmer votre inscription nous vons prions de bien vouloir cliquer sur le lien afin de vérifier que vous n'êtes pas un robot 🔌</p>
-                <a href='$domain/confirmRegister.php?fn=$firstname&tk=$tk'>Vérifier votre addresse mail</a>
+                <img src=' . $src . ' alt="logo">
+                <h3>Bonjour ' . $firstname . ', merci de nous faire confiance pour être la salle de vos nombreux futurs entrainements intensifs</h3>
+                <p>Pour confirmer votre inscription nous vons prions de bien vouloir cliquer sur le lien afin de vérifier que vous n\'êtes pas un robot</p>
+                <a href='. $href .'>Vérifier votre adresse mail</a>
             </section>
-        </html>";
+        </html>';
 }
 
 /*function getUser($fields){
     // Fonction qui récupère les champs depuis la bdd grâce à un id;
     // Pour chaque $fields, retourner la valeur en bdd
 }*/
+
+function getIP() {
+    //whether ip is from the share internet
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = 'HTTP_CLIENT_IP : ' . $_SERVER['HTTP_CLIENT_IP'];
+    }
+    //whether ip is from the proxy
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = 'HTTP_X_FORWARDED_FOR : ' . $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    //whether ip is from the remote address
+    else{
+        $ip = 'REMOTE_ADDR : ' . $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
+/*
+ * $id est l'id de l'utilisateur
+ * $action est le type d'action effectuée (Visite de page, Connexion, Déconnexion, ...)
+ */
+function atw_log($id, string $action){
+    $logfile = fopen(__DIR__ . "/logs/visits.log", "a");
+    $currentDateTime = date("d/m/Y H:i:s");
+    $currentPage = basename($_SERVER['PHP_SELF']);
+    $ip = getIP();
+    fwrite($logfile, "UserID : $id - $currentDateTime - $action $currentPage - $ip\n");
+    fclose($logfile);
+}
+
+/*
+ * Dump and Die
+ */
+function dd($var){
+    echo "<pre>";
+    var_dump($var);
+    die();
+}
+
+function connectCookie(){
+    if(!empty($_COOKIE['FitEssMail']) && !empty($_COOKIE['FitEssPass'])){
+        $db = database();
+        $userExistQuery = $db->prepare('SELECT id, password, role FROM RkU_USER WHERE email=:email');
+        $userExistQuery->execute([':email'=>$_COOKIE['FitEssMail']]);
+        $user = $userExistQuery->fetch();
+        if($user){
+            $pwdInDb = $user['password'];
+            $pwdDecryptFromCookie = openssl_decrypt($_COOKIE['FitEssPass'], "AES-256-CTR", '$pa-cle-encryption-atw$');
+            if($pwdDecryptFromCookie == $pwdInDb){
+                $_SESSION['userToken'] = setToken($user['id']);
+                $_SESSION['userId'] = $user['id'];
+                setMessage('Connection', ['Connecté grâce aux cookies'], 'success');
+                atw_log($user['id'], "Connexion");
+            }
+        }
+    }
+}
+
+function logout(){
+    /*unset($_SESSION['userToken']);
+    unset($_SESSION['userId']);*/
+    $db = database();
+    $setTokenNullQuery = $db->prepare("UPDATE RkU_USER SET token=NULL WHERE id=:id");
+    $setTokenNullQuery->execute(['id'=>$_SESSION['userId']]);
+    setcookie('FitEssMail', null, time()-3600, '/');unset($_COOKIE['FitEssMail']);
+    setcookie('FitEssPass', null, time()-3600, '/');unset($_COOKIE['FitEssPass']);
+    atw_log($_SESSION['userId'], "Logout");
+    session_destroy();
+}
+/**
+ * @throws Exception
+ */
+function uniqidReal($len) { // FONCTION RECUPEREE DEPUIS https://www.php.net/manual/fr/function.uniqid.php#120123
+    // uniqid gives 13 chars, but you could adjust it to your needs.
+    if (function_exists("random_bytes")) {
+        $bytes = random_bytes(ceil($len / 2));
+    } elseif (function_exists("openssl_random_pseudo_bytes")) {
+        $bytes = openssl_random_pseudo_bytes(ceil($len / 2));
+    } else {
+        throw new Exception("no cryptographically secure random function available");
+    }
+    return substr(bin2hex($bytes), 0, $len);
+}
+
+function subscribe(int $id){
+    $db = database();
+    $updateNewsletterQuery = $db->prepare("UPDATE RkU_USER SET newsletter=1 WHERE id=:id");
+    $updateNewsletterQuery->execute(['id' => $id]);
+}
+
+function unsubscribe(int $id){
+    $db = database();
+    $updateNewsletterQuery = $db->prepare("UPDATE RkU_USER SET newsletter=2 WHERE id=:id");
+    $updateNewsletterQuery->execute(['id' => $id]);
+}
