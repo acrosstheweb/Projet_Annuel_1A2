@@ -8,9 +8,6 @@
                 <a class="nav-link active" href="<?= DOMAIN . 'modules/user/vues/admin/users.php'?>">Liste des utilisateurs</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/security.php'?>">Sécurité</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="<?= DOMAIN . 'modules/user/vues/admin/captchaAdmin.php'?>">Captcha</a>
                 </li>
             </ul>
@@ -23,7 +20,7 @@
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/newsletter.php'?>">Newsletter</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Abonnements</a>
+                    <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminSubscriptions.php'?>">Abonnements</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= DOMAIN . 'modules/user/vues/admin/adminPrograms.php'?>">Programmes</a>

@@ -55,6 +55,33 @@ class Events{
         return $days;
     }
 
+    /**
+     * Récupère un évènement en fonction de son id
+     * @param int $id
+     * @return array
+     * @throws array
+     */
+    public function find(int $id): array {
+        // require "Event.php";
+        require_once '../../../functions.php';
+        $this->pdo = database();
+
+        $req = $this->pdo->prepare("SELECT * FROM RkU_BOOKING WHERE id = :id LIMIT 1");
+        $req->execute([
+            'id'=>intval($id)
+        ]);
+
+        // $req->setFetchMode(\PDO::FETCH_CLASS, \Calendar\Event::class); // retourne une nouvelle instance de la classe demandée
+        $result = $req->fetch();
+
+        if($result === false)
+            throw new \Exception("Aucun résultat n'a été trouvé.");
+
+        return $result;
+    }
+
+
+
 
 
 }

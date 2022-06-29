@@ -5,6 +5,8 @@ require '../../../../functions.php';
         header('Location: ../../../../error404.php');
         die();
     }
+    $title = "Fitness Essential - Liste des évènements";
+    $content = "Liste des évènements";
 
 require '../../../../header.php';
 Message('modifyEvent');
@@ -18,16 +20,28 @@ $results = $req->fetchAll();
 
 ?>
 
+<div class="container-fluid d-lg-none">
+    <div class="row __profileDropdown">
+        <div class="dropdown d-grid gap-2">
+            <button class="btn dropdown-toggle text-light" type="button" id="__profileDropdownButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <?= $content ?>
+            </button>
+            <ul class="dropdown-menu justify-content-center __profileDropdownMenu text-light" aria-labelledby="dropdownMenuButton1">
+                <?php include 'adminNavbar.php'; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <h1 class="aligned-title">Gestion des évènements</h1>
 
 <div class="container-fluid">
-    <div class="row">
-
-        <div class="d-none col-2 mx-md-3 d-md-flex justify-content-center">
+    <div class="row d-flex justify-content-center justify-content-lg-start">
+        <div class="d-none col-2 d-lg-flex justify-content-center">
             <?php include "adminNavbar.php"; ?>
         </div>
 
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-10 col-lg-8">
             <div class="text-end my-3">
                 <a href="<?= DOMAIN . 'modules/calendar/vues/addNewEvent.php'?>" class="btn btn-primary">Créer un évènement</a>
             </div>
@@ -82,7 +96,7 @@ $results = $req->fetchAll();
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="deleteEvent<?= $event['id'];?>" action="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventSuppression.php?eventId=' . $event['id'];?>" method="POST" >
+                                        <form id="formDeleteEvent<?= $event['id'];?>" action="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventSuppression.php?eventId=' . $event['id'];?>" method="POST" >
                                             <div class="deleteFormInfo">
                                                 <h5>Vous êtes sur le point de supprimer cet évènement :</h5>
                                                 <ul>
@@ -103,7 +117,7 @@ $results = $req->fetchAll();
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                        <button class="btn btn-primary delete-passwordConfirm" form="deleteEvent<?= $event['id'];?>" type="submit">Supprimer</button>
+                                        <button class="btn btn-primary delete-passwordConfirm" form="formDeleteEvent<?= $event['id'];?>" type="submit">Supprimer</button>
                                     </div>
                                 </div>
                             </div>
