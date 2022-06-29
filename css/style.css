@@ -725,3 +725,6 @@ table {
 .valid{
     color:green;
 }
+.progress-bar{
+    background-color: var(--green2);
+}
