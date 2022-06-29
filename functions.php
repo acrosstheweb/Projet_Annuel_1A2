@@ -38,7 +38,7 @@ function checkPassword($password): bool{
     $hasDigits = (preg_match('/\d/',$password) === 1);
     $hasLowerCase = (preg_match('/[a-zéèêëàâîïôöûü]/',$password) === 1); // (de a-z + éèêëàâîïôöûü) == minuscules
     $hasUpperCase = (preg_match('/[A-Z]/',$password) === 1);
-    $hasSpecialChar = (preg_match('/[^\p{L}\p{N}\éèêëàâîïôöûü]/',$password) === 1); // Négation de (Lettres, Chiffres, accents) == Special chars
+    $hasSpecialChar = (preg_match('/[\+\(\)\|\*\$\^\.\[\]\{\}\-\?\/_=~!€#@]/',$password) === 1); // + ( ) | * $ ^ . [ ] { } - ? / _ = ~ ! € # @ ; == Special chars
     $has8chars = (strlen($password) >= 8);
 
     if($hasDigits && $hasLowerCase && $hasUpperCase && $hasSpecialChar && $has8chars){

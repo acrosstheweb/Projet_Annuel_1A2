@@ -717,3 +717,11 @@ table {
         transform: translateX(-10px);
     }
 }
+
+/* password strength */
+.invalid{
+    color:red;
+}
+.valid{
+    color:green;
+}
