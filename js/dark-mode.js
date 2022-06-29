@@ -40,8 +40,21 @@ function darkMode(){
     }
 
     const tables = document.getElementsByClassName('table');
-    for(let table of tables){
-        table.classList.add('table-dark');
+        for(let table of tables){
+            if (!(table.classList.contains('__programContent'))){
+                table.classList.add('table-dark');
+            }
+    }
+
+    const dropdowns = document.getElementsByClassName('dropdown-menu');
+    for(let dropdown of dropdowns){
+        dropdown.classList.add('dropdown-menu-dark');
+    }
+
+    const modals = document.getElementsByClassName('modal-body');
+    for(let modal of modals){
+        modal.style.setProperty('background-color', 'var(--bs-dark)');
+        modal.style.setProperty('color', 'var(--bs-light)');
     }
 };
 
@@ -69,9 +82,22 @@ function lightMode(){
         nav.classList.remove('navbar-dark');
     }
 
-    const tables = document.getElementsByClassName('table');
+    const tables = document.getElementsByClassName('table-dark');
     for(let table of tables){
-        table.classList.remove('table-dark');
+        if (!(table.classList.contains('__programContent'))){
+            table.classList.remove('table-dark');
+        }
+    }
+
+    const dropdowns = document.getElementsByClassName('dropdown-menu-dark');
+    for(let dropdown of dropdowns){
+        dropdown.classList.remove('dropdown-menu-dark');
+    }
+
+    const modals = document.getElementsByClassName('modal-body');
+    for(let modal of modals){
+        modal.style.setProperty('background-color', 'var(--bs-body-bg)');
+        modal.style.setProperty('color', 'var(--bs-body-color)');
     }
 };
 

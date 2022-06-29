@@ -142,6 +142,8 @@ a, .nav-link, .link-primary {
 .modal-header,
 .modal-footer {
     background-color: var(--green1);
+    border-top: 0;
+    border-bottom: 0;
 }
 
 .span-close-modal {
