@@ -16,31 +16,37 @@
     border-radius: 50%;
 }
 
-a,
-.nav-link,
-.link-primary {
+a, .nav-link, .link-primary {
     color: var(--green5);
 }
 
 
 /* Boutons */
 
-.btn-primary,
-.button-close-modal {
+.btn-primary, .button-close-modal {
     background-color: var(--green2);
     border-color: var(--green2);
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus {
     background-color: var(--green3);
     border-color: var(--green3);
 }
 
-.btn-primary.disabled,
-.btn-primary:disabled {
+.btn-primary.disabled, .btn-primary:disabled {
     color: #fff;
     background-color: var(--green1);
     border-color: var(--green1);
+}
+
+.btn-outline-primary{
+    color: var(--green2);
+    border-color: var(--green2);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus{
+    color: var(--green2);
+    border-color: var(--green2);
 }
 
 
@@ -353,12 +359,6 @@ table {
     margin: 1rem;
 }
 
-
-/* .__topic:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    margin: 0;
-} */
-
 .__topicImg {
     height: 10rem;
     object-fit: cover;
@@ -381,12 +381,7 @@ table {
 /* Catégorie */
 
 .__categoryCardClosed {
-    background-color: var(--green1);
     border: 1px solid var(--green3);
-}
-
-.__questionStatusBg {
-    background-color: var(--green3);
 }
 
 
@@ -629,11 +624,34 @@ table {
 
 /* STATS */
 
-.__rectangleStat {
-    height: 30px;
-    text-align: center;
-    font-weight: bold;
+.__chartCard6{
+    max-height: 30vh;
 }
+
+.__stats-description{
+    width: 100%;
+}
+
+#__18-24, #__essential, #__subscribed, #__M, #__questions{
+    background-color: var(--green1);
+}
+
+#__25-34{
+    background-color: var(--green2);
+}
+
+#__35-44, #__classic, #__notSubscribed, #__F, #__answers{
+    background-color: var(--green3);
+}
+
+#__45-54{
+    background-color: var(--green4);
+}
+
+#__55, #__premium{
+    background-color: var(--green5);
+}
+
 
 
 /* ABOUT */
