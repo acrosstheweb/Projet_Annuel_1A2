@@ -191,7 +191,7 @@
         </nav>
 
     </header>
-    <?php if(isConnected()){ ?>
+    <?php if(!isConnected()){ ?>
     <div class="modal fade" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
