@@ -5,7 +5,7 @@ const trigger = document.getElementById('__darkMode-trigger');
 
 
 
-// FONCTIONSD
+// FONCTIONS
 function getCookieValue(name){
     let cookie = document.cookie;
     cookie = cookie.split(`; ${name}=`);
@@ -78,20 +78,16 @@ function lightMode(){
 
 
 // INITIALISATION DES PAGES
-// if(document.cookie.search('darkMode') == -1){
-//     document.cookie = `darkMode=0; expires=Thu, ${date} UTC; path=/`;
-// }
-
 function init(){
-const value = getCookieValue('darkMode');
+    const value = getCookieValue('darkMode');
 
-if (value == 1){
-    darkMode();
-} else if (value == 0){
-    lightMode();
-} else {
-    document.cookie = `darkMode=0; expires=Thu, ${date} UTC; path=/`;
-}
+    if (value == 1){
+        darkMode();
+    } else if (value == 0){
+        lightMode();
+    } else {
+        document.cookie = `darkMode=0; expires=Thu, ${date} UTC; path=/`;
+    }
 }
 
 
