@@ -59,7 +59,7 @@
                     if ($isConnected){
                 ?>
                         <div>
-                            <button class="btn btn-danger">Ne plus afficher</button>
+                            <a href="<?= DOMAIN ?>modules/user/vues/profilePageNewsletter.php" class="btn btn-danger">Ne plus afficher</a>
                         </div>
                 <?php
                     }

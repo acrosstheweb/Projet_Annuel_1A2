@@ -1,4 +1,5 @@
 <?php
+    header("HTTP/1.0 404 Not Found");
     $title = "Fitness Essential - Page introuvable";
     $content = "Page introuvable";
     $currentPage = 'error404';
