@@ -293,14 +293,14 @@
                                 <label for="register-password">Mot de passe : </label>
                                 <input id="register-password" class="form-control" type="password" name="register-password" placeholder="Mot de passe" required="required">
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" id="password-progress"></div>
+                                    <div class="progress-bar bg-danger" role="progressbar" id="password-progress"></div>
                                 </div>
                                 <div id="password-check">
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
                                 </div>
                             </div>
                         </div>
@@ -310,11 +310,11 @@
                                 <label for="register-confirmed-password">Confirmation mot de passe : </label>
                                 <input id="register-confirmed-password" class="form-control" type="password" name="register-confirmed-password" placeholder="Confirmation du mot de passe" required="required">
                                 <div id="confirmed-password-check">
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
-                                    <div class="invalid"></div>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
+                                    <small class="form-text text-muted invalid"></small>
                                 </div>
                             </div>
                         </div>

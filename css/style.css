@@ -720,11 +720,10 @@ table {
 
 /* password strength */
 .invalid{
+    display:block;
     color:red;
 }
 .valid{
+    display:block;
     color:green;
-}
-.progress-bar{
-    background-color: var(--green2);
 }

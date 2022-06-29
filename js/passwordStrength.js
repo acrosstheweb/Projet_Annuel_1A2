@@ -80,12 +80,18 @@ pass1.addEventListener("input",function(){
         }
     }
 
-    if(pass1.value.length >= 12 && pass1.value.length < 20 && somme(progressBar) >= 60){
+    if(pass1.value.length >= 8 && pass1.value.length < 14 && somme(progressBar) >= 60){
+        pass1progress.classList.remove("progress-bar-striped");
+        pass1progress.classList.remove("bg-danger");
+        pass1progress.classList.add("bg-success");
         progressBar[5] = 20;
-    }else if(pass1.value.length >= 20 && somme(progressBar) >= 80){
+    }else if(pass1.value.length >= 14 && somme(progressBar) >= 80){
+        pass1progress.classList.add("progress-bar-striped");
         progressBar[5] = 40;
     }else {
         progressBar[5] = 0;
+        pass1progress.classList.remove("progress-bar-striped");
+        pass1progress.classList.add("bg-danger");
     }
 
     pass1progress.style.cssText = `width:${somme(progressBar)}%;`;
