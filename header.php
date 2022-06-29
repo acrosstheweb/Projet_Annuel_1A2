@@ -191,7 +191,7 @@
         </nav>
 
     </header>
-
+    <?php if(isConnected()){ ?>
     <div class="modal fade" id="login-modal" aria-hidden="true" aria-labelledby="login-modal-label" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -321,7 +321,7 @@
             </div>
         </div>
     </div>
-
+    <?php } ?>
     <section id="__userSlide">
         <nav class="navbar" id="__userVerticalNav">
             <ul>
