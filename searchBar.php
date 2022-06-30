@@ -16,39 +16,39 @@ $searchAbonnementsQuery = $db->query("SELECT name, price FROM RkU_SUBSCRIPTION W
 
 if($searchTopicQuery){
     $results = $searchTopicQuery->fetchAll();
-    echo "<br><h5>TOPICS</h5>";
+    echo '<h5 class="mt-3">TOPICS</h5>';
     if(!empty($results)){
         foreach ($results as $key => $result){
             echo "<h6>" . $result['title'] . "</h6><p>" . $result['description'] . "</p><hr>";
         }
     }
     else{
-        echo 'Aucun résultat';
+        echo '<p>Aucun résulat </p><hr>';
     }
 }
 
 if($searchProgramQuery){
     $results = $searchProgramQuery->fetchAll();
-    echo "<br><h5>PROGRAMMES</h5>";
+    echo "<h5>PROGRAMMES</h5>";
     if(!empty($results)){
         foreach ($results as $key => $result){
             echo "<h6>" . $result['nameProgram'] . "</h6><hr>";
         }
     }
     else{
-        echo 'Aucun résultat';
+        echo '<p>Aucun résulat </p><hr>';
     }
 }
 
 if($searchAbonnementsQuery){
     $results = $searchAbonnementsQuery->fetchAll();
-    echo "<br><h5>ABONNEMNETS</h5>";
+    echo "<h5>ABONNEMNETS</h5>";
     if(!empty($results)){
         foreach ($results as $key => $result){
             echo "<h6>" . $result['name'] . "</h6> - <h7>Tarif : " . $result['price'] . "€</h7><hr>";
         }
     }
     else{
-        echo 'Aucun résultat';
+        echo '<p>Aucun résulat </p>';
     }
 }

@@ -93,7 +93,7 @@
                             <img src="<?= DOMAIN . 'sources/img/icon.png'?>" alt="logo" class="img-fluid __logoIcon">
                         </a>
                     </div>
-                    <div id="__searchbar-results"></div>
+                    <div id="__searchbar-results" class="card shadow border-0"></div>
                     <!-- ICONES -->
                     <div class="col-5 p-0">
                         <ul class="navbar-nav __navbarIcons justify-content-end align-items-center">
@@ -128,7 +128,7 @@
                                             <a class="nav-link" href="<?= DOMAIN ?>modules/user/scripts/logout.php" role="button">Déconnexion</a>
                                         </li>
                                         <li class="nav-item">
-                                            <p class="nav-link disabled">FitCoins : <?= $soldeFC ?></p>
+                                            <p class="nav-link disabled d-flex align-items-center"><?= $soldeFC ?> <img class="mx-1" src="<?= DOMAIN . 'sources/img/fitcoin.svg' ?>" width="14px" height="14px" alt=""></p>
                                         </li>
                                     <?php } else{ ?>
                                         <li class="nav-item">
@@ -341,33 +341,7 @@
         </div>
     </div>
     <?php } ?>
-    <section id="__userSlide">
-        <nav class="navbar" id="__userVerticalNav">
-            <ul>
-                <?php 
-                if(isAdmin()){?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="modules/user/scripts/admin/users.php" role="button">Back-Office</a>
-                    </li>
-                <?php } ?>
-                <li class="nav-item">
-                    <a class="nav-link " href="modules/user/vues/profilePage.php">Mon profil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="modules/user/scripts/logout.php">Déconnexion</a>
-                </li>
-            </ul>
-        </nav>
-    </section>
 
-<!-- <script>
-    if(window.location.href.indexOf("#register-modal")){
-        var registermodal = document.querySelector('#register-modal');
-        registermodal.style.display = "block";
-        console.log('modal ouverte');
-    }
-</script> -->
-<!-- <script src="js/user-slide.js"></script> -->
 <script src="<?= DOMAIN . 'js/searchbar.js'?>"></script>
 <script src="<?= DOMAIN . 'js/dark-mode.js'?>"></script>
 <script src="<?= DOMAIN . 'js/passwordStrength.js'?>"></script>

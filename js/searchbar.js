@@ -34,6 +34,7 @@ function search(text){
     let searchBarResult = document.getElementById("__searchbar-results");
     if(text.length != 0){
         searchBarResult.style.display = 'block';
+        searchBarResult.classList.remove('border-0');
         let XML = new XMLHttpRequest();
         XML.onreadystatechange = function(){
             if(XML.readyState == 4 && XML.status == 200){
