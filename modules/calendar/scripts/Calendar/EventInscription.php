@@ -65,7 +65,7 @@ else{
                 ]);
         
                 setMessage('inscriptionEvent', ["Vous êtes bien inscrit à la séance : " . $event['name']], 'success');
-                header('Location: ../../vues/eventUser.php?id=' . $event['id']);
+                header('Location:' . DOMAIN . 'modules/user/vues/nextBookings.php');
                 exit;
             }
         }

@@ -79,7 +79,7 @@
     </div>
 
     <div class="row">
-        <div class="__calendar">
+        <div class="__calendar d-flex justify-content-center">
             <div class="col-11 d-flex justify-content-center">
                 <div class="table-responsive mx-auto">
                     <table class = "__calendarTable">
@@ -93,7 +93,15 @@
                                     <div class="__calendarContent">
                                         <div class="__calendarWeekDay"> <?= $month->days[($date->format('w')+6)%7] ?> </div>
                                         <div class="__calendarDay"> <?= $date->format('d'); ?> </div>
-                                        <?php foreach($eventsForDay as $event){ ?>
+                                        <?php if (!empty($eventsForDay)){
+                                            foreach($eventsForDay as $event){
+                                
+                                                $req = $pdo->prepare("SELECT name FROM RkU_GYMS WHERE id = :id LIMIT 1");
+                                                $req->execute([
+                                                    'id'=> $event['gym']
+                                                ]);
+                                                $gymName = $req->fetch()[0];
+                                        ?>
                                             <div class="card __eventCard __event-<?= $event['gym'] ?> __event-<?= $event['sport'] ?>">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -103,16 +111,41 @@
                                                     </div>
                                                     <div class="row">
                                                         <h5 class="card-title"><?= $event['name'] ?></h5>
-                                                        <h6 class="card-subtitle mb-2 text-muted"><?= (new Datetime($event['startDate']))->format('H:i') . ' - ' . (new Datetime($event['endDate']))->format('H:i') . ' ' . $event['gym']?></h6>
+                                                        <h6 class="card-subtitle mb-2 text-muted"><?= (new Datetime($event['startDate']))->format('H:i') . ' - ' . (new Datetime($event['endDate']))->format('H:i') . ' à ' . $gymName?></h6>
                                                     </div>
                                                     <div class="row">
                                                         <p class="card-text d-flex align-items-center"><?= $event['price'] ?><img class="mx-1" src="<?= DOMAIN . 'sources/img/fitcoin.svg' ?>" width="14px" height="14px" alt=""></p>
                                                     </div>
                                                     <div class="row mt-2">
-                                                        <a href="#" class="btn btn-primary">Réserver</a>
+                                                        <?php
+                                                            if(isConnected()){
+                                                                $req = $pdo->prepare("SELECT userId, eventId FROM RkU_PARTICIPATE WHERE userId = :userId AND eventId = :eventId");
+                                                                $req->execute([
+                                                                    'userId' => $_SESSION['userId'],
+                                                                    'eventId'=> $event['id']
+                                                                ]);
+                                                                $booked = $req->fetchAll();
+
+                                                                if (empty($booked)){
+                                                        ?>
+                                                            <a href="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventInscription.php?eventId=' . $event['id']?> " class="btn btn-primary">Réserver</a>
+                                                        <?php
+                                                                } else {
+                                                        ?>
+                                                            <a href="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventDesinscription.php?eventId=' . $event['id']?>" class="btn btn-danger">Annuler ma réservation</a>
+                                                        <?php
+                                                                }
+                                                            } else {
+                                                        ?>
+                                                            <a href="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventInscription.php?eventId=' . $event['id']?> " class="btn btn-primary">Réserver</a>
+                                                        <?php
+                                                            }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
+                                        <?php }} else { ?>
+                                            <p class="mt-4">Aucun évènement pour l'instant</p>
                                         <?php } ?>
                                     </div>
                                 </td>

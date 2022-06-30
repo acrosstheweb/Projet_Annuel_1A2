@@ -73,7 +73,7 @@
       
 ?>
 
-<h1>Votre panier</h1>
+<h1 class="text-center">Votre panier</h1>
 
 <?php 
 if(isset($_SESSION['subscription'])){

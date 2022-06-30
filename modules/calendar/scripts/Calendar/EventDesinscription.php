@@ -51,12 +51,12 @@ else{
         ]);
 
         setMessage('eventDesinscription', ['Vous êtes bien désinscrit'],'success');
-        header('Location: ../../vues/eventUser.php?id=' . $event['id']);
+        header('Location: ' . DOMAIN . 'modules/user/vues/nextBookings.php');
         die();
     }
     else{
         setMessage('eventDesinscription', ['Vous n\'êtes pas inscrit'],'danger');
-        header('Location: ../../vues/eventUser.php?id=' . $event['id']);
+        header('Location: ' . DOMAIN . 'modules/calendar/vues/reservations.php');
         die();
     }
 }

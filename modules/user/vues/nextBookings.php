@@ -9,6 +9,8 @@
     $currentPage = 'nextBookings';
     require '../../../header.php';
     Message('Update');
+    Message("inscriptionEvent");
+    Message("eventDesinscription");
     
     $pdo = database();
 
@@ -53,10 +55,12 @@
             ?>
 
                     <div class="row text-center">
-                        <p>Vous n'avez aucune séance de prévue.<br></p>
+                        <p>Vous n'avez aucune séance de prévue pour l'instant.<br></p>
                     </div>
 
-                    <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php'?>" class="btn btn-primary">Réservez une séance</a>
+                    <div class="text-center">
+                        <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php'?>" class="btn btn-primary">Réserver une séance</a>
+                    </div>
             
             <?php 
                 } else {
@@ -119,7 +123,7 @@
                                                     <div class="text-uppercase fw-bold mt-2">
                                                         Prix : <br>
                                                     </div>
-                                                    <?= $booking['price'];?> fitcoins<br>
+                                                    <p class="d-flex align-items-center"><?= $booking['price'];?> <img class="mx-1" src="<?= DOMAIN . 'sources/img/fitcoin.svg' ?>" width="14px" height="14px" alt=""></p>
                                                     <div class="text-muted small">
                                                         Si ce désistement respecte les Conditions Générales de Vente, vous serez recrédité le montant que vous avez payé. <br>
                                                     </div>
