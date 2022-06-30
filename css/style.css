@@ -499,23 +499,19 @@ table {
 
 
 /* Réservation */
-
-.__calendarTable {
-    width: 100%;
-    height: calc(100vh - 159px);
-}
-
 .__calendarTable td {
     padding: 10px;
     border: 1px solid #CCC;
     vertical-align: top;
-    width: 14.29%;
-    height: 20%;
+    min-width: 250px;
+}
+
+.__calendarContent{
+    min-height: 75vh;
 }
 
 .__calendarWeekDay {
     font-weight: bold;
-    color: #000;
     font-size: 1.2em;
 }
 
@@ -527,8 +523,12 @@ table {
     opacity: 0.3;
 }
 
-.calendar {
-    position: relative;
+.__eventCard{
+    margin: 1rem 0;
+}
+
+.__eventCard h5, .__eventCard h6, .__eventCard p{
+    padding: 0;
 }
 
 .__listeVerticale {
@@ -734,6 +734,8 @@ table {
 .progress-bar{
     background-color: var(--green2);
 }
+
+/* ACCORDÉON FORMULAIRE PROGRAMMES */
 
 .accordion-button:not(.collapsed), .accordion-button {
     color: var(--green3);
