@@ -1,6 +1,6 @@
 const gymFilters = document.getElementsByClassName('__gym-filter');
 const sportFilters = document.getElementsByClassName('__sport-filter');
-const events = document.getElementsByClassName("__calendarEvent");
+const events = document.getElementsByClassName("__eventCard");
 
 function filterGym(n) {
 
@@ -59,7 +59,6 @@ for (let gymFilter of gymFilters) {
 }
 
 for (let sportFilter of sportFilters) {
-    console.log(sportFilter.getAttribute("data-sport"));
     sportFilter.addEventListener("click", function() {
         filterSport(sportFilter.getAttribute("data-sport"));
     })
