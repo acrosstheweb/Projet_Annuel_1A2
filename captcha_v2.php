@@ -46,7 +46,6 @@ for ($i = 0; $i < $tileLength; $i++){
         $tileId++;
     }
 }
-var_dump($combinaison);
 
 $_SESSION['captcha'] = $combinaison;
 shuffle($combinaison);
@@ -72,8 +71,6 @@ shuffle($combinaison);
         }
         echo '</div>';
     }
-    var_dump($combinaison);
-
     ?>
 </div>
 
