@@ -6,6 +6,8 @@
       
   require '../scripts/Calendar/Week.php';
   require '../scripts/Calendar/Events.php';
+  Message("inscriptionEvent");
+  Message("eventDesinscription");
 
 
   $pdo = database();

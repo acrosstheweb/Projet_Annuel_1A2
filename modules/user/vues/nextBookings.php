@@ -106,7 +106,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form id="deleteBooking<?= $booking['id'];?>" action="" method="POST" >
+                                            <form id="eventDesinscription<?= $booking['id'];?>" action="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventDesinscription.php?eventId=' . $booking['eventId']?>" method="POST" >
                                                 <div class="deleteFormInfo">
                                                     <h5>Vous êtes sur le point de vous désincrire à cette séance :</h5>
                                                     <div class="text-uppercase fw-bold mt-2">
@@ -138,7 +138,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                            <button class="btn btn-primary delete-passwordConfirm" form="deleteBooking<?= $booking['id'];?>" type="submit">Supprimer</button>
+                                            <button class="btn btn-primary delete-passwordConfirm" form="eventDesinscription<?= $booking['id'];?>" type="submit">Supprimer</button>
                                         </div>
                                     </div>
                                 </div>
