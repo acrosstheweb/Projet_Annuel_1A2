@@ -31,7 +31,6 @@ for ($i=0;$i<$tileLength**2;$i++){
     $combinaison[] = uniqidreal(4);
 }
 
-shuffle($combinaison);
 
 for ($i = 0; $i < $tileLength; $i++){
     for ($j = 0; $j < $tileLength; $j++){
@@ -47,31 +46,34 @@ for ($i = 0; $i < $tileLength; $i++){
         $tileId++;
     }
 }
+var_dump($combinaison);
 
 $_SESSION['captcha'] = $combinaison;
 shuffle($combinaison);
+
 ?>
 
-<div class="container-fluid" id="__captcha">
+<div class="container-fluid" id="__captcha" data-tiles="<?= $tileLength ?>">
     <?php
     $cpt = 0;
     for ($i = 0; $i < $tileLength; $i++){
         echo '<div class="row">';
         for ($j = 0; $j < $tileLength; $j++){
-
-
             ?>
-            <div id="__captchaTile<?php  echo $i ?>" class="col p-1">
+            <div id="__captchaTile<?= $cpt ?>" class="col p-1">
                 <img class="img-fluid float-start" src="<?php echo DOMAIN . $pathArray[$combinaison[$cpt]][1] ?>" alt="">
                 <input type="hidden"
-                       id="__tile<?php echo $i ?>"
-                       name="__tile<?php echo $i ?>"
-                       value="<?php echo $combinaison[$cpt] ?>">
+                       id="__tile<?= $cpt ?>"
+                       name="__tile<?= $cpt ?>"
+                       value="<?= $combinaison[$cpt] ?>">
             </div>
             <?php
             $cpt++;
         }
+        echo '</div>';
     }
+    var_dump($combinaison);
+
     ?>
 </div>
 

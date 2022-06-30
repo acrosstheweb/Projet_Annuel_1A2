@@ -1,15 +1,9 @@
-const tile0 = document.getElementById('__captchaTile0');
-const tile1 = document.getElementById('__captchaTile1');
-const tile2 = document.getElementById('__captchaTile2');
-const tile3 = document.getElementById('__captchaTile3');
-const tile4 = document.getElementById('__captchaTile4');
-const tile5 = document.getElementById('__captchaTile5');
-const tile6 = document.getElementById('__captchaTile6');
-const tile7 = document.getElementById('__captchaTile7');
-const tile8 = document.getElementById('__captchaTile8');
+const tileNumber = document.getElementById("__captcha").getAttribute('data-tiles');
+let tiles = []
 
-
-
+for(let t=0; t < tileNumber**2 ;t++){
+    tiles.push(document.getElementById(`__captchaTile${t}`));
+}
 
 let selection = [];
 
@@ -29,7 +23,6 @@ function swap(el1,el2){
     tileName1.id = tileName2.id;
     tileName2.id = tmp;
 
-    console.log(tileName1);
 };
 
 function addToSelection(el){
@@ -45,11 +38,8 @@ function addToSelection(el){
     }
 };
 
-var tiles = [tile0, tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8];
-
 tiles.forEach(function(item){
     item.addEventListener('click', function() {
         addToSelection(item);
     });
 });
-

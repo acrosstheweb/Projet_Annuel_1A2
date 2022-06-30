@@ -1,7 +1,13 @@
 <?php
 require '../../../functions.php';
+
+$filePath = ABSOLUTE_PATH . "sources/captcha/tileNumber.txt";
+$fileTileNumber = fopen($filePath, 'r');
+$tileLength = (int)fread($fileTileNumber, filesize($filePath));
+fclose($fileTileNumber);
+
 if(
-    count($_POST) != 12+9 ||
+    count($_POST) != 12 + ($tileLength**2) ||
     empty($_POST['register-civility']) ||
     empty($_POST['register-birthday']) ||
     empty($_POST['register-lastname']) ||
@@ -19,21 +25,16 @@ if(
     header('Location: ../../../error404.php');
     die();
 }
-
-if ($_POST['__tile0'] != $_SESSION['captcha'][0] ||
-    $_POST['__tile1'] != $_SESSION['captcha'][1] ||
-    $_POST['__tile2'] != $_SESSION['captcha'][2] ||
-    $_POST['__tile3'] != $_SESSION['captcha'][3] ||
-    $_POST['__tile4'] != $_SESSION['captcha'][4] ||
-    $_POST['__tile5'] != $_SESSION['captcha'][5] ||
-    $_POST['__tile6'] != $_SESSION['captcha'][6] ||
-    $_POST['__tile7'] != $_SESSION['captcha'][7] ||
-    $_POST['__tile8'] != $_SESSION['captcha'][8]
-){
+$userCaptcha = [];
+for($t=0; $t < $tileLength**2;$t++){
+    $userCaptcha[$t] = $_POST["__tile$t"];
+}
+if($userCaptcha != $_SESSION['captcha']){
     setMessage('Register', ['Captcha incorrect (:'], 'warning');
     header('Location: ../../../index.php');
     die();
 }
+
 unset($_SESSION['captcha']);
 
 $civility = $_POST['register-civility'];
