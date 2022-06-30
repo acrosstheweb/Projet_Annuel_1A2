@@ -34,19 +34,19 @@
 <div class="container-fluid">
 
     <div class="row d-flex justify-content-center my-3">
-        <div class="col-6">
+        <div class="col-8">
             <h2><?= $month->toString(); ?></h2>
         </div>
-        <div class="col-5 text-end">
+        <div class="col-4 col-md-2 text-center">
             <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?day=' . $month->previousWeek()->day . '&month=' . $month->previousWeek()->month . '&year=' . $month->previousWeek()->year ?>" class = "btn btn-primary"><i class="fa-solid fa-angle-left"></i></a>
             <a href="<?= DOMAIN . 'modules/calendar/vues/reservations.php?day=' . $month->nextWeek()->day . '&month=' . $month->nextWeek()->month . '&year=' . $month->nextWeek()->year ?>" class = "btn btn-primary"><i class="fa-solid fa-angle-right"></i></a>
         </div>
     </div>
 
-    <div class="row d-flex justify-content-center mb-3">
-        <div class="col-11">
+    <div class="row d-flex justify-content-between mb-3">
+        <div class="col-11 col-lg-9">
             <div class="row">
-                <div class="col-3">
+                <div class="col-5 col-md-3 col-lg-2">
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonGym" data-bs-toggle="dropdown" aria-expanded="false">
                             Filtrer par salle
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-5 col-md-3 col-lg-2 ms-3">
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonSport" data-bs-toggle="dropdown" aria-expanded="false">
                             Filtrer par sport
@@ -80,8 +80,8 @@
 
     <div class="row">
         <div class="__calendar">
-            <div class="col-11 mx-auto">
-                <div class="table-responsive">
+            <div class="col-11 d-flex justify-content-center">
+                <div class="table-responsive mx-auto">
                     <table class = "__calendarTable">
                         <tr>
                             <?php
