@@ -88,64 +88,100 @@ if(isset($_SESSION['subscription'])){
 
 ?>
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="<?= DOMAIN . 'sources/img/' . $result['path'] ?>" class="img-fluid rounded-start" alt="image de l'abonnement">
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-11 col-lg-6">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4 text-center">
+                        <img class=" my-2" src="<?= DOMAIN . 'sources/img/' . $result['path'] ?>" class="img-fluid rounded-top rounded-md-start" alt="image de l'abonnement">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">Abonnement <?= $result['name'] ?></h5>
+                            <div class="row">
+                                <div class="col-8 p-0">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text __cartBtn"><a href="cart.php?delSubscription=<?= $subscriptionId ?>"><i class="fa-solid fa-trash-can"></i></a></span>
+                                        <span class="input-group-text">1</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <p class="card-text text-end"><?= $result['price'] ?> €</p>
+                                </div>
+                            </div>
+                        <?php $subTotal += $result['price'];?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Abonnement <?= $result['name'] ?></h5>
-        <p class="card-text">Prix : <?= $result['price'] ?></p>
-        <a href="cart.php?delSubscription=<?= $subscriptionId ?>">Supprimer</a>
-        <?php $subTotal += $result['price'];?>
-      </div>
+
+
+        <?php } ?>
+
+        <?php
+        if(isset($_SESSION['fitcoins'])){
+            $ids = array_keys($_SESSION['fitcoins']);
+            $idsImplode = implode(',', $ids);
+
+            if(empty($ids)){
+                $packs = [];
+            }
+            else{
+                $reqPacks = $pdo->query("SELECT * FROM RkU_FITCOINS WHERE id IN (".$idsImplode.")");
+                $packs = $reqPacks->fetchAll();
+            }
+
+            foreach($packs as $pack){
+        ?>
+
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-11 col-lg-6">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4 text-center">
+                        <img src="<?= DOMAIN . 'sources/img/fitcoin.svg' ?>" class="img-fluid rounded-start mx-1 p-3 __cartImage" alt="image de l'abonnement">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $pack['name'] ?></h5>
+                            <div class="row">
+                                <div class="col-8 p-0">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text __cartBtn"><?= ($_SESSION['fitcoins'][$pack['id']] == 1) ? '<a href="cart.php?delFitcoins=' . $pack['id'] . '"><i class="fa-solid fa-trash-can"></i>' : '<a href="cart.php?changeQuantityFitcoinsMinus=' . $pack['id'] . '"><i class="fa-solid fa-minus"></i>'  ?></a></span>
+                                        <span class="input-group-text"><?= $_SESSION['fitcoins'][$pack['id']] ?></span>
+                                        <span class="input-group-text __cartBtn"><a href="cart.php?changeQuantityFitcoinsPlus=<?= $pack['id'] ?>"><i class="fa-solid fa-plus"></i></a></span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <p class="card-text text-end"><?= $pack['price']?> €</p>
+                                </div>
+                            </div>
+                            <?php $subTotal += $pack['price'] * $_SESSION['fitcoins'][$pack['id']]?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+        <?php }} ?>
+
+
+
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-6 fw-bold">
+            <hr>
+            <span class="text-uppercase">Sous-total:</span>
+            <span class="float-end"><?= $subTotal ?> €</span>
+        </div>
+    </div>
 </div>
 
-<?php } ?>
-
-<?php
-if(isset($_SESSION['fitcoins'])){
-    $ids = array_keys($_SESSION['fitcoins']);
-    $idsImplode = implode(',', $ids);
-
-    if(empty($ids)){
-        $packs = [];
-    }
-    else{
-        $reqPacks = $pdo->query("SELECT * FROM RkU_FITCOINS WHERE id IN (".$idsImplode.")");
-        $packs = $reqPacks->fetchAll();
-    }
-
-    foreach($packs as $pack){
+<?php 
+    include '../../../footer.php';
 ?>
-
-
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="<?= DOMAIN . 'sources/img/' . $pack['path'] ?>" class="img-fluid rounded-start" alt="image de l'abonnement">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><?= $pack['name'] ?></h5>
-        <p class="card-text">Prix : <?= $pack['price']?></p>
-        <p><a href="cart.php?changeQuantityFitcoinsMinus=<?= $pack['id'] ?>">-</a><?= $_SESSION['fitcoins'][$pack['id']] ?><a href="cart.php?changeQuantityFitcoinsPlus=<?= $pack['id'] ?>">+</a></p>
-        <a href="cart.php?delFitcoins=<?= $pack['id'] ?>">Supprimer tout</a>
-
-        <?php $subTotal += $pack['price'] * $_SESSION['fitcoins'][$pack['id']]?>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<?php }} ?>
-
-
-
-<div class="container">
-    <h4>Sous-total : <?= $subTotal ?>€</h4>
-</div>
