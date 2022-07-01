@@ -12,6 +12,13 @@
     Message('updatePassword');
     Message('newPassword');
     Message('newsletter');
+
+    $pdo = database();
+
+    $reqEvent = $pdo->query('SELECT * FROM RkU_BOOKING WHERE startDate >= Now() LIMIT 4');
+    $events = $reqEvent->fetchAll();
+
+
 ?>
 
 <h1 class="aligned-title"> Bienvenue sur Fitness Essential </h1>
@@ -25,16 +32,25 @@
         <div id="carouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
             <div class="carousel-inner justify-content-evenly">
 
-                <div class="carousel-item active">
+            <?php 
+            $count = 0;
+            foreach($events as $event){ 
+                $reqSportImage = $pdo->prepare('SELECT path FROM RkU_SPORT WHERE id=:id');
+                $reqSportImage->execute([
+                    'id'=>$event['sport']
+                ]);
+                $sportImage = $reqSportImage->fetch()['path'];
+            ?>
+                <div class="carousel-item <?php if($count == 0){ echo 'active'; } ?>">
                     <div class="d-flex justify-content-center">
                         <div class="col-9">
                             <div class="card">
-                                <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img-top" alt="...">
+                                <img src="<?= DOMAIN . 'sources/img/' . $sportImage?>" class="card-img-top" alt="...">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title">CYCLING</h5>
+                                    <h5 class="card-title"><?= $event['name'] ?></h5>
                                     <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        10H00 - 60 minutes
+                                        <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
+                                        <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
                                     </p>
                                     <a href="#" class="btn btn-primary">Réserver</a>
                                 </div>
@@ -42,60 +58,8 @@
                         </div>
                     </div>
                 </div>
+            <?php $count++; } ?>
 
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-9">
-                            <div class="card">
-                                <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">ZUMBA</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        11H00 - 30 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item justify-content-evenly">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-9">
-                            <div class="card">
-                                <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">ABDOS - FESSIERS</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        11H30 - 30 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item justify-content-evenly">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-9">
-                            <div class="card">
-                                <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">YOGA</h5>
-                                    <p class="card-text">
-                                        Lundi 11 juillet<br>
-                                        12H00 - 60 minutes
-                                    </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile" data-bs-slide="prev">
             <i class="fa-solid fa-angle-left __carouselControl fa-xl" aria-hidden="true"></i>
@@ -110,93 +74,34 @@
         <div id="carouselTablet" class="carousel slide d-none d-md-block d-lg-none" data-bs-ride="carousel">
             <div class="carousel-inner">
 
-                <div class="carousel-item active">
-                    <div class="row d-flex justify-content-center">
+            <?php 
+            $count = 0;
+            foreach($events as $event){ 
+                $reqSportImage = $pdo->prepare('SELECT path FROM RkU_SPORT WHERE id=:id');
+                $reqSportImage->execute([
+                    'id'=>$event['sport']
+                ]);
+                $sportImage = $reqSportImage->fetch()['path'];
+            ?>
+                <div class="carousel-item <?php if($count == 0){ echo 'active'; } ?>">
+                    <div class="d-flex justify-content-center">
                         <div class="col-9">
                             <div class="card __cardTablet">
-                                <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img __classImage" alt="...">
-                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                    <div class="__cardDescription">
-                                        <div class="__cardDescriptionText">
-                                            <h5 class="card-title">CYCLING</h5>
-                                            <p class="card-text">
-                                                Lundi 11 juillet<br>
-                                                10H00 - 60 minutes
-                                            </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
-                                        </div>
-                                    </div>
+                                <img src="<?= DOMAIN . 'sources/img/' . $sportImage?>" class="card-img-top" alt="...">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><?= $event['name'] ?></h5>
+                                    <p class="card-text">
+                                        <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
+                                        <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
+                                    </p>
+                                    <a href="#" class="btn btn-primary">Réserver</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            <?php $count++; } ?>
 
-                <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-9">
-                            <div class="card __cardTablet">
-                                <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img __classImage" alt="...">
-                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                    <div class="__cardDescription">
-                                        <div class="__cardDescriptionText">
-                                            <h5 class="card-title">ZUMBA</h5>
-                                            <p class="card-text">
-                                                Lundi 11 juillet<br>
-                                                11H00 - 30 minutes
-                                            </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-9">
-                            <div class="card __cardTablet">
-                                <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img __classImage" alt="...">
-                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                    <div class="__cardDescription">
-                                        <div class="__cardDescriptionText">
-                                            <h5 class="card-title">ABDOS-FESSIERS</h5>
-                                            <p class="card-text">
-                                                Lundi 11 juillet<br>
-                                                11H30 - 30 minutes
-                                            </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-9">
-                            <div class="card __cardTablet">
-                                <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img __classImage" alt="...">
-                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                    <div class="__cardDescription">
-                                        <div class="__cardDescriptionText">
-                                            <h5 class="card-title">YOGA</h5>
-                                            <p class="card-text">
-                                                Lundi 11 juillet<br>
-                                                12H00 - 60 minutes
-                                            </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselTablet" data-bs-slide="prev">
@@ -212,19 +117,27 @@
         <div id="carouselDesktop" class="carousel slide d-none d-lg-block" data-bs-ride="carousel">
             <div class="carousel-inner">
 
-                <div class="carousel-item active">
+            <?php 
+            $count = 0;
+            foreach($events as $event){ 
+                $reqSportImage = $pdo->prepare('SELECT path FROM RkU_SPORT WHERE id=:id');
+                $reqSportImage->execute([
+                    'id'=>$event['sport']
+                ]);
+                $sportImage = $reqSportImage->fetch()['path'];
+            ?>
+                <div class="carousel-item <?php if($count == 0){ echo 'active'; } ?>">
                     <div class="row d-flex justify-content-center">
-
                         <div class="col-4">
                             <div class="card __cardDesktop">
-                                <img src="<?= DOMAIN . 'sources/img/cycling.jpg'?>" class="card-img __classImage" alt="...">
+                                <img src="<?= DOMAIN . 'sources/img/' . $sportImage?>" class="card-img-top" alt="...">
                                 <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                     <div class="__cardDescription">
                                         <div class="__cardDescriptionText">
-                                            <h5 class="card-title">CYCLING</h5>
+                                            <h5 class="card-title"><?= $event['name'] ?></h5>
                                             <p class="card-text">
-                                            Lundi 11 juillet<br>
-                                            10H00 - 60 minutes
+                                                <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
+                                                <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
                                             </p>
                                             <a href="#" class="btn btn-primary">Réserver</a>
                                         </div>
@@ -232,17 +145,16 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-4">
                             <div class="card __cardDesktop">
-                                <img src="<?= DOMAIN . 'sources/img/zumba.jpg'?>" class="card-img __classImage" alt="...">
+                                <img src="<?= DOMAIN . 'sources/img/' . $sportImage?>" class="card-img-top" alt="...">
                                 <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
                                     <div class="__cardDescription">
                                         <div class="__cardDescriptionText">
-                                            <h5 class="card-title">ZUMBA</h5>
+                                            <h5 class="card-title"><?= $event['name'] ?></h5>
                                             <p class="card-text">
-                                                Lundi 11 juillet<br>
-                                                11H00 - 30 minutes
+                                                <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
+                                                <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
                                             </p>
                                             <a href="#" class="btn btn-primary">Réserver</a>
                                         </div>
@@ -250,9 +162,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
+            <?php $count++; } ?>
 
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
