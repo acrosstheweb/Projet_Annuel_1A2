@@ -19,7 +19,7 @@
     </div>
 
     <div class="row">
-        <p class="text-center">Nous somme désolés, cette page est introuvable.<br></p>
+        <p class="text-center">Nous sommes désolés, cette page est introuvable.<br></p>
     </div>
 
     <div class="row">
