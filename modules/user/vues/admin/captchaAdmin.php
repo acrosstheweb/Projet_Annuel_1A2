@@ -36,10 +36,10 @@ Message('captchaModify');
         <div class="col-12 col-md-10 col-lg-8">
             <div class="row justify-content-evenly">
                 <div class="col-12 col-md-10 col-lg-6">
-                    <h5>Changer l'image de captcha</h5>
+                    <h5>Rajouter une image de captcha</h5>
                     <form method="POST" class="col-10" action="../../scripts/admin/captchaModify.php" enctype="multipart/form-data"> <!-- Le enctype permet de spécifier que les données envoyées lors de l'envoi sont encodées lors de la soumission au serveur. -->
                         <div>
-                            <p>Uploader une image</p>
+                            <p>Importer une image</p>
                             <input class="form-control" type="file" name="captcha-image" id="__captcha-image" required="required">
                         </div><br><br>
 
@@ -48,11 +48,11 @@ Message('captchaModify');
                 </div>
 
                 <div class="col-12 col-md-10 col-lg-6 mt-5 mt-lg-0">
-                    <h5>Difficulté du captcha</h5>
+                    <h5>Modifier la ifficulté du captcha</h5>
                     <div clas="col-2">
                         <form method="POST" class="col-10" action="../../scripts/admin/captchaModify.php">
                             <div clas="col-4">
-                                <p>Nombre de pièces du puzzle</p>
+                                <p>Nombre de pièces dans le puzzle</p>
                                 <input class="form-control" type="number" name="captcha-pieces" id="__captcha-pieces" required="required">
                             </div><br><br>
                             <input type="submit" class="btn btn-primary" required="required" name="captcha-pieces-form" value="Envoyer">
