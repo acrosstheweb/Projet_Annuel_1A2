@@ -16,7 +16,7 @@
     border-radius: 50%;
 }
 
-a, .nav-link, .link-primary {
+a, .nav-link, .link-primary, .btn-link {
     color: var(--green5);
 }
 

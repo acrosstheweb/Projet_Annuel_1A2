@@ -27,22 +27,21 @@ $isParticipated = $participateReq->fetch()['userId'];
 
 if(!isConnected()){
     setMessage('inscriptionEvent', ['Vous n\'êtes pas connecté, merci de vous connecter pour vous inscrire'],'danger');
-    header('Location: ../../vues/eventUser.php?id=' . $event['id']);
+    header('Location: ' . DOMAIN . 'pleaseLogin.php');
     die();
 }
 else{
     if($isParticipated == $userId){
-        setMessage('inscriptionEvent', ["Vous êtes déjà inscrit à cet évènement, vous pouvez vous rendre sur
-        sur <a href='../vues/reservations.php'>cette page</a> pour réserver une autre séance"], 'warning');
-        header('Location: ../../vues/eventuser.php?id=' . $event['id']);
+        setMessage('inscriptionEvent', ["Vous êtes déjà inscrit à cet évènement"], 'warning');
+        header('Location: ' . DOMAIN . 'modules/user/vues/nextBookings.php');
         exit;
     }
     else{
         if($event['price'] <= $fitcoins){
             if($event['places'] == 0){
-                setMessage('inscriptionEvent', ["Il n'y a plus suffisamment de place pour vous inscrire, vous pouvez aller checker
-                sur <a href='../vues/reservations.php'>cette page</a> pour réserver une autre séance"], 'warning');
-                header('Location: ../../vues/eventUser.php?id=' . $event['id']);
+                setMessage('inscriptionEvent', ["Cette séance est déjà complète"], 'warning');
+                header('Location: ' . DOMAIN . 'modules/calendar/vues/reservations.php');
+
                 exit;
             }
             else{
@@ -70,9 +69,8 @@ else{
             }
         }
         else{
-            setMessage('inscriptionEvent', ["Vous n'avez pas assez de fitcoins pour réserver cette séance, vous pouvez vous rendre
-            sur <a href='#'>cette page</a> pour en acheter"], 'warning');
-            header('Location: ../../vues/eventUser.php?id=' . $event['id']);
+            setMessage('inscriptionEvent', ["Vous n'avez pas assez de fitcoins pour réserver cette séance"], 'warning');
+            header('Location: ' . DOMAIN . 'subscriptions.php');
             exit;
         }
     }

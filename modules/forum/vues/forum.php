@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Forum";
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
-    require '../../../header.php';
+    require_once '../../../functions.php';
     Message('UploadImage');
     Message('No Topic');
     Message('createCategorie');
@@ -10,9 +10,10 @@
     Message('Delete');
 
     if(!isConnected()){
-        echo "Pour accéder au forum, merci de vous inscrire";
+        header('Location: ' . DOMAIN . 'pleaseLogin.php');
         die();
     }
+    require '../../../header.php';
     
     $pdo = database();
 

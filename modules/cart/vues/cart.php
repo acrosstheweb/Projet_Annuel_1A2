@@ -1,90 +1,90 @@
 <?php
-  $title = "Fitness Essential - Panier";
-  $content = "Votre panier";
-  $currentPage = 'cart';
+    $title = "Fitness Essential - Panier";
+    $content = "Votre panier";
+    $currentPage = 'cart';
 
-  require_once '../../../functions.php';
+    require_once '../../../functions.php';
 
-  $pdo = database();
+    $pdo = database();
 
-  if(!isConnected()){
-    echo "Pour accéder à votre panier, merci de vous connecter";
-    die();
-  }
-
-  $subTotal = 0;
-
-  /**
-   * Permet de supprimer l'abonnement du panier
-   * @param $_GET['delSubscription']
-   */
-  if(isset($_GET['delSubscription'])){
-    unset($_SESSION['subscription']);
-    SetMessage("deleteSubCart", ["L'abonnement a bien été supprimé de votre panier"], "success");
-    header("Location: cart.php");
-    die();
-  }
-
-
-  /**
-   * Permet de supprimer l'article de Fitcoins du panier (peu importe la quantité)
-   * @param $_GET['delFitcoins']
-   */
-  if(isset($_GET['delFitcoins'])){
-    unset($_SESSION['fitcoins'][$_GET['delFitcoins']]);
-    SetMessage("deleteFitcoinsCart", ["L'article a bien été supprimé de votre panier"], "success");
-    header("Location: cart.php");
-    die();
-  }
-
-  /**
-   * Permet de réduire la quantité d'un article, si la quantité vaut 1 alors ca supprime l'article
-   * @param $_GET['changeQuantityFitcoinsMinus']
-   */
-  if(isset($_GET['changeQuantityFitcoinsMinus'])){
-
-    if($_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsMinus']] == 1){
-      unset($_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsMinus']]);
-      SetMessage("deleteFitcoinsCart", ["L'article a bien été supprimé de votre panier"], "success");
-      header("Location: cart.php");
-      die();
+    if(!isConnected()){
+        header('Location: ' . DOMAIN . 'pleaseLogin.php');
+        die();
     }
-    $_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsMinus']]--;
-    SetMessage("changeFitcoinsCart", ["La quantité a bien été modifiée"], "success");
-    header("Location: cart.php");
-    die();
-  }
 
-  /**
-   * Permet d'augmenter la quantité d'un article
-   * @param $_GET['changeQuantityFitcoinsMinus']
-   */
-  if(isset($_GET['changeQuantityFitcoinsPlus'])){
-      $_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsPlus']]++;
-      SetMessage("changeFitcoinsCart", ["La quantité a bien été modifiée"], "success");
-      header("Location: cart.php");
-      die();
-  }
+    $subTotal = 0;
 
-  require '../../../header.php';
-  Message("deleteSubCart");
-  Message("deleteFitcoinsCart");
-  Message("changeFitcoinsCart");
+    /**
+     * Permet de supprimer l'abonnement du panier
+     * @param $_GET['delSubscription']
+     */
+    if(isset($_GET['delSubscription'])){
+        unset($_SESSION['subscription']);
+        SetMessage("deleteSubCart", ["L'abonnement a bien été supprimé de votre panier"], "success");
+        header("Location: cart.php");
+        die();
+    }
+
+
+    /**
+     * Permet de supprimer l'article de Fitcoins du panier (peu importe la quantité)
+     * @param $_GET['delFitcoins']
+     */
+    if(isset($_GET['delFitcoins'])){
+        unset($_SESSION['fitcoins'][$_GET['delFitcoins']]);
+        SetMessage("deleteFitcoinsCart", ["L'article a bien été supprimé de votre panier"], "success");
+        header("Location: cart.php");
+        die();
+    }
+
+    /**
+     * Permet de réduire la quantité d'un article, si la quantité vaut 1 alors ca supprime l'article
+     * @param $_GET['changeQuantityFitcoinsMinus']
+     */
+    if(isset($_GET['changeQuantityFitcoinsMinus'])){
+
+        if($_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsMinus']] == 1){
+        unset($_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsMinus']]);
+        SetMessage("deleteFitcoinsCart", ["L'article a bien été supprimé de votre panier"], "success");
+        header("Location: cart.php");
+        die();
+        }
+        $_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsMinus']]--;
+        SetMessage("changeFitcoinsCart", ["La quantité a bien été modifiée"], "success");
+        header("Location: cart.php");
+        die();
+    }
+
+    /**
+     * Permet d'augmenter la quantité d'un article
+     * @param $_GET['changeQuantityFitcoinsMinus']
+     */
+    if(isset($_GET['changeQuantityFitcoinsPlus'])){
+        $_SESSION['fitcoins'][$_GET['changeQuantityFitcoinsPlus']]++;
+        SetMessage("changeFitcoinsCart", ["La quantité a bien été modifiée"], "success");
+        header("Location: cart.php");
+        die();
+    }
+
+    require '../../../header.php';
+    Message("deleteSubCart");
+    Message("deleteFitcoinsCart");
+    Message("changeFitcoinsCart");
       
 ?>
 
 <h1 class="text-center">Votre panier</h1>
 
 <?php 
-if(isset($_SESSION['subscription'])){
+    if(isset($_SESSION['subscription'])){
 
-    $subscriptionId = $_SESSION['subscription'][0];
+        $subscriptionId = $_SESSION['subscription'][0];
 
-    $reqSubscription = $pdo->prepare("SELECT * FROM RkU_SUBSCRIPTION WHERE id=:id");
-    $reqSubscription->execute([
-        'id'=>$subscriptionId
-    ]);
-    $result = $reqSubscription->fetch();
+        $reqSubscription = $pdo->prepare("SELECT * FROM RkU_SUBSCRIPTION WHERE id=:id");
+        $reqSubscription->execute([
+            'id'=>$subscriptionId
+        ]);
+        $result = $reqSubscription->fetch();
 
 ?>
 

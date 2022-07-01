@@ -294,7 +294,7 @@
                             <div class="col">
                                 <label for="register-password">Mot de passe : </label>
                                 <input id="register-password" class="form-control" type="password" name="register-password" placeholder="Mot de passe" required="required">
-                                <div class="progress">
+                                <div class="progress mt-1">
                                     <div class="progress-bar bg-danger" role="progressbar" id="password-progress"></div>
                                 </div>
                                 <div id="password-check">
