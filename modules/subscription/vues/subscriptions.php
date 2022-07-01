@@ -7,6 +7,7 @@
     Message('Modify');
     Message('addSubscription');
     Message('addFitcoins');
+    Message("inscriptionEvent");
 
     $pdo = database();
 
