@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 27, 2022 at 09:11 PM
+-- Generation Time: Jul 01, 2022 at 02:01 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -46,9 +46,12 @@ CREATE TABLE `RkU_BOOKING` (
 --
 
 INSERT INTO `RkU_BOOKING` (`id`, `status`, `price`, `discount`, `sport`, `gym`, `name`, `description`, `startDate`, `endDate`, `places`) VALUES
-(14, 1, 30, NULL, 11, 1, 'Séance découverte Zomba', 'Séance de découverte de la zomba', '2022-06-23 15:00:00', '2022-06-23 16:00:00', 9),
-(15, 1, 10, NULL, 11, 1, 'Test affichage salle', 'Test', '2022-06-24 17:53:00', '2022-06-24 21:53:00', 10),
-(16, 1, 10, NULL, 11, 1, 'Jaaj', 'jaaaaaaj', '2022-07-01 17:00:00', '2022-07-01 18:00:00', 10);
+(18, 1, 12, NULL, 13, 1, 'Séance Test 1', 'fzqfgse', '2022-06-30 23:50:00', '2022-06-30 23:53:00', 12),
+(19, 1, 12, NULL, 17, 2, 'Séance Test 2', 'vqgerg', '2022-07-01 04:50:00', '2022-07-01 05:50:00', 12),
+(20, 1, 12, NULL, 15, 1, 'Séance Test 3', 'gzgegr', '2022-06-30 02:54:00', '2022-06-30 05:54:00', 12),
+(21, 1, 15, NULL, 11, 1, 'Séance de Zumba', 'Petite séance de Zumba en groupe', '2022-07-03 15:04:00', '2022-07-03 16:04:00', 10),
+(22, 1, 18, NULL, 13, 2, 'Séance de Pilates', 'Séance de découverte au Pilate', '2022-07-02 14:05:00', '2022-07-02 15:05:00', 30),
+(23, 1, 12, NULL, 14, 2, 'Séance Crossfit (avancé)', 'Séance sportive Crossfit (pour les plus avancés)', '2022-07-02 15:06:00', '2022-07-02 17:06:00', 8);
 
 -- --------------------------------------------------------
 
@@ -187,7 +190,6 @@ CREATE TABLE `RkU_FITCOINS` (
   `id` int(11) NOT NULL,
   `name` varchar(40) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `path` varchar(255) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `discount` float DEFAULT NULL,
   `numberOfFitcoins` int(11) DEFAULT NULL
@@ -197,8 +199,8 @@ CREATE TABLE `RkU_FITCOINS` (
 -- Dumping data for table `RkU_FITCOINS`
 --
 
-INSERT INTO `RkU_FITCOINS` (`id`, `name`, `description`, `path`, `price`, `discount`, `numberOfFitcoins`) VALUES
-(3, 'Test', 'Ceci est un test', NULL, 13, NULL, 150);
+INSERT INTO `RkU_FITCOINS` (`id`, `name`, `description`, `price`, `discount`, `numberOfFitcoins`) VALUES
+(3, 'Test', 'Ceci est un test', 13, NULL, 150);
 
 -- --------------------------------------------------------
 
@@ -222,7 +224,8 @@ CREATE TABLE `RkU_GYMS` (
 --
 
 INSERT INTO `RkU_GYMS` (`id`, `surfaceArea`, `address`, `user`, `city`, `name`, `phoneNumber`, `link`) VALUES
-(1, 15, '55 rue des près', 2, 1, 'Jaaj Gym', '0695069629', 'https://maps.google.com/maps?q=oto%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed');
+(1, 15, '55 rue des près', 2, 1, 'Jaaj Gym', '0695069629', 'https://maps.google.com/maps?q=oto%20technology&t=&z=13&ie=UTF8&iwloc=&output=embed'),
+(2, 1900, '73 allée des chemins verts', 2, 1, 'Jaaj Gym 2', '0123456789', NULL);
 
 -- --------------------------------------------------------
 
@@ -388,23 +391,23 @@ CREATE TABLE `RkU_RESERVES` (
 CREATE TABLE `RkU_SPORT` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `description` text
+  `description` text,
+  `path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `RkU_SPORT`
 --
 
-INSERT INTO `RkU_SPORT` (`id`, `name`, `description`) VALUES
-(11, 'Zumba', 'Méthode de fitness inspirée de différentes danses latino-américaines'),
-(12, 'Hiit', 'L\' entraînement fractionné de haute intensité est un mode d\'entraînement fractionné qui vise un renforcement de la condition physique par de brèves séances d\'exercices en anaérobie'),
-(13, 'Pilates', 'Ensemble d\'exercices physiques visant au renforcement des muscles centraux et au bon équilibre du corps.'),
-(14, 'Crossfit', 'Activité sportive associant gymnastique, haltérophilie et endurance'),
-(15, 'Yoga', 'Doctrine et exercices traditionnels hindous, cherchant à réunir l\'individu avec le principe de toute existence'),
-(16, 'Cycling', 'Faire du vélo :)'),
-(17, 'Musculation', 'Développement d\'un muscle, d\'une partie du corps grâce à des exercices physiques'),
-(18, 'Abdos fessiers', 'Relatif à des exercices physiques permettant de renforcer les muscles de la ceinture abdominale et des fesses'),
-(20, 'Karaté', 'C\'est du karaté');
+INSERT INTO `RkU_SPORT` (`id`, `name`, `description`, `path`) VALUES
+(11, 'Zumba', 'Méthode de fitness inspirée de différentes danses latino-américaines', 'zumba.jpg'),
+(12, 'Hiit', 'L\' entraînement fractionné de haute intensité est un mode d\'entraînement fractionné qui vise un renforcement de la condition physique par de brèves séances d\'exercices en anaérobie', 'hiit.jpg'),
+(13, 'Pilates', 'Ensemble d\'exercices physiques visant au renforcement des muscles centraux et au bon équilibre du corps.', 'pilates.jpg'),
+(14, 'Crossfit', 'Activité sportive associant gymnastique, haltérophilie et endurance', 'crossfit.jpg'),
+(15, 'Yoga', 'Doctrine et exercices traditionnels hindous, cherchant à réunir l\'individu avec le principe de toute existence', 'yoga.jpg'),
+(16, 'Cycling', 'Faire du vélo :)', 'cycling.jpg'),
+(17, 'Musculation', 'Développement d\'un muscle, d\'une partie du corps grâce à des exercices physiques', 'musculation.jpg'),
+(18, 'Abdos fessiers', 'Relatif à des exercices physiques permettant de renforcer les muscles de la ceinture abdominale et des fesses', 'abs.jppg');
 
 -- --------------------------------------------------------
 
@@ -429,7 +432,7 @@ CREATE TABLE `RkU_SUBSCRIPTION` (
 --
 
 INSERT INTO `RkU_SUBSCRIPTION` (`id`, `price`, `discount`, `name`, `content`, `firstAttribut`, `secondAttribut`, `thirdAttribut`, `path`) VALUES
-(1, 15.99, NULL, 'ESSENTIAL', 'C\'est la même qualité, c\'est juste le prix qui baisse. T\'es pas obligé de faire le rat par contre.', 'Étudiant', '+ Bénéfice', '- Investissement', 'essential.png'),
+(1, 18, NULL, 'ESSENTIAL', 'C\'est la même qualité, c\'est juste le prix qui baisse. T\'es pas obligé de faire le rat par contre.', 'Étudiant', '+ Bénéfice', '- Investissement', 'essential.png'),
 (2, 24.99, NULL, 'CLASSIC', 'Accès classique à la salle de sport. Catégorie socioprofessionnelle moyenne, tu ne mérites pas que je t\'embête', 'Fonctionnaires', 'Abonnement rentabilisé', '+ Regard des autres', 'classic.png'),
 (3, 49.99, NULL, 'PREMIUM', 'Wow, tu possèdes un maximum de valeur financière, ce qui te permet donc de profiter sur système capitaliste comme bon te semble.', 'Pesos Mexicanos', 'Livres Sterling', 'Dinar Algérien', 'premium.png');
 
@@ -460,8 +463,7 @@ INSERT INTO `RkU_TOPIC` (`id`, `creationDate`, `title`, `description`, `topicOrd
 (9, '2022-05-17 21:26:15', 'Yoga', 'Toutes les questions et sujets Yoga', 5, 'yoga.jpg'),
 (10, '2022-05-17 21:27:00', 'Cycling', 'Toutes les questions et sujets Cycling', 6, 'cycling.jpg'),
 (11, '2022-05-17 21:27:00', 'Crossfit', 'Toutes les questions et sujets Crossfit', 4, 'crossfit.jpg'),
-(12, '2022-05-17 21:27:34', 'Musculation', 'Toutes les questions et sujets Musculation', 7, 'musculation.jpg'),
-(13, '2022-06-20 09:07:34', 'test', '&lt;h1&gt;ceci est un test&lt;/h1&gt;', 10, 'C.png');
+(12, '2022-05-17 21:27:34', 'Musculation', 'Toutes les questions et sujets Musculation', 7, 'musculation.jpg');
 
 -- --------------------------------------------------------
 
@@ -502,7 +504,13 @@ CREATE TABLE `RkU_USER` (
 --
 
 INSERT INTO `RkU_USER` (`id`, `firstName`, `lastName`, `email`, `civility`, `avatar`, `password`, `address`, `city`, `zipCode`, `birthday`, `fitcoin`, `role`, `registrationDate`, `lastUpdate`, `lastPasswordUpdate`, `changePassword`, `token`, `subscription`, `startDateSub`, `endDateSub`, `renewalDate`, `nextPaymentDate`, `token_confirm_inscription`, `newsletter`) VALUES
-(2, 'Jean', 'BOMBEUR', 'admin@admin.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2003-12-07', 70, 2, '2022-06-16 13:40:31', '2022-06-23 13:40:55', '2022-06-23 13:40:55', 0, 'f19fc76d64b261$@8', NULL, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6', 0);
+(1, 'Jean', 'BOMBEUR', 'admin@admin.com', 'M', '02-01-01-01-03-01-01-01.png', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2000-01-07', 100, 4, '2022-06-16 11:40:31', '2022-07-01 09:40:53', '2022-07-01 09:40:53', 0, '898f1521ceb269@^7', 3, NULL, NULL, NULL, NULL, NULL, 0),
+(2, 'Wissem', 'DERGHAL', 'wissem.derghal@gmail.com', 'M', '0', '$2y$10$JkCUEvN7/1PFAKEXeSIb9OeKdDaCBvNffvs..n/I7In1MJQNBCZxO', '27 Rue De La Paix', 'Bezons', 95870, '1983-06-07', 0, 1, '2022-06-22 12:33:47', '2022-06-25 13:23:34', '2022-06-25 13:23:34', 0, '1518c71233b264(@1', 1, NULL, NULL, NULL, NULL, NULL, 1),
+(3, 'Jaaj', 'JEJAAJ', 'derghal.wissem@gmail.com', 'F', '0', '$2y$10$blz9Co6gonUCF9nwLess3evJN.TXdVlBM0nARRWj79k.xJLnbqca2', '96 Route Des Crets', 'Saint-ours', 73410, '2003-02-07', 0, 1, '2022-06-23 20:32:57', '2022-06-25 14:34:16', '2022-06-25 14:34:16', 0, NULL, 1, NULL, NULL, NULL, NULL, NULL, 1),
+(4, 'Tom', 'BOURLARD', 'tbourlard.94@gmail.com', 'M', '0', '$2y$10$sZrIoIXDnwG.bVobNHMLbe0bSSIOx81FXQX5feS1dKFY2N0aoqp96', '256 Bits', 'Maisons-alfort', 94700, '2003-12-07', 0, 1, '2022-06-24 12:50:27', '2022-06-25 13:23:44', '2022-06-25 13:23:44', 0, 'f326306fc5b267--6', 2, NULL, NULL, NULL, NULL, NULL, 1),
+(5, 'Gregoire', 'DECROUEZ', 'gregdec05@gmail.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Rue Des Choses', 'Choisy-le-Roi', 94600, '1993-02-17', 570, 1, '2022-06-16 09:40:31', '2022-06-25 13:23:50', '2022-06-25 13:23:50', 0, NULL, 2, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6', 0),
+(6, 'Mathieu', 'LEBON', 'mathieu@internet.com', 'M', '0', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '4 Allée Des Sablons', 'Villescresnes', 94440, '1967-06-17', 25, 1, '2022-06-16 09:40:31', '2022-06-25 13:23:53', '2022-06-25 13:23:53', 0, NULL, 1, NULL, NULL, NULL, NULL, '51e1fbc23ba260@$6', 0),
+(7, 'Angela', 'MERKEL', 'angelamerkel@protonmail.com', 'F', '0', '$2y$10$2e4cKcujuQQhif3uhqJ6reQjk3iaAyco6zFlzBARI/zxHi/tvcmJy', 'DEFAULT', 'Berlin', 1280, '2003-03-20', 0, 1, '2022-06-25 13:07:30', '2022-06-25 14:33:32', '2022-06-25 14:33:32', 0, NULL, 3, NULL, NULL, NULL, NULL, '5421fea427b262(-5', 0);
 
 --
 -- Indexes for dumped tables
@@ -600,7 +608,7 @@ ALTER TABLE `RkU_USER`
 -- AUTO_INCREMENT for table `RkU_BOOKING`
 --
 ALTER TABLE `RkU_BOOKING`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `RkU_CITY`
@@ -660,7 +668,7 @@ ALTER TABLE `RkU_QUESTION`
 -- AUTO_INCREMENT for table `RkU_SPORT`
 --
 ALTER TABLE `RkU_SPORT`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `RkU_SUBSCRIPTION`
@@ -672,13 +680,13 @@ ALTER TABLE `RkU_SUBSCRIPTION`
 -- AUTO_INCREMENT for table `RkU_TOPIC`
 --
 ALTER TABLE `RkU_TOPIC`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `RkU_USER`
 --
 ALTER TABLE `RkU_USER`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
