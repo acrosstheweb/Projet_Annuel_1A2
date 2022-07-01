@@ -15,7 +15,7 @@ require 'header.php';
                 <label for="messageForum">Sélectionnez un sujet : </label>
                 <select class="form-select" name="messageForum" id="messageForum"><br>
                     <option selected>Problème inscription/connexion</option>
-                    <option value="1">Non réception des Fitcoin</option>
+                    <option value="1">Non réception des FitCoins</option>
                     <option value="2">Codes de réduction</option>
                     <option value="3">Bug général</option>
                     <option value="4">Autre</option>

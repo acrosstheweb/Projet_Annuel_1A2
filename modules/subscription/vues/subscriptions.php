@@ -25,21 +25,28 @@ foreach($resultsSubscription as $subscription){
 ?>
 
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
-        <h4 class="aligned-title text-uppercase">
+        <h4 class="aligned-title text-uppercase card-title mt-3">
             <?= $subscription['name'] ?>
             <img src="<?= DOMAIN . 'sources/img/' . $subscription['path']?>" alt="" class="img-fluid __subscriptionIcon">
         </h4>
         <div class="card-body">
-            <h5 class="card-title"><?= $subscription['price'] ?>€/mois</h5>
-            <p class="card-text"><?= $subscription['content'] ?></p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><?= $subscription['firstAttribut'] ?></li>
-            <li class="list-group-item"><?= $subscription['secondAttribut'] ?></li>
-            <li class="list-group-item"><?= $subscription['thirdAttribut'] ?></li>
-        </ul>
-        <div class="card-body">
-            <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?subscriptionId=' . $subscription['id'] ?>" class="card-link btn btn-primary">Ajouter au panier</a>
+            <p class="card-text __subscriptionDescription"><?= $subscription['content'] ?></p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><?= $subscription['firstAttribut'] ?></li>
+                <li class="list-group-item"><?= $subscription['secondAttribut'] ?></li>
+                <li class="list-group-item"><?= $subscription['thirdAttribut'] ?></li>
+            </ul>
+            <div class="row mt-3 d-flex align-items-center">
+                <div class="col-6">
+                    <p class="fw-bold mb-0"><?= $subscription['price'] ?>€/mois</p>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?subscriptionId=' . $subscription['id'] ?>" class="card-link btn btn-primary">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span class="d-none d-lg-inline">Ajouter au panier</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -149,16 +156,25 @@ foreach($resultsFitcoins as $packFitcoins){
 ?>
 
     <div class="card col-10 col-md-5 col-lg-3 __subscriptionCard">
-        <h4 class="aligned-title text-uppercase">
+        <h4 class="text-uppercase d-flex align-items-center justify-content-center mt-3">
             <?= $packFitcoins['name'] ?>
-            <img src="<?= DOMAIN . 'sources/img/' . $packFitcoins['path']?>" alt="" class="img-fluid __subscriptionIcon">
+            <img src="<?= DOMAIN . 'sources/img/fitcoin.svg' ?>" class="img-fluid m-1 p-1 __subscriptionIcon" alt="image de l'abonnement">
         </h4>
         <div class="card-body">
-            <h5 class="card-title"><?= $packFitcoins['price'] ?>€</h5>
             <p class="card-text"><?= $packFitcoins['description'] ?></p>
-        </div>
-        <div class="card-body">
-            <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?fitcoinsId=' . $packFitcoins['id'] ?>" class="card-link btn btn-primary">Ajouter au panier</a>
+            
+            <div class="row mt-3 d-flex align-items-center">
+                <div class="col-6">
+                    <p class="fw-bold mb-0"><?= $packFitcoins['price'] ?>€/mois</p>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?fitcoinsId=' . $packFitcoins['id'] ?>" class="card-link btn btn-primary">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span class="d-none d-lg-inline">Ajouter au panier</span>
+                    </a>
+                </div>
+            </div>
+            
         </div>
     </div>
 

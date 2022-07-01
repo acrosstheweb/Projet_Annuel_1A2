@@ -491,6 +491,10 @@ table {
     margin-bottom: 1rem;
 }
 
+.__subscriptionDescription {
+    min-height: 96px;
+}
+
 .CardPreview {
     max-height: 600px;
 }

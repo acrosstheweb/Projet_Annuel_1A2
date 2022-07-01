@@ -141,7 +141,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link __navIcon" href="<?= DOMAIN . 'modules/cart/vues/cart.php'?>"><i class="fa-solid fa-bag-shopping"></i></a>
+                                <a class="nav-link __navIcon" href="<?= DOMAIN . 'modules/cart/vues/cart.php'?>"><i class="fa-solid fa-cart-shopping"></i></a>
                             </li>
                             <li class="nav-item" id="__darkMode-trigger">
                                 <a class="nav-link __navIcon" href="#"><i class="fa-solid fa-moon"></i></a>
