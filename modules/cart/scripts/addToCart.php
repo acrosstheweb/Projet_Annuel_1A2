@@ -80,7 +80,7 @@ if(!isset($_GET['subscriptionId'])){
 
 
             setMessage('addFitcoins', ['Le pack a bien été rajouté à votre panier'], 'success');
-            header('Location: ../../subscription/vues/subscriptions.php');
+            header('Location: ' . DOMAIN . 'modules/cart/vues/cart.php');
             die();
         }else{
             setMessage('addFitcoins', $errors, 'warning');
@@ -110,8 +110,8 @@ else{
     if($valid){
         array_push($_SESSION['subscription'], $subscriptionId);
 
-        setMessage('addFitcoins', ['L\abonnement a bien été rajouté à votre panier'], 'success');
-        header('Location: ../../subscription/vues/subscriptions.php');
+        setMessage('addFitcoins', ['L\'abonnement a bien été rajouté à votre panier'], 'success');
+        header('Location: ' . DOMAIN . 'modules/cart/vues/cart.php');
         die();
     }else{
         setMessage('addSubscription', $errors, 'warning');
