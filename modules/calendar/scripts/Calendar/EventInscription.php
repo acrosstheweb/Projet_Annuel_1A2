@@ -70,7 +70,7 @@ else{
         }
         else{
             setMessage('inscriptionEvent', ["Vous n'avez pas assez de fitcoins pour réserver cette séance"], 'warning');
-            header('Location: ' . DOMAIN . 'subscriptions.php');
+            header('Location: ' . DOMAIN . 'modules/subscription/vues/subscriptions.php');
             exit;
         }
     }
