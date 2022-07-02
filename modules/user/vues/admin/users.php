@@ -53,6 +53,7 @@ Message('CreateUser');
                             <th onclick="sortColumn(2, '__usersTable')" id="tableHeaderSortable">Nom</th>
                             <th onclick="sortColumn(3, '__usersTable')" id="tableHeaderSortable">Prénom</th>
                             <th onclick="sortColumn(4, '__usersTable')" id="tableHeaderSortable">Date de naissance</th>
+                            <th onclick="sortColumn(5, '__usersTable')" id="tableHeaderSortable">Inscrit le</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -73,6 +74,8 @@ Message('CreateUser');
                                 $userAddress = $user["address"];
                                 $userZipCode = $user["zipCode"];
                                 $userCity = $user["city"];
+                                $role = $user["role"];
+                                $registrationDate = $user["registrationDate"];
                                 ?>
 
                                     <tr class="__userRow">
@@ -81,6 +84,7 @@ Message('CreateUser');
                                         <td><?php echo $userLastName;?></td>
                                         <td><?php echo $userFirstName;?></td>
                                         <td><?php echo $userBirthday;?></td>
+                                        <td><?php echo $registrationDate;?></td>
                                         <td>
                                             <a href="#" class="btn btn-outline-primary m-1 modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalUid<?php echo $userId;?>"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                             <a href="#" class="btn btn-outline-danger m-1 deleteModal--trigger" data-bs-toggle="modal" data-bs-target="#delModalUid<?php echo $userId;?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
@@ -113,6 +117,10 @@ Message('CreateUser');
                                                                 <div class="col-6">
                                                                     <label for="modify-birthdayUid<?php echo $userId;?>" class="fw-bold">Date de naissance </label>
                                                                     <input id="modify-birthdayUid<?php echo $userId;?>" class="form-control" type="date" name="modify-birthday" value="<?php echo $userBirthday;?>" required="required">
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label for="modify-roleUid<?php echo $userId;?>" class="fw-bold">Role </label>
+                                                                    <input id="modify-roleUid<?php echo $userId;?>" class="form-control" type="number" name="modify-role" value="<?php echo $role;?>" required="required">
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-3">

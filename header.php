@@ -325,9 +325,6 @@
                             <?php require 'captcha_v2.php'; ?>
                         </div>
 
-                        <input type="checkbox" name="register-newsletter" id="register-newsletter" checked="checked">
-                        <label for="register-newsletter">Je m'abonne à la newsletter</label><br>
-
                         <input type="checkbox" name="register-cgu" id="register-cgu" required="required">
                         <label for="register-cgu">J'accepte les Conditions Générales d'Utilisation</label>
                     </form>
