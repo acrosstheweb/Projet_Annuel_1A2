@@ -708,6 +708,7 @@ table {
 /* Animation */
 #__messageAlert{
     animation: show_slide 1s ease forwards;
+    z-index: 1337;
 }
 
 @keyframes show_slide {
