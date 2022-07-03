@@ -52,7 +52,7 @@
                                         <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
                                         <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
                                     </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <a href="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventInscription.php?eventId=' . $event['id'] ?>" class="btn btn-primary">Réserver</a>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                         <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
                                         <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
                                     </p>
-                                    <a href="#" class="btn btn-primary">Réserver</a>
+                                    <a href="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventInscription.php?eventId=' . $event['id'] ?>" class="btn btn-primary">Réserver</a>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                                 <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
                                                 <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
                                             </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
+                                            <a href="<?= DOMAIN . 'modules/calendar/scripts/Calendar/EventInscription.php?eventId=' . $event['id'] ?>" class="btn btn-primary">Réserver</a>
                                         </div>
                                     </div>
                                 </div>
@@ -155,48 +155,6 @@
                 $count++; 
                 } 
             ?>
-
-                <div class="carousel-item">
-                    <div class="row d-flex justify-content-center">
-
-                        <div class="col-4">
-                            <div class="card __cardDesktop">
-                                <img src="<?= DOMAIN . 'sources/img/abs.jpg'?>" class="card-img __classImage" alt="...">
-                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                    <div class="__cardDescription">
-                                        <div class="__cardDescriptionText">
-                                            <h5 class="card-title">ABDOS-FESSIERS</h5>
-                                            <p class="card-text">
-                                                Lundi 11 juillet<br>
-                                                11H30 - 30 minutes
-                                            </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-4">
-                            <div class="card __cardDesktop">
-                                <img src="<?= DOMAIN . 'sources/img/yoga.jpg'?>" class="card-img __classImage" alt="...">
-                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                    <div class="__cardDescription">
-                                        <div class="__cardDescriptionText">
-                                            <h5 class="card-title">YOGA</h5>
-                                            <p class="card-text">
-                                                Lundi 11 juillet<br>
-                                                12H00 - 60 minutes
-                                            </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselDesktop" data-bs-slide="prev">
