@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 01, 2022 at 02:01 PM
+-- Generation Time: Jul 03, 2022 at 09:53 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -200,7 +200,8 @@ CREATE TABLE `RkU_FITCOINS` (
 --
 
 INSERT INTO `RkU_FITCOINS` (`id`, `name`, `description`, `price`, `discount`, `numberOfFitcoins`) VALUES
-(3, 'Test', 'Ceci est un test', 13, NULL, 150);
+(3, 'Test', 'Ceci est un test', 13, NULL, 150),
+(4, 'Pack de 1000', 'Tu recevras 1000 FC', 30, NULL, 1000);
 
 -- --------------------------------------------------------
 
@@ -369,7 +370,8 @@ INSERT INTO `RkU_QUESTION` (`id`, `creationDate`, `title`, `content`, `userId`, 
 (35, '2022-05-26 20:48:36', 'viqerjv', 'fqnjlrn', 1, 5, '0'),
 (36, '2022-05-28 19:35:48', 'Test', 'Test', 1, 5, '1'),
 (37, '2022-05-28 19:39:50', 'Test1', 'Test1', 1, 5, '0'),
-(38, '2022-06-20 08:15:54', 'Eh c\'est bien la zumba ou pas ?', 'Je sais pas si c\'est bien \r\nHELP', 2, 5, '0');
+(38, '2022-06-20 08:15:54', 'Eh c\'est bien la zumba ou pas ?', 'Je sais pas si c\'est bien \r\nHELP', 2, 5, '0'),
+(39, '2022-07-03 20:37:41', 'Test Archive', 'Test Archive', 1, 13, '0');
 
 -- --------------------------------------------------------
 
@@ -448,22 +450,24 @@ CREATE TABLE `RkU_TOPIC` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `topicOrder` int(11) NOT NULL,
-  `path` varchar(255) DEFAULT NULL
+  `path` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `RkU_TOPIC`
 --
 
-INSERT INTO `RkU_TOPIC` (`id`, `creationDate`, `title`, `description`, `topicOrder`, `path`) VALUES
-(5, '2022-05-17 21:21:54', 'Zumba', 'Toutes les questions et sujets Zomba', 1, 'zumba.jpg'),
-(6, '2022-05-17 21:21:54', 'HIIT', 'Toutes les questions et sujets HIIT', 2, 'hiit.jpg'),
-(7, '2022-05-17 21:25:24', 'Abdos fessiers', 'Toutes les questions et sujets Abdos-fessiers', 8, 'abs.jpg'),
-(8, '2022-05-17 21:25:56', 'Pilates', 'Toutes les questions et sujets Pilates', 3, 'pilates.jpg'),
-(9, '2022-05-17 21:26:15', 'Yoga', 'Toutes les questions et sujets Yoga', 5, 'yoga.jpg'),
-(10, '2022-05-17 21:27:00', 'Cycling', 'Toutes les questions et sujets Cycling', 6, 'cycling.jpg'),
-(11, '2022-05-17 21:27:00', 'Crossfit', 'Toutes les questions et sujets Crossfit', 4, 'crossfit.jpg'),
-(12, '2022-05-17 21:27:34', 'Musculation', 'Toutes les questions et sujets Musculation', 7, 'musculation.jpg');
+INSERT INTO `RkU_TOPIC` (`id`, `creationDate`, `title`, `description`, `topicOrder`, `path`, `status`) VALUES
+(5, '2022-05-17 21:21:54', 'Zumba', 'Toutes les questions et sujets Zomba', 1, 'zumba.jpg', 1),
+(6, '2022-05-17 21:21:54', 'HIIT', 'Toutes les questions et sujets HIIT', 2, 'hiit.jpg', 1),
+(7, '2022-05-17 21:25:24', 'Abdos fessiers', 'Toutes les questions et sujets Abdos-fessiers', 8, 'abs.jpg', 1),
+(8, '2022-05-17 21:25:56', 'Pilates', 'Toutes les questions et sujets Pilates', 3, 'pilates.jpg', 1),
+(9, '2022-05-17 21:26:15', 'Yoga', 'Toutes les questions et sujets Yoga', 5, 'yoga.jpg', 1),
+(10, '2022-05-17 21:27:00', 'Cycling', 'Toutes les questions et sujets Cycling', 6, 'cycling.jpg', 1),
+(11, '2022-05-17 21:27:00', 'Crossfit', 'Toutes les questions et sujets Crossfit', 4, 'crossfit.jpg', 1),
+(12, '2022-05-17 21:27:34', 'Musculation', 'Toutes les questions et sujets Musculation', 7, 'musculation.jpg', 1),
+(13, '2022-07-03 20:36:58', 'TestArchive', 'Ceci est un test pour archive', 10, 'ulture (2).jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -504,7 +508,7 @@ CREATE TABLE `RkU_USER` (
 --
 
 INSERT INTO `RkU_USER` (`id`, `firstName`, `lastName`, `email`, `civility`, `avatar`, `password`, `address`, `city`, `zipCode`, `birthday`, `fitcoin`, `role`, `registrationDate`, `lastUpdate`, `lastPasswordUpdate`, `changePassword`, `token`, `subscription`, `startDateSub`, `endDateSub`, `renewalDate`, `nextPaymentDate`, `token_confirm_inscription`, `newsletter`) VALUES
-(1, 'Jean', 'BOMBEUR', 'admin@admin.com', 'M', '02-01-01-01-03-01-01-01.png', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2000-01-07', 100, 4, '2022-06-16 11:40:31', '2022-07-01 09:40:53', '2022-07-01 09:40:53', 0, '898f1521ceb269@^7', 3, NULL, NULL, NULL, NULL, NULL, 0),
+(1, 'Jean', 'BOMBEUR', 'admin@admin.com', 'M', '02-01-01-01-03-01-01-01.png', '$2y$10$g5dGP/x7hQ65w7s1vzGEaOWDPxBJbuDp9k8czRmWH57dGA4dhSDhi', '25 Allée Des Platanes', 'Maisons-alfort', 94700, '2000-01-07', 3970, 4, '2022-06-16 11:40:31', '2022-07-03 21:08:11', '2022-07-03 21:08:11', 0, '7420f38071c262^@1', 3, NULL, NULL, NULL, NULL, NULL, 0),
 (2, 'Wissem', 'DERGHAL', 'wissem.derghal@gmail.com', 'M', '0', '$2y$10$JkCUEvN7/1PFAKEXeSIb9OeKdDaCBvNffvs..n/I7In1MJQNBCZxO', '27 Rue De La Paix', 'Bezons', 95870, '1983-06-07', 0, 1, '2022-06-22 12:33:47', '2022-06-25 13:23:34', '2022-06-25 13:23:34', 0, '1518c71233b264(@1', 1, NULL, NULL, NULL, NULL, NULL, 1),
 (3, 'Jaaj', 'JEJAAJ', 'derghal.wissem@gmail.com', 'F', '0', '$2y$10$blz9Co6gonUCF9nwLess3evJN.TXdVlBM0nARRWj79k.xJLnbqca2', '96 Route Des Crets', 'Saint-ours', 73410, '2003-02-07', 0, 1, '2022-06-23 20:32:57', '2022-06-25 14:34:16', '2022-06-25 14:34:16', 0, NULL, 1, NULL, NULL, NULL, NULL, NULL, 1),
 (4, 'Tom', 'BOURLARD', 'tbourlard.94@gmail.com', 'M', '0', '$2y$10$sZrIoIXDnwG.bVobNHMLbe0bSSIOx81FXQX5feS1dKFY2N0aoqp96', '256 Bits', 'Maisons-alfort', 94700, '2003-12-07', 0, 1, '2022-06-24 12:50:27', '2022-06-25 13:23:44', '2022-06-25 13:23:44', 0, 'f326306fc5b267--6', 2, NULL, NULL, NULL, NULL, NULL, 1),
@@ -608,7 +612,7 @@ ALTER TABLE `RkU_USER`
 -- AUTO_INCREMENT for table `RkU_BOOKING`
 --
 ALTER TABLE `RkU_BOOKING`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `RkU_CITY`
@@ -626,7 +630,7 @@ ALTER TABLE `RkU_EXERCICE`
 -- AUTO_INCREMENT for table `RkU_FITCOINS`
 --
 ALTER TABLE `RkU_FITCOINS`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `RkU_GYMS`
@@ -662,7 +666,7 @@ ALTER TABLE `RkU_PROGRAM`
 -- AUTO_INCREMENT for table `RkU_QUESTION`
 --
 ALTER TABLE `RkU_QUESTION`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `RkU_SPORT`
@@ -680,7 +684,7 @@ ALTER TABLE `RkU_SUBSCRIPTION`
 -- AUTO_INCREMENT for table `RkU_TOPIC`
 --
 ALTER TABLE `RkU_TOPIC`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `RkU_USER`
