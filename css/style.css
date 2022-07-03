@@ -370,7 +370,7 @@ table {
 
 @media (min-width: 992px) {
     .__topicDescription {
-        height: 1.5rem;
+        height: 2rem;
     }
     .__topicImg {
         height: 15rem;
@@ -417,6 +417,10 @@ table {
 .__captchaPreview{
     max-width: 200px;
     height: auto;
+}
+
+.__captchaCard{
+    max-width: 200px;
 }
 
 

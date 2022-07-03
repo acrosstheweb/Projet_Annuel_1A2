@@ -63,20 +63,59 @@ Message('captchaModify');
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-12 mt-5 mt-lg-0">
                     <h3>Images de captcha déjà présentes</h3>
-                    
+                    <div class="row d-flex">
                     <?php
                         foreach($captchas as $captcha){
                             $fileName = explode('/', $captcha);
                             $fileName = $fileName[sizeof($fileName)-1];
                     ?>
+                            <div class="col">
+                                <div class="card bg-dark text-white mx-2 __captchaCard">
+                                    <img src="<?= DOMAIN . 'sources/captcha/' . $fileName ?>" class="__captchaPreview img-fluid card-img" alt="captcha image">
+                                    <div class="card-img-overlay text-end">
+                                        <p class="card-text p-2"><a href="#" class="btn btn-outline-danger m-1 modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalUid<?= $fileName;?>" class="btn-outline-danger"><i class="fa-solid fa-trash-can"></i></a></p>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <img src="<?= DOMAIN . 'sources/captcha/' . $fileName ?>" class="__captchaPreview img-fluid mx-2" alt="captcha image">
+                            <div class="modal fade" id="modifyModalUid<?= $fileName ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Suppression d'une image captcha</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Vous êtes sur le point de supprimer l'image suivante:
+                                                    <form id="modifyUserFormUid<?php echo $userId;?>" action="../../scripts/admin/userModifyAdmin.php?id=<?php echo $userId;?>" method="POST">
+                                                        <div class="modifyFormInfo">
+                                                            <div class="row mt-3">
+                                                                <img src="<?= DOMAIN . 'sources/captcha/' . $fileName ?>" class="__captchaPreview img-fluid card-img" alt="captcha image">
+                                                            </div>
+                                                            <div class="row mt-3 modify-adminPassword">
+                                                                <div class="col">
+                                                                    <label for="modify-adminPasswordInputUid<?php echo $userId;?>" class="fw-bold">Mot de passe Administrateur </label>
+                                                                    <input id="modify-adminPasswordInputUid<?php echo $userId;?>" class="form-control" type="password" name="modify-adminPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <button class="btn btn-primary modify-passwordConfirm">Supprimer</button>
+                                                    <button class="btn btn-primary modify-confirm" form="modifyUserFormUid<?php echo $userId;?>" type="submit">Supprimer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
 
                     <?php } ?>
-
+                    </div>
                 </div>
             </div>
         </div>
