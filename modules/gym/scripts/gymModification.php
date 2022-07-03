@@ -21,6 +21,7 @@ if(!empty($_POST)){
         $address = htmlspecialchars(trim($_POST['gymAddress']));
         $phoneNumber = htmlspecialchars(trim($_POST['gymPhone']));
         $id = htmlspecialchars($_GET['gymId']);
+        $map = htmlspecialchars(trim($_POST['gymMap']));
         
         if(empty($name)){
             $valid = false;
@@ -81,6 +82,22 @@ if(!empty($_POST)){
             $valid = false;
             $errors = ("Il faut que le numéro de téléphone fasse 10 chiffres");
         }
+
+        if(empty($map)){
+            $valid = false;
+            $errors = ("La recherche Google Maps n'est pas bonne");
+        } else {
+            $map = explode(' ', $map);
+            $mapPath = "https://maps.google.com/maps?q=";
+            foreach($map as $mapWord){
+                $mapPath .= $mapWord;
+                if ($mapWord != $map[sizeof($map)-1]){
+                    $mapPath .= '%20';
+                } else {
+                    $mapPath .= '&t=&z=13&ie=UTF8&iwloc=&output=embed';
+                }
+            }
+        }
     }
 
     $InputPwd = $_POST['delete-userPasswordInput'];
@@ -101,7 +118,7 @@ if(!empty($_POST)){
     if ($valid) {
     
         $insertGymQuery = $pdo->prepare("UPDATE RkU_GYMS SET surfaceArea=:surfaceArea, address=:address, user=:user,
-        city=:city, name=:name, phoneNumber=:phoneNumber WHERE id=:id");
+        city=:city, name=:name, phoneNumber=:phoneNumber , link=:link WHERE id=:id");
 
         $insertGymQuery->execute([
             'surfaceArea'=>$area,
@@ -110,7 +127,8 @@ if(!empty($_POST)){
             'city'=>$city,
             'name'=>$name,
             'phoneNumber'=>$phoneNumber,
-            'id'=>$id
+            'id'=>$id,
+            'link'=>$mapPath
         ]);
 
         setMessage('modifyGym', ['La salle de sport a bien été modifiée'], 'success');

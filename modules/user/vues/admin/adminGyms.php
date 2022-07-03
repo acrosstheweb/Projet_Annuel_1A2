@@ -56,6 +56,7 @@ $results = $req->fetchAll();
                             <th>Directeur</th>
                             <th>Ville</th>
                             <th>Téléphone</th>
+                            <th>Google Maps</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -81,6 +82,7 @@ $results = $req->fetchAll();
                             <td class="align-middle"><?php echo $ownerName['firstname'];?> <?php echo $ownerName['lastname'];?></td>
                             <td class="align-middle"><?php echo $cityName;?></td>
                             <td class="align-middle"><?php echo $gym['phoneNumber'];?></td>
+                            <td class="align-middle"><?php echo $gym['link'];?></td>
                             <td class="align-middle">
                                 <a href="<?= DOMAIN . 'modules/gym/vues/gymBO.php?gymId=' . $gym['id'] ?>" class="btn btn-outline-primary m-1"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                 <a href="#" class="btn btn-outline-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteGym<?= $gym['id'];?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
@@ -100,14 +102,14 @@ $results = $req->fetchAll();
                                                 <h5>Vous êtes sur le point de supprimer cette salle :</h5>
                                                 <ul>
                                                     <li>Nom : <?= $gym['name'];?></li>
-                                                    <li>Nom : <?= $gym['address'];?></li>
-                                                    <li>Nom : <?= $cityName;?></li>
+                                                    <li>Adresse : <?= $gym['address'];?></li>
+                                                    <li>Ville : <?= $cityName;?></li>
                                                 </ul>
                                             </div>
                                                 <div class="row delete-userPassword">
                                                 <div class="col">
-                                                    <label for="delete-userPasswordInput" class="fw-bold">Votre mot de passe</label>
-                                                    <input id="delete-userPasswordInput" class="form-control" type="password" name="delete-userPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
+                                                    <label for="delete-userPasswordInput<?= $gym['id'];?>" class="fw-bold">Votre mot de passe</label>
+                                                    <input id="delete-userPasswordInput<?= $gym['id'];?>" class="form-control" type="password" name="delete-userPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
                                                 </div>
                                             </div>
                                         </form>

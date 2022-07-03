@@ -102,20 +102,35 @@
                 </select>
             </div>
         </div>
-        <div class="row my-3">
-                <div class="form-group">
-                    <label for="gymAddress">Adresse de la salle</label>
-                    <input type="text" name="gymAddress" id="gymAddress" class="form-control"  value="<?= $gym['address'] ?>" required>
-                </div>
-            </div>
 
         <div class="row my-3">
-                <div class="form-group">
-                    <label for="gymPhone">Numéro de téléphone</label>
-                    <input type="number" name="gymPhone" id="gymPhone" class="form-control" value="<?= $gym['phoneNumber']; ?>" required>
-                </div>
+            <div class="form-group">
+                <label for="gymAddress">Adresse de la salle</label>
+                <input type="text" name="gymAddress" id="gymAddress" class="form-control"  value="<?= $gym['address'] ?>" required>
             </div>
+        </div>
 
+        <div class="row my-3">
+            <div class="form-group">
+                <label for="gymPhone">Numéro de téléphone</label>
+                <input type="number" name="gymPhone" id="gymPhone" class="form-control" value="<?= $gym['phoneNumber']; ?>" required>
+            </div>
+        </div>
+
+        <?php
+            $mapPath = $gym['link'];
+            $mapPath = str_replace('https://maps.google.com/maps?q=', '', $mapPath);
+            $mapPath = str_replace('&t=&z=13&ie=UTF8&iwloc=&output=embed', '', $mapPath);
+            $mapPath = str_replace('%20', ' ', $mapPath);
+        ?>
+
+        <div class="row my-3">
+            <div class="form-group">
+                <label for="gymMap">Recherche Google Maps</label>
+                <input type="text" name="gymMap" id="gymMap" class="form-control" value="<?= $mapPath ?>" required>
+            </div>
+        </div>
+            
         <div class="row my-3">
             <div class="form-group">
                 <label for="delete-userPasswordInput" class="fw-bold">Votre mot de passe</label>

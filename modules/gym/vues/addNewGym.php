@@ -20,7 +20,7 @@
 
 ?>
 
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center mt-3">
     <div class="col">
         <a class="btn btn-primary" href="<?= DOMAIN . 'modules/user/vues/admin/adminGyms.php'?>" role="button">Revenir à la page précedente</a>
     </div>
@@ -34,7 +34,7 @@
             </div>
             <div class="row my-3">
                 <div class="form-group">
-                    <label for="gymArea">Surface</label>
+                    <label for="gymArea">Surperficie</label>
                     <input type="number" name="gymArea" id="gymArea" class="form-control" required>
                 </div>
             </div>
@@ -75,15 +75,23 @@
                     <input type="text" name="gymAddress" id="gymAddress" class="form-control" required>
                 </div>
             </div>
+
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymPhone">Numéro de téléphone</label>
                     <input type="number" name="gymPhone" id="gymPhone" class="form-control" placeholder="Saisir un numéro de téléphone à 10 chiffres sans espaces" required>
                 </div>
             </div>
+            
+            <div class="row my-3">
+                <div class="form-group">
+                    <label for="gymMap">Recherche Google Maps</label>
+                    <input type="text" name="gymMap" id="gymMap" class="form-control" placeholder="Saisir la recherche Google Maps permettant de trouver la salle" required>
+                </div>
+            </div>
 
             <div class="text-center mt-4">
-                <button type="submit" name="createGym" class="btn btn-primary">Ajouter l'évènement</button>
+                <button type="submit" name="createGym" class="btn btn-primary">Ajouter la salle</button>
             </div>
         </form>
     </div>

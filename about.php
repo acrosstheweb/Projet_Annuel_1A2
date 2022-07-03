@@ -14,6 +14,7 @@
 
 <div class="container-fluid">
     <?php
+    $counter = 0;
     foreach($results as $gym){
         $reqCity = $pdo->prepare("SELECT name, ZIPCode FROM RkU_CITY WHERE id=:id");
         $reqCity->execute([
@@ -26,7 +27,7 @@
         <div class="row d-flex justify-content-center align-items-center __gymDescription">
 
     <?php
-        if ($gym['id'] % 2 ==0){
+        if ($counter % 2 ==0){
     ?>
         
             <div class="col-12 col-lg-6 p-3 __gymMapContainer">
@@ -65,6 +66,7 @@
     </div>
 
     <?php
+        $counter++;
         }
     ?>
 </div>
