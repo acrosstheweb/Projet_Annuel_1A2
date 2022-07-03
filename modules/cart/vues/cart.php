@@ -71,6 +71,8 @@
     Message("deleteSubCart");
     Message("deleteFitcoinsCart");
     Message("changeFitcoinsCart");
+    Message("addSubscription");
+    Message("addFitcoins");
       
 ?>
 
@@ -152,7 +154,8 @@ if(isset($_SESSION['fitcoins'])){
                             <div class="row">
                                 <div class="col-8 p-0">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text __cartBtn"><?= ($_SESSION['fitcoins'][$pack['id']] == 1) ? '<a href="cart.php?delFitcoins=' . $pack['id'] . '"><i class="fa-solid fa-trash-can"></i>' : '<a href="cart.php?changeQuantityFitcoinsMinus=' . $pack['id'] . '"><i class="fa-solid fa-minus"></i>'  ?></a></span>
+                                        <span class="input-group-text __cartBtn"><a href="<?= 'cart.php?delFitcoins=' . $pack['id'] ?>"><i class="fa-solid fa-trash-can"></i></a></span>
+                                        <?= ($_SESSION['fitcoins'][$pack['id']] >= 1) ? '<span class="input-group-text __cartBtn"><a href="cart.php?changeQuantityFitcoinsMinus=' . $pack['id'] . '"><i class="fa-solid fa-minus"></i></a></span>' : '' ?>
                                         <span class="input-group-text"><?= $_SESSION['fitcoins'][$pack['id']] ?></span>
                                         <span class="input-group-text __cartBtn"><a href="cart.php?changeQuantityFitcoinsPlus=<?= $pack['id'] ?>"><i class="fa-solid fa-plus"></i></a></span>
                                     </div>
@@ -169,11 +172,11 @@ if(isset($_SESSION['fitcoins'])){
         </div>
     </div>
 
-        <?php }} ?>
+        <?php }}
 
-
-
-
+    if($subTotal != 0){
+    ?>
+    
     <div class="row d-flex justify-content-center">
         <div class="col-10 col-lg-6 fw-bold">
             <hr>
@@ -181,13 +184,9 @@ if(isset($_SESSION['fitcoins'])){
             <span class="float-end"><?= $subTotal ?> €</span>
         </div>
     </div>
-    
-    <?php
-    if($subTotal != 0){
-    ?>
 
-        <div class="row d-flex justify-content-center">
-        <div class="col-10 col-lg-6 fw-bold">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-6 fw-bold text-center">
             <hr>
             <?php
 
@@ -200,10 +199,15 @@ if(isset($_SESSION['fitcoins'])){
     </div>
 
 
+    <?php } else {?>
+    
+    <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-6 text-center">
+            Votre panier est vide pour l'instant.
+        </div>
+    </div>
+    
     <?php } ?>
-    
-    
-
 </div>
 
 <?php 
