@@ -75,16 +75,15 @@ if(!empty($_POST)){
             'numberOfFitcoins'=>$fitcoinsNumber
         ]);
 
-        setMessage('createPack', ['Votre nouvel évènement a bien été créée'], 'success');
+        setMessage('createPack', ['Votre nouveau pack a bien été crée'], 'success');
         header('Location: ../../user/vues/admin/adminFitcoins.php');
-        exit;
     }
     else{
         setMessage('createPack', [$errors], 'warning');
         header('Location: ../vues/addNewPack.php');
-        exit;
     }
-        
+    exit;
+
 
 }
 

@@ -3,6 +3,7 @@
     $content = "Merci pour votre achat";
     $currentPage = 'thanksBought';
     require '../../../header.php';
+    Message('addToAccount');
 ?>
 
 <h1 class="aligned-title mt-5"> Merci pour votre achat </h1>

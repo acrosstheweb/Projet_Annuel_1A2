@@ -38,7 +38,7 @@
                 'illustration' => 'sources/img/' . $nameImage
             ]);
         } else{
-            // setMessage('Image non valide');
+            setMessage('updateProgram', ['Image non valide'], 'warning');
             header('Location: ' . DOMAIN . 'modules/user/vues/admin/adminPrograms.php');
             die();
         }
@@ -64,6 +64,6 @@
         ]);
     }
 
-    // setMessage('Programme créé');
+    setMessage('updateProgram', ['Programme créé'], 'success');
     header('Location: ' . DOMAIN . 'modules/user/vues/admin/adminPrograms.php');
     die();

@@ -10,6 +10,7 @@ require '../../../../functions.php';
 
 require '../../../../header.php';
 Message('delProgram');
+Message('updateProgram');
 
 
 $pdo = database();

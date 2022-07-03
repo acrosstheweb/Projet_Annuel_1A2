@@ -41,10 +41,6 @@ if(!isset($_SESSION['fitcoins'])){
     $_SESSION['fitcoins'] = [];
 }
 
-
-
-
-
 if(!isset($_GET['subscriptionId'])){
     if(!isset($_GET['fitcoinsId'])){
         header('Location: ../../error404.php');
@@ -81,12 +77,11 @@ if(!isset($_GET['subscriptionId'])){
 
             setMessage('addFitcoins', ['Le pack a bien été rajouté à votre panier'], 'success');
             header('Location: ' . DOMAIN . 'modules/cart/vues/cart.php');
-            die();
         }else{
             setMessage('addFitcoins', $errors, 'warning');
             header('Location: ../../subscription/vues/subscriptions.php');
-            die();
         }
+        die();
     }
 }
 else{
@@ -112,10 +107,9 @@ else{
 
         setMessage('addFitcoins', ['L\'abonnement a bien été rajouté à votre panier'], 'success');
         header('Location: ' . DOMAIN . 'modules/cart/vues/cart.php');
-        die();
     }else{
         setMessage('addSubscription', $errors, 'warning');
         header('Location: ../../subscription/vues/subscriptions.php');
-        die();
     }
+    die();
 }
