@@ -21,8 +21,10 @@ if(!password_verify($InputPwd, $userPwdInDb)){
     die();
 }
 
-$userDelQuery = $db->prepare("DELETE FROM RkU_BOOKING WHERE id=:id");
-$userDelQuery->execute(["id"=>$eventId]);
+$userDelEventQuery = $db->prepare("DELETE FROM RkU_BOOKING WHERE id=:id");
+$userDelEventQuery->execute(["id"=>$eventId]);
+$userDelUsersQuery = $db->prepare("DELETE FROM RkU_PARTICIPATE WHERE eventId=:id");
+$userDelUsersQuery->execute(["id"=>$eventId]);
 setMessage('Delete', ["L'évènement a bien été supprimée."], 'success');
 header('Location: ../../../user/vues/admin/adminEvents.php');
 die();
