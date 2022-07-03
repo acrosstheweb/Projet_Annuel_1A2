@@ -19,7 +19,7 @@ if($searchTopicQuery){
     echo '<h5 class="mt-3">TOPICS</h5>';
     if(!empty($results)){
         foreach ($results as $key => $result){
-            echo "<h6>" . $result['title'] . "</h6><p>" . $result['description'] . "</p><hr>";
+            echo "<h6>" . $result['title'] . "</h6><a href='". DOMAIN ."modules/forum/vues/forum.php'>" . $result['description'] . "</a><hr>";
         }
     }
     else{
@@ -32,7 +32,7 @@ if($searchProgramQuery){
     echo "<h5>PROGRAMMES</h5>";
     if(!empty($results)){
         foreach ($results as $key => $result){
-            echo "<h6>" . $result['nameProgram'] . "</h6><hr>";
+            echo "<h6><a href='". DOMAIN ."modules/program/vues/programs.php'>" . $result['nameProgram'] . "</a></h6><hr>";
         }
     }
     else{
@@ -45,7 +45,7 @@ if($searchAbonnementsQuery){
     echo "<h5>ABONNEMNETS</h5>";
     if(!empty($results)){
         foreach ($results as $key => $result){
-            echo "<h6>" . $result['name'] . "</h6> - <h7>Tarif : " . $result['price'] . "€</h7><hr>";
+            echo "<h6><a href='". DOMAIN ."modules/subscription/vues/subscriptions.php'>" . $result['name'] . "</a></h6> - <h7>Tarif : " . $result['price'] . "€</h7><hr>";
         }
     }
     else{
