@@ -108,7 +108,7 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="text-end text-muted">
-                                                            Places restantes: 
+                                                            Places restantes: <?= $event['places'] ?>
                                                         </div>
                                                     </div>
                                                     <div class="row">
