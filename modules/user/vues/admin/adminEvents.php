@@ -130,3 +130,7 @@ $results = $req->fetchAll();
 
     </div>
 </div>
+
+<?php
+    include "../../../../footer.php";
+?>
