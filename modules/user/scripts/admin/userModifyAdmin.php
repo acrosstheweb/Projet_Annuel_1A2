@@ -9,7 +9,8 @@ if(
     empty($_POST['modify-city']) ||
     empty($_POST['modify-adminPasswordInput']) ||
     empty($_POST['modify-role']) ||
-    count($_POST) != 8
+    empty($_POST['modify-fitcoins']) ||
+    count($_POST) != 9
 ){
     header('Location: ../../../../error404.php');
     die();
@@ -36,9 +37,16 @@ $zipcode = $_POST['modify-zipCode'];
 $city = $_POST['modify-city'];
 $userToModifyId = htmlspecialchars($_GET['id']);
 $role = $_POST['modify-role'];
+$fictoins = $_POST['modify-fitcoins'];
 
 if(!ctype_digit($role)){
-    setMessage('Modify', ['Le role utilisateur doit être un chiffre'], 'warning');
+    setMessage('Modify', ['Le rôle utilisateur doit être un chiffre'], 'warning');
+    header('Location: ../../vues/admin/users.php');
+    die();
+}
+
+if(!ctype_digit($fictoins) || $fictoins < 0){
+    setMessage('Modify', ['Le nombre de fitcoins doit être un chiffre'], 'warning');
     header('Location: ../../vues/admin/users.php');
     die();
 }
@@ -56,7 +64,7 @@ $verifChamps = checkFields([
 if($verifChamps[0] === true){
     $champs = $verifChamps[1];
 
-    $userModifyQuery = $db->prepare("UPDATE RkU_USER SET lastname=:lastname, firstname=:firstname, birthday=:birthday, address=:address, zipcode=:zipcode, city=:city, role=:role WHERE id=:id");
+    $userModifyQuery = $db->prepare("UPDATE RkU_USER SET lastname=:lastname, firstname=:firstname, birthday=:birthday, address=:address, zipcode=:zipcode, city=:city, role=:role, fitcoin=:fitcoins WHERE id=:id");
     $userModifyQuery->execute([
         "lastname" => $champs['lastname'],
         "firstname" => $champs['firstname'],
@@ -65,9 +73,10 @@ if($verifChamps[0] === true){
         "zipcode" => $champs['zipcode'],
         "city" => $champs['city'],
         "role" => $role,
-        "id" => $userToModifyId
+        "id" => $userToModifyId,
+        "fitcoins" => $fictoins
     ]);
-    setMessage('Modify', ["L'utilisateur n°" . $userToModifyId . " a bien été modifié."], 'success');
+    setMessage('Modify', ["L'utilisateur " . $firstname . ' ' . $lastname . " a bien été modifié."], 'success');
 }else{
     setMessage('Modify', $verifChamps[1], 'warning');
 }

@@ -42,7 +42,7 @@
     </div>
 </div>
 
-<h2 class="aligned-title"> Mes prochaines séances </h2>
+<h1 class="aligned-title"> Mes prochaines séances </h1>
 <div class="container-fluid">
     <div class="row d-flex justify-content-center justify-content-lg-start">
         <div class="d-none col-2 d-lg-flex justify-content-center">

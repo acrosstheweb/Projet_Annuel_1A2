@@ -48,12 +48,12 @@ Message('CreateUser');
                 <table class="table" id="__usersTable">
                     <thead>
                         <tr>
-                            <th onclick="sortColumn(0, '__usersTable')" id="tableHeaderSortable">Id</th>
-                            <th onclick="sortColumn(1, '__usersTable')" id="tableHeaderSortable">Email</th>
-                            <th onclick="sortColumn(2, '__usersTable')" id="tableHeaderSortable">Nom</th>
-                            <th onclick="sortColumn(3, '__usersTable')" id="tableHeaderSortable">Prénom</th>
-                            <th onclick="sortColumn(4, '__usersTable')" id="tableHeaderSortable">Date de naissance</th>
-                            <th onclick="sortColumn(5, '__usersTable')" id="tableHeaderSortable">Inscrit le</th>
+                            <th onclick="sortColumn(0, '__usersTable')" id="tableHeaderSortable">E-mail</th>
+                            <th onclick="sortColumn(1, '__usersTable')" id="tableHeaderSortable">Nom</th>
+                            <th onclick="sortColumn(2, '__usersTable')" id="tableHeaderSortable">Prénom</th>
+                            <th onclick="sortColumn(3, '__usersTable')" id="tableHeaderSortable">Date de naissance</th>
+                            <th onclick="sortColumn(4, '__usersTable')" id="tableHeaderSortable">Inscrit le</th>
+                            <th onclick="sortColumn(5, '__usersTable')" id="tableHeaderSortable">Solde FitCoins</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -75,16 +75,17 @@ Message('CreateUser');
                                 $userZipCode = $user["zipCode"];
                                 $userCity = $user["city"];
                                 $role = $user["role"];
+                                $fitcoins = $user["fitcoin"];
                                 $registrationDate = $user["registrationDate"];
                                 ?>
 
                                     <tr class="__userRow">
-                                        <td><?php echo $userId;?></td>
                                         <td><?php echo $userMail;?></td>
                                         <td><?php echo $userLastName;?></td>
                                         <td><?php echo $userFirstName;?></td>
                                         <td><?php echo $userBirthday;?></td>
                                         <td><?php echo $registrationDate;?></td>
+                                        <td><?php echo $fitcoins;?></td>
                                         <td>
                                             <a href="#" class="btn btn-outline-primary m-1 modifyModal--trigger" data-bs-toggle="modal" data-bs-target="#modifyModalUid<?php echo $userId;?>"><i class="fa-solid fa-pen"></i><span class="d-none d-lg-inline"> Modifier</span></a>
                                             <a href="#" class="btn btn-outline-danger m-1 deleteModal--trigger" data-bs-toggle="modal" data-bs-target="#delModalUid<?php echo $userId;?>"><i class="fa-solid fa-trash-can"></i><span class="d-none d-lg-inline"> Supprimer</span></a>
@@ -119,14 +120,14 @@ Message('CreateUser');
                                                                     <input id="modify-birthdayUid<?php echo $userId;?>" class="form-control" type="date" name="modify-birthday" value="<?php echo $userBirthday;?>" required="required">
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <label for="modify-roleUid<?php echo $userId;?>" class="fw-bold">Role </label>
+                                                                    <label for="modify-roleUid<?php echo $userId;?>" class="fw-bold">Rôle </label>
                                                                     <input id="modify-roleUid<?php echo $userId;?>" class="form-control" type="number" name="modify-role" value="<?php echo $role;?>" required="required">
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-3">
                                                                 <div class="col">
                                                                     <label for="modify-emailUid<?php echo $userId;?>" class="fw-bold">Adresse e-mail </label>
-                                                                    <p id="modify-emailUid<?php echo $userId;?>" class="form-control"><?php echo $userMail;?></p>
+                                                                    <p id="modify-emailUid<?php echo $userId;?>" class="form-control text-muted mb-0"><?php echo $userMail;?></p>
                                                                     <small class="form-text text-muted">Seul le propriétaire du compte peut modifier son adresse mail</small>
                                                                 </div>
                                                             </div>
@@ -144,6 +145,12 @@ Message('CreateUser');
                                                                 <div class="col-6">
                                                                     <label for="modify-cityUid<?php echo $userId;?>" class="fw-bold">Ville </label>
                                                                     <input id="modify-cityUid<?php echo $userId;?>" class="form-control" type="text" name="modify-city" value="<?php echo $userCity;?>" required="required">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-3">
+                                                                <div class="col-6">
+                                                                    <label for="modify-fitcoinsUid<?php echo $userId;?>" class="fw-bold">Solde FitCoins </label>
+                                                                    <input id="modify-fitcoinsUid<?php echo $userId;?>" class="form-control" type="text" name="modify-fitcoins" value="<?php echo $fitcoins;?>" required="required">
                                                                 </div>
                                                             </div>
                                                         </div>
