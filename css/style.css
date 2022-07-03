@@ -414,6 +414,11 @@ table {
     justify-content: center;
 }
 
+.__captchaPreview{
+    max-width: 200px;
+    height: auto;
+}
+
 
 /* Programmes */
 
