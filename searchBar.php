@@ -42,7 +42,7 @@ if($searchProgramQuery){
 
 if($searchAbonnementsQuery){
     $results = $searchAbonnementsQuery->fetchAll();
-    echo "<h5>ABONNEMNETS</h5>";
+    echo "<h5>ABONNEMENTS</h5>";
     if(!empty($results)){
         foreach ($results as $key => $result){
             echo "<h6><a href='". DOMAIN ."modules/subscription/vues/subscriptions.php'>" . $result['name'] . "</a></h6> - <h7>Tarif : " . $result['price'] . "€</h7><hr>";
