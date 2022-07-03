@@ -125,9 +125,11 @@
                     'id'=>$event['sport']
                 ]);
                 $sportImage = $reqSportImage->fetch()['path'];
+                if ($count % 2 == 0){
             ?>
                 <div class="carousel-item <?php if($count == 0){ echo 'active'; } ?>">
                     <div class="row d-flex justify-content-center">
+            <?php } ?>
                         <div class="col-4">
                             <div class="card __cardDesktop">
                                 <img src="<?= DOMAIN . 'sources/img/' . $sportImage?>" class="card-img-top" alt="...">
@@ -145,26 +147,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="card __cardDesktop">
-                                <img src="<?= DOMAIN . 'sources/img/' . $sportImage?>" class="card-img-top" alt="...">
-                                <div class="card-img-overlay d-flex align-items-end justify-content-center text-center">
-                                    <div class="__cardDescription">
-                                        <div class="__cardDescriptionText">
-                                            <h5 class="card-title"><?= $event['name'] ?></h5>
-                                            <p class="card-text">
-                                                <?= (new Datetime($event['startDate']))->format('d/m/Y') ?><br>
-                                                <?= (new Datetime($event['startDate']))->format('H:i') ?> - <?= (strtotime((new Datetime($event['endDate']))->format('H:i')) - strtotime((new Datetime($event['startDate']))->format('H:i')))/60 ?> minutes
-                                            </p>
-                                            <a href="#" class="btn btn-primary">Réserver</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <?php if ($count % 2 == 1){ ?>
                     </div>
                 </div>
-            <?php $count++; } ?>
+            <?php 
+                }
+                $count++; 
+                } 
+            ?>
 
                 <div class="carousel-item">
                     <div class="row d-flex justify-content-center">
@@ -237,7 +227,7 @@
                 Nos entraîneurs vous accompagnent sur le meilleur assortiment sportif pour vous permettre d’atteindre rapidement vos objectifs, quelque soit votre niveau.<br><br>
                 <!-- Chacun de nos 7 sports a été choisi pour être efficace et complémentaire.<br><br>
                 À vous de créer un programme qui vous ressemble...<br><br>  -->
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="https://shorturl.at/bglJ4" class="btn btn-primary">En savoir plus</a>
             </p>
         </div>
     </div>
