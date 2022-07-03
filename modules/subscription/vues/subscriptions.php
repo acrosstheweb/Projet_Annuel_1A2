@@ -166,7 +166,7 @@ foreach($resultsFitcoins as $packFitcoins){
             
             <div class="row mt-3 d-flex align-items-center">
                 <div class="col-6">
-                    <p class="fw-bold mb-0"><?= $packFitcoins['price'] ?>€/mois</p>
+                    <p class="fw-bold mb-0"><?= $packFitcoins['price'] ?>€</p>
                 </div>
                 <div class="col-6 text-end">
                     <a href="<?= DOMAIN . 'modules/cart/scripts/addToCart.php?fitcoinsId=' . $packFitcoins['id'] ?>" class="card-link btn btn-primary">
