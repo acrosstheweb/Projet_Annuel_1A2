@@ -37,6 +37,7 @@
 
     <?php
         foreach($results as $categorie){
+            if($categorie['status'] != 0){
     ?>
 
         <div class="col-12 col-md-6 col-lg-4">
@@ -53,7 +54,7 @@
 
                             <ul class="dropdown-menu" aria-labelledby="forumDropdown">
                                 <li><a class="nav-link __forumLink" href="#" data-bs-toggle="modal" data-bs-target="#modifyCategorie<?= $categorie['id'];?>">Modifier</a></li>
-                                <li><a class="nav-link __forumLink" href="#" data-bs-toggle="modal" data-bs-target="#deleteCategorie<?= $categorie['id'];?>">Supprimer</a></li>
+                                <li><a class="nav-link __forumLink" href="#" data-bs-toggle="modal" data-bs-target="#deleteCategorie<?= $categorie['id'];?>">Archiver</a></li>
                             </ul>
                         </div>
                     <?php } ?>
@@ -109,14 +110,14 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Suppression catégorie</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Archive catégorie</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form id="deleteCategorie<?= $categorie['id'];?>" action="../scripts/delCategorie.php?idTopic=<?= $categorie['id'];?>" method="POST" >
                                 <div class="deleteFormInfo">
-                                    <h5>Vous êtes sur le point de supprimer cette catégorie</h5>
-                                    <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir la supprimer?</p>
+                                    <h5>Vous êtes sur le point d'archiver cette catégorie</h5>
+                                    <p class="delete-passwordConfirmDescription">Êtes-vous sûr de vouloir l'archiver?</p>
                                 </div>
                                     <div class="row delete-userPassword">
                                     <div class="col">
@@ -128,7 +129,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <button class="btn btn-primary delete-passwordConfirm" form="deleteCategorie<?= $categorie['id'];?>" type="submit">Supprimer</button>
+                            <button class="btn btn-primary delete-passwordConfirm" form="deleteCategorie<?= $categorie['id'];?>" type="submit">Archiver</button>
                         </div>
                     </div>
                 </div>
@@ -137,7 +138,7 @@
         </div>        
 
     <?php
-    } 
+    }}
     ?>
 
     </div>

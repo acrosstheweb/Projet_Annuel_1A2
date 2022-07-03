@@ -55,15 +55,16 @@ if(!empty($_POST)){
 
         move_uploaded_file($tempNameImage, ABSOLUTE_PATH . 'sources/img/' . $nameImage);
 
-        $insertQuestionQuery = $pdo->prepare("INSERT INTO RkU_TOPIC (title, description, topicOrder, path)
+        $insertQuestionQuery = $pdo->prepare("INSERT INTO RkU_TOPIC (title, description, topicOrder, path, status)
                 VALUES 
-                (:title, :description, :topicOrder, :path)");
+                (:title, :description, :topicOrder, :path, :status)");
 
         $insertQuestionQuery->execute([
             'title'=>$categorie,
             'description'=>$description,
             'topicOrder'=>$order,
-            'path'=>$nameImage
+            'path'=>$nameImage,
+            'status'=>0
         ]);
 
         setMessage('createCategorie', ['Votre nouvelle catégorie a bien été créée'], 'success');

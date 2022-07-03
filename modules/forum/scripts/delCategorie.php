@@ -21,9 +21,11 @@ if(!password_verify($InputPwd, $userPwdInDb)){
     die();
 }
 
-$userDelQuery = $db->prepare("DELETE FROM RkU_TOPIC WHERE id=:id");
-$userDelQuery->execute(["id"=>$idTopic]);
-setMessage('Delete', ["La catégorie a bien été supprimée."], 'success');
+$userArchiveQuery = $db->prepare("UPDATE RkU_TOPIC SET status = 0 WHERE id=:id");
+$userArchiveQuery->execute(["id"=>$idTopic]);
+$userArchiveQuestionsQuery = $db->prepare("UPDATE RkU_QUESTION SET status = 0 WHERE topic=:id");
+$userArchiveQuestionsQuery->execute(["id"=>$idTopic]);
+setMessage('Delete', ["La catégorie a bien été archivée."], 'success');
 header('Location: ../vues/forum.php');
 die();
 
