@@ -2,7 +2,7 @@
     $title = "Fitness Essential - Merci pour votre achat";
     $content = "Merci pour votre achat";
     $currentPage = 'thanksBought';
-    require 'header.php';
+    require '../../../header.php';
 ?>
 
 <h1 class="aligned-title mt-5"> Merci pour votre achat </h1>
@@ -22,5 +22,5 @@
 
 
 <?php
-    include 'footer.php';
+    include '../../../footer.php';
 ?>

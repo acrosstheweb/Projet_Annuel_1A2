@@ -66,6 +66,7 @@
         die();
     }
 
+    require '../scripts/paypalPayment.php';
     require '../../../header.php';
     Message("deleteSubCart");
     Message("deleteFitcoinsCart");
@@ -84,7 +85,7 @@
         $reqSubscription->execute([
             'id'=>$subscriptionId
         ]);
-        $result = $reqSubscription->fetch();
+        $subscription = $reqSubscription->fetch();
 
 ?>
 
@@ -94,11 +95,11 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4 text-center">
-                        <img class=" my-2" src="<?= DOMAIN . 'sources/img/' . $result['path'] ?>" class="img-fluid rounded-top rounded-md-start" alt="image de l'abonnement">
+                        <img class=" my-2" src="<?= DOMAIN . 'sources/img/' . $subscription['path'] ?>" class="img-fluid rounded-top rounded-md-start" alt="image de l'abonnement">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                        <h5 class="card-title">Abonnement <?= $result['name'] ?></h5>
+                        <h5 class="card-title">Abonnement <?= $subscription['name'] ?></h5>
                             <div class="row">
                                 <div class="col-8 p-0">
                                     <div class="input-group mb-3">
@@ -107,10 +108,10 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <p class="card-text text-end"><?= $result['price'] ?> €</p>
+                                    <p class="card-text text-end"><?= $subscription['price'] ?> €</p>
                                 </div>
                             </div>
-                        <?php $subTotal += $result['price'];?>
+                        <?php $subTotal += $subscription['price'];?>
                         </div>
                     </div>
                 </div>
@@ -119,23 +120,23 @@
     </div>
 
 
-        <?php } ?>
+<?php } ?>
 
-        <?php
-        if(isset($_SESSION['fitcoins'])){
-            $ids = array_keys($_SESSION['fitcoins']);
-            $idsImplode = implode(',', $ids);
+<?php
+if(isset($_SESSION['fitcoins'])){
+    $ids = array_keys($_SESSION['fitcoins']);
+    $idsImplode = implode(',', $ids);
 
-            if(empty($ids)){
-                $packs = [];
-            }
-            else{
-                $reqPacks = $pdo->query("SELECT * FROM RkU_FITCOINS WHERE id IN (".$idsImplode.")");
-                $packs = $reqPacks->fetchAll();
-            }
+    if(empty($ids)){
+        $packs = [];
+    }
+    else{
+        $reqPacks = $pdo->query("SELECT * FROM RkU_FITCOINS WHERE id IN (".$idsImplode.")");
+        $packs = $reqPacks->fetchAll();
+    }
 
-            foreach($packs as $pack){
-        ?>
+    foreach($packs as $pack){
+?>
 
 
     <div class="row d-flex justify-content-center">
@@ -180,6 +181,29 @@
             <span class="float-end"><?= $subTotal ?> €</span>
         </div>
     </div>
+    
+    <?php
+    if($subTotal != 0){
+    ?>
+
+        <div class="row d-flex justify-content-center">
+        <div class="col-10 col-lg-6 fw-bold">
+            <hr>
+            <?php
+
+            $payment = new \Paypal\PaypalPayment();
+
+            echo $payment->userInterface($subTotal);
+
+            ?>
+        </div>
+    </div>
+
+
+    <?php } ?>
+    
+    
+
 </div>
 
 <?php 
