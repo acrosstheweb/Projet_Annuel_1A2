@@ -4,7 +4,7 @@ require '../../../functions.php';
 $idTopic = htmlspecialchars($_GET['idTopic']);
 
 if(empty($_POST['delete-userPasswordInput'])){
-    header('Location: error404.php');
+    header('../../../Location: error404.php');
     die();
 }
 $InputPwd = $_POST['delete-userPasswordInput'];
@@ -28,5 +28,3 @@ $userArchiveQuestionsQuery->execute(["id"=>$idTopic]);
 setMessage('Delete', ["La catégorie a bien été archivée."], 'success');
 header('Location: ../vues/forum.php');
 die();
-
-?>

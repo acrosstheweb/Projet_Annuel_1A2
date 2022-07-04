@@ -1,7 +1,7 @@
 <?php
 require '../../../functions.php';
 
-$sportId = $_GET['sportId'];
+$sportId = htmlspecialchars($_GET['sportId']);
 
 if(empty($_POST['delete-userPasswordInput'])){
     header('Location: error404.php');

@@ -109,7 +109,7 @@ if(!empty($_POST)){
     $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
 
     if(!password_verify($InputPwd, $userPwdInDb)){
-        setMessage('modifyEvent', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
+        setMessage('modifyGym', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
         header('Location: ../vues/gymBO.php');
         die();
     }
@@ -133,14 +133,13 @@ if(!empty($_POST)){
 
         setMessage('modifyGym', ['La salle de sport a bien été modifiée'], 'success');
         header('Location: ../../user/vues/admin/adminGyms.php');
-        exit;
     }
     else{
         setMessage('modifyGym', [$errors], 'warning');
         header('Location: ../vues/gymBO.php');
-        exit;
     }
-        
+    exit;
+
 
 }
 

@@ -5,7 +5,7 @@
 
     // RÉCUPÉRATION DES DONNÉES POUR LA TABLE PROGRAM
     $programTitle = htmlspecialchars(ucwords(trim($_POST["programTitle"])));
-    $programId = $_GET['id'];
+    $programId = htmlspecialchars($_GET['id']);
 
     // RÉCUPÉRATION DES DONNÉES DANS LA TABLE PROGRAM
     $getProgramIllustrationQuery = $db->prepare("SELECT illustration FROM RkU_PROGRAM WHERE nameProgram=:nameProgram LIMIT 1");
@@ -64,6 +64,6 @@
         ]);
     }
 
-    setMessage('updateProgram', ['Programme créé'], 'success');
+    setMessage('updateProgram', ['Programme modifié'], 'success');
     header('Location: ' . DOMAIN . 'modules/user/vues/admin/adminPrograms.php');
     die();

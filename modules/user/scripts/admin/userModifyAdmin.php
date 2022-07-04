@@ -4,15 +4,16 @@ if(
     empty($_POST['modify-lastName']) ||
     empty($_POST['modify-firstName']) ||
     empty($_POST['modify-birthday']) ||
+    !isset($_POST['modify-role']) ||
     empty($_POST['modify-address']) ||
     empty($_POST['modify-zipCode']) ||
     empty($_POST['modify-city']) ||
+    !isset($_POST['modify-fitcoins']) ||
     empty($_POST['modify-adminPasswordInput']) ||
-    empty($_POST['modify-role']) ||
-    empty($_POST['modify-fitcoins']) ||
     count($_POST) != 9
 ){
-    header('Location: ../../../../error404.php');
+    setMessage('Modify', ['Erreur formulaire'], 'warning');
+    header('Location: ../../vues/admin/users.php');
     die();
 }
 $InputPwd = $_POST['modify-adminPasswordInput'];

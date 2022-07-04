@@ -4,7 +4,8 @@ require '../../../../functions.php';
 $eventId = htmlspecialchars($_GET['eventId']);
 
 if(empty($_POST['delete-userPasswordInput'])){
-    header('Location: error404.php');
+    setMessage('Delete', ['Mot de passe admin incorrect'], 'warning');
+    header('Location: ../../../user/vues/admin/adminEvents.php');
     die();
 }
 $InputPwd = $_POST['delete-userPasswordInput'];
@@ -28,5 +29,3 @@ $userDelUsersQuery->execute(["id"=>$eventId]);
 setMessage('Delete', ["L'évènement a bien été supprimée."], 'success');
 header('Location: ../../../user/vues/admin/adminEvents.php');
 die();
-
-?>

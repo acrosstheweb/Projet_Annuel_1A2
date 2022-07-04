@@ -3,6 +3,8 @@
     $content = "Accès non autorisé";
     $currentPage = 'pleaseLogin';
     require 'header.php';
+    Message('eventDesinscription');
+    Message('inscriptionEvent');
 ?>
 
 <h1 class="aligned-title mt-5"> Accès refusé </h1>

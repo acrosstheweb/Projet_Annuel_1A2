@@ -131,4 +131,3 @@ $results = $req->fetchAll();
 
 <?php
 include "../../../../footer.php";
-?>

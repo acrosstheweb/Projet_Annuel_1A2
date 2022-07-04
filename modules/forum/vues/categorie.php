@@ -7,7 +7,7 @@
     Message('createQuestion');
     Message('manageQuestion');
     
-    $idTopic = $_GET['idTopic'];
+    $idTopic = htmlspecialchars($_GET['idTopic']);
     
     $pdo = database();
 

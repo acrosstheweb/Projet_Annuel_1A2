@@ -17,7 +17,7 @@
     require '../../../header.php';
     Message("modifySubscription");
 
-    $subscriptionId = $_GET['subscriptionId'];
+    $subscriptionId = htmlspecialchars($_GET['subscriptionId']);
 
     $pdo = database();
 
@@ -53,28 +53,28 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="subscriptionPrice">Prix</label>
-                <input type="float" name="subscriptionPrice" id="subscriptionPrice" class="form-control"  value="<?= $subscription['price'] ?>" required>
+                <input type="number" step="any" name="subscriptionPrice" id="subscriptionPrice" class="form-control"  value="<?= $subscription['price'] ?>" required="required">
             </div>
         </div>
 
         <div class="row my-3">
             <div class="form-group">
                 <label for="subscriptionFirstAttribut">Attribut 1</label>
-                <input type="text" name="subscriptionFirstAttribut" id="subscriptionFirstAttribut" class="form-control" value="<?= $subscription['firstAttribut']; ?>" required>
+                <input type="text" name="subscriptionFirstAttribut" id="subscriptionFirstAttribut" class="form-control" value="<?= $subscription['firstAttribut']; ?>" required="required">
             </div>
         </div>
 
         <div class="row my-3">
             <div class="form-group">
                 <label for="subscriptionSecondAttribut">Attribut 2</label>
-                <input type="text" name="subscriptionSecondAttribut" id="subscriptionSecondAttribut" class="form-control" value="<?= $subscription['secondAttribut']; ?>" required>
+                <input type="text" name="subscriptionSecondAttribut" id="subscriptionSecondAttribut" class="form-control" value="<?= $subscription['secondAttribut']; ?>" required="required">
             </div>
         </div>
 
         <div class="row my-3">
             <div class="form-group">
                 <label for="subscriptionThirdAttribut">Attribut 3</label>
-                <input type="text" name="subscriptionThirdAttribut" id="subscriptionThirdAttribut" class="form-control" value="<?= $subscription['thirdAttribut']; ?>" required>
+                <input type="text" name="subscriptionThirdAttribut" id="subscriptionThirdAttribut" class="form-control" value="<?= $subscription['thirdAttribut']; ?>" required="required">
             </div>
         </div>
 
@@ -95,4 +95,3 @@
 
 <?php
 require '../../../footer.php';
-?>

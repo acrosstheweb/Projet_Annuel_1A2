@@ -47,15 +47,12 @@ if(!empty($_POST)){
 
             setMessage('createSport', ['Votre nouveau sport a bien été créé'], 'success');
             header('Location: ../../user/vues/admin/adminSports.php');
-            exit;
         }
         else{
             setMessage('createSport', [$errors], 'warning');
             header('Location: ../vues/newSport.php');
-            exit;
         }
+        exit;
 
     }
 }
-
-?>

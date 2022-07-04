@@ -5,7 +5,7 @@ $idQuestion = $_SESSION['idQuestion'];
 $idTopic = $_SESSION['idTopic'];
 
 if(empty($_POST['delete-userPasswordInput'])){
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 }
 $InputPwd = $_POST['delete-userPasswordInput'];
@@ -29,5 +29,3 @@ $userDelQuery->execute(["id"=>$commentToDeleteId]);
 setMessage('Delete', ["Le commentaire a bien été supprimé."], 'success');
 header('Location: ../vues/question.php?idTopic='.$idTopic.'&idQuestion='.$idQuestion);
 die();
-
-?>

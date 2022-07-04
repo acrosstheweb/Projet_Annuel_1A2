@@ -118,15 +118,11 @@ if(!empty($_POST)){
 
         setMessage('createGym', ['Votre nouvel évènement a bien été créée'], 'success');
         header('Location: ../../user/vues/admin/adminGyms.php');
-        exit;
     }
     else{
         setMessage('createGym', [$errors], 'warning');
         header('Location: ../vues/addNewGym.php');
-        exit;
     }
-        
+    exit;
 
 }
-
-?>

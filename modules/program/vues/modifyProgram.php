@@ -11,14 +11,14 @@ $req = $pdo->query("SELECT id, nameExercice
                     ORDER BY nameExercice ASC");
 
 $results = $req->fetchAll();
-
+$pId = htmlspecialchars($_GET['id']);
 $db = database();
 
 $valuesReq = $db->query("SELECT C.*, P.*, E.*
                             FROM RkU_CONTAINS C
                             LEFT JOIN RkU_PROGRAM P ON C.programId = P.id
                             LEFT JOIN RkU_EXERCICE E ON C.exerciceId = E.id
-                            WHERE C.programId = " . $_GET['id']);
+                            WHERE C.programId = " . $pId);
 
 $valuesResults = $valuesReq->fetchAll();
 $counter = count($valuesResults);
@@ -29,7 +29,7 @@ $counter = count($valuesResults);
 <div class="row d-flex justify-content-center flex-row">
     <div class="col-10 col-lg-7 d-flex justify-content-center flex-column">
         <div class="row">
-            <form id="__programUpdateForm" action="../scripts/updateProgram.php?id=<?= $_GET['id'] ?>" enctype ="multipart/form-data" method="POST" class="my-3">
+            <form id="__programUpdateForm" action="../scripts/updateProgram.php?id=<?= $pId ?>" enctype ="multipart/form-data" method="POST" class="my-3">
                 <div class="row my-3">
                     <label for="__programTitle">Nom du rogramme : </label>
                     <input class="form-control" type="text" name="programTitle" id="__programTitle" value="<?= $valuesResults[0]['nameProgram'] ?>" oninput="displayProgramTitle()"><br>

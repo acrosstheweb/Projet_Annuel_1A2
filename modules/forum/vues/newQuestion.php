@@ -3,7 +3,7 @@
     $content = "Le forum de Fitness Essential";
     $currentPage = 'forum';
 
-    $idTopic = $_GET['idTopic'];
+    $idTopic = htmlspecialchars($_GET['idTopic']);
 
     require_once '../../../functions.php';
 
@@ -31,43 +31,37 @@
 
 <h2 class="aligned-title"> Une question</h2>
 
-    <p class="text-center">Votre demande sera traitée dans les plus brefs délais.</p>
+<p class="text-center">Votre demande sera traitée dans les plus brefs délais.</p>
 
-    <div class="row d-flex justify-content-center">
-        <form action="../scripts/addNewQuestion.php?idTopic=<?php echo $idTopic ?>" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
-            <div class="row my-3">
-                <label for="topic">Sélectionnez un sujet : </label>
-                <select class="form-select" name="topic" id="topic"><br>
-                    <option default value="0">CHOISIR</option>
-                    <?php 
-                        foreach($results as $topic){
-                    ?>
-                        <option value="<?php echo $idTopic ?>"> <?php echo $topic['title'] ?> </option>
-                    <?php
-                        }
-                    ?>
+<div class="row d-flex justify-content-center">
+    <form action="../scripts/addNewQuestion.php?idTopic=<?php echo $idTopic ?>" method="POST" class="col-10 col-md-8 col-lg-6 my-3">
+        <div class="row my-3">
+            <label for="topic">Sélectionnez un sujet : </label>
+            <select class="form-select" name="topic" id="topic" required="required"><br>
+                <option value="" selected disabled hidden>Veuillez choisir</option>
+                <?php
+                    foreach($results as $topic){
+                ?>
+                    <option value="<?php echo $idTopic ?>"> <?php echo $topic['title'] ?> </option>
+                <?php
+                    }
+                ?>
 
-                </select>
-            </div>
+            </select>
+        </div>
 
-            <div class="row my-3">
-                <label for="question">Question : </label>
-                <input class="form-control" type="text" name="question" id="question" placeholder="Posez votre question ici"><br>
-            </div>
+        <div class="row my-3">
+            <label for="question">Question : </label>
+            <input class="form-control" type="text" name="question" id="question" placeholder="Posez votre question ici" required="required"><br>
+        </div>
 
-            <div class="row my-3">
-                <label for="messageDescription">Décrivez-nous votre problème : </label>
-                <textarea class="form-control" name="content" id="questionContent" placeholder="Ajoutez des éléments de précision à votre question" rows="5"></textarea>
-            </div>
+        <div class="row my-3">
+            <label for="messageDescription">Décrivez-nous votre problème : </label>
+            <textarea class="form-control" name="content" id="questionContent" placeholder="Ajoutez des éléments de précision à votre question" rows="5" required="required"></textarea>
+        </div>
 
-                <!-- Il faut rajouter une image dans la base de données -->
-            <!-- <div class="row my-3">
-                <label for="file" class="form-label">Veuillez insérer votre image</label>
-                <input class="form-control" type="file" id="formFile" name="file">
-            </div> -->
-
-            <div class="text-center mt-4">
-                <button type="submit" name="createQuestion" class="btn btn-primary">Envoyer</button>
-            </div>
-        </form>
-    </div>
+        <div class="text-center mt-4">
+            <button type="submit" name="createQuestion" class="btn btn-primary">Envoyer</button>
+        </div>
+    </form>
+</div>

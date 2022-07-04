@@ -75,7 +75,4 @@ if(!empty($_POST)){
     header('Location: ../vues/forum.php');
     exit;
 
-
 }
-
-?>

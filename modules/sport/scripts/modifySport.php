@@ -12,7 +12,7 @@ if(!empty($_POST)){
     if(isset($_POST['modifySport'])){
         $name = htmlspecialchars(trim($_POST['sportName']));
         $description = htmlspecialchars(trim($_POST['sportDescription']));
-        $id = $_GET['sportId'];
+        $id = htmlspecialchars($_GET['sportId']);
         
         if(empty($name)){
             $valid = false;
@@ -63,15 +63,12 @@ if(!empty($_POST)){
 
         setMessage('modifySport', ['Votre sport à bien été mis à jour'], 'success');
         header('Location: ../../user/vues/admin/adminSports.php');
-        exit;
     }
     else{
         setMessage('modifySport', [$errors], 'warning');
         header('Location: ../vues/manageSport.php?sportId=' . $id);
-        exit;
     }
-        
+    exit;
+
 
 }
-
-?>

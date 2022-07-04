@@ -21,12 +21,12 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="sportName">Nom</label>
-                    <input type="text" name="sportName" id="sportName" class="form-control" required>
+                    <input type="text" name="sportName" id="sportName" class="form-control" required="required">
                 </div>
             </div>
             <div class="form-group">
                 <label for="sportDescription">Description</label>
-                <textarea name="sportDescription" id="sportDescription" class="form-control" required></textarea>
+                <textarea name="sportDescription" id="sportDescription" class="form-control" required="required"></textarea>
             </div>
 
             <div class="text-center mt-4">
@@ -36,8 +36,5 @@
     </div>
 
 
-
-
 <?php
     require '../../../footer.php';
-?>

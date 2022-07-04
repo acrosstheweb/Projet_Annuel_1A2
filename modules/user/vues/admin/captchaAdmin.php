@@ -12,6 +12,7 @@ $captchas = glob(ABSOLUTE_PATH . 'sources/captcha/captcha?????????.{jpg,jpeg,png
 
 require '../../../../header.php';
 Message('captchaModify');
+Message('captchaDelete');
 ?>
 
 <div class="container-fluid d-lg-none">

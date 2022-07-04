@@ -5,9 +5,9 @@
 
     require_once '../../../functions.php';
 
-    $idTopic = $_GET['idTopic'];
-    $idQuestion = $_GET['idQuestion'];
-    $status = $_GET['status'];
+    $idTopic = htmlspecialchars($_GET['idTopic']);
+    $idQuestion = htmlspecialchars($_GET['idQuestion']);
+    $status = htmlspecialchars($_GET['status']);
     
     if(empty($idTopic) || empty($idQuestion)){
         header('Location: forum.php');
@@ -17,7 +17,8 @@
     require '../../../header.php';
     Message('UploadImage');
     Message('createComment');
-    
+    Message('Delete');
+
 
     $pdo = database();
 
@@ -176,4 +177,3 @@
 
 <?php
     include "../../../footer.php";
-?>

@@ -11,6 +11,7 @@ require '../../../../functions.php';
 require '../../../../header.php';
 Message('delProgram');
 Message('updateProgram');
+Message('newProgram');
 
 
 $pdo = database();

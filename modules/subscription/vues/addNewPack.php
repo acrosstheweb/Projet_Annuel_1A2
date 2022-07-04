@@ -37,14 +37,14 @@
         <div class="row my-3">
                 <div class="form-group">
                     <label for="packPrice">Prix</label>
-                    <input type="float" name="packPrice" id="packPrice" class="form-control"  required>
+                    <input type="number" step="any" name="packPrice" id="packPrice" class="form-control"  required="required">
                 </div>
             </div>
 
         <div class="row my-3">
                 <div class="form-group">
                     <label for="packFitcoins">Nombre de fitcoins</label>
-                    <input type="number" name="packFitcoins" id="packFitcoins" class="form-control" required>
+                    <input type="number" name="packFitcoins" id="packFitcoins" class="form-control" required="required">
                 </div>
             </div>
 

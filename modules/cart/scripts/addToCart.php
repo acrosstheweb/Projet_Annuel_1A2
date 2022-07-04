@@ -43,8 +43,7 @@ if(!isset($_SESSION['fitcoins'])){
 
 if(!isset($_GET['subscriptionId'])){
     if(!isset($_GET['fitcoinsId'])){
-        header('Location: ../../error404.php');
-        die();
+        header('Location: ../../../error404.php');
     }
     else{
 
@@ -81,7 +80,6 @@ if(!isset($_GET['subscriptionId'])){
             setMessage('addFitcoins', $errors, 'warning');
             header('Location: ../../subscription/vues/subscriptions.php');
         }
-        die();
     }
 }
 else{
@@ -111,5 +109,5 @@ else{
         setMessage('addSubscription', $errors, 'warning');
         header('Location: ../../subscription/vues/subscriptions.php');
     }
-    die();
 }
+die();

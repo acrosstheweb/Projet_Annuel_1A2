@@ -24,22 +24,22 @@
         <form action="../scripts/addNewCategorie.php" method="POST" enctype ="multipart/form-data" class="col-10 col-md-8 col-lg-6 my-3">
             <div class="row my-3">
                 <label for="categorieName">Nouvelle catégorie : </label>
-                <input type="text" class="form-control" name="categorieName" id="categorieName" placeholder="Entrez le nom de la nouvelle catégorie"> <br>
+                <input type="text" class="form-control" name="categorieName" id="categorieName" placeholder="Entrez le nom de la nouvelle catégorie" required="required"> <br>
             </div>
 
             <div class="row my-3">
                 <label for="categorieDescription">Description de la catégorie </label>
-                <textarea type="text" class="form-control" name="categorieDescription" id="categorieDescription" placeholder="Décrivez la nouvelle catégorie" rows="5"></textarea>
+                <textarea class="form-control" name="categorieDescription" id="categorieDescription" placeholder="Décrivez la nouvelle catégorie" rows="5" required="required"></textarea>
             </div>
             
             <div class="row my-3">
                 <label for="categorieOrder">Ordre d'affichage</label>
-                <input type="number" class="form-control" name="categorieOrder" id="categorieOrder">
+                <input type="number" class="form-control" name="categorieOrder" id="categorieOrder" required="required">
             </div>
 
             <div class="mb-3">
                 <label for="categorieImage" class="form-label">Image de la catégorie</label>
-                <input class="form-control" type="file" name="categorieImage" id="categorieImage">
+                <input class="form-control" type="file" name="categorieImage" id="categorieImage" required="required">
             </div>
 
             <div class="text-center mt-4">

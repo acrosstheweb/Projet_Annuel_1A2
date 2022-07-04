@@ -185,8 +185,5 @@ foreach($resultsFitcoins as $packFitcoins){
 
 </div>
 
-
-
 <?php
     include '../../../footer.php';
-?>

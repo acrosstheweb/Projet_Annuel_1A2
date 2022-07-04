@@ -8,7 +8,7 @@
   require '../scripts/Calendar/Events.php';
   Message("inscriptionEvent");
   Message("eventDesinscription");
-
+  Message("modifyEvent");
 
   $pdo = database();
 

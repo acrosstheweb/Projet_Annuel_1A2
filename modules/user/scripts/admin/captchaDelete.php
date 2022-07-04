@@ -14,9 +14,8 @@ if(isset($_GET['id'])){
 
     setMessage('captchaDelete', ['Captcha supprimé'], 'success');
     header('Location: ../../vues/admin/captchaAdmin.php');
-    die();
 
 }else{
     header('../../../../error404.php');
-    die();
 }
+die();

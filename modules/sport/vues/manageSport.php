@@ -14,7 +14,7 @@
         die();
     }
 
-    $sportId = $_GET['sportId'];
+    $sportId = htmlspecialchars($_GET['sportId']);
 
     require '../../../header.php';
     Message("modifySport");

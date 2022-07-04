@@ -25,19 +25,19 @@ require '../../../header.php';
                         <input type="hidden" 
                             id="__avatarColor"
                             name="__avatarColor"
-                            require="required">
+                            required="required">
             
                         <img id="__avatarEyesPreview" src="" class="img-fluid __avatarPreview" alt="">
                         <input type="hidden" 
                             id="__avatarEyes"
                             name="__avatarEyes"
-                            require="required">
+                            required="required">
             
                         <img id="__avatarNosePreview" src="" class="img-fluid __avatarPreview" alt="">
                         <input type="hidden" 
                             id="__avatarNose"
                             name="__avatarNose"
-                            require="required">
+                            required="required">
             
                         <img id="__avatarGlassesPreview" src="" class="img-fluid __avatarPreview" alt="">
                         <input type="hidden" 

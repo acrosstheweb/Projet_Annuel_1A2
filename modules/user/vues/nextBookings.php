@@ -1,7 +1,7 @@
 <?php
     require '../../../functions.php';
     if(!isConnected()){
-        header('Location: error404.php');
+        header('Location: ../../../error404.php');
         die();
     }
     $title = "Fitness Essential - Mes prochaines séances";

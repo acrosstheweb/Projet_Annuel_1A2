@@ -26,5 +26,3 @@ $userDelQuery->execute(["id"=>$gymId]);
 setMessage('Delete', ["L'évènement a bien été supprimée."], 'success');
 header('Location: ../../user/vues/admin/adminGyms.php');
 die();
-
-?>

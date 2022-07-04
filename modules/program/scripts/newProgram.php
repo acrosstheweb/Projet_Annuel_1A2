@@ -23,14 +23,14 @@
         if(in_array($type, $typeImage)){
             move_uploaded_file($tempNameImage, ABSOLUTE_PATH . 'sources/img/' . $nameImage);
         } else{
-            // setMessage('Image non valide');
+            setMessage('newProgram', ['Image non valide'], 'warning');
             header('Location: ' . DOMAIN . 'modules/user/vues/admin/adminPrograms.php');
             die();
         }
     }
 
     if(!empty($checkProgramExist)){
-        // setMessage('Nom de programme déjà utilisé');
+        setMessage('newProgram', ['Nom de programme déjà utilisé'], 'warning');
         header('Location: ' . DOMAIN . 'modules/user/vues/admin/adminPrograms.php');
         die();
     } else {
@@ -59,6 +59,6 @@
         }
     }
 
-    // setMessage('Programme créé');
+    setMessage('newProgram',['Programme créé'], 'success');
     header('Location: ' . DOMAIN . 'modules/user/vues/admin/adminPrograms.php');
     die();

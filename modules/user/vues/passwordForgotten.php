@@ -34,4 +34,3 @@ Message('newPassword');
 
 <?php
 include "../../../footer.php";
-?>

@@ -78,13 +78,11 @@ elseif(isset($_POST['captcha-pieces-form'])){
         }else{
             setMessage('captchaModify', ['Il faut entrer un chiffre pas autre chose'], 'danger');
         }
-        header('Location: ../../vues/admin/captchaAdmin.php');
-        die();
     }else{
         setMessage('captchaModify', ['?'], 'danger');
-        header('Location: ../../vues/admin/captchaAdmin.php');
-        die();
     }
+    header('Location: ../../vues/admin/captchaAdmin.php');
+    die();
 
 }else{
     header('../../../../error404.php');

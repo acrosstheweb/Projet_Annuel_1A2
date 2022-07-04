@@ -15,18 +15,16 @@
                 subscribe($userId);
 
                 setMessage('newsletter', ['Inscription à la newsletter réussie'], 'success');
-                header('Location: ' . DOMAIN);
-                die();
             } else {
                 setMessage('newsletter', ['Créez vous d\'abord un compte'], 'info');
-                header('Location: ' . DOMAIN);
-                die();
             }
+            header('Location: ' . DOMAIN);
+            die();
         }
 
     // sinon, le formulaire vient de la page préférences
     } elseif (!empty($_GET['id'])){
-        $userId = $_GET['id'];
+        $userId = htmlspecialchars($_GET['id']);
         if (is_numeric($_POST['newsletterRadio'])){
             $value = $_POST['newsletterRadio'];
             if ($value == 1){
@@ -34,18 +32,16 @@
 
                 setMessage('newsletter', ['Inscription à la newsletter réussie'], 'success');
                 header('Location: ' . DOMAIN . 'modules/user/vues/profilePageNewsletter.php');
-                die();
             }
             elseif ($value == 2){
                 unsubscribe($userId);
                 
                 setMessage('newsletter', ['Désinscription à la newsletter réussie'], 'success');
                 header('Location: ' . DOMAIN . 'modules/user/vues/profilePageNewsletter.php');
-                die();
             } else {
                 header('Location: ' . DOMAIN . 'error404.php');
-                die();
             }
+            die();
         }
 
     // sinon, il s'inscrit depuis son compte
@@ -61,15 +57,13 @@
             subscribe($userId);
 
             setMessage('newsletter', ['Inscription à la newsletter réussie'], 'success');
-            header('Location: ' . DOMAIN);
-            die();
         } else {
             setMessage('newsletter', ['Adresse e-mail invalide'], 'info');
-            header('Location: ' . DOMAIN);
-            die();
         }
+        header('Location: ' . DOMAIN);
+        die();
 
-    // sinon, il fait n'imp
+        // sinon, il fait n'imp
     } else {
         header('Location: ' . DOMAIN . 'error404.php');
         die();

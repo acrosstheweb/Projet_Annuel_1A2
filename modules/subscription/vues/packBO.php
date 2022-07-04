@@ -17,7 +17,7 @@
     require '../../../header.php';
     Message("modifyPack");
 
-    $packId = $_GET['packId'];
+    $packId = htmlspecialchars($_GET['packId']);
 
     $pdo = database();
 
@@ -52,14 +52,14 @@
         <div class="row my-3">
                 <div class="form-group">
                     <label for="packPrice">Prix</label>
-                    <input type="float" name="packPrice" id="packPrice" class="form-control"  value="<?= $pack['price'] ?>" required>
+                    <input type="number" step="any" name="packPrice" id="packPrice" class="form-control"  value="<?= $pack['price'] ?>" required="required">
                 </div>
             </div>
 
         <div class="row my-3">
                 <div class="form-group">
                     <label for="packFitcoins">Nombre de fitcoins</label>
-                    <input type="number" name="packFitcoins" id="packFitcoins" class="form-control" value="<?= $pack['numberOfFitcoins']; ?>" required>
+                    <input type="number" name="packFitcoins" id="packFitcoins" class="form-control" value="<?= $pack['numberOfFitcoins']; ?>" required="required">
                 </div>
             </div>
 
@@ -80,4 +80,3 @@
 
 <?php
 require '../../../footer.php';
-?>

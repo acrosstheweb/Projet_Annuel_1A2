@@ -95,15 +95,11 @@ if(!empty($_POST)){
 
         setMessage('modifyPack', ['Le pack a bien été modifié'], 'success');
         header('Location: ../../user/vues/admin/adminFitcoins.php');
-        exit;
     }
     else{
         setMessage('modifyPack', [$errors], 'warning');
         header('Location: ../vues/packBO.php?packId='.$id);
-        exit;
     }
-        
+    exit;
 
 }
-
-?>

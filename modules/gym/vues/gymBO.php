@@ -17,7 +17,7 @@
     require '../../../header.php';
     Message("modifyGym");
 
-    $gymId = $_GET['gymId'];
+    $gymId = htmlspecialchars($_GET['gymId']);
 
     $pdo = database();
 
@@ -106,14 +106,14 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="gymAddress">Adresse de la salle</label>
-                <input type="text" name="gymAddress" id="gymAddress" class="form-control"  value="<?= $gym['address'] ?>" required>
+                <input type="text" name="gymAddress" id="gymAddress" class="form-control"  value="<?= $gym['address'] ?>" required="required">
             </div>
         </div>
 
         <div class="row my-3">
             <div class="form-group">
                 <label for="gymPhone">Numéro de téléphone</label>
-                <input type="number" name="gymPhone" id="gymPhone" class="form-control" value="<?= $gym['phoneNumber']; ?>" required>
+                <input type="number" name="gymPhone" id="gymPhone" class="form-control" value="<?= $gym['phoneNumber']; ?>" required="required">
             </div>
         </div>
 
@@ -127,7 +127,7 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="gymMap">Recherche Google Maps</label>
-                <input type="text" name="gymMap" id="gymMap" class="form-control" value="<?= $mapPath ?>" required>
+                <input type="text" name="gymMap" id="gymMap" class="form-control" value="<?= $mapPath ?>" required="required">
             </div>
         </div>
             

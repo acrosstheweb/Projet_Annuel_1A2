@@ -22,14 +22,12 @@ $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $userPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
-    header('Location: ../../user/vues/admin/adminPack.php');
+    header('Location: ../../user/vues/admin/adminFitcoins.php');
     die();
 }
 
 $userDelQuery = $db->prepare("DELETE FROM RkU_FITCOINS WHERE id=:id");
 $userDelQuery->execute(["id"=>$packId]);
 setMessage('Delete', ["Le pack a bien été supprimé."], 'success');
-header('Location: ../../user/vues/admin/adminPack.php');
+header('Location: ../../user/vues/admin/adminFitcoins.php');
 die();
-
-?>

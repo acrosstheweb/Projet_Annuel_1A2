@@ -15,7 +15,7 @@ if(
     empty($InputPwd) ||
     count($_POST) != 4
 ){
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 }
 

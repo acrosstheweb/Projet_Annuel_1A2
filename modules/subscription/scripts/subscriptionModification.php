@@ -101,12 +101,11 @@ if(!empty($_POST)){
         
         setMessage('modifySubscription', ["L'abonnement a bien été modifié."], 'success');
         header('Location: ../../user/vues/admin/adminSubscriptions.php');
-        die();
     }
     else{
         setMessage('modifySubscription', [$errors], 'warning');
         header('Location: ../vues/subscriptionBO.php?subscriptionId=' . $idSubscription);
-        die();
     }
-    
+    die();
+
 }

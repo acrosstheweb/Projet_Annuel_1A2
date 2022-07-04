@@ -73,5 +73,3 @@
     setMessage('Update', ['Mise à jour de l\'avatar réussie !'], 'success');
     header('Location: ' . DOMAIN . 'modules/user/vues/profilePage.php');
     die();
-    
-    

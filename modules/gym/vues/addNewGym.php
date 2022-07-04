@@ -29,20 +29,20 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymName">Nom de la salle</label>
-                    <input type="text" name="gymName" id="gymName" class="form-control" required>
+                    <input type="text" name="gymName" id="gymName" class="form-control" required="required">
                 </div>
             </div>
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymArea">Surperficie</label>
-                    <input type="number" name="gymArea" id="gymArea" class="form-control" required>
+                    <input type="number" name="gymArea" id="gymArea" class="form-control" required="required">
                 </div>
             </div>
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymOwner">Directeur</label>
-                    <select class="form-select" name="gymOwner" id="gymOwner"><br>
-                        <option default value="0">CHOISIR</option>
+                    <select class="form-select" name="gymOwner" id="gymOwner" required="required"><br>
+                        <option value="" selected disabled hidden>Veuillez choisir</option>
                         <?php 
                             foreach($resultsOwner as $owner){
                         ?>
@@ -56,8 +56,8 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymCity">Ville</label>
-                    <select class="form-select" name="gymCity" id="gymCity"><br>
-                        <option default value="0">CHOISIR</option>
+                    <select class="form-select" name="gymCity" id="gymCity" required="required"><br>
+                        <option value="" selected disabled hidden>Veuillez choisir</option>
                         <?php 
                             foreach($resultsCity as $city){
                         ?>
@@ -72,21 +72,21 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymAddress">Adresse de la salle</label>
-                    <input type="text" name="gymAddress" id="gymAddress" class="form-control" required>
+                    <input type="text" name="gymAddress" id="gymAddress" class="form-control" required="required">
                 </div>
             </div>
 
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymPhone">Numéro de téléphone</label>
-                    <input type="number" name="gymPhone" id="gymPhone" class="form-control" placeholder="Saisir un numéro de téléphone à 10 chiffres sans espaces" required>
+                    <input type="number" name="gymPhone" id="gymPhone" class="form-control" placeholder="Saisir un numéro de téléphone à 10 chiffres sans espaces" required="required">
                 </div>
             </div>
             
             <div class="row my-3">
                 <div class="form-group">
                     <label for="gymMap">Recherche Google Maps</label>
-                    <input type="text" name="gymMap" id="gymMap" class="form-control" placeholder="Saisir la recherche Google Maps permettant de trouver la salle" required>
+                    <input type="text" name="gymMap" id="gymMap" class="form-control" placeholder="Saisir la recherche Google Maps permettant de trouver la salle" required="required">
                 </div>
             </div>
 
@@ -101,4 +101,3 @@
 
 <?php
     require '../../../footer.php';
-?>

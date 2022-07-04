@@ -27,7 +27,7 @@ $adminPwdInDb = $adminPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($passwordAdmin, $adminPwdInDb)){
     setMessage('Delete', ["Mot de passe incorrect, attention \"l'admin\", plus que x essais !"], 'warning');
-    header('Location: ../../vues/admin/security.php');
+    header('Location: ../../vues/admin/users.php');
     die();
 }
 
@@ -90,6 +90,6 @@ if($verifChamps[0] === true){
 }else{
     // Rajouter dans en session un message pop up contenant les problèmes invalidant l'inscription
     setMessage('CreateUser', $verifChamps[1], 'warning');
-    header('Location: ../../vues/admin/security.php');
+    header('Location: ../../vues/admin/users.php');
 }
 die();

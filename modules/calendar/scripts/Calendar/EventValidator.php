@@ -115,15 +115,12 @@ if(!empty($_POST)){
 
         setMessage('createEvent', ['Votre nouvel évènement a bien été créée'], 'success');
         header('Location: ../../../user/vues/admin/adminEvents.php');
-        exit;
     }
     else{
         setMessage('createEvent', [$errors], 'warning');
         header('Location: ../../vues/addNewEvent.php');
-        exit;
     }
-        
+    exit;
+
 
 }
-
-?>

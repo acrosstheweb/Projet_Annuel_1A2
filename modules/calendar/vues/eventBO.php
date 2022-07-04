@@ -18,7 +18,7 @@
     }
 
     try {
-        $event = $events->find($_GET['id']);
+        $event = $events->find(htmlspecialchars($_GET['id']));
     }
     catch (\Exception $e) {
         header('Location: ../../../error404.php');
@@ -111,27 +111,27 @@
         <div class="row my-3">
             <div class="form-group">
                 <label for="eventPlaces">Nombre de places</label>
-                <input type="number" name="eventPlaces" id="eventPlaces" class="form-control" value="<?= $event['places']; ?>">
+                <input type="number" name="eventPlaces" id="eventPlaces" class="form-control" value="<?= $event['places']; ?>" required="required">
             </div>
         </div>
         
         <div class="row my-3">
             <div class="form-group">
                 <label for="eventStart">Démarrage</label>
-                <input type="time" name="eventStart" id="eventStart" class="form-control" placeholder="HH:MM" value="<?=  (new \DateTime($event['startDate']))->format('H:i'); ?>">
+                <input type="time" name="eventStart" id="eventStart" class="form-control" placeholder="HH:MM" value="<?=  (new \DateTime($event['startDate']))->format('H:i'); ?>" required="required">
             </div>
         </div>
         <div class="row my-3">
             <div class="form-group">
                 <label for="eventEnd">Fin</label>
-                <input type="time" name="eventEnd" id="eventEnd" class="form-control" placeholder="HH:MM" value="<?=  (new \DateTime($event['endDate']))->format('H:i'); ?>">
+                <input type="time" name="eventEnd" id="eventEnd" class="form-control" placeholder="HH:MM" value="<?=  (new \DateTime($event['endDate']))->format('H:i'); ?>" required="required">
             </div>
         </div>
 
         <div class="row my-3">
             <div class="form-group">
                 <label for="eventDescription">Description</label>
-                <textarea name="eventDescription" id="eventDescription" class="form-control"><?= $event['description']; ?></textarea>
+                <textarea name="eventDescription" id="eventDescription" class="form-control" required="required"><?= $event['description']; ?></textarea>
             </div>
         </div>
         <div class="row my-3">

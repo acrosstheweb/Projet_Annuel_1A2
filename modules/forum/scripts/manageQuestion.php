@@ -7,7 +7,7 @@ $idQuestion = htmlspecialchars(trim($_GET['idQuestion']));
 $status = htmlspecialchars(trim($_GET['status']));
 
 if(empty($_POST['delete-userPasswordInput'])){
-    header('Location: error404.php');
+    header('Location: ../../../error404.php');
     die();
 }
 $InputPwd = $_POST['delete-userPasswordInput'];
@@ -20,7 +20,7 @@ $userPwdInDb = $userPwdInDbQuery->fetch()['password'];
 
 if(!password_verify($InputPwd, $userPwdInDb)){
     setMessage('manageQuestion', ["Mot de passe incorrect, attention \"l'user\", plus que x essais !"], 'warning');
-    header('Location: categorie.php?idTopic='.$idTopic);
+    header('Location: ../vues/categorie.php?idTopic='.$idTopic);
     die();
 }
 
@@ -39,8 +39,3 @@ elseif ($status == 0) {
     header('Location: ../vues/categorie.php?idTopic='.$idTopic);
     die();
 }
-
-
-
-
-?>

@@ -29,26 +29,26 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventName">Titre</label>
-                    <input type="text" name="eventName" id="eventName" class="form-control" required>
+                    <input type="text" name="eventName" id="eventName" class="form-control" required="required">
                 </div>
             </div>
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventDate">Date</label>
-                    <input type="date" name="eventDate" id="eventDate" class="form-control" required>
+                    <input type="date" name="eventDate" id="eventDate" class="form-control" required="required">
                 </div>
             </div>
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventPrice">Prix</label>
-                    <input type="number" name="eventPrice" id="eventPrice" class="form-control" required>
+                    <input type="number" name="eventPrice" id="eventPrice" class="form-control" required="required">
                 </div>
             </div>
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventSport">Sport</label>
                     <select class="form-select" name="eventSport" id="eventSport"><br>
-                        <option default value="0">CHOISIR</option>
+                        <option value="" selected disabled hidden>Veuillez choisir</option>
                         <?php 
                             foreach($resultsSport as $sport){
                         ?>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label for="eventGym">Salle</label>
                     <select class="form-select" name="eventGym" id="eventGym"><br>
-                        <option default value="0">CHOISIR</option>
+                        <option value="" selected disabled hidden>Veuillez choisir</option>
                         <?php 
                             foreach($resultsGym as $gym){
                         ?>
@@ -78,26 +78,26 @@
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventStart">Démarrage</label>
-                    <input type="time" name="eventStart" id="eventStart" class="form-control" placeholder="HH:MM" required>
+                    <input type="time" name="eventStart" id="eventStart" class="form-control" placeholder="HH:MM" required="required">
                 </div>
             </div>
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventEnd">Fin</label>
-                    <input type="time" name="eventEnd" id="eventEnd" class="form-control" placeholder="HH:MM" required>
+                    <input type="time" name="eventEnd" id="eventEnd" class="form-control" placeholder="HH:MM" required="required">
                 </div>
             </div>
 
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventDescription">Description</label>
-                    <textarea name="eventDescription" id="eventDescription" class="form-control" required"></textarea>
+                    <textarea name="eventDescription" id="eventDescription" class="form-control" required="required""></textarea>
                 </div>
             </div>
             <div class="row my-3">
                 <div class="form-group">
                     <label for="eventPlaces">Nombre de places</label>
-                    <input type="number" name="eventPlaces" id="eventPlaces" class="form-control" value="<?= $event['places']; ?>">
+                    <input type="number" name="eventPlaces" id="eventPlaces" class="form-control" required="required">
                 </div>
             </div>
 
