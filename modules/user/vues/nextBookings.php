@@ -128,12 +128,6 @@
                                                         Si ce désistement respecte les Conditions Générales de Vente, vous serez recrédité le montant que vous avez payé. <br>
                                                     </div>
                                                 </div>
-                                                <div class="row delete-userPassword mt-3">
-                                                    <div class="col">
-                                                        <label for="delete-userPasswordInput" class="fw-bold">Pour confirmer, veuillez saisir votre mot de passe</label>
-                                                        <input id="delete-userPasswordInput" class="form-control" type="password" name="delete-userPasswordInput" placeholder="Veuillez saisir votre mot de passe" required="required">
-                                                    </div>
-                                                </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
